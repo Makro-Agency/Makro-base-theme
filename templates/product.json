@@ -54,6 +54,25 @@
             "enable_dates": true
           }
         },
+        "pdp_text_bg_pqeRVc": {
+          "type": "pdp_text_bg",
+          "settings": {}
+        },
+        "flavour_tag_JzbxGW": {
+          "type": "flavour_tag",
+          "settings": {}
+        },
+        "product_refrence_9YmDfA": {
+          "type": "product_refrence",
+          "settings": {}
+        },
+        "buy_online_btn_kVLpL3": {
+          "type": "buy_online_btn",
+          "settings": {
+            "buy_online_text": "Buy Online",
+            "buy_online_link": ""
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -193,6 +212,10 @@
         "price",
         "variant_picker",
         "38d7e74a-5747-47cd-bd25-1a4feebd3e66",
+        "pdp_text_bg_pqeRVc",
+        "flavour_tag_JzbxGW",
+        "product_refrence_9YmDfA",
+        "buy_online_btn_kVLpL3",
         "buy_buttons",
         "custom_liquid_GWJjEK",
         "6c40f58d-b145-4e5a-b101-a565bb618a11",
