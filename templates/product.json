@@ -70,7 +70,7 @@
           "type": "buy_online_btn",
           "settings": {
             "buy_online_text": "Buy Online",
-            "buy_online_link": ""
+            "buy_online_link": "#"
           }
         },
         "buy_buttons": {
