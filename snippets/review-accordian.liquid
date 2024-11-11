@@ -9,6 +9,26 @@
     display: none !important;
 }
 
+.short-review .accordion-item:not(.accordion-open) .summary__title svg {
+    transform: rotate(180deg);
+}
+.short-review .jdgm-rev .jdgm-rev__custom-form{
+  display: none !important;
+}
+
+.shopify-section .short-review .jdgm-rev-widg__body .jdgm-rev-widg__reviews .jdgm-rev {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.short-review .jdgm-row-extra{
+  display: none;
+}
+.cta-btn.show-more:hover {
+  background: #a6bb3a;
+  border-color: #a6bb3a;
+  color: #fff;
+}
+
 </style>
 
 <div class="short-review">
@@ -17,11 +37,12 @@
       <div class="accordion-title summary summary__title">
           <div class="accordion__title-wrapper">
             <h2 class="h4 accordion__title inline-richtext">4.98 Star Rating </h2>
-            <span></span>
+            <span>Based on <span>({{ shop.metafields.judgeme.all_reviews_count }})</span> Reviews</span>
           </div>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M18.75 14.375L10 5.625L1.25 14.375" stroke="#0D0D0D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></path>
-          </svg> 
+          <path d="M18.75 14.375L10 5.625L1.25 14.375" stroke="#0D0D0D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></path>
+        </svg> 
+          
        </div>
       <div class="accordion-body rte" style="display: block;">
         <!-- Start of Judge.me code -->
@@ -29,14 +50,19 @@
           <div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-id='{{ product.id }}'>
             {{ product.metafields.judgeme.widget }}
           </div>
-          <a href="javascript:void(0);" onclick="scrollReview();" class="cta-btn show-more">Read All Reviews <span class="judgeme-review-count"></span></a>
+       
+          <a href="javascript:void(0);" onclick="scrollReview();" class="cta-btn show-more">Read All Reviews<span>({{shop.metafields.judgeme.all_reviews_count}})</span></a>
         <!-- End of Judge.me code -->
       </div>
     </div>
   </div>
 </div>
 
-
+<!-- Start of Judge.me code -->
+<div class='jdgm-widget jdgm-all-reviews-text'>
+  
+ </div><!-- End of Judge.me code -->
+ 
 
 
 <script>
