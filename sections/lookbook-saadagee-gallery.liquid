@@ -1,0 +1,237 @@
+<link rel="stylesheet" href="{{ 'section-image-banner.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'lookbook-saadagee-gallery.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="{{ 'section-image-banner.css' | asset_url }}"></noscript>
+<noscript><link rel="stylesheet" href="{{ 'lookbook-saadagee-gallery.css' | asset_url }}"></noscript>
+
+
+
+{%- liquid
+  assign full_width = '100vw'
+  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+  assign half_width = '50vw'
+  assign stacked_sizes = '(min-width: 750px) 50vw, 100vw'
+-%}
+
+
+{%- capture galleryContent -%}
+  {%- if section.settings.heading != blank or section.settings.text != blank or section.settings.button_label_1 != blank -%}
+    <div class="banner__content banner__content--middle-center page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div class="banner__box content-container content-container--full-width-mobile color-background-1 gradient">
+       {%- if section.settings.text != blank -%}
+        <div class="banner__text rte body">
+          <p>{{ section.settings.text }}</p>
+        </div>
+      {% endif %}
+    
+      {%- if section.settings.heading != blank -%}
+        <h2 class="banner__heading inline-richtext h1">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+       
+        {%- if section.settings.button_label_1 != blank -%}
+          <div class="banner__buttons">
+            <a
+              {% if section.settings.button_link_1 == blank %}
+                role="link" aria-disabled="true"
+              {% else %}
+                href="{{ section.settings.button_link_1 }}"
+              {% endif %}
+              class="sim-link"
+            >
+              {{- section.settings.button_label_1 | escape -}}{% render 'right-arrow' %}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+
+
+<div class="banner banner--desktop-transparent page-width banner--stacked{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    
+    {%- when 'image' -%}
+
+      {%- if block.settings.main_image != blank -%}
+        <div class="banner--single{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}{% if block.settings.main_image_mbl != blank %} small-hide{% endif %}">
+          {%- liquid
+            assign image_height = block.settings.main_image.width | divided_by: block.settings.main_image.aspect_ratio
+            assign sizes = full_width
+          -%}
+          {{
+            block.settings.main_image
+            | image_url: width: 3840
+            | image_tag:
+              loading: 'lazy', 
+              width: block.settings.main_image.width,
+              height: image_height,
+              sizes: sizes,
+              widths: widths
+          }}
+        </div>
+      {%- endif -%}
+      {%- if block.settings.main_image_mbl != blank -%}
+        <div class="banner--single medium-hide large-up-hide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {%- liquid
+            assign image_height = block.settings.main_image_mbl.width | divided_by: block.settings.main_image_mbl.aspect_ratio
+            assign sizes = full_width
+          -%}
+          {{
+            block.settings.main_image_mbl
+            | image_url: width: 1920
+            | image_tag:
+              loading: 'lazy', 
+              width: block.settings.main_image_mbl.width,
+              height: image_height,
+              sizes: sizes,
+              widths: widths
+          }}
+        </div>
+      {%- endif -%}
+    
+    
+    {%- when 'image_multi' -%}
+
+      <div class="banner--multiple banner--adapt banner--stacked">
+        {%- if block.settings.image != blank -%}
+          <div class="{% if block.settings.image_2 != blank %}banner__media-half {% endif %}{% if settings.animations_reveal_on_scroll %}scroll-trigger animate--slide-in{% endif %}">
+            {%- liquid
+              assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio
+              if block.settings.image_2 != blank
+                assign image_class = 'banner__media-image-half'
+              endif
+              if block.settings.image_2 != blank
+                assign sizes = stacked_sizes
+              else
+                assign sizes = full_width
+              endif
+            -%}
+            {{
+              block.settings.image
+              | image_url: width: 3840
+              | image_tag:
+                loading: 'lazy',
+                width: block.settings.image.width,
+                height: image_height,
+                class: image_class,
+                sizes: sizes,
+                widths: widths
+            }}
+          </div>
+        {%- endif -%}
+        {%- if block.settings.image_2 != blank -%}
+          <div class="{% if block.settings.image != blank %}banner__media-half {% endif %}{% if settings.animations_reveal_on_scroll %}scroll-trigger animate--slide-in{% endif %}">
+            {%- liquid
+              assign image_height_2 = block.settings.image_2.width | divided_by: block.settings.image_2.aspect_ratio
+              if block.settings.image != blank
+                assign image_class_2 = 'banner__media-image-half'
+              endif
+              if block.settings.image != blank
+                assign sizes = stacked_sizes
+              else
+                assign sizes = full_width
+              endif
+            -%}
+            {{
+              block.settings.image_2
+              | image_url: width: 3840
+              | image_tag:
+                loading: 'lazy',
+                width: block.settings.image_2.width,
+                height: image_height_2,
+                class: image_class_2,
+                sizes: sizes,
+                widths: widths
+            }}
+          </div>
+        {%- endif -%}
+      </div>
+    
+  {%- endcase -%}
+{%- endfor -%}
+</div>
+
+
+{%- if galleryContent != blank -%}
+  {{ galleryContent }}
+{%- endif -%}
+
+
+
+{% schema %}
+{
+  "name": "Image gallery",
+  "tag": "section",
+  "class": "section lookbook-saadagee-gallery",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Image banner",
+      "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "default": "Give customers details about the banner image(s) or content on the template.",
+      "label": "t:sections.image-banner.blocks.text.settings.text.label"
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "default": "Button label",
+      "label": "Button label",
+      "info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Large Banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "main_image",
+          "label": "Banner desktop image"
+        },
+        {
+          "type": "image_picker",
+          "id": "main_image_mbl",
+          "label": "Banner mobile image",
+          "info": "if blank desktop image will be taken"
+        }
+      ]
+    },
+    {
+      "type": "image_multi",
+      "name": "Split Banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.image-banner.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "t:sections.image-banner.settings.image_2.label"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

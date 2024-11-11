@@ -1,0 +1,102 @@
+{{ 'text-with-image.css' | asset_url | stylesheet_tag }}
+{% capture images %}
+{%- for i in (1..2) -%}
+  {%- capture image %}image_{{ i }}{% endcapture -%}
+  {%- assign image = section.settings[image] -%}
+  {% if image != blank %}  
+    {%- liquid
+      assign height = image.width | divided_by: image.aspect_ratio | round              
+      assign sizes = '50vw'
+      assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+    -%}
+    {% assign imageClass = 'image' %}
+    <div class="images">
+      {{ image
+        | image_url: width: 1100
+        | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths, class: imageClass
+      }}
+    </div>
+  {%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+
+<div class="text-width-image{% if section.settings.show_right_side %} images_right{% endif %}">
+  {% if images != blank %}
+  <div class="image_wrap">
+    {{ images }}    
+  </div>
+  {% endif %}
+  <div class="title_wrap">
+    {%- if section.settings.title != blank -%}
+    <h2 class="main_heading h2">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    {%- if section.settings.description != blank or section.settings.btn_text != blank -%}
+    <div class="description-wrapper">
+      {%- if section.settings.description != blank -%}
+        <p class="desc">{{ section.settings.description }}</p>
+      {%- endif -%}
+      {%- if section.settings.btn_text != blank -%}
+        <a href="{{ section.settings.url | default:'#' }}" class="button cta_button">{{ section.settings.btn_text }}</a>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Text With Image",
+    "settings": [      
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Upload an image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Upload an image 2"
+      },
+      {
+        "type": "checkbox",
+        "label": "Show image right alignment",
+        "id": "show_right_side"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Enter a title",
+        "default":"SOLUTIONS FOR QUICKLY AND EASILY ACHIEVING YOUR HAIRSTYLE AT HOME"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "description",
+        "label": "Enter a detail",
+        "default":"Worem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus."
+      },
+      {
+        "type": "text",
+        "label": "Button text",
+        "id": "btn_text",
+        "default": "SHOP NOW"
+      },
+      {
+        "type": "url",
+        "label": "Button link",
+        "id": "url"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text With Image"
+      }
+    ]
+  }
+{% endschema %}

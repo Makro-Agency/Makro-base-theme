@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'template-collection.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'card-product-new.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'recently-viewed-products.css' | asset_url }}" media="print" onload="this.media='all'">
+
+
+<script>
+  (() => {
+    let items = JSON.parse(localStorage.getItem('recentlyViewedProducts') || '[]');
+    // If the product already exists we first remove it
+    if (items.includes({{product.id | json}})) {
+      items.splice(items.indexOf({{ product.id | json }}), 1);
+    }
+    items.unshift({{ product.id | json }});
+
+    // Then, we save the current product into the local storage, by keeping only the 18 most recent
+    try {
+      localStorage.setItem('recentlyViewedProducts', JSON.stringify(items.slice(0, 18)));
+    } catch (error) {
+      console.log('error >>',error);
+    }
+  })();
+</script>
+
+{%- capture section_settings -%}
+{
+  "currentProductId": {{ product.id | json }},
+  "searchUrl": {{ routes.search_url | json }}
+}
+{%- endcapture -%}
+
+<recently-viewed-products
+  class="color-{{ section.settings.color_scheme }} isolate gradient"
+  data-section-id="{{ section.id }}"
+  data-section-settings='{{ section_settings }}'
+>
+  <div class="collection hidden">
+    <div class="page-width">
+      <div class="collection__title title-wrapper title-wrapper--no-top-margin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {%- if section.settings.title != blank -%}
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        {%- endif -%}
+
+        <div class="slide-nav">
+          <div class="nav-btn fea-col-slide-prev prevprev">
+            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path id="Vector" d="M6.56501 13L1 7M1 7L6.56501 0.999998M1 7L25 7" stroke="black"/>
+            </svg>
+          </div>
+          <div class="nav-btn fea-col-slide-next nextnext">
+            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path id="Vector" d="M18.435 1L24 7M24 7L18.435 13M24 7H0" stroke="black"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="page-width slider-page-width recently-viewed-products-placeholder">
+        {%- if request.page_type == 'search' -%}
+          <div class="product-carousel-slider swiper" data-recently-view-slider>
+            <div
+              class="swiper-wrapper product-grid contains-card contains-card--standard grid--4-col-desktop grid--2-col-tablet-down"
+              role="list"
+              aria-label="{{ 'general.slider.name' | t }}"
+            >
+              {%- assign parsed_terms = search.terms | split: ' OR ' -%}
+              {%- for parsed_term in parsed_terms -%}
+                {%- assign id = parsed_term | split: 'id:' | last | times: 1 -%}
+                {%- for product in search.results -%}
+                    {%- if product.id == id -%}
+                      <div class="swiper-slide">
+                        {% render 'card-product-new',
+                          card_product: product,
+                          media_aspect_ratio: section.settings.image_ratio,
+                          show_secondary_image: section.settings.show_secondary_image,
+                          show_vendor: false,
+                          show_rating: false,
+                          lazy_load: true,
+                          show_badge: false,
+                          show_variant: false,
+                          show_quick_add: false,
+                          section_id: section.id
+                        %}
+                      </div>
+                      {%- break -%}
+                    {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+                
+  </div>
+</recently-viewed-products>
+
+                
+{% schema %}
+{
+  "name": "Recently viewed products",
+  "tag": "section",
+  "class": "recently-viewed-products",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Only be visible if at least one product has been viewed."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Recently viewed"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.main-collection-product-grid.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Product",
+      "name": "Recently viewed products"
+    }
+  ]
+}
+{% endschema %}
