@@ -1,3 +1,13 @@
+// product modal
+
+$(".Click-here").on('click', function() {
+  $(".custom-model-main").addClass('model-open');
+}); 
+$(".close-btn, .bg-overlay").click(function(){
+  $(".custom-model-main").removeClass('model-open');
+});
+
+
 // Check if there are more than 1 slide
 document.addEventListener('DOMContentLoaded', function() {
   var slideCount = document.querySelectorAll('.announcement_sliers .swiper-slide').length;

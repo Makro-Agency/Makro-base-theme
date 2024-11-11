@@ -628,6 +628,111 @@ font-weight: 300; line-height: 100%; text-decoration: line-through; text-transfo
   top: 20px;
 }
 
+.pdp_text_bg {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 30px 0 18px;
+  flex-wrap: wrap;
+}
+
+.pdp_text_bg .pdp_text_bg_data {
+  border-radius: 100px;
+  color: #fff;
+  color: var(--White, #FFF);
+  padding: 5px 12px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
+.pdp_text_bg .pdp_text_bg_data:last-child {
+  margin-right: 0;
+}
+.pdp_text_bg_data svg {
+  margin-right: 8px;
+}
+
+.flavour_tag_data b {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+  margin-right: 5px;
+}
+
+.flavour_tag {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.pdp_ref_data {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+li.included-item:first-child {
+  border: 2px solid #f4cccc;
+}
+
+.included-item {
+  padding: 0;
+  margin-right: 10px;
+  border: 2px solid transparent;
+  width: 80px;
+  height: 78px;
+  background: #fafafa;
+}
+
+.included-item .media-wrapper {
+  display: flex;
+  align-items: center;
+  aspect-ratio: 40 / 39;
+  position: relative;
+}
+
+.included-item .media-wrapper img {
+  max-width: 100%;
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: contain;
+}
+.cmn-btn.buy-btn {
+  margin-top: 0;
+}
+.buy-online-btn {
+  border-radius: 100px;
+  display: flex;
+  height: 60px;
+  padding: 10px 25px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  color: #fff;
+  color: var(--White, #FFF);
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+  cursor: pointer;
+}
 
 /* Review Section */
 
