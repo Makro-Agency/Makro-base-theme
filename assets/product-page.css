@@ -621,7 +621,12 @@ font-weight: 300; line-height: 100%; text-decoration: line-through; text-transfo
 
 /* & Style With Slider */
 
-
+.product-metafiled-icons-wrap{
+  position: absolute;
+  z-index: 9;
+  left: 20px;
+  top: 20px;
+}
 
 
 /* Review Section */

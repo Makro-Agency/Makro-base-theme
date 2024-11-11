@@ -1,0 +1,40 @@
+{% comment %}
+Renders product icons based on icon tags
+
+Accepts:
+- product: {Object} Product object
+- tags_to_look_for: {String} Tags to output icons for, with '||' in between
+
+Usage:
+{% render 'product-tag-icons', tags_to_look_for: 'tag||tag2||tag3' product: product %}
+{% endcomment %}
+
+{%- assign product_icons = tags_to_look_for | split: '||' -%}
+
+{% assign pro_logo_position = product.metafields.custom.pro_logo_position | default:1 | split:',' %}
+
+
+{%- if product.metafields.custom.product_override_logos != blank -%}
+  <div class="product-metafiled-icons-wrap">
+    {%- for logo in product.metafields.custom.product_override_logos.value -%}
+      {% assign loop_index = forloop.index %}
+      {% assign has_logo = false %}
+      {% for chk_index in pro_logo_position %}
+        {%- assign temp = chk_index | strip | times:1 -%}
+        {% if temp == loop_index %}
+          {% assign has_logo = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      <div class="product-metafiled-icon{% if has_logo == true %} show-in--card{% endif %}">{{ logo | image_url: width: 80 | image_tag: loding: 'lazy' }}</div>
+    {%- endfor -%}
+  </div>
+{%- else -%}
+  <div class="product-tag-icons">
+    {%- for tag in product.tags -%}
+      {%- if product_icons contains tag -%}
+        <div class="product-tag-icon" data-product-tag="{{ tag }}"></div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
