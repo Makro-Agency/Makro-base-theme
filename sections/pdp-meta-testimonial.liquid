@@ -1,0 +1,172 @@
+{{ 'custom-testimonial.css' | asset_url | stylesheet_tag }}
+{% style %}
+   @media screen and (min-width:768px){
+     .custom-testimonial {
+      {% if section.settings.desktop_image != blank %}
+          background-image: url('{{ section.settings.desktop_image  | img_url: 'master'   }}'); 
+      {%  endif %}
+}
+  }
+  @media screen and (max-width:480px){
+    .custom-testimonial {
+      background-size: auto; 
+    } 
+  }
+ @media screen and (max-width:767px){
+     .custom-testimonial {
+        {% if section.settings.mobile_image != blank %}
+          background-image: url('{{ section.settings.mobile_image  | img_url: 'master'   }}');
+        {% endif %}
+   }
+ }
+ .custom-testimonial{
+  background-size: cover;
+ }
+ .custom-testimonial .profile-info p{
+    margin: 0;
+    height:auto;
+   }
+   .custom-testimonial .profile-info{
+    color:#28724F;
+   }
+   .custom-testimonial .block p {
+    color:#28724F;
+  }
+{% endstyle %}
+{% comment %} 
+for metafiled we using Accentuate app
+create metafield in Shops
+create Faq tag use text field (it's show accoing which product tag get same tab name)
+{{ shop.metafields.accentuate.faq_tag }}
+
+for details create field 
+{{ shop.metafields.accentuate.details }}
+{{ shop.metafields.accentuate.auther_image }}
+{{ shop.metafields.accentuate.auther_name  }}
+{{ shop.metafields.accentuate.auther_subtitle }}
+
+{% endcomment %}
+
+{%- liquid
+  assign trust_details = shop.metafields.accentuate.details
+  assign trust_image =  shop.metafields.accentuate.auther_image
+  assign trust_name = shop.metafields.accentuate.auther_name 
+  assign trust_subtitle = shop.metafields.accentuate.auther_subtitle
+  
+  assign product_tags = product.tags
+  assign mata_product_tags = shop.metafields.accentuate.tag_
+  assign meta_index = blank
+  for meta_tag in mata_product_tags
+    assign temp_tags = meta_tag | split:','
+    assign loop_break = false
+    assign main_index = forloop.index0
+    for temp_tag in temp_tags
+      assign temp =  temp_tag | downcase | strip
+      for tag in product_tags
+        assign t_tag = tag | downcase | strip
+        if temp == t_tag         
+          if meta_index == blank
+            assign meta_index = main_index
+          else             
+            assign meta_index = meta_index | append:','
+            assign meta_index = meta_index | append: main_index
+          endif
+          assign loop_break = true
+          break
+        endif
+      endfor
+      if loop_break
+        break
+      endif
+    endfor
+  endfor
+  assign meta_index = meta_index | split: ','
+-%}
+{% if meta_index != blank %}
+<div class="custom-testimonial" style=" {% if section.settings.desktop_image == blank %} background-color:#009845; {% endif %}">
+  <div class="row">
+    <div class="heading">
+      <div class="section-heading">
+        <h2 class="small-hide">{{ section.settings.heading_text }}</h2>
+        <h2 class="medium-hide large-up-hide">{{ section.settings.heading_text_mobile }}</h2>
+        <p>{{ section.settings.subheading_text }}</p>
+      </div>
+      <a href="{{ section.settings.button_link }}" class="section-button">
+        {{ section.settings.button_text }} {% render 'button-arrow' %}
+      </a>
+    </div>
+    <div class="blocks">
+      {%- for mi in meta_index -%}
+        {% assign temp_mi = mi | times: 1 %}   
+        {%- if trust_image[temp_mi] != blank -%}
+          <div class="block">
+            <div class="trust_details">{{ trust_details[temp_mi]  }}</div>
+            <div class="profile">
+              {% for image in trust_image[temp_mi] %}
+                <img src="{{ image.src }}" alt="" width="20" height="20" loading="lazy" />
+                {% endfor %}
+              <div class="profile-info">
+                <div>{{ trust_name[temp_mi] }}</div>
+                {{ trust_subtitle[temp_mi] }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Pdp Custom testimonial",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+    },
+    {
+      "type": "textarea",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "Real People, Real Stories"
+    },
+    {
+      "type": "textarea",
+      "id": "heading_text_mobile",
+      "label": "Heading Text Mobile",
+      "default": "Real People, Real Stories"
+    },
+    {
+      "type": "text",
+      "id": "subheading_text",
+      "label": "Subheading Text",
+      "default": "Join Our 5000+ Members Bio-K+ Kommunity"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Join now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pdp Custom Testimonial",
+      "category": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

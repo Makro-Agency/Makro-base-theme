@@ -1,0 +1,298 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+    .section-{{ section.id }} .rich-text-content strong {
+        color: {{ section.settings.highlight_color }};
+    }
+    .pdp-faq .index-faq-section .faq-data p{
+      margin:0;
+    }
+{%- endstyle -%}
+
+{% comment %} 
+for metafiled we using Accentuate app
+create metafield in Shops
+create Faq tag use text field (it's show accoing which product tag get same tab name)
+{{ shop.metafields.accentuate.faq_tag }}
+
+for faq Question Answer create Html field
+{{ shop.metafields.accentuate.faq_question }}
+{{ shop.metafields.accentuate.faq_answer }}
+
+assign faq_question =  shop.metafields.accentuate.faq_question 
+assign faq_answer = shop.metafields.accentuate.faq_answer  
+{% endcomment %}
+{%- liquid
+  assign faq_question =  shop.metafields.accentuate.faq_question 
+  assign faq_answer = shop.metafields.accentuate.faq_answer 
+  
+  assign product_tags = product.tags
+  assign mata_product_tags = shop.metafields.accentuate.faq_tag
+  assign meta_index = blank
+  for meta_tag in mata_product_tags
+    assign temp_tags = meta_tag | split:','
+    assign loop_break = false
+    assign main_index = forloop.index0
+    for temp_tag in temp_tags
+      assign temp =  temp_tag | downcase | strip
+      for tag in product_tags
+        assign t_tag = tag | downcase | strip
+        if temp == t_tag         
+          if meta_index == blank
+            assign meta_index = main_index
+          else             
+            assign meta_index = meta_index | append:','
+            assign meta_index = meta_index | append: main_index
+          endif
+          assign loop_break = true
+          break
+        endif
+      endfor
+      if loop_break
+        break
+      endif
+    endfor
+  endfor
+  assign meta_index = meta_index | split: ','
+-%}
+{% if meta_index != blank %}
+<div class="pdp-faq content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+  <div class="index-faq-section isolate{% unless section.settings.full_width %} page-width{% endunless %} section-{{ section.id }}">
+    <div class="faq-section">
+      <div class="section-title {{ section.settings.desktop_content_alignment }}">
+        {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+         <p class="subtext">{{ section.settings.subtitle }}</p>
+        {% endif %}
+        {% if section.settings.description != blank %}
+         <p class="subtext">{{ section.settings.description }}</p>
+        {% endif %}
+      </div>
+        <div class="faq">
+
+          {%- for faq in meta_index -%}
+            {% assign temp_faq = faq | times: 1 %}   
+            {%- if faq_question[temp_faq] != blank -%}
+              <div class="faq-item {% if forloop.index0 == 0 %} active{% endif %}"  data-index="{{ forloop.index0 }}">
+                <div class="faq-question ">
+                    <div class="faq-data">
+                    <h5>{{ faq_question[temp_faq] }}  </h5>
+                        <span class="toggle-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.5 2.5L2.5 17.5M2.5 2.5L17.5 17.5" stroke="#081F2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="faq-answer" {% if forloop.first %}style="display: block;"{% endif %}>
+                  <p>{{ faq_answer[temp_faq]  }}</p>
+                </div>
+            </div>
+            {% endif %}
+          {%- endfor -%}
+
+  
+        </div>
+        <div class="faq-bottom custom-banner" style="background-image: url({{ section.settings.background_image | img_url: '' }});">
+            {% if section.settings.bottomsubtitle != blank %}
+            <div class="content">
+                <h5>{{section.settings.bottomsubtitle}}</h5>
+                <p>{{section.settings.bottomdescription }}</p>
+            </div>
+            {% endif %}
+            {% if section.settings.button_text != blank %}
+                <a href="{{section.settings.url}}" class="button-white button">
+                  {{section.settings.button_text}} {% render 'button-arrow' %}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+</div>
+
+{% endif %}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqItems = document.querySelectorAll('.faq-item');
+    
+      if (faqItems.length > 0) {
+        faqItems[0].classList.add('active');
+        const firstAnswer = faqItems[0].querySelector('.faq-answer');
+        if (firstAnswer) {
+          firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
+          firstAnswer.style.opacity = '1';
+        }
+      }
+    
+      faqItems.forEach(function(item) {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', function() {
+          faqItems.forEach(function(q) {
+            if (q !== item) {
+              q.classList.remove('active');
+              const answer = q.querySelector('.faq-answer');
+              if (answer) {
+                answer.style.maxHeight = '0';
+                answer.style.opacity = '0';
+              }
+            }
+          });
+    
+          const answer = item.querySelector('.faq-answer');
+          if (answer) {
+            const isOpen = item.classList.toggle('active');
+            answer.style.maxHeight = isOpen ? answer.scrollHeight + 'px' : '0';
+            answer.style.opacity = isOpen ? '1' : '0';
+          }
+        });
+      });
+    });
+  </script>
+
+  {% schema %}
+  {
+    "name": "Pdp Meta FAQ Section",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "full_width",
+            "default": true,
+            "label": "t:sections.rich-text.settings.full_width.label"
+        },
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "t:sections.all.colors.label",
+            "default": "scheme-1"
+        },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Your Bio-K+ Questions, Answered"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Backed by science, proven by results"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+      "type": "select",
+      "id": "desktop_content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.image-banner.settings.desktop_content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.image-banner.settings.desktop_content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.image-banner.settings.desktop_content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "Heading Position"
+    },
+      {
+        "type": "header",
+        "content": "Bottom Details"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "bottomsubtitle",
+        "label": "Bottom Subtitle",
+        "default": "Backed by science, proven by results"
+      },
+      {
+        "type": "textarea",
+        "id": "bottomdescription",
+        "label": "Bottom Description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "button text"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "button Link"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 52
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq",
+        "name": "FAQ",
+        "settings": [
+          {
+            "type": "text",
+            "id": "question",
+            "label": "Question"
+          },
+          {
+            "type": "textarea",
+            "id": "answer",
+            "label": "Answer"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Pdp Meta FAQ Section",
+        "category": "Custom"
+      }
+    ]
+  }
+  {% endschema %}

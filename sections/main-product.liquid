@@ -1,5 +1,9 @@
 <div class="asdasd hidden">{{ 300 | times: 100 | money }}</div>
-
+{%- liquid
+  assign has_custom_shipping = settings.show_custom_shipping | default: false
+  assign enable_custom_shipping = product.metafields.MauiPineapple_cusotmShipping.enable_custom_shipping | default: false
+  assign has_block_size = section.blocks | where: "type","date_picker"
+-%}  
 
 {%- assign hasFinalSaleTagFound = false -%}
 {%- assign hasLimitedEditionTagFound = false -%}
@@ -240,6 +244,150 @@
                 </div>
               {%- endunless -%}
             {% endcomment %}
+          {%- when 'date_picker' -%}
+            {%comment %}
+            only for us
+            {% if localization.market.handle == 'us' %}
+            {% endcomment %}
+            {%- liquid
+              assign has_custom_shipping = settings.show_custom_shipping | default: false
+              assign enable_custom_shipping = product.metafields.MauiPineapple_cusotmShipping.enable_custom_shipping | default: false
+            -%}
+            {%- if enable_custom_shipping and has_custom_shipping -%}
+              <div class="mr__datePicker-warpper">
+                <label data-for="date_picker-{{ product.id }}">
+                  <strong>Requested Delivery Date:</strong> (optional)
+                </label>
+                <div class="mr__datePicker-input-wrapper flatpickr" id="mr__datePicker-input-wrapper">
+                  <input type="text" id="date_picker-{{ product.id }}" class="input input-date-picker" placeholder="Select Date.."
+                    form="{{ product_form_id }}" autocomplete="off"
+                    name="properties[Requested Delivery Date]"
+                    />
+                  <a class="input-button" title="toggle" data-toggle></a>
+                  <a class="input-button hidden" title="clear" data-clear>
+                    <i class="icon-close"></i>
+                  </a>
+                  {% render 'icon' with 'chevron-down' %}
+                </div>
+              </div>
+            
+              <div id="gift-fields-{{ product.id }}" class="custom-gift-view" style="display: none;">
+                <div class="inputfield">
+                    <label data-for="gift_from-{{ product.id }}"><strong>Gift From:</strong></label>
+                    <input type="text" id="gift_from-{{ product.id }}"  form="{{ product_form_id }}" name="properties[Sender's]" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"/>
+                </div>
+                 <div class="inputfield">
+                    <label data-for="gift_to-{{ product.id }}"><strong>Gift To:</strong></label>
+                    <input type="text" id="gift_to-{{ product.id }}"  form="{{ product_form_id }}" name="properties[Recipient's]" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                 </div>
+                  <div class="inputfield">
+                    <label data-for="gift_note-{{ product.id }}"><strong>Gift Note:</strong></label>
+                    <input type="text" id="gift_note-{{ product.id }}"  form="{{ product_form_id }}" name="properties[Personalized message]" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"/>
+                 </div>
+              </div>
+             
+              <style>
+                .custom-gift-view label{
+                  width: 100%;
+                  text-transform: uppercase;
+                  margin-top: 10px;
+                  display: inline-block;
+                }
+                .custom-gift-view input{
+                  width: 100%;
+                  border: 1px solid #ddd;
+                  margin: 5px 0;
+                  padding: 5px;
+                }
+                </style>
+                <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                var mr = document.getElementById("mr__datePicker-input-wrapper");
+    
+                  var datePicker = document.getElementById("date_picker-{{ product.id }}");
+                  var giftFields = document.getElementById("gift-fields-{{ product.id }}");
+                   mr.addEventListener("click", function() {
+                        setTimeout(function() {
+                          giftFields.style.display = "block";
+                        }, 200); 
+                      });
+                    datePicker.addEventListener("change", function() {
+                    if (datePicker.value) {
+                      giftFields.style.display = "block";
+                    } else {
+                      giftFields.style.display = "none";
+                    }
+                  });
+                });
+                </script>
+              <script>
+                {%- liquid
+                  assign not_allowing_delivery = shop.metafields.MauiPineapple_cusotmShipping.not_allowing_delivery | split: ','
+                  assign allowing_delivery = shop.metafields.MauiPineapple_cusotmShipping.allowing_delivery | split: ','
+                  assign not_allowing_delivery_array = blank
+                  assign allowing_delivery_array = blank
+                  assign noOfWeek = block.settings.noOfWeek | times: 7
+                  for nad in not_allowing_delivery
+                   assign temp = nad | strip | prepend:'"' | append:'"'
+                   assign has_found = false
+                     for ad in allowing_delivery
+                       assign temp_ad = ad | strip | prepend:'"' | append:'"'
+                       if temp == temp_ad
+                         assign has_found = true
+                         break
+                       endif
+                     endfor
+                     unless has_found
+                       assign not_allowing_delivery_array = not_allowing_delivery_array | append: ',' | append: temp
+                     endunless
+                  endfor
+                  assign not_allowing_delivery_array = not_allowing_delivery_array | remove_first: ','
+                   
+                  
+                  assign allowing_delivery_array = allowing_delivery_array | remove_first: ','
+                   
+                  assign noOfWeek = block.settings.noOfWeek | times: 7
+                -%}
+                document.addEventListener("DOMContentLoaded", (event) => {
+                  var to_day = new Date();
+                  var numberOfDaysToAdd = 1;
+                  var HST_date = new Date(new Date(to_day).toLocaleString('en-US', { timeZone: 'America/Adak' }));
+                  if(HST_date.getHours() > 11){
+                    numberOfDaysToAdd += 1;
+                  }
+                  var next_day = to_day.setDate(to_day.getDate() + numberOfDaysToAdd);
+                  const myInput = document.querySelector(".input-date-picker");
+                  const fp = flatpickr(myInput, {
+                    dateFormat: 'm/d/Y',
+                    minDate: new Date(next_day),
+                    monthSelectorType: "static",
+                    appendTo: document.querySelector('.mr__datePicker-input-wrapper'),
+                    maxDate: new Date().fp_incr({{ noOfWeek }}),
+                    "locale": {
+                      "firstDayOfWeek": 0 // start week on Monday
+                    },
+                    "disable": [
+                      function(date) {                    
+                        let listOfDates = [{{ not_allowing_delivery_array }}];                    
+                        let return_true = (date.getDay() === 0 || date.getDay() === 1 || date.getDay() === 2 || date.getDay() === 6);                    
+                        if( !return_true ){
+                          const d = new Date(date);
+                          const date_day = date.getDate();
+                          const date_month = date.getMonth() + 1;
+                          const formattedDate = `${ date_month > 9 ? date_month : '0'+date_month }/${ date_day > 9 ? date_day : '0'+date_day }/${date.getFullYear()}`;                      
+                          return_true = isInArray(listOfDates, formattedDate);
+                        }
+                        return return_true;
+                      }
+                    ],
+                  });
+                });
+                function isInArray(array, value) {
+                  return (array.find(item => {return item == value}) || []).length > 0;
+                }
+              </script>
+                {% endif %}
+             
             
             {%- when 'inventory' -%}
               <p
@@ -2916,6 +3064,21 @@ document.addEventListener('DOMContentLoaded', function () {
           "id": "enable_quick_add",
           "label": "t:sections.main-product.blocks.complementary_products.settings.enable_quick_add.label",
           "default": false
+        }
+      ]
+    },
+    {
+      "type": "date_picker",
+      "name": "Custom Shipping Date",
+      "settings": [
+        {
+          "type": "range",
+          "id": "noOfWeek",
+          "label": "Select no of weeks",
+          "min": 4,
+          "max": 40,
+          "step": 1,
+          "default": 4
         }
       ]
     },

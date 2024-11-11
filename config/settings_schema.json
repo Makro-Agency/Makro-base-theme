@@ -500,6 +500,12 @@
     "name": "t:settings_schema.cards.name",
     "settings": [
       {
+        "type": "checkbox",
+        "id": "show_custom_shipping",
+        "label": "Show Custom Shipping",
+        "default": false
+      },
+      {
         "type": "select",
         "id": "card_style",
         "options": [
