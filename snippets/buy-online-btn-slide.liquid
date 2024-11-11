@@ -1,0 +1,80 @@
+{%- liquid
+    assign pdp_logo = product.metafields.accentuate.product_logo_image
+    assign pdp_online_btn_text = product.metafields.accentuate.logo_button_text
+    assign pdp_online_btn_link = product.metafields.accentuate.logo_button_link
+    assign pdpquestion = product.metafields.accentuate.pdp_question
+    assign pdp_answer = product.metafields.accentuate.pdp_answer
+  -%}
+  
+  <div class="pdp_logo_btn">
+    <div class="pdp_logo_btn_flex">
+      {% if pdp_logo.size > 0 %}
+        {% for pdp_logo_index in (0..pdp_logo.size) %}
+          {% assign pdp_logo_add = pdp_logo[pdp_logo_index] %}
+          {% if pdp_logo_add != blank or pdp_online_btn_link[pdp_logo_index] != blank %}
+            <div class="pdp_loop_data">
+              <div class="media-wrapper">
+                {% if pdp_logo_add != blank %}
+                  {% for image in pdp_logo_add %}
+                    <img src="{{ image.src }}" alt="logo" width="auto" height="auto" loading="lazy" />
+                  {% endfor %}
+                {% endif %}
+              </div>
+              <div class="pdp_online_btn">
+                <a href="{{ pdp_online_btn_link[pdp_logo_index] }}" class="pdp_logo_btn" style="background-color: {% if product.metafields.accentuate.select_color %}{{ product.metafields.accentuate.select_color }}{% else %}#009845{% endif %}">
+                  {{ pdp_online_btn_text[pdp_logo_index] }}
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+    <a href="" id ="close-collaps"> 
+    <div class="collapse-list-flex">
+    <span style="color: {% if product.metafields.accentuate.select_color %}{{ product.metafields.accentuate.select_color }}{% else %}#009845{% endif %}"> Collapse List </span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M14 11L8 5L2 11" 
+          stroke="{% if product.metafields.accentuate.select_color %}{{ product.metafields.accentuate.select_color }}{% else %}#009845{% endif %}" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </svg>
+  
+    </div>
+    </a>
+  </div>
+  
+  <script>
+  const logoDiv = document.getElementById('logoDiv');
+  const buyOnlineBtn = document.getElementById('custom-buy-online-btn');
+  const closeCollaps = document.getElementById('close-collaps');
+
+  // Show/hide logoDiv and buyOnlineBtn when custom-buy-online-btn is clicked
+  buyOnlineBtn.addEventListener('click', function() {
+    logoDiv.classList.toggle('show');
+    if (logoDiv.classList.contains('show')) {
+      buyOnlineBtn.style.opacity = 0;
+      setTimeout(() => {
+        buyOnlineBtn.style.display = 'none';
+      }, 500);
+    } else {
+      buyOnlineBtn.style.display = 'flex';
+      setTimeout(() => {
+        buyOnlineBtn.style.opacity = 1;
+      }, 0);
+    }
+  });
+
+  // Hide logoDiv and show buyOnlineBtn when close-collaps is clicked
+  closeCollaps.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent page refresh
+    if (logoDiv.classList.contains('show')) {
+      logoDiv.classList.remove('show');
+      buyOnlineBtn.style.display = 'flex';
+      setTimeout(() => {
+        buyOnlineBtn.style.opacity = 1;
+      }, 0);
+    }
+  });
+</script>

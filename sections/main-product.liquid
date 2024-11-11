@@ -436,6 +436,46 @@
                   {%- endif -%}
                 {%- endif -%}
               </p>
+
+              {%- when 'pdp_text_bg' -%}
+                
+                <div class="pdp_text_bg desktop_pdp_data">
+                  {% for subtile in product.metafields.accentuate.product_subtile %}
+                    <div class="pdp_text_bg_data" style="background-color: {% if product.metafields.accentuate.select_color %}{{ product.metafields.accentuate.select_color }}{% else %}#009845{% endif %}">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20ZM13.037 3.7538L8.97149 3.75L8.28788 8.01484L4.13481 8.01199L3.49976 11.9776L7.64806 11.9804L6.9635 16.2471L11.0271 16.25L11.7116 11.9861L15.8638 11.989L16.4998 8.02149H12.3505L13.037 3.7538Z" fill="white"/>
+                      </svg>
+                      {{ subtile }}
+                    </div>
+                  {% endfor %}
+                </div>
+                
+                {%- when 'flavour_tag' -%}
+                  {% if product.tags %}
+                    {% for tag in product.tags %}
+                      {% if tag contains "flavours:" %}
+                        <div class="flavour_tag_data"><b>Flavour:</b>
+                           <span class="flavour_tag">{{ tag | replace: "flavours:", "" }}</span></div>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+  
+                  {%- when 'product_refrence' -%}
+                    {% render 'pdp-refrence' %}
+      
+  
+                  {%- when 'buy_online_btn' -%}
+                    {% assign pdp_logo = product.metafields.accentuate.product_logo_image %}
+                    {% if pdp_logo != blank %}
+                    <div class="cmn-btn buy-btn">
+                      <a id="custom-buy-online-btn" href="javascript:void(0)" class="buy-online-btn" style="background-color: {% if product.metafields.accentuate.select_color %}{{ product.metafields.accentuate.select_color }}{% else %}#009845{% endif %}">
+                        {{ block.settings.buy_online_text }}
+                      </a>
+                      <div class="logo-container" id="logoDiv">
+                        {% render 'buy-online-btn-slide' %}
+                      </div>
+                    </div>
+                    {% endif %}
             
             {%- when 'description' -%}
               
@@ -1660,6 +1700,39 @@ document.addEventListener('DOMContentLoaded', function () {
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
       "limit": 1
+    },
+    {
+      "type": "pdp_text_bg",
+      "name": "pdp_text_bg",
+      "limit": 1
+    },
+    {
+      "type": "flavour_tag",
+      "name": "flavour_tag",
+      "limit": 1
+    },
+    {
+      "type": "product_refrence",
+      "name": "product_refrence",
+      "limit": 1
+    },
+    {
+      "type": "buy_online_btn",
+      "name": "buy_online_btn",
+      "limit": 1,
+       "settings": [
+        {
+          "type": "text",
+          "id": "buy_online_text",
+          "label": "Buy Online Button Text",
+          "default": "Buy Online"
+        },
+        {
+          "type": "url",
+          "id": "buy_online_link",
+          "label": "Buy Online Button Link"
+        }
+      ]
     },
     {
       "type": "description_bottom",

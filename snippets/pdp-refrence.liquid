@@ -1,0 +1,42 @@
+
+
+{%- liquid
+    assign pdp_refrece = all_products[product.metafields.accentuate.select_product] 
+    assign pdp_img_linking = product.metafields.accentuate.imagelinking
+    assign hover_color = product.metafields.accentuate.select_color | default: '#009845'
+  -%}
+  
+  <style>
+  .included-item:hover{
+    border: 2px solid {{ hover_color }};
+  }
+
+  li.included-item:first-child{
+  border:2px solid {{ hover_color }};
+ }
+
+  </style>
+  <ul class="pdp_ref_data">
+      {% for pdp_ref_data in product.metafields.accentuate.select_product %}
+          {%- assign linked_product = all_products[pdp_ref_data] -%}
+  
+          {% assign pdp_img_linking_2 = pdp_img_linking[forloop.index0] %}
+            {% unless linked_product.empty? %}
+          <li class="included-item">
+              <a href="{{ linked_product.url }}" title="{{ linked_product.title }}">
+              <div class="media-wrapper">
+                  {% if pdp_img_linking_2 != blank %}
+                      {% for image in pdp_img_linking_2%}
+                      <img src="{{ image.src }}" alt="{{ product.title }}" width="76" height="76" loading="lazy" />
+                      {% endfor %}
+                  {% else %}
+                      <img src="{{ linked_product.featured_image | img_url: '76x76' }}" alt="{{ linked_product.featured_image.alt | escape }}" width="76" height="76" loading="lazy" />
+                  {% endif %}
+                  </div>
+              {% comment %} <p>{{ linked_product.title }}</p> {% endcomment %}
+              </a>
+          </li>
+          {% endunless %}
+      {% endfor  %}
+  </ul>
+ 
