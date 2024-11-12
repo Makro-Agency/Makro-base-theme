@@ -1,0 +1,642 @@
+/*@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-BlackItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-BlackItalic.woff")
+      format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Light.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Light.woff")
+      format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-BoldItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-BoldItalic.woff")
+      format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Black.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Black.woff")
+      format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-ExtraLight.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-ExtraLight.woff")
+      format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Bold.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Bold.woff")
+      format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-ExtraBoldItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-ExtraBoldItalic.woff")
+      format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-ExtraBold.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-ExtraBold.woff")
+      format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-ExtraLightItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-ExtraLightItalic.woff")
+      format("woff");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Italic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Italic.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-ThinItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-ThinItalic.woff")
+      format("woff");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-LightItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-LightItalic.woff")
+      format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Regular.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Regular.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Medium.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Medium.woff")
+      format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Thin.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-Thin.woff")
+      format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-SemiBold.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-SemiBold.woff")
+      format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-MediumItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-MediumItalic.woff")
+      format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-SemiBoldItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/Jost-SemiBoldItalic.woff")
+      format("woff");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-BlackItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-BlackItalic.woff")
+      format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Bold.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Bold.woff")
+      format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Black.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Black.woff")
+      format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-ExtraBoldItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-ExtraBoldItalic.woff")
+      format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-BoldItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-BoldItalic.woff")
+      format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-ExtraLightItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-ExtraLightItalic.woff")
+      format("woff");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-ExtraLight.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-ExtraLight.woff")
+      format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-ExtraBold.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-ExtraBold.woff")
+      format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Italic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Italic.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-SemiBold.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-SemiBold.woff")
+      format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-ThinItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-ThinItalic.woff")
+      format("woff");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-SemiBoldItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-SemiBoldItalic.woff")
+      format("woff");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Regular.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Regular.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Thin.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Thin.woff")
+      format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-LightItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-LightItalic.woff")
+      format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Light.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Light.woff")
+      format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Medium.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-Medium.woff")
+      format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-MediumItalic.woff2")
+      format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/1169/4922/files/HankenGrotesk-MediumItalic.woff")
+      format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}*/
+
+@font-face {
+    font-family: 'Kapra Condensed';
+    src: url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Kapra-Condensed.woff2?v=1719235897') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Kapra-Condensed.woff?v=1719235897') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kapra';
+    src: url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Kapra-Bold.woff2?v=1719235898') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Kapra-Bold.woff?v=1719235897') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kapra';
+    src: url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Kapra-ExtraBold.woff2?v=1719235898') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Kapra-ExtraBold.woff?v=1719235898') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kapra';
+    src: url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Kapra-Regular.woff2?v=1719235897') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Kapra-Regular.woff?v=1719235897') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Lato-Regular.woff2?v=1719236801') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Lato-Regular.woff?v=1719236801') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Lato-Bold.woff2?v=1719236801') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0531/9773/4053/files/Lato-Bold.woff?v=1719236802') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body, 
+body .swym-ui-component *, 
+body .swym-ui-component .swym-is-button, 
+body .swym-ui-component .swym-is-anchor{
+  font-family: "Lato";
+  letter-spacing: 0;
+}
+a, button, .button, svg {
+  transition: all 0.3s ease 0s;
+}
+
+.button:not(.button--secondary):hover,
+.button:not([disabled]):hover,
+.button--primary:hover { background:#fff; color:#000; }
+
+.button:not(.button--secondary):hover:after,
+.button:not([disabled]):hover:after,
+.button--primary:hover:after { box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) rgba(var(--color-button-text),
+  var(--border-opacity)),0 0 0 calc(var(--buttons-border-width) + 0px) rgba(var(--color-button),var(--alpha-button-background)); }
+
+.button--secondary:not(.button--primary):hover { background:#000; color:#fff; }
+.button--secondary:not(.button--primary):hover:after { --border-offset: 0px;
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) rgba(var(--color-button-text),
+  var(--border-opacity)),0 0 0 calc(var(--buttons-border-width) + 0px) rgba(var(--color-button),var(--alpha-button-background)); }
+
+
+h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5, 
+body .swym-ui-component .swym-title, 
+body .swym-ui-component .swym-heading, 
+body .swym-ui-component .swym-label, .heading-font {
+  font-family: "Kapra";
+}
+.pt-0{
+  padding-top: 0 !important;
+}
+.pb-0{
+  padding-bottom: 0 !important;
+}
+.mt-0{
+  margin-top: 0 !important;
+}
+.mb-0{
+  margin-bottom: 0 !important;
+}
+.sim-link, .home-multicolumn .multicolumn-card__info .sim-link, .li-view-all .header__menu-item{
+  display: inline-flex;
+  align-items: center;
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  gap: 10px;
+  text-decoration: none;
+}
+body .swym-ui-component .swym-wishlist-grid .swym-wishlist-item .swym-title, 
+body .swym-ui-component .swym-wishlist-grid .swym-wishlist-item .swym-product-price{
+  font-weight: 400;
+  font-size: 14px;
+}
+.lookbook-pastel-prairies #MainContent .page-width { 
+  max-width:1190px; 
+}
+.section-padding{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+/* template-page gift-guide */
+.template-page.gift-guide .section-padding { padding-top: 130px; padding-bottom: 130px; }
+/* template-page gift-guide */
+body .swym-ui-components .swym-bg-2, 
+body .swym-ui-component .swym-bg-2 {
+  background: #000;
+}
+body .swym-ui-component .swym-wishlist-detail-header .swym-wishlist-main-title, 
+body .swym-ui-component .swym-wishlist-grid .swym-wishlist-item .swym-title, 
+body .swym-ui-component .swym-wishlist-grid .swym-wishlist-item .swym-product-price, 
+body .swym-ui-component .swym-clear-wishlist-modal .swym-clear-wishlist-modal-dialog .swym-text-heading, 
+body .swym-ui-components .swym-color-2, 
+body .swym-ui-component .swym-color-2, 
+body .swym-notification-wishlist .swym-details{
+  color: #000;
+}
+.btn-no-pseudo:after, .btn-no-pseudo:before{
+  display: none;
+}
+body .wlo-holder.wlo-active {
+  z-index: 20000000000;
+}
+.template-index .page-width, .template-product .page-width, .announcement-bar.page-width{
+  max-width: 100%;
+}
+.section-instagram{
+  overflow: hidden;
+}
+.button.button--secondary.loading:hover>.loading-overlay__spinner .path {
+  stroke: #000;
+}
+
+
+/*global loader - start*/
+body.fetch--progress {
+  overflow: hidden;
+  pointer-events: none;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body.fetch--progress:after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.95);
+  z-index: 6;
+  opacity: 1;
+  visibility: visible;
+}
+.fetch--progress .global-loader {
+  width: 48px;
+  height: 48px;
+  border: 3px dotted #000;
+  border-style: solid solid dotted dotted;
+  border-radius: 50%;
+  display: inline-block !important;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  animation: rotation 2s linear infinite;
+  z-index: 7;
+  margin: -24px 0 0 -24px;
+}
+    
+@keyframes rotation {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+} 
+@keyframes rotationBack {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(-360deg);}
+} 
+/*global loader - end*/
+
+
+@media screen and (min-width: 990px) and (max-width: 1199px){
+  .xl-medium-hide{
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .xl-large-up-hide{
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 990px){
+  .template-page.gift-guide .msd-image-banner + .section-padding { padding-top: 80px; }
+}
+
+@media screen and (max-width: 1199px){
+  .section-padding{
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+@media screen and (max-width: 989px){
+  .section-padding{
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  /* template-page gift-guide */
+  .template-page.gift-guide .section-padding { padding-top: 70px; padding-bottom: 70px; }  
+  /* template-page gift-guide */
+}
+@media screen and (max-width: 749px){
+  .section-padding{
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+

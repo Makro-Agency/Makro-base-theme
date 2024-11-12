@@ -1,0 +1,113 @@
+.announcement-bar{
+  height: 33px;
+  overflow: hidden;
+}
+.announcement-bar__message{
+  padding: 10px 0;
+  font-size: 12px;
+  line-height: 110%;
+  letter-spacing: -0.24px;
+  text-transform: capitalize;
+}
+.announcement-bar-slider .slider-button{
+  height: 33px;
+}
+.announcement-bar-slider:not(.swiper-initialized) .slider-button{
+  display: none;
+}
+.announcement-bar-section .announcement-bar, .announcement-bar-section .announcement-bar__announcement{
+  flex-wrap: nowrap;   align-items: center;
+}
+
+@media screen and (min-width: 990px){
+  .announcement-bar-slider{
+      max-width: 400px;
+  }
+}
+@media screen and (max-width: 989px){
+  .announcement-bar-slider .slider-button{
+    display: none;
+  }
+}
+@media screen and (max-width: 749px){
+  .announcement-bar__message{
+        font-size: 10px;
+  }
+  .announcement-bar-slider .slider-button {
+    height: 30px;
+  }
+}
+
+/* New Annoucment bar */
+.announcement-bar-section .utility-bar { transition: background 0.25s ease 0s; }
+.announcement-bar-section .announcement-bar.newAnnoumentBar { width: 100%; max-width: 100%; padding-left: 0; padding-right: 0; height: 50px; }
+.announcement-bar-section .announcement-bar.newAnnoumentBar .swiper-slide { padding-left: 2.2857rem; padding-right: 2.2857rem; width: calc(100% - ( 2.2857rem + 2.2857rem )); }
+  .announcement-bar-section .announcement-bar.newAnnoumentBar .slider-button { display: none; }
+
+.newAnnoumentSlide .announcement-bar__announcement { align-items: center; justify-content: space-between; }
+
+.annoumentLeft { display: flex; align-items: center; }
+.annoumentLeft:empty, .annoumentRight:empty { display: flex; }
+.annoumentLeft .announcement-barLeft__message, .annoumentCenter .announcement-bar__message { margin: 0; font-size: 20px; font-weight: 500; line-height: 110%; letter-spacing: -0.02em; }
+.annoumentLeft .announcement-barLeft__message + a { margin-left: 20px; }
+.annoumentLeft .link { leading-trim: both; text-edge: cap; font-size: 14px; font-weight: 400; line-height: normal; }
+.annoumentLeft .link:hover { opacity: 0.7; }
+
+
+.newAnnoumentSlide .annoumentCenter .announcement-bar__link { padding: 0; }
+
+.annoumentTimer { display: flex; align-items: center; }
+.annoumentTimer .t { font-family: Jost; font-size: 15px; font-weight: 500; line-height: 110%; letter-spacing: -0.02em; }
+.annoumentTimer .t .text { font-size: 70%; opacity: 0.8; font-weight: 600; margin-left: 5px; }
+.annoumentTimer .t:after { content: ':'; margin: 0 10px; }
+.annoumentTimer .t:last-child:after {display: none;}
+
+.promoCode .promoLabel { leading-trim: both; text-edge: cap; font-weight: 400; line-height: 1; }
+.promoCode .promoText { font-variant-numeric: lining-nums proportional-nums; font-family: Jost; font-size: 12px; font-weight: 600; line-height: 110%; letter-spacing: 0.05em; margin-left: 10px; display: inline-block; cursor: pointer; }
+.promoCode .promoText { position: relative; }
+.promoCode .promoText:after { content: 'Copied!'; position: absolute; top: 1px; left: 0; width: 100%; background: transparent; visibility: hidden; opacity: 0; transition: all 0.5s; }
+.promoCode .promoText.copied .copyText, .promoCode .promoText.copied .clickToCopy { opacity: 0; visibility: hidden; }
+.promoCode .promoText.copied:after { visibility: visible; opacity: 1; }
+
+.annoumentRight { display: flex; align-items: center; justify-content: flex-end; }
+  .promoCode .promoText .clickToCopy { line-height: 0; }
+
+.newAnnoumentSlide .annoumentRight .link { font-variant-numeric: lining-nums proportional-nums; font-family: Jost; font-size: 12px; font-weight: 500; line-height: 100%; letter-spacing: 0.05em; text-transform: uppercase; align-items: center; }
+.newAnnoumentSlide .annoumentRight .link.link-with-icon {   margin-bottom: 0; }
+  .newAnnoumentSlide .annoumentRight .link-with-icon .icon { width: 1.6rem; margin-left: 1.143rem; }
+  .newAnnoumentSlide .annoumentRight .link:hover { text-decoration: underline; }
+.utility-bar.sticky-content .newAnnoumentSlide{width: 100%;padding-left: 2.2857rem; padding-right: 2.2857rem;}
+
+@media screen and (min-width: 750px){
+  .newAnnoumentSlide .announcement-bar__announcement>* { width: 25%; flex: 1; }
+  .newAnnoumentSlide .announcement-bar__announcement .annoumentCenter { width: 50%; justify-content: center; }
+}
+
+@media screen and (max-width: 1199px){
+  .annoumentLeft .announcement-barLeft__message, 
+  .annoumentCenter .announcement-bar__message { font-size: 15px; }
+}
+@media screen and (max-width: 749px){
+  .announcement-bar-section .announcement-bar.newAnnoumentBar .swiper-slide { padding-left: 1.714285rem; padding-right: 1.714285rem; width: calc(100% - ( 1.714285rem + 1.714285rem )); }
+  .utility-bar.sticky-content .newAnnoumentSlide{padding-left: 1.714285rem;padding-right: 1.714285rem;}
+  .annoumentLeft .announcement-barLeft__message, 
+  .annoumentCenter .announcement-bar__message { font-size: 13px; }
+  .promoCode .promoText { margin-left: 5px; }
+
+  .annoumentTimer .t span:not(.text) {position: relative;padding-left: 8px;padding-top: 4px;padding-bottom: 4px;display: inline-block;line-height: 1;}
+  .annoumentTimer .t span:not(.text):before { content: ''; position: absolute; top: 0; left: 0; width: calc(100% + 16px); height: 100%; background: rgba(var(--color-foreground), 0.05); border-radius: 2px; }
+  .annoumentTimer .t .text { margin-left: 2px; opacity: 1; text-transform: uppercase; font-size: 8px; padding-right: 8px; }
+  .annoumentTimer .t { flex-direction: row; display: flex; align-items: flex-end; }
+
+  .annoumentCenter .announcement-bar__message { text-align: left; }
+  .annoumentRight.promoCode { flex: 1 0 auto; }
+  .promoCode .promoText .clickToCopy { font-size: 0; display: inline-block; vertical-align: -2px; }
+}
+@media screen and (max-width: 374px){
+  .announcement-bar-section .announcement-bar.newAnnoumentBar .swiper-slide { padding-left: 1rem; padding-right: 1rem; height: 40px;   width: calc(100% - ( 2 rem)); }
+  .annoumentTimer .t { font-size: 15px; }
+  .annoumentTimer .t .text { font-size: 7px; }  
+  .promoCode .promoLabel { font-size: 11px; }
+  .promoCode .promoText { font-size: 10px; }
+}
+/* New Annoucment bar */

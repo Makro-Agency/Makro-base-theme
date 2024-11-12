@@ -1,0 +1,420 @@
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'home-featured-collection.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'lookbook.css' | asset_url }}" media="all" >
+<link rel="stylesheet" href="{{ 'product-lookbook.css' | asset_url }}" media="all" >
+
+{% assign image-blocks = section.blocks | where: 'type','image' %}
+{% assign proCount = image-blocks.size %}
+
+<div class="color-{{ section.settings.color_scheme }} isolate gradient div-{{ template.suffix }}-suffix div-{{ template.directory }}">
+  <div class="collection lookbook-collection-list product-lookbook{% if section.settings.full_width %} collection--full-width{% endif %}">
+    <div class="page-width">
+      <div class="collection__title title-wrapper title-wrapper--no-top-margin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        
+        <h6 class="subtitle uppercase">from the lookbook</h6>
+        <h2 class="title inline-richtext"><span class="replaceStyle">{{ product.title }}:</span> Styled</h2>
+
+        <div class="slide-nav medium-hide small-hide">
+          <div class="nav-btn fea-col-slide-prev prevprev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
+              <path d="M15 21L5 11L15 1" stroke="currentColor"></path>
+            </svg>
+          </div>
+          <div class="nav-btn fea-col-slide-next nextnext">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="22" viewBox="0 0 12 22" fill="none">
+              <path d="M0.999999 21L11 11L1 1" stroke="currentColor"></path>
+            </svg>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="page-width slider-page-width">
+      <div class="product-carousel-slider slide-section swiper{% if proCount <= 4 %} slider_hide-arrow{% endif %}" data-featured-product-lookbook>
+        
+        <div
+          class="swiper-wrapper product-grid contains-card grid--3-col-desktop grid--2-col-tablet-down"
+          role="list"
+          aria-label="{{ 'general.slider.name' | t }}"
+        >
+          {% comment %}
+          <div class="swiper-slide">
+            {% capture temparary %}
+            <div class="grid__item lookbook-image">
+              <img srcset="//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=533 533w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=720 720w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=940 940w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=1066 1066w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097 1440w
+                      " src="//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=533" sizes="(min-width: 750px) 50vw, 100vw" alt="" class="motion-reduce" loading="lazy" width="1440" height="2144">
+              <div class="lookbook-popup" onmouseenter="showLookBookPopup(event, this, true);" onmouseleave="showLookBookPopup(event, this, true);">
+                <div class="lookbook-popup-gird">
+                  <div class="lookbook-popup-title">Shop This Look <span class="closed-popup" onclick="showLookBookPopup(event, this, true);">{% render 'icon-close' %}</span></div>
+                  <div class="lookbook-popup-item-wrapper">
+                    <div class="lookbook-popup-items" data-look-id="7038464622657">
+                      <div class="lobo-popup-card">
+                        <div class="lobo-pro-image lookbook-image">
+                          <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095 1762w" sizes="110px" alt="Cabernet Orchard Saree" class="motion-reduce" loading="lazy" width="110" height="164">
+                        </div>
+                        <div class="lobo-pro-content heading-font">
+                          <h3>Cabernet Orchard Saree</h3>
+                          <div class="price">
+                            <span class="price-regular">Rs. 13,200.00</span>
+                          </div>
+                          <div class="lobo-pro-label">Noir — Limited Edition</div>
+                          <a href="/products/cabernet-orchard-saree" class="link link-with-icon">Buy now <span class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                              </svg>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="lookbook-popup-items" data-look-id="6965476753473">
+                      <div class="lobo-popup-card">
+                        <div class="lobo-pro-image lookbook-image">
+                          <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530 1376w" sizes="110px" alt="Taupe Diya Blouse" class="motion-reduce" loading="lazy" width="110" height="164">
+                        </div>
+                        <div class="lobo-pro-content heading-font">
+                          <h3>Taupe Diya Blouse</h3>
+                          <div class="price">
+                            <span class="price-regular">Rs. 5,700.00</span>
+                          </div>
+                          <div class="lobo-pro-label">Noir — Limited Edition</div>
+                          <a href="/products/taupe-diya-blouse" class="link link-with-icon">Buy now <span class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                              </svg>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="lookbook-popup-items" data-look-id="7055620145217">
+                      <div class="lobo-popup-card">
+                        <div class="lobo-pro-image lookbook-image">
+                          <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306 2279w" sizes="110px" alt="Black Stacked Jhumkis" class="motion-reduce" loading="lazy" width="110" height="164">
+                        </div>
+                        <div class="lobo-pro-content heading-font">
+                          <h3>Black Stacked Jhumkis</h3>
+                          <div class="price">
+                            <span class="price-regular">Rs. 5,700.00</span>
+                          </div>
+                          <div class="lobo-pro-label">Noir — Limited Edition</div>
+                          <a href="/products/black-stacked-jhumkis" class="link link-with-icon">Buy now <span class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                              </svg>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="button" onclick="showLookBookPopup(event, this);">Shop This Look <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none" class="icon-cart-two">
+                    <path d="M11.4151 6.6V4.2C11.4151 2.43269 9.99803 1 8.25 1C6.50197 1 5.08492 2.43269 5.08492 4.2V6.6M1.597 7.68157L1.12224 12.8016C0.987249 14.2573 0.919754 14.9852 1.15867 15.5474C1.36856 16.0413 1.73635 16.4497 2.20312 16.707C2.73447 17 3.45756 17 4.90375 17H11.5962C13.0424 17 13.7655 17 14.2969 16.707C14.7636 16.4497 15.1314 16.0413 15.3413 15.5474C15.5802 14.9852 15.5128 14.2573 15.3778 12.8016L14.903 7.68157C14.789 6.45228 14.732 5.83763 14.4586 5.37293C14.2178 4.96367 13.862 4.63609 13.4364 4.43188C12.9533 4.2 12.3427 4.2 11.1215 4.2L5.37852 4.2C4.1573 4.2 3.5467 4.2 3.06355 4.43187C2.63804 4.63609 2.28224 4.96367 2.04142 5.37293C1.76798 5.83763 1.71099 6.45228 1.597 7.68157Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            {% endcapture %}
+            {{ temparary }}  
+          </div>
+          <div class="swiper-slide">
+            {{ temparary }}
+          </div>
+          <div class="swiper-slide">
+            {{ temparary }}
+          </div>
+          <div class="swiper-slide">
+            {{ temparary }}
+          </div>
+          {% endcomment %}
+        </div>
+  
+      </div>
+
+      <div class="product-carousel-slider swiper no-slider">
+        
+        <div
+          class="swiper-wrapper product-grid contains-card grid--2-col-desktop grid--2-col-tablet-down"
+          role="list"
+          aria-label="{{ 'general.slider.name' | t }}"
+        >       
+          {% comment %}
+            {% capture temparary %}
+            <div class="grid__item lookbook-image">
+              <img srcset="//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=533 533w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=720 720w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=940 940w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=1066 1066w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097 1440w
+                      " src="//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=533" sizes="(min-width: 750px) 50vw, 100vw" alt="" class="motion-reduce" loading="lazy" width="1440" height="2144">
+              <div class="lookbook-popup" onmouseenter="showLookBookPopup(event, this, true);" onmouseleave="showLookBookPopup(event, this, true);">
+                <div class="lookbook-popup-gird">
+                  <div class="lookbook-popup-title">Shop This Look <span class="closed-popup" onclick="showLookBookPopup(event, this, true);">{% render 'icon-close' %}</span></div>
+                  <div class="lookbook-popup-item-wrapper">
+                    <div class="lookbook-popup-items" data-look-id="7038464622657">
+                      <div class="lobo-popup-card">
+                        <div class="lobo-pro-image lookbook-image">
+                          <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095 1762w" sizes="110px" alt="Cabernet Orchard Saree" class="motion-reduce" loading="lazy" width="110" height="164">
+                        </div>
+                        <div class="lobo-pro-content heading-font">
+                          <h3>Cabernet Orchard Saree</h3>
+                          <div class="price">
+                            <span class="price-regular">Rs. 13,200.00</span>
+                          </div>
+                          <div class="lobo-pro-label">Noir — Limited Edition</div>
+                          <a href="/products/cabernet-orchard-saree" class="link link-with-icon">Buy now <span class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                              </svg>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="lookbook-popup-items" data-look-id="6965476753473">
+                      <div class="lobo-popup-card">
+                        <div class="lobo-pro-image lookbook-image">
+                          <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530 1376w" sizes="110px" alt="Taupe Diya Blouse" class="motion-reduce" loading="lazy" width="110" height="164">
+                        </div>
+                        <div class="lobo-pro-content heading-font">
+                          <h3>Taupe Diya Blouse</h3>
+                          <div class="price">
+                            <span class="price-regular">Rs. 5,700.00</span>
+                          </div>
+                          <div class="lobo-pro-label">Noir — Limited Edition</div>
+                          <a href="/products/taupe-diya-blouse" class="link link-with-icon">Buy now <span class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                              </svg>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="lookbook-popup-items" data-look-id="7055620145217">
+                      <div class="lobo-popup-card">
+                        <div class="lobo-pro-image lookbook-image">
+                          <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306 2279w" sizes="110px" alt="Black Stacked Jhumkis" class="motion-reduce" loading="lazy" width="110" height="164">
+                        </div>
+                        <div class="lobo-pro-content heading-font">
+                          <h3>Black Stacked Jhumkis</h3>
+                          <div class="price">
+                            <span class="price-regular">Rs. 5,700.00</span>
+                          </div>
+                          <div class="lobo-pro-label">Noir — Limited Edition</div>
+                          <a href="/products/black-stacked-jhumkis" class="link link-with-icon">Buy now <span class="icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                              </svg>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="button" onclick="showLookBookPopup(event, this);">Shop This Look <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none" class="icon-cart-two">
+                    <path d="M11.4151 6.6V4.2C11.4151 2.43269 9.99803 1 8.25 1C6.50197 1 5.08492 2.43269 5.08492 4.2V6.6M1.597 7.68157L1.12224 12.8016C0.987249 14.2573 0.919754 14.9852 1.15867 15.5474C1.36856 16.0413 1.73635 16.4497 2.20312 16.707C2.73447 17 3.45756 17 4.90375 17H11.5962C13.0424 17 13.7655 17 14.2969 16.707C14.7636 16.4497 15.1314 16.0413 15.3413 15.5474C15.5802 14.9852 15.5128 14.2573 15.3778 12.8016L14.903 7.68157C14.789 6.45228 14.732 5.83763 14.4586 5.37293C14.2178 4.96367 13.862 4.63609 13.4364 4.43188C12.9533 4.2 12.3427 4.2 11.1215 4.2L5.37852 4.2C4.1573 4.2 3.5467 4.2 3.06355 4.43187C2.63804 4.63609 2.28224 4.96367 2.04142 5.37293C1.76798 5.83763 1.71099 6.45228 1.597 7.68157Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            {% endcapture %}
+            {{ temparary }}  
+          
+            {{ temparary }}
+          {% endcomment %}
+          
+        </div>
+  
+      </div>
+
+      <div class="product-carousel-slider swiper only-content no-fullwd-img">
+        <div
+          class="swiper-wrapper product-grid contains-card grid--1-col-desktop grid--1-col-tablet-down"
+          role="list"
+          aria-label="{{ 'general.slider.name' | t }}"
+        >  
+          {% comment %}
+          <div class="grid__item lookbook-image">
+            <img srcset="//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=533 533w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=720 720w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=940 940w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=1066 1066w,//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097 1440w
+                    " src="//www.thesareeroom.com/cdn/shop/files/image_-min.jpg?v=1706778097&amp;width=533" sizes="(min-width: 750px) 50vw, 100vw" alt="" class="motion-reduce" loading="lazy" width="1440" height="2144">
+            <div class="lookbook-popup" onmouseenter="showLookBookPopup(event, this, true);" onmouseleave="showLookBookPopup(event, this, true);">
+              <div class="lookbook-popup-gird">
+                <div class="lookbook-popup-title">Shop This Look <span class="closed-popup" onclick="showLookBookPopup(event, this, true);">{% render 'icon-close' %}</span></div>
+                <div class="lookbook-popup-item-wrapper">
+                  <div class="lookbook-popup-items" data-look-id="7038464622657">
+                    <div class="lobo-popup-card">
+                      <div class="lobo-pro-image lookbook-image">
+                        <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095 1762w" sizes="110px" alt="Cabernet Orchard Saree" class="motion-reduce" loading="lazy" width="110" height="164">
+                      </div>
+                      <div class="lobo-pro-content heading-font">
+                        <h3>Cabernet Orchard Saree</h3>
+                        <div class="price">
+                          <span class="price-regular">Rs. 13,200.00</span>
+                        </div>
+                        <div class="lobo-pro-label">Noir — Limited Edition</div>
+                        <a href="/products/cabernet-orchard-saree" class="link link-with-icon">Buy now <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                              <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lookbook-popup-items" data-look-id="6965476753473">
+                    <div class="lobo-popup-card">
+                      <div class="lobo-pro-image lookbook-image">
+                        <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530 1376w" sizes="110px" alt="Taupe Diya Blouse" class="motion-reduce" loading="lazy" width="110" height="164">
+                      </div>
+                      <div class="lobo-pro-content heading-font">
+                        <h3>Taupe Diya Blouse</h3>
+                        <div class="price">
+                          <span class="price-regular">Rs. 5,700.00</span>
+                        </div>
+                        <div class="lobo-pro-label">Noir — Limited Edition</div>
+                        <a href="/products/taupe-diya-blouse" class="link link-with-icon">Buy now <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                              <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lookbook-popup-items" data-look-id="7055620145217">
+                    <div class="lobo-popup-card">
+                      <div class="lobo-pro-image lookbook-image">
+                        <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306 2279w" sizes="110px" alt="Black Stacked Jhumkis" class="motion-reduce" loading="lazy" width="110" height="164">
+                      </div>
+                      <div class="lobo-pro-content heading-font">
+                        <h3>Black Stacked Jhumkis</h3>
+                        <div class="price">
+                          <span class="price-regular">Rs. 5,700.00</span>
+                        </div>
+                        <div class="lobo-pro-label">Noir — Limited Edition</div>
+                        <a href="/products/black-stacked-jhumkis" class="link link-with-icon">Buy now <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                              <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="button" onclick="showLookBookPopup(event, this);">Shop This Look <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none" class="icon-cart-two">
+                  <path d="M11.4151 6.6V4.2C11.4151 2.43269 9.99803 1 8.25 1C6.50197 1 5.08492 2.43269 5.08492 4.2V6.6M1.597 7.68157L1.12224 12.8016C0.987249 14.2573 0.919754 14.9852 1.15867 15.5474C1.36856 16.0413 1.73635 16.4497 2.20312 16.707C2.73447 17 3.45756 17 4.90375 17H11.5962C13.0424 17 13.7655 17 14.2969 16.707C14.7636 16.4497 15.1314 16.0413 15.3413 15.5474C15.5802 14.9852 15.5128 14.2573 15.3778 12.8016L14.903 7.68157C14.789 6.45228 14.732 5.83763 14.4586 5.37293C14.2178 4.96367 13.862 4.63609 13.4364 4.43188C12.9533 4.2 12.3427 4.2 11.1215 4.2L5.37852 4.2C4.1573 4.2 3.5467 4.2 3.06355 4.43187C2.63804 4.63609 2.28224 4.96367 2.04142 5.37293C1.76798 5.83763 1.71099 6.45228 1.597 7.68157Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <div class="only-lookbook-content collection__title">
+                <h6 class="subtitle uppercase">from the lookbook</h6>
+                <h2 class="title inline-richtext"><span class="replaceStyle">Anokhi blouse:</span> Styled</h2>              
+              </div>
+            </div>                       
+          </div>          
+          {% endcomment %}
+        </div>  
+      </div>
+
+      <div class="product-carousel-slider swiper only-content full-width">
+        <div
+          class="swiper-wrapper product-grid contains-card grid--1-col-desktop grid--1-col-tablet-down"
+          role="list"
+          aria-label="{{ 'general.slider.name' | t }}"
+        >
+          {% comment %}
+          <div class="grid__item lookbook-image">
+            <img srcset="//www.thesareeroom.com/cdn/shop/files/image-min.jpg?v=1706853740&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/image-min.jpg?v=1706853740&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/image-min.jpg?v=1706853740&amp;width=533 533w,//www.thesareeroom.com/cdn/shop/files/image-min.jpg?v=1706853740&amp;width=720 720w,//www.thesareeroom.com/cdn/shop/files/image-min.jpg?v=1706853740&amp;width=940 940w,//www.thesareeroom.com/cdn/shop/files/image-min.jpg?v=1706853740&amp;width=1066 1066w,//www.thesareeroom.com/cdn/shop/files/image-min.jpg?v=1706853740 1920w" src="//www.thesareeroom.com/cdn/shop/files/image-min.jpg?v=1706853740&amp;width=533" sizes="100vw" alt="" class="motion-reduce" loading="lazy" width="1920" height="1280">
+            <div class="lookbook-popup" onmouseenter="showLookBookPopup(event, this, true);" onmouseleave="showLookBookPopup(event, this, true);">
+              <div class="lookbook-popup-gird">
+                <div class="lookbook-popup-title">Shop This Look <span class="closed-popup" onclick="showLookBookPopup(event, this, true);">{% render 'icon-close' %}</span></div>
+                <div class="lookbook-popup-item-wrapper">
+                  <div class="lookbook-popup-items" data-look-id="7038464622657">
+                    <div class="lobo-popup-card">
+                      <div class="lobo-pro-image lookbook-image">
+                        <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Nov-29-2023-798.jpg?v=1701366095 1762w" sizes="110px" alt="Cabernet Orchard Saree" class="motion-reduce" loading="lazy" width="110" height="164">
+                      </div>
+                      <div class="lobo-pro-content heading-font">
+                        <h3>Cabernet Orchard Saree</h3>
+                        <div class="price">
+                          <span class="price-regular">Rs. 13,200.00</span>
+                        </div>
+                        <div class="lobo-pro-label">Noir — Limited Edition</div>
+                        <a href="/products/cabernet-orchard-saree" class="link link-with-icon">Buy now <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                              <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lookbook-popup-items" data-look-id="6965476753473">
+                    <div class="lobo-popup-card">
+                      <div class="lobo-pro-image lookbook-image">
+                        <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Jun-30-2023-245.jpg?v=1688412530 1376w" sizes="110px" alt="Taupe Diya Blouse" class="motion-reduce" loading="lazy" width="110" height="164">
+                      </div>
+                      <div class="lobo-pro-content heading-font">
+                        <h3>Taupe Diya Blouse</h3>
+                        <div class="price">
+                          <span class="price-regular">Rs. 5,700.00</span>
+                        </div>
+                        <div class="lobo-pro-label">Noir — Limited Edition</div>
+                        <a href="/products/taupe-diya-blouse" class="link link-with-icon">Buy now <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                              <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lookbook-popup-items" data-look-id="7055620145217">
+                    <div class="lobo-popup-card">
+                      <div class="lobo-pro-image lookbook-image">
+                        <img srcset="//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306&amp;width=165 165w,//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306&amp;width=360 360w,//www.thesareeroom.com/cdn/shop/files/TSR-Jan-2-2024-380.jpg?v=1704811306 2279w" sizes="110px" alt="Black Stacked Jhumkis" class="motion-reduce" loading="lazy" width="110" height="164">
+                      </div>
+                      <div class="lobo-pro-content heading-font">
+                        <h3>Black Stacked Jhumkis</h3>
+                        <div class="price">
+                          <span class="price-regular">Rs. 5,700.00</span>
+                        </div>
+                        <div class="lobo-pro-label">Noir — Limited Edition</div>
+                        <a href="/products/black-stacked-jhumkis" class="link link-with-icon">Buy now <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                              <path d="M15.3625 1L20 6M20 6L15.3625 11M20 6H0" stroke="black"></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="button" onclick="showLookBookPopup(event, this);">Shop This Look <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none" class="icon-cart-two">
+                  <path d="M11.4151 6.6V4.2C11.4151 2.43269 9.99803 1 8.25 1C6.50197 1 5.08492 2.43269 5.08492 4.2V6.6M1.597 7.68157L1.12224 12.8016C0.987249 14.2573 0.919754 14.9852 1.15867 15.5474C1.36856 16.0413 1.73635 16.4497 2.20312 16.707C2.73447 17 3.45756 17 4.90375 17H11.5962C13.0424 17 13.7655 17 14.2969 16.707C14.7636 16.4497 15.1314 16.0413 15.3413 15.5474C15.5802 14.9852 15.5128 14.2573 15.3778 12.8016L14.903 7.68157C14.789 6.45228 14.732 5.83763 14.4586 5.37293C14.2178 4.96367 13.862 4.63609 13.4364 4.43188C12.9533 4.2 12.3427 4.2 11.1215 4.2L5.37852 4.2C4.1573 4.2 3.5467 4.2 3.06355 4.43187C2.63804 4.63609 2.28224 4.96367 2.04142 5.37293C1.76798 5.83763 1.71099 6.45228 1.597 7.68157Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>         
+          {% endcomment %}
+        </div>  
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Lookbook Product",
+    "tag":"section",
+    "class":"shopify-product-lookbook products-carousel hidden",
+    "settings": [],
+    "presets":[
+      {
+        "name":"Lookbook Product"
+      }
+    ]
+  }
+{% endschema %}
