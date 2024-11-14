@@ -2,13 +2,26 @@
 {{ 'custom-popup.css' | asset_url | stylesheet_tag }}
 {% for block in section.blocks %}
     {% if block.type == "layout1" %}
-      <button id="show-popup" class="popup-btn">{{ block.settings.btn_text}}<span class="popup-arrow-btn">{% render 'icon-chevron-left' %}</span></button>
+      <button id="show-popup" class="popup-btn">{{ block.settings.btn_text}}<span class="popup-arrow-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M4 17L12 9L4 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+    </span></button>
     {% endif %}
   {% if block.type == "layout2" %}
-      <button id="show-popup" class="popup-btn">{{ block.settings.btn_text}}<span class="popup-arrow-btn">{% render 'icon-chevron-left' %}</span></button>
+      <button id="show-popup" class="popup-btn">{{ block.settings.btn_text}}<span class="popup-arrow-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M4 17L12 9L4 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+    </span></button>
     {% endif %}
+    
   {% if block.type == "layout3" %}
-      <button id="show-popup" class="popup-btn">{{ block.settings.btn_text}}<span class="popup-arrow-btn">{% render 'icon-chevron-left' %}</span></button>
+      <button id="show-popup" class="popup-btn">{{ block.settings.btn_text}}<span class="popup-arrow-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M4 17L12 9L4 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+    </span></button>
     {% endif %}
   {% endfor %}
 
@@ -96,18 +109,17 @@
               <p>{{ block.settings.popup_description}}</p>
              {% endif %}
             {%- if block.settings.button_label != blank -%}
-                    <a
-                      {% if block.settings.button_link == blank %}
-                        role="link" aria-disabled="true"
-                      {% else %}
-                        href="{{ block.settings.button_link }}"
-                      {% endif %}
-                      class="button btn-primary btn-primary-hover"
-                    >
-                      {{ block.settings.button_label | escape }}
-                    </a>
+                <a
+                    {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                    {% else %}
+                    href="{{ block.settings.button_link }}"
+                    {% endif %}
+                    class="button btn-primary btn-primary-hover"
+                >
+                    {{ block.settings.button_label | escape }}
+                </a>
             {%- endif -%}
-
 
             {% assign klaviyoListId = 'Yfnh5v' %}
                 <form id="email_signup_pop3" class="klaviyo_styling klaviyo_gdpr_embed_{{ klaviyoListId }} footer__newsletter newsletter-form" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" _novalidate="novalidate" data-klaviyo-notify-form>
@@ -122,18 +134,14 @@
                         <button type="submit" class="newsletter-form__button field__button klaviyo_submit_button">Subscribe</button>
                       </div>
                       <!-- <div class="klaviyo_form_actions btn-actions">
-                        
                       </div> -->
                     </div>
-                    
                   </div>
-                  
                   <div class="klaviyo_messages">
                       <div class="success_message" style="display:none;"></div>
                       <div class="error_message" style="display:none;"></div>
                     </div>
                 </form>
-
                 <script>
                 document.querySelector("#klSubJS").addEventListener("load", (event) => {
                   let crLocation = window.location.href;

@@ -263,6 +263,40 @@ $(document).ready(function () {
   }
   // END template -- lookbook
   
+
+$(".popup-btn").click(function() {
+  // Show the overlay and fade it in
+  $(".overlay").fadeIn(500);
+  
+  // Show the popup and slide it in from the right
+  $(".popup").css('display', 'block').animate({
+    right: '50px'
+  }, 500);
+});
+
+// Close the popup when the close button is clicked
+$(".popup-close").click(function() {
+  closePopup();
+});
+
+// Close the popup when the overlay is clicked
+$(".overlay").click(function() {
+  closePopup();
+});
+
+// Function to handle closing the popup
+function closePopup() {
+  // Slide the popup out to the right
+  $(".popup").animate({
+    right: '-600px'  // Slide out off-screen to the right
+  }, 500, function() {
+    $(this).css('display', 'none');
+  });
+  
+  // Fade out the overlay
+  $(".overlay").fadeOut(500);
+}
+
 });
 
 /* makro-title-product-grid.liquid */
