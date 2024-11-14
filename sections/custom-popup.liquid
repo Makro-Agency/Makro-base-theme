@@ -17,14 +17,16 @@
 
 <div id="popup" class="popup">
    <button type="button" class="popup-close">
-     {% render 'icon-chevron-right' %}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+        <path d="M4 17L12 9L4 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
    </button>
   {% for block in section.blocks %}
     {% if block.type == "layout1" %}
       <div class="popup-details">
           <div class="col-left">
             {% if block.settings.left_img != blank %}
-               <img src={{ block.settings.left_img | img_url:"medium"}} alt="img">
+               <img src='{{ block.settings.left_img | img_url:"medium"}}' alt="img">
             {% endif %}
           </div>
           <div class="col-right">
@@ -54,7 +56,7 @@
       <div class="popup-details">
           <div class="col-left">
             {% if block.settings.left_img != blank %}
-               <img src={{ block.settings.left_img | img_url:"medium"}} alt="img">
+               <img src="{{ block.settings.left_img | img_url:"medium"}}" alt="img">
             {% endif %}
           </div>
           <div class="col-right">
@@ -83,7 +85,7 @@
      <div class="popup-details">
           <div class="col-left">
             {% if block.settings.left_img != blank %}
-               <img src={{ block.settings.left_img | img_url:"large"}} alt="img">
+               <img src='{{ block.settings.left_img | img_url:"large"}}' alt="img">
             {% endif %}
           </div>
           <div class="col-right">
