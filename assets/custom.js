@@ -44,9 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 // end announcement
-
 // Home-Blog Post section by customize select blog and recepies direct.
-
 document.addEventListener('DOMContentLoaded', function () {
   const tabs = document.querySelectorAll('.home-blog-posts .tab-titles li');
   const panels = document.querySelectorAll('.home-blog-posts .tab-panel');
