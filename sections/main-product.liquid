@@ -462,6 +462,9 @@
   
                   {%- when 'product_refrence' -%}
                     {% render 'pdp-refrence' %}
+
+                  {%- when 'pdp_faq_tabs' -%}
+                    {% render 'pdp-tab-faq' %}  
       
   
                   {%- when 'buy_online_btn' -%}
@@ -1440,6 +1443,48 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
+{%- liquid
+    assign border_color = product.metafields.accentuate.select_color | default: '#009845'
+  -%}
+  <style>
+    .Click-here{
+      border-bottom: 3px solid {{ border_color }};
+    }
+  </style>
+
+<div class="custom-model-main">
+<div class="custom-model-inner">        
+<div class="close-btn popup-close">×</div>
+  <div class="custom-model-wrap">
+      <div class="pop-up-content-wrap">
+          <h3 class="popup-content">{{ section.settings.custom-popup-head }}</h3>
+          <div class="custom-popup-text">
+            {{ section.settings.custom-popup-text }}
+          </div>
+          {% if product.metafields.custom_fields["nutritional_information"] != blank %}
+          <div class="custom-modal-inners">
+              <img class="" src="{{ product.metafields.custom_fields["nutritional_information"] }}" alt="{{ product.metafields.custom_fields["nutritional_info_alt_text"] }}">
+          </div>
+      {% endif %}
+      </div>
+  </div>  
+</div>  
+<div class="bg-overlay"></div>
+</div>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+    const clickHereBtn = document.querySelector('.Click-here');
+    const popupCloseBtn = document.querySelector('.popup-close');
+    clickHereBtn.addEventListener('click', function () {
+        document.body.classList.add('pdp-popup-open');
+    });
+    popupCloseBtn.addEventListener('click', function () {
+        document.body.classList.remove('pdp-popup-open');
+    });
+  });
+</script>
+
 {% schema %}
 {
   "name": "t:sections.main-product.name",
@@ -1716,6 +1761,19 @@ document.addEventListener('DOMContentLoaded', function () {
       "name": "product_refrence",
       "limit": 1
     },
+    {
+      "type": "pdp_faq_tabs",
+      "name": "pdp_faq_tabs",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "popup-text",
+          "label": "popup-text",
+          "default": "View Supplement Facts"
+        }
+      ]
+    }, 
     {
       "type": "buy_online_btn",
       "name": "buy_online_btn",
@@ -3960,6 +4018,21 @@ document.addEventListener('DOMContentLoaded', function () {
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "text",
+      "id": "popup-text-data",
+      "label": "popup-text"
+    },
+    {
+      "type": "text",
+      "id": "custom-popup-head",
+      "label": "Supplement popup Heading"
+    },
+    {
+      "type": "text",
+      "id": "custom-popup-text",
+      "label": "Supplement popup text"
     }
   ]
 }
