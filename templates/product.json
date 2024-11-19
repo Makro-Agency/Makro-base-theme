@@ -149,6 +149,7 @@
         },
         "943b3a27-2c44-4fd2-b935-780232c2decc": {
           "type": "description_bottom",
+          "disabled": true,
           "settings": {
             "heading": "Design",
             "icon": "none"
@@ -190,6 +191,7 @@
         },
         "6b9357c1-7c43-4d06-8b96-b8ec6dfe19ee": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Shipping & Returns",
             "icon": "none",
