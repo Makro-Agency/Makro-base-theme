@@ -1,3 +1,63 @@
+<style>
+  .logo-container.show {
+    opacity: 1;
+    max-height: 500px;
+}
+.logo-container {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity .5s ease, max-height .5s ease;
+}
+.logo-container.show {
+    opacity: 1;
+    max-height: 500px;
+}
+.logo-container {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity .5s ease, max-height .5s ease;
+}
+
+.pdp_loop_data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid var(--gray-tones-black-10, rgba(0, 0, 0, .1));
+}
+
+.pdp_loop_data .media-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.pdp_online_btn a.pdp_logo_btn {
+    border-radius: 100px;
+    padding: 12px 25px 14px;
+    color: var(--White, #FFF);
+    font-weight: 700;
+    font-size: 16px;
+}
+.pdp_online_btn a.pdp_logo_btn:hover {
+    background-color: #a4d65e !important;
+}
+.collapse-list-flex {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    color: #009845;
+}
+.collapse-list-flex svg {
+    margin-left: 10px;
+}
+.pdp_logo_btn {
+    text-align: center;
+}
+</style>
+
 {%- liquid
     assign pdp_logo = product.metafields.accentuate.product_logo_image
     assign pdp_online_btn_text = product.metafields.accentuate.logo_button_text

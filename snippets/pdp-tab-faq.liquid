@@ -1,0 +1,130 @@
+<style>
+  .accordion-container{
+    margin:0;
+  }
+  .pdp-question {
+    background-color: transparent;
+    border-radius: 0;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 25px 0; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
+    border-top: 1px solid var(--gray-tones-black-10, rgba(0, 0, 0, 0.10));
+    border-bottom:0;
+    margin-top:0;
+  }
+  .question-text {
+    color: var(--Black, #081F2C);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+  }
+  
+  .icon-container {
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .icon {
+    margin-left: 10px; 
+    fill: #6c757d;
+    transition: fill 0.3s;
+  }
+  
+  .panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out; 
+  }
+  
+  .panel-content {
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    margin: 0;
+  }
+  .panel-content p{
+    margin:0 0 20px 0;
+  }
+  @media only screen and (max-width: 750px) {
+    .question-text { font-size: 16px; }
+  }
+  </style>
+  
+  <div class="accordion-container">
+    <div class="pdp-tab-faqs">
+      <div class="faqs-main">
+        <div class="cust-faq-data">
+          {% assign pdpquestion = product.metafields.accentuate.product_faq_question %}
+          {% assign pdp_answer = product.metafields.accentuate.product_faq_answer %}
+          {% assign pdp_popup_text = false  %}
+
+          {% for question_index in (0..pdpquestion.size) %}
+            {% if pdpquestion[question_index] != blank and pdp_answer[question_index] != blank %}
+              <div class="pdp-ques-ans">
+                <div class="pdp-question accordion"> 
+                  <span class="question-text">{{ pdpquestion[question_index] }}</span>
+                  <div class="icon-container">
+                    <svg class="icon plus" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M2.5 10H17.5M10 2.5V17.5" stroke="#081F2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+  
+  
+                    <svg class="icon minus" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" style="display:none;">
+                      <path d="M2.5 10H17.5" stroke="#081F2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+            
+                  </div>
+                </div>
+                <div class="pdp-answer panel">
+                
+                  <div class="panel-content">
+                    {{ pdp_answer[question_index] }}
+
+                    {% if pdp_popup_text == false and section.settings.popup-text-data != blank %}
+    
+                    <div class="Click-here">
+                      {{ section.settings.popup-text-data }}</div>     
+                    {% endif %} 
+                    {% assign pdp_popup_text = true %}
+                </div>                
+            </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+  
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+    
+        var panel = this.nextElementSibling;
+        var plusIcon = this.querySelector(".plus");
+        var minusIcon = this.querySelector(".minus");
+    
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+          plusIcon.style.display = "block";  // Show plus icon when closed
+          minusIcon.style.display = "none";   // Hide minus icon when closed
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          plusIcon.style.display = "none";   // Hide plus icon when opened
+          minusIcon.style.display = "block";  // Show minus icon when opened
+        }
+      });
+    }
+  
+  </script>
+  
