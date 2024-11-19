@@ -276,6 +276,11 @@
     {% comment %}
     <link rel="stylesheet" href="{{ 'rebuy-cart.css' | asset_url }}" media="print" onload="this.media='all'" fetchpriority="low">
     {% endcomment %}
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css">
+
+
     <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {% assign loadCss = false %}
@@ -497,6 +502,10 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
     
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js" defer="defer"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer="defer"></script>
+
     <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
     
     {% comment %}    loop-onstore    {% endcomment %}
