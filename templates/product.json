@@ -260,9 +260,9 @@
         "currency_code_enabled": true,
         "padding_top": 0,
         "padding_bottom": 0,
-        "popup-text-data": "",
-        "custom-popup-head": "",
-        "custom-popup-text": ""
+        "popup-text-data": "Popup Button",
+        "custom-popup-head": "Popup Heading",
+        "custom-popup-text": "Popup Text"
       }
     },
     "product-lookbook": {
