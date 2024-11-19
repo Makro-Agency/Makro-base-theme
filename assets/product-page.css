@@ -155,6 +155,18 @@ body.pdp-popup-open{
   display: block;
 }
 
+.cust-left-icons{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 9;
+}
+
+.product__media-gallery .thumbnailleft .swiper-wrapper {
+  align-items: flex-start;
+}
+
+
 @media screen and (max-width: 749px) {
 
   .product__media-wrapper .product__media-list { gap:0; scroll-padding-left: 0 !important; margin-bottom: 0 !important; }
