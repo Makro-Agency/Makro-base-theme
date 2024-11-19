@@ -86,6 +86,12 @@
             "custom_liquid": "<script id=\"attn-waitlist-eligibility\" type=\"application/json\">{\n{%- liquid\nfor variant in product.variants\nassign eligibility = 'false'\nif variant.inventory_quantity <= 0\nassign eligibility = 'true'\nendif\nassign entry = '\"' | append: variant.id | append: '\":' | append: eligibility\nunless forloop.last\nassign entry = entry | append: ','\nendunless\n\necho entry\nendfor\n-%}\n}</script>\n<div id=\"attn-waitlist-trigger\"></div>"
           }
         },
+        "pdp_faq_tabs_83k8JA": {
+          "type": "pdp_faq_tabs",
+          "settings": {
+            "popup-text": "View Supplement Facts"
+          }
+        },
         "6c40f58d-b145-4e5a-b101-a565bb618a11": {
           "type": "sales_point",
           "settings": {
@@ -218,6 +224,7 @@
         "buy_online_btn_kVLpL3",
         "buy_buttons",
         "custom_liquid_GWJjEK",
+        "pdp_faq_tabs_83k8JA",
         "6c40f58d-b145-4e5a-b101-a565bb618a11",
         "71181031-42e5-4d00-a819-f686fd02b3c1",
         "23cb65b6-2aa5-4060-9529-744a54cd6f97",
@@ -252,7 +259,10 @@
         "enable_video_looping": true,
         "currency_code_enabled": true,
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "popup-text-data": "",
+        "custom-popup-head": "",
+        "custom-popup-text": ""
       }
     },
     "product-lookbook": {
