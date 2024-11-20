@@ -1,7 +1,7 @@
 /****Product Slider Starts***/
 .custom-product-slider .carousel-item {
     position: relative;
-    padding: 15px;
+    padding: 0;
   }
   .product-details {
     position: absolute;
@@ -28,8 +28,7 @@
   }
   .product-infos .product-title{
     color:#000000;
-    opacity:0.6;
-    font-weight:400;
+    font-weight:bold;
   }
   .product-infos p.product-collection-name{
     font-weight:700;
@@ -196,7 +195,11 @@
       font-size:14px !important;
       line-height:21px !important;
     }
-    
+    .custom-product-slider .carousel-item{
+      height: 350px;
+      padding: 0;
+      margin: 0;
+    }
   }
   @media(min-width:750px){
     .custom-product-slider .carousel-item  a.carousel_mobile_img{
