@@ -645,11 +645,21 @@
             "alt_text": "img",
             "product": "1-quart-saucepan-with-cover"
           }
+        },
+        "image_ijwbEx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_23_655101d7-74c2-4925-9966-fe646b4b89f2.png",
+            "mobile_image": "shopify://shop_images/Rectangle_23_655101d7-74c2-4925-9966-fe646b4b89f2.png",
+            "alt_text": "img",
+            "product": "1-quart-saucepan-with-cover"
+          }
         }
       },
       "block_order": [
         "image_j7mWpj",
-        "image_wdG94d"
+        "image_wdG94d",
+        "image_ijwbEx"
       ],
       "settings": {
         "padding_top": 80,
