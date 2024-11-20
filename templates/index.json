@@ -627,6 +627,30 @@
     },
     "custom_home_product_carousel_EzPMq4": {
       "type": "custom-home-product-carousel",
+      "blocks": {
+        "image_j7mWpj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/product2-img.png",
+            "mobile_image": "shopify://shop_images/product2-img.png",
+            "alt_text": "img",
+            "product": "1-75-quart-saucepan-with-cover"
+          }
+        },
+        "image_wdG94d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/product-images_1.png",
+            "mobile_image": "shopify://shop_images/product-images_1.png",
+            "alt_text": "img",
+            "product": "1-quart-saucepan-with-cover"
+          }
+        }
+      },
+      "block_order": [
+        "image_j7mWpj",
+        "image_wdG94d"
+      ],
       "settings": {
         "padding_top": 80,
         "padding_bottom": 80,
