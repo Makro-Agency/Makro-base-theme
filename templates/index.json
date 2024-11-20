@@ -654,12 +654,20 @@
             "alt_text": "img",
             "product": "1-quart-saucepan-with-cover"
           }
+        },
+        "image_HbxGfd": {
+          "type": "image",
+          "settings": {
+            "alt_text": "",
+            "product": ""
+          }
         }
       },
       "block_order": [
         "image_j7mWpj",
         "image_wdG94d",
-        "image_ijwbEx"
+        "image_ijwbEx",
+        "image_HbxGfd"
       ],
       "settings": {
         "padding_top": 80,
