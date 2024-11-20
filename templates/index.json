@@ -658,8 +658,10 @@
         "image_HbxGfd": {
           "type": "image",
           "settings": {
-            "alt_text": "",
-            "product": ""
+            "image": "shopify://shop_images/product-images_1_1.png",
+            "mobile_image": "shopify://shop_images/product-images_1_1.png",
+            "alt_text": "img",
+            "product": "2-quart-saucepan-with-cover"
           }
         }
       },
