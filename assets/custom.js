@@ -1,13 +1,22 @@
 // product carousel section home
 var swiper = new Swiper(".mySwiper", {
-slidesPerView: 2.5,
-spaceBetween: 0,
-freeMode: true,
-pagination: {
-  el: ".swiper-pagination",
-  clickable: true,
-},
+  slidesPerView: 2.5,
+  spaceBetween: 0,
+  freeMode: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    320: { slidesPerView: 1.5, spaceBetween: 10 },
+    768: { slidesPerView: 1.5, spaceBetween: 20 },
+    1024: { slidesPerView: 2.5, spaceBetween: 30 },
+  },
 });
+
+console.log(swiper); // Ensure swiper object is initialized
+
+
 
 // product modal
 
