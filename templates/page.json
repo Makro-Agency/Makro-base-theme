@@ -17,6 +17,46 @@
         "padding_bottom": 0
       }
     },
+    "custom_inquiry_form_jTxi8p": {
+      "type": "custom-inquiry-form",
+      "blocks": {
+        "card_ft7DMJ": {
+          "type": "card",
+          "settings": {
+            "card_title": "Become a Trade Alliance Partner"
+          }
+        },
+        "card_nwrexK": {
+          "type": "card",
+          "settings": {
+            "card_title": "Join Our Property Management Program"
+          }
+        },
+        "card_VtxAp8": {
+          "type": "card",
+          "settings": {
+            "card_title": "Get a Quote for New Construction"
+          }
+        }
+      },
+      "block_order": [
+        "card_ft7DMJ",
+        "card_nwrexK",
+        "card_VtxAp8"
+      ],
+      "settings": {
+        "bg_color": "#212D3D",
+        "form_title": "TA Inquiry Form",
+        "form_subtitle": "Fill the form below to get access to your personal TA Account",
+        "form_instruction": "Start With Selecting your Inquiry Type",
+        "form_btn_text": "Send Inquiry",
+        "inq_sent_msg": "Inquiry Sent!",
+        "form_msg_sent": "Thanks for filling out the inquiry form! <br> We will contact you via the provided email within next 48 hours.",
+        "form_action_1": "",
+        "form_action_2": "",
+        "form_action_3": ""
+      }
+    },
     "6c988477-1726-4ba7-9eb6-33d5e71413ea": {
       "type": "rich-text",
       "blocks": {
@@ -272,21 +312,6 @@
         "mobile_content_alignment": "left",
         "padding_top": 0,
         "padding_bottom": 100
-      }
-    },
-    "custom_inquiry_form_jTxi8p": {
-      "type": "custom-inquiry-form",
-      "settings": {
-        "bg_color": "#212D3D",
-        "form_title": "TA Inquiry Form",
-        "form_subtitle": "Fill the form below to get access to your personal TA Account",
-        "form_instruction": "Start With Selecting your Inquiry Type",
-        "form_btn_text": "Send Inquiry",
-        "inq_sent_msg": "Inquiry Sent!",
-        "form_msg_sent": "Thanks for filling out the inquiry form! <br> We will contact you via the provided email within next 48 hours.",
-        "form_action_1": "",
-        "form_action_2": "",
-        "form_action_3": ""
       }
     }
   },
