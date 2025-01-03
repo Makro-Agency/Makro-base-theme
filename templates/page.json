@@ -52,9 +52,9 @@
         "form_btn_text": "Send Inquiry",
         "inq_sent_msg": "Inquiry Sent!",
         "form_msg_sent": "Thanks for filling out the inquiry form! <br> We will contact you via the provided email within next 48 hours.",
-        "form_action_1": "",
-        "form_action_2": "",
-        "form_action_3": ""
+        "form_action_1": "https://hooks.zapier.com/hooks/catch/4272718/29v4g2o/",
+        "form_action_2": "https://hooks.zapier.com/hooks/catch/4272718/29v4g2o/",
+        "form_action_3": "https://hooks.zapier.com/hooks/catch/4272718/29v4g2o/"
       }
     },
     "6c988477-1726-4ba7-9eb6-33d5e71413ea": {
