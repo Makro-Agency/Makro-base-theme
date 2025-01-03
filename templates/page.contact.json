@@ -1,1 +1,70 @@
-{"sections":{"form":{"type":"contact-form","settings":{"heading":"Get In Touch","content":"<p>If you have any questions for us, please don't hesitate to get in touch. We'd love to help you find the perfect outfit! All e-mail inquiries will be responded to within 1-2 business days. Please be sure to check your spam\/junk folder in the case you do not see a response from us. <\/p>","text":"Our Customer Service hours are: Monday – Friday \/ 9 AM – 5 PM EST.","title":"Contact Us","note":"<p>This site is protected by reCAPTCHA and the Google <a href=\"https:\/\/policies.google.com\/privacy\" target=\"_blank\" title=\"Privacy Policy\">Privacy Policy<\/a> and <a href=\"https:\/\/policies.google.com\/terms\" target=\"_blank\" title=\"Terms of Service\">Terms of Service<\/a> apply.<\/p>","color_scheme":"background-1","padding_top":100,"padding_bottom":88}}},"order":["form"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Get In Touch",
+        "content": "<p>If you have any questions for us, please don't hesitate to get in touch. We'd love to help you find the perfect outfit! All e-mail inquiries will be responded to within 1-2 business days. Please be sure to check your spam/junk folder in the case you do not see a response from us. </p>",
+        "text": "Our Customer Service hours are: Monday – Friday / 9 AM – 5 PM EST.",
+        "title": "Contact Us",
+        "note": "<p>This site is protected by reCAPTCHA and the Google <a href=\"https://policies.google.com/privacy\" target=\"_blank\" title=\"Privacy Policy\">Privacy Policy</a> and <a href=\"https://policies.google.com/terms\" target=\"_blank\" title=\"Terms of Service\">Terms of Service</a> apply.</p>",
+        "color_scheme": "background-1",
+        "padding_top": 100,
+        "padding_bottom": 88
+      }
+    },
+    "custom_inquiry_form_A3PxWC": {
+      "type": "custom-inquiry-form",
+      "blocks": {
+        "card_qqb4cp": {
+          "type": "card",
+          "settings": {
+            "card_title": "Become a Trade Alliance Partner"
+          }
+        },
+        "card_EUBdha": {
+          "type": "card",
+          "settings": {
+            "card_title": "Join Our Property Management Program"
+          }
+        },
+        "card_H3yJyy": {
+          "type": "card",
+          "settings": {
+            "card_title": "Get a Quote for New Construction"
+          }
+        }
+      },
+      "block_order": [
+        "card_qqb4cp",
+        "card_EUBdha",
+        "card_H3yJyy"
+      ],
+      "settings": {
+        "bg_color": "#212D3D",
+        "form_title": "TA Inquiry Form",
+        "form_subtitle": "Fill the form below to get access to your personal TA Account",
+        "form_instruction": "Start With Selecting your Inquiry Type",
+        "form_btn_text": "Send Inquiry",
+        "inq_sent_msg": "Inquiry Sent!",
+        "form_msg_sent": "Thanks for filling out the inquiry form! <br> We will contact you via the provided email within next 48 hours.",
+        "form_action_1": "https://hooks.zapier.com/hooks/catch/4272718/29v4g2o/",
+        "form_action_2": "https://hooks.zapier.com/hooks/catch/4272718/29v4g2o/",
+        "form_action_3": "https://hooks.zapier.com/hooks/catch/4272718/29v4g2o/"
+      }
+    }
+  },
+  "order": [
+    "form",
+    "custom_inquiry_form_A3PxWC"
+  ]
+}
