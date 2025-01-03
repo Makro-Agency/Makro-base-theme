@@ -1,0 +1,910 @@
+{{ 'custom-inquiry-form.css' | asset_url | stylesheet_tag: preload: true }}
+<section class="custom-inquiry-form" style="background-color: {{ section.settings.bg_color }};">
+    <div class="inner-page-width">
+     
+      <div class="tabs-data">
+        <h1 class="form-title">{{ section.settings.form_title }}</h1>
+        <p class="form-subtitle">{{ section.settings.form_subtitle }}</p>
+        <p class="form-instruction">{{ section.settings.form_instruction }}</p>
+        <div class="cards">
+          <div class="cards cmn-cards-data">
+            {% for block in section.blocks %}
+              <div class="card card-{{ block.id }}">
+                <h2>{{ block.settings.card_title }}</h2>
+                <button class="card-btn">
+                  {% render 'arrow-white-new' %}
+                </button>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="tabs-form-data">
+       
+        <div class="tab-1-data">
+          <div id="cmn-signup-1" class="cmn-form-sec form-fields">
+            <form method="post" action="{{ section.settings.form_action_1 }}" accept-charset="UTF-8">
+              <h1 class="form-title">{{ section.settings.form_title }}</h1>
+              <p class="form-subtitle">{{ section.settings.form_subtitle }}</p>
+                <div class="cmn-div">
+                <div class="cmn-msg">Personal Information</div>
+
+                <div class="form-drop-down common-form">
+                  <input type="hidden" id="enquiry-type" name="enquiry_type" value="">
+                  <div class="dropdown">
+                    <div class="dropdown-selected">
+                      Become a Trade Alliance Partner
+                      <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M2.66602 5.33317L7.99935 10.6665L13.3327 5.33317" stroke="#001424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                     
+                    </div>
+                    <ul class="dropdown-options hidden">
+                      <li data-value="">Become a Trade Alliance Partner</li>
+                      <li data-value="general-enquiry">Join Our Property Management Program</li>
+                      <li data-value="product-related">Get a Quote for New Construction</li>
+                    </ul>
+                  </div>
+                </div>     
+
+                <div class="form-first_name common-form">
+                  <input type="text" id="name" name="name" placeholder="Company Name *" required>
+                  <span class="error_span">* This Field is Required</span>
+                </div>
+                <div class="form-first_name common-form">
+                  <input type="text" id="cname" name="cname" placeholder="Contact Name *" required>
+                  <span class="error_span">* This Field is Required</span>
+                </div>
+                <div class="form-first_name common-form">
+                  <input type="text" id="phone" name="phone" placeholder="Phone Number *" required>
+                  <span class="error_span">* This Field is Required</span>
+                </div>
+                <div class="form-email common-form">
+                  <input type="email" id="email" name="email" placeholder="Email Address *" required>
+                  <span class="error_span">* This Field is Required</span>
+                </div>
+                </div>
+
+                <div class="cmn-div">
+                  <div class="cmn-msg">Mailing Address</div> 
+                  <div class="form-cname common-form">
+                    <input type="text" id="mNumber" name="mNumber" placeholder="Number *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-cname common-form">
+                    <input type="text" id="street" name="street" placeholder="Street *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-cname common-form">
+                    <input type="text" id="city" name="city" placeholder="City *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-cname common-form">
+                    <input type="text" id="Province" name="Province" placeholder="Province *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-cname common-form">
+                    <input type="text" id="Postal Code" name="Postal Code" placeholder="Postal Code *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                 
+                </div>
+
+              <div class="checkbox-container cmn-div">
+                <input type="checkbox" id="communications-checkbox" name="communications_consent">
+                <label for="communications-checkbox">Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</label>
+              </div>
+              <!-- Submit Button -->
+              <div class="row">
+                <button type="button" class="submit-button">
+                  {{ section.settings.form_btn_text }}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M1 8.00011H15M15 8.00011L9.55556 2.55566M15 8.00011L9.55556 13.4446" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </button>
+              </div>
+            </form>
+            {%- capture sucess_cap -%}
+            <div class="contact-form-success">
+              <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+                {% render 'icon-inquiry-sent' %}
+                <div class="custom-inq-sent">{{ section.settings.inq_sent_msg }}</div>
+                <div class="inq-sent-msg">
+                  {{ section.settings.form_msg_sent }}
+                </div>
+              </h2>
+            </div>
+            {%- endcapture -%}
+            {{ sucess_cap }}
+          </div>
+        </div>
+        <div class="tab-2-data">
+          <div id="cmn-signup-1" class="cmn-form-sec form-fields otherform">
+            <form method="post" action="{{ section.settings.form_action_2 }}" accept-charset="UTF-8">
+              <h1 class="form-title">{{ section.settings.form_title }}</h1>
+              <p class="form-subtitle">{{ section.settings.form_subtitle }}</p>
+                <div class="cmn-div">
+                  <div class="cmn-msg">Property Manager Information</div>
+
+                  <div class="form-drop-down common-form">
+                    <input type="hidden" id="enquiry-type" name="enquiry_type" value="">
+                    <div class="dropdown">
+                      <div class="dropdown-selected">
+                        Join Our Property Management Program
+                        <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2.66602 5.33317L7.99935 10.6665L13.3327 5.33317" stroke="#001424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      
+                      </div>
+                      <ul class="dropdown-options hidden">
+                        <li data-value="">Join Our Property Management Program</li>
+                        <li data-value="general-enquiry">Get a Quote for New Construction</li>
+                        <li data-value="product-related">Become a Trade Alliance Partner</li>
+                      </ul>
+                    </div>
+                  </div>     
+
+                  <div class="form-first_name common-form">
+                    <input type="text" id="pcname" name="pcname" placeholder="Property Management Company Name *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-first_name common-form">
+                    <input type="text" id="pmcname" name="pmcname" placeholder="Property Manager Contact Name *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-first_name common-form">
+                    <input type="text" id="number" name="number" placeholder="Phone Number *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-email common-form">
+                    <input type="email" id="email" name="email" placeholder="Email Address *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+
+                </div>
+
+                <div class="cmn-div">
+                  <div class="cmn-msg">Property Information</div> 
+                  <div class="form-cname common-form">
+                    <input type="text" id="Number" name="Number" placeholder="Number *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-loc common-form">
+                    <input type="text" id="Street" name="Street" placeholder="Street *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-info3 common-form">
+                    <input type="text" id="City" name="City" placeholder="City *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-info4 common-form">
+                    <input type="text" id="Province" name="Province" placeholder="Province *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-info4 common-form">
+                    <input type="text" id="Postal_Code" name="Postal Code" placeholder="Postal Code *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+
+                  <div class="form-drop-down common-form drop-div">
+                    <input type="hidden" id="enquiry-type" name="enquiry-type" value="">
+                    <div class="dropdown">
+                      <div class="dropdown-selected">
+                        Number of Buildings Managed
+                        <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2.66602 5.33317L7.99935 10.6665L13.3327 5.33317" stroke="#001424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                       
+                      </div>
+                      <ul class="dropdown-options hidden">
+                        <li data-value="1">1</li>
+                        <li data-value="2">2</li>
+                        <li data-value="3">3</li>
+                        <li data-value="4">4</li>
+                        <li data-value="5">5</li>
+                        <li data-value="6">6</li>
+                        <li data-value="7">7</li>
+                        <li data-value="8">8</li>
+                        <li data-value="9">9</li>
+                        <li data-value="10">10</li>
+                      </ul>
+                    </div>
+                  </div> 
+                  
+                  <div class="form-drop-down common-form drop-div">
+                    <input type="hidden" id="enquiry-type" name="enquiry-type" value="">
+                    <div class="dropdown">
+                      <div class="dropdown-selected">
+                        Number of Units Managed
+                        <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2.66602 5.33317L7.99935 10.6665L13.3327 5.33317" stroke="#001424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                       
+                      </div>
+                      <ul class="dropdown-options hidden">
+                        <li data-value="1">1</li>
+                        <li data-value="2">2</li>
+                        <li data-value="3">3</li>
+                        <li data-value="4">4</li>
+                        <li data-value="5">5</li>
+                        <li data-value="6">6</li>
+                        <li data-value="7">7</li>
+                        <li data-value="8">8</li>
+                        <li data-value="9">9</li>
+                        <li data-value="10">10</li>
+                      </ul>
+                    </div>
+                    
+                  </div> 
+                
+                  <div class="form-drop-down common-form drop-div">
+                    <input type="hidden" id="enquiry-type" name="enquiry-type" value="">
+                    <div class="dropdown">
+                      <div class="dropdown-selected">
+                        Type of property
+                        <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2.66602 5.33317L7.99935 10.6665L13.3327 5.33317" stroke="#001424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      
+                      </div>
+                      <ul class="dropdown-options hidden">
+                        <li data-value="High-rise">High-rise</li>
+                        <li data-value="Mid-rise">Mid-rise</li>
+                        <li data-value="Stacked towns">Stacked towns</li>
+                        <li data-value="Single family home">Single family home</li>
+                        <li data-value="Townhouse">Townhouse</li>
+                        <li data-value="Semi">Semi</li>
+                      </ul>
+                    </div>
+                  </div> 
+                </div>
+
+              <div class="checkbox-container cmn-div">
+                <input type="checkbox" id="communications-checkbox" name="communications_consent">
+                <label for="communications-checkbox">Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</label>
+              </div>
+              <!-- Submit Button -->
+              <div class="row">
+                <button type="button" class="submit-button">
+                  {{ section.settings.form_btn_text }}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M1 8.00011H15M15 8.00011L9.55556 2.55566M15 8.00011L9.55556 13.4446" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </button>
+              </div>
+            </form>
+            {%- capture sucess_cap -%}
+            <div class="contact-form-success">
+              <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+                {% render 'icon-inquiry-sent' %}
+                <div class="custom-inq-sent">{{ section.settings.inq_sent_msg }}</div>
+                <div class="inq-sent-msg">
+                  {{ section.settings.form_msg_sent }}
+                </div>
+              </h2>
+            </div>
+            {%- endcapture -%}
+            {{ sucess_cap }}
+          </div>
+        </div>
+        <div class="tab-3-data">
+          <div id="cmn-signup-1" class="cmn-form-sec form-fields otherform">
+            <form method="post" action="{{ section.settings.form_action_3 }}" accept-charset="UTF-8">
+              <h1 class="form-title">{{ section.settings.form_title }}</h1>
+              <p class="form-subtitle">{{ section.settings.form_subtitle }}</p>
+                <div class="cmn-div">
+                  <div class="cmn-msg">Personal Information</div>
+
+                  <div class="form-drop-down common-form">
+                    <input type="hidden" id="enquiry-type_" name="enquiry_type" value="">
+                    <div class="dropdown">
+                      <div class="dropdown-selected">
+                        Get a Quote for New Construction
+                        <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2.66602 5.33317L7.99935 10.6665L13.3327 5.33317" stroke="#001424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      
+                      </div>
+                      <ul class="dropdown-options hidden">
+                        <li data-value="">Get a Quote for New Construction</li>
+                        <li data-value="general-enquiry">Become a Trade Alliance Partner</li>
+                        <li data-value="product-related">Join Our Property Management Program</li>
+                      </ul>
+                    </div>
+                  </div>     
+
+                  <div class="form-first_name common-form">
+                    <input type="text" id="cname" name="Company Name" placeholder="Company Name *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-first_name common-form">
+                    <input type="text" id="cadd" name="Company Address" placeholder="Company Address *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-first_name common-form">
+                    <input type="text" id="coname" name="Contact Name" placeholder="Contact Name *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-email common-form">
+                    <input type="text" id="flname" name="flname" placeholder="First Name & Last Name *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-email common-form">
+                    <input type="text" id="pnumber" name="pnumber" placeholder="Phone Number *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-email common-form">
+                    <input type="email" id="email" name="email" placeholder="Email *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  <div class="form-email common-form">
+                    <input type="text" id="bname" name="bname" placeholder="Builder Name *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                
+                  <div class="form-drop-down common-form drop-div">
+                    <input type="hidden" id="enquiry-type" name="enquiry-type" value="">
+                    <div class="dropdown">
+                      <div class="dropdown-selected">
+                        Type of property
+                        <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2.66602 5.33317L7.99935 10.6665L13.3327 5.33317" stroke="#001424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      
+                      </div>
+                      <ul class="dropdown-options hidden">
+                        <li data-value="High-rise">High-rise</li>
+                        <li data-value="Mid-rise">Mid-rise</li>
+                        <li data-value="Stacked towns">Stacked towns</li>
+                        <li data-value="Single family home">Single family home</li>
+                        <li data-value="Townhouse">Townhouse</li>
+                        <li data-value="Semi">Semi</li>
+                      </ul>
+                    </div>
+                    
+                  </div> 
+
+                  <div class="form-drop-down common-form drop-div">
+                    <input type="hidden" id="enquiry-type" name="enquiry-type" value="">
+                    <div class="dropdown">
+                      <div class="dropdown-selected">
+                        Number of Units
+                        <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2.66602 5.33317L7.99935 10.6665L13.3327 5.33317" stroke="#001424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                      <ul class="dropdown-options hidden">
+                        <li data-value="1">1</li>
+                        <li data-value="2">2</li>
+                        <li data-value="3">3</li>
+                        <li data-value="4">4</li>
+                        <li data-value="5">5</li>
+                        <li data-value="6">6</li>
+                        <li data-value="7">7</li>
+                        <li data-value="8">8</li>
+                        <li data-value="9">9</li>
+                        <li data-value="10">10</li>
+                      </ul>
+                    </div>
+                  </div> 
+
+                  <div class="form-email common-form">
+                    <input type="text" id="psdate" name="psdate" placeholder="Project Start Date *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+
+                  <div class="form-email common-form">
+                    <input type="text" id="pedate" name="pedate" placeholder="Project End Date *" required>
+                    <span class="error_span">* This Field is Required</span>
+                  </div>
+                  
+                </div>
+              
+             
+              <div class="checkbox-container cmn-div">
+                <input type="checkbox" id="communications-checkbox" name="communications_consent">
+                <label for="communications-checkbox">Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</label>
+              </div>
+              <!-- Submit Button -->
+              <div class="row">
+                <button type="button" class="submit-button">
+                  {{ section.settings.form_btn_text }}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M1 8.00011H15M15 8.00011L9.55556 2.55566M15 8.00011L9.55556 13.4446" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </button>
+              </div>
+            </form>
+            {%- capture sucess_cap -%}
+            <div class="contact-form-success">
+              <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+                {% render 'icon-inquiry-sent' %}
+                <div class="custom-inq-sent">{{ section.settings.inq_sent_msg }}</div>
+                <div class="inq-sent-msg">
+                  {{ section.settings.form_msg_sent }}
+                </div>
+              </h2>
+            </div>
+            {%- endcapture -%}
+            {{ sucess_cap }}
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // Remove the active class from .custom-inquiry-form on page load
+    document.querySelector('.custom-inquiry-form').classList.remove('active');
+
+    // Add the active class on click
+    document.querySelectorAll('.cmn-cards-data').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelector('.custom-inquiry-form').classList.add('active');
+      });
+    });
+
+    /* default demopublickey */
+    UPLOADCARE_PUBLIC_KEY = 'demopublickey';
+    UPLOADCARE_MULTIPLE = true;
+    UPLOADCARE_IMAGES_ONLY = true
+    document.querySelectorAll('[role=uploadcare-uploader]').forEach(function(ele,index){
+      //const uploadCareWidget = uploadcare.SingleWidget(ele);
+      const uploadCareWidget = uploadcare.MultipleWidget(ele);
+      {% comment %} console.log('uploadCareWidget',uploadCareWidget); {% endcomment %}
+      uploadCareWidget.onUploadComplete(function(fileInfo){
+        if(ele.closest('.common-form') && ele.closest('.common-form').querySelector('.input-field.input-error')){
+          ele.closest('.common-form').querySelector('.input-field.input-error').classList.remove('input-error');
+        }
+        {% comment %} console.log('fileInfo',fileInfo); {% endcomment %}
+        for( var i = 0; i < fileInfo.count; i++ ){
+          var _cdnUrl = `${ fileInfo.cdnUrl }nth/${i}/`;      
+            _imges = _imges + _imgTag.replace('RRR',_cdnUrl);
+        }    
+          $(uploadCareWidget.inputElement).val(_imges);
+      });  
+    });
+
+    const tabs = document.querySelectorAll('.cards .card');
+    const tabData = document.querySelectorAll('.tabs-form-data > div');
+    const tabsData = document.querySelector('.tabs-data'); // Select .tabs-data element
+    const tabsFormData = document.querySelector('.tabs-form-data'); // Select .tabs-form-data element
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(card => card.classList.remove('active'));
+        tabData.forEach(data => data.style.display = 'none');
+        tab.classList.add('active');
+        tabData[index].style.display = 'block';
+        if (tabsData) {
+          tabsData.style.display = 'none';
+        }
+        if (tabsFormData) {
+          tabsFormData.classList.add('active');
+        }
+      });
+    });
+
+    document.querySelectorAll('.tabs-form-data form').forEach(function(formEle){
+
+      formEle.querySelectorAll('[required]').forEach(function(input){
+        input.addEventListener("keyup", (event) => {
+          checkInputError(input, event);
+        });
+      });
+
+      formEle.querySelector('button.submit-button').addEventListener("click", function(event){  
+        submit_form(event,formEle);
+      });
+      
+      /*formEle.addEventListener("submit", function(event){  
+        console.log('submit');
+        submit_form(event,formEle);
+      });*/
+    });
+
+    function submit_form(event,formEle){
+        const requied_inputs = formEle.querySelectorAll('[required]');
+        var re_input_length = requied_inputs.length;
+        if(formEle.querySelectorAll('.drop-div').length > 0){
+          re_input_length = (re_input_length + formEle.querySelectorAll('.drop-div').length);
+        }
+        let valid_input_count = 0;
+
+        requied_inputs.forEach(function(input){      
+          valid_input_count = checkInputError(input, event, valid_input_count);
+        });
+
+        if(formEle.querySelectorAll('.drop-div').length > 0){
+          formEle.querySelectorAll('.drop-div').forEach((drop_check) => {
+            if(drop_check.classList.contains('active')){
+              valid_input_count = (valid_input_count + 1);
+            }else{
+              drop_check.querySelector('.dropdown-selected').insertAdjacentHTML('afterend','<span class="error-message">* Please select a value.</span>');
+            }
+          })
+        }        
+        {% comment %} console.log('valid_input_count',valid_input_count,re_input_length); {% endcomment %}
+
+        if( valid_input_count != re_input_length ){
+          $([document.documentElement, document.body]).animate({
+            scrollTop: (document.querySelector('.custom-inquiry-form-main').offsetTop - 100)
+          }, 500);
+          event.preventDefault();
+          return false;
+        }else{
+          const url = formEle.getAttribute('action') || '';
+          {% comment %} console.log('url', url); {% endcomment %}
+          if( url != '' ){
+            formEle.querySelector('[type="button"]').classList.add('disabled');
+            fetch(url, {
+              method: 'POST',
+              body: new FormData(formEle), 
+            })
+            .then(response => response.json()) // Assuming the response is JSON
+            .then(data => {
+              
+              if( typeof data.status != 'undefined' && data.status == "success" ){
+                // Reset form
+                formEle.closest('.form-fields').classList.add('form-submit-success');
+                $([document.documentElement, document.body]).animate({
+                  scrollTop: (document.querySelector('.custom-inquiry-form-main').offsetTop - 100)
+                }, 800);
+                setTimeout(function(){ 
+                  document.querySelector('.tabs-form-data').classList.remove('active'); 
+                  document.querySelector('.custom-inquiry-form').classList.remove('active'); 
+                  document.querySelector('.tabs-data').style.display = 'block';
+                  formEle.closest('.form-fields').classList.remove('form-submit-success');
+                  tabData.forEach(data => data.style.display = 'none');
+                  tabs.forEach(card => card.classList.remove('active'));
+                  {% comment %} formEle.closest('.form-fields').style.display = 'none';  {% endcomment %}
+                }, 4000);
+                formEle.reset();
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+            formEle.querySelector('[type="button"]').classList.remove('disabled');
+            {% comment %} event.preventDefault();
+            return false; {% endcomment %}
+          }
+        }
+    }
+
+    function checkInputError(ele, event, count = 0){
+      let in_value_len = ele.value.length;
+      if( in_value_len < 2){
+        {% comment %} count = count < 0 ? 0 : count; {% endcomment %}
+        ele.classList.add('input-error');
+      }else if(ele.type == 'email'){
+        if(validateEmail(ele.value) != null){
+          count +=1;
+          ele.classList.remove('input-error');
+        }else{
+          ele.classList.add('input-error');
+        }
+      }else{
+        count +=1;
+        ele.classList.remove('input-error');
+      }
+      {% comment %} if ( count != 0 ){
+        return count
+      } {% endcomment %}
+      return count;
+    }
+
+
+    const validateEmail = (email) => {
+      return email.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+    };
+
+
+    // Elements
+    const dropdownSelected = document.querySelector('.common-form .dropdown-selected');
+    const dropdownOptions = document.querySelector('.common-form .dropdown-options');
+    const hiddenInput = document.getElementById('enquiry-type');
+    const dropdownArrow = document.querySelector('.common-form .dropdown-arrow');
+    const dropdown = document.querySelector('.common-form .dropdown');
+
+    // Toggle the dropdown options when clicking the selected item
+    dropdownSelected.addEventListener('click', function() {
+      dropdownOptions.classList.toggle('hidden');
+      dropdown.classList.toggle('open'); // Add the open class to rotate the arrow
+    });
+
+    // Update the selected option when clicking an option
+    dropdownOptions.addEventListener('click', function(e) {
+      if (e.target.tagName === 'LI') {
+        // Update the visible selected item
+        dropdownSelected.childNodes[0].textContent = e.target.textContent;
+
+        // Update the hidden input with the selected value
+        hiddenInput.value = e.target.getAttribute('data-value');
+
+        // Remove the active class from all options and add it to the clicked one
+        document.querySelectorAll('.common-form .dropdown-options li').forEach(function(li) {
+          li.classList.remove('active');
+        });
+        e.target.classList.add('active');
+
+        // Hide the dropdown options after selection
+        dropdownOptions.classList.add('hidden');
+        dropdown.classList.remove('open');
+      }
+    });
+
+    const ul = document.querySelector('.dropdown-options');
+    const hiddenInput2 = document.getElementById('request-type');
+
+    ul.addEventListener('click', function(e) {
+      if (e.target.tagName === 'LI') {
+        document.querySelectorAll('.dropdown-options li').forEach(li => li.classList.remove('active'));
+        e.target.classList.add('active');
+        
+        // Update hidden input
+        hiddenInput.value = e.target.getAttribute('data-value');
+
+        // Hide all form fields initially
+        document.querySelectorAll('.form-fields').forEach(function(fields) {
+          fields.classList.add('hidden');
+        });
+
+        // Show the relevant form fields based on the selected value
+        var selectedValue = e.target.getAttribute('data-value');
+        document.getElementById(selectedValue + '-fields').classList.remove('hidden');
+      }
+    });
+
+    // On page load, show the default form fields based on the selected value
+    if(hiddenInput2){
+      var selectedValue = hiddenInput2.value;
+      document.querySelector(`li[data-value="${selectedValue}"]`).classList.add('active');
+      document.getElementById(selectedValue + '-fields').classList.remove('hidden');
+    }
+    
+
+    // 2-3 form
+    
+    document.querySelectorAll('.otherform .dropdown').forEach(dropdown => {
+      const selected = dropdown.querySelector('.dropdown-selected');
+      const options = dropdown.querySelector('.dropdown-options');
+      const optionItems = options.querySelectorAll('li');
+      const arrow = dropdown.querySelector('.dropdown-arrow');
+
+      // Toggle the dropdown open/close on click
+      selected.addEventListener('click', () => {
+          dropdown.classList.toggle('open');
+          options.classList.toggle('hidden');
+
+          // Rotate the arrow when the dropdown is open
+          if (dropdown.classList.contains('open')) {
+              arrow.style.transform = 'rotate(180deg)'; // Point arrow up
+          } else {
+              arrow.style.transform = 'rotate(0deg)'; // Point arrow down
+          }
+      });
+
+      // Close dropdown and set selected value on option click
+      optionItems.forEach(option => {
+          option.addEventListener('click', () => {
+              selected.innerHTML = `
+                  ${option.textContent}
+                  <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"></svg>
+              `;
+              dropdown.classList.remove('open'); // Remove 'open' class
+              options.classList.add('hidden');  // Add 'hidden' class
+              options.closest('.drop-div').classList.add('active');
+          });
+      });
+    });
+
+    const form = document.querySelector(".custom-inquiry-form");
+
+    if (!form) {
+      console.warn("Element with class '.custom-inquiry-form' not found.");
+      return;
+    }
+
+    // Function to handle the class addition/removal
+    const handleClassChange = (targetElement) => {
+      if (targetElement.classList.contains("form-submit-success")) {
+        form.classList.add("cust-form-success"); // Replace 'additional-class' with your desired class
+      } else {
+        form.classList.remove("cust-form-success");
+      }
+    };
+
+    // Observer to monitor changes in classes
+    const observer = new MutationObserver((mutationsList) => {
+      mutationsList.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
+          handleClassChange(mutation.target);
+        }
+      });
+    });
+
+    // Target element to observe
+    const targetElement = document.querySelector(".form-submit-success");
+    
+    if (targetElement) {
+      // Initial check in case the class is already present
+      handleClassChange(targetElement);
+
+      // Start observing the target element
+      observer.observe(targetElement, { attributes: true });
+    } else {
+      console.warn("Element with the class 'form-submit-success' not found.");
+    }
+
+    const dropdowns = document.querySelectorAll('.form-drop-down.common-form');
+
+    dropdowns.forEach(dropdown => {
+        const hiddenInput = dropdown.querySelector('input[type="hidden"]');
+        const dropdownSelected = dropdown.querySelector('.dropdown-selected');
+
+        // Add a listener for form submission
+        /*document.querySelector('form').addEventListener('submit', function (event) {
+            let isValid = true;
+
+            // Check if the hidden input has a value
+            if (!hiddenInput.value) {
+                isValid = false;
+                dropdownSelected.classList.add('error'); // Add error class
+                dropdownSelected.insertAdjacentHTML(
+                    'afterend',
+                    '<p class="error-message">Please select a value.</p>'
+                );
+            }
+
+            // Prevent form submission if validation fails
+            if (!isValid) {
+                event.preventDefault();
+                return false;
+            }
+        });*/
+
+        // Remove error message and class when dropdown is clicked
+        dropdownSelected.addEventListener('click', function () {
+            dropdownSelected.classList.remove('error');
+            const errorMessage = dropdown.querySelector('.error-message');
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+        });
+
+        // Update hidden input value on option selection
+        const options = dropdown.querySelector('.dropdown-options');
+        options.addEventListener('click', function (e) {
+            if (e.target.tagName === 'LI') {
+                hiddenInput.value = e.target.getAttribute('data-value');
+            }
+        });
+    });
+
+  });
+
+</script>
+
+{% schema %}
+{
+  "name": "custom inquiry form",
+  "class": "section custom-inquiry-form-main",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Custom Inquiry Form Background Color",
+      "default": "#212D3D"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Inquiry Form Title",
+      "default": "TA Inquiry Form"
+    },
+    {
+      "type": "text",
+      "id": "form_subtitle",
+      "label": "Inquiry Form Subtitle",
+      "default": "Fill the form below to get access to your personal TA Account"
+    },
+    {
+      "type": "text",
+      "id": "form_instruction",
+      "label": "Form Instruction",
+      "default": "Start With Selecting your Inquiry Type"
+    },
+    {
+      "type": "text",
+      "id": "form_btn_text",
+      "label": "Button Text",
+      "default": "Send Inquiry"
+    },
+    {
+      "type": "html",
+      "id": "inq_sent_msg",
+      "label": "form msg send Heading",
+      "default": "Inquiry Sent!"
+    },
+    {
+      "type": "html",
+      "id": "form_msg_sent",
+      "label": "form msg sent Text",
+      "default": "Thanks for filling out the inquiry form! <br> We will contact you via the provided email within next 48 hours."
+    },
+    {
+      "type": "header",
+      "content": "Webhook from link",
+    },
+    {
+      "type": "paragraph",
+      "content": "form 1",
+    },
+    {
+      "type": "text",
+      "id": "form_action_1",
+      "label": "Provide form action url"
+    },
+    {
+      "type": "paragraph",
+      "content": "_______________________",
+    },
+    {
+      "type": "paragraph",
+      "content": "form 2",
+    },
+    {
+      "type": "text",
+      "id": "form_action_2",
+      "label": "Provide form action url 2"
+    },
+    {
+      "type": "paragraph",
+      "content": "_______________________",
+    },
+    {
+      "type": "paragraph",
+      "content": "form 3",
+    },
+    {
+      "type": "text",
+      "id": "form_action_3",
+      "label": "Provide form action url 3"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title",
+          "default": "Card Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom inquiry form"
+    }
+  ]
+}
+{% endschema %}
