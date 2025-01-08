@@ -11,11 +11,13 @@
   
   {% if frontpage_collection.products.size > 0 %}
     {% for product in frontpage_collection.products %}
-      <h4>{{ product.title }}</h4>
+      <h4>{{ product.title  }}</h4>
     {% endfor %}
   {% else %}
     <p>No products available in this collection.</p>
   {% endif %}
+  <br>
+  <h3> {{ all_products['no-rouge'] | remove: 'no' }} </h3>
 </div>
 
 </div>
