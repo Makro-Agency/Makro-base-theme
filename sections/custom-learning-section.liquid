@@ -1,4 +1,60 @@
-check
+<section class="custom-learn-section">
+<h2>All Products </h2>
+{% assign all_products_collection_handle = 'all' %}
+{% assign all_products_collection = collections[all_products_collection_handle] %}
+
+<ul>
+  {% if all_products_collection %}
+    {% for product in all_products_collection.products %}
+      <li>{{ forloop.index | append: ')' }} {{ product.title }}</li>
+    {% endfor %}
+    <p>Total Products: {{ all_products_collection.products_count }}</p>
+  {% else %}
+    <li>No products found in the "All Products" collection.</li>
+  {% endif %}
+</ul>
+<h2>All Products In reverse order </h2>
+<ul>
+    {% if all_products_collection %}
+      {% assign total_products = all_products_collection.products_count %}
+      {% for product in all_products_collection.products %}
+        {% assign index = total_products | minus: forloop.index | plus: 1 %}
+        <li>{{ index | append: ')' }} {{ product.title }}</li>
+      {% endfor %}
+    {% else %}
+      <li>No products found in the "All Products" collection.</li>
+    {% endif %}
+  </ul>
+  <h2>All Products In reverse order with description </h2>
+  <ul>
+    {% if all_products_collection %}
+      {% assign total_products = all_products_collection.products_count %}
+      {% for product in all_products_collection.products %}
+        {% assign index = total_products | minus: forloop.index | plus: 1 %}
+        <li>{{ index | append: ')' }} {{ product.title }} <br> <p>{%if product.description%}{{ product.description }} {% else %} No Description Available {% endif %}</p></li>
+      {% endfor %}
+    {% else %}
+      <li>No products found in the "All Products" collection.</li>
+    {% endif %}
+  </ul>
+  {% assign html_content = "<p>Hello, <strong>World!</strong></p><p>Welcome to C360.</p>" %}
+  {% assign plain_text = html_content | strip_html | newline_to_br %}
+  <p>{{ plain_text }}</p>
+
+  {% assign string = "Makro rocks!" %}
+<p>{{ string | slice: 0, 7 }}</p> 
+<p>{{ string | slice: -6, 6 }}</p>
+
+{% assign number = 5 %}
+<p>{{ number | at_least: 10 }}</p> 
+<p>{{ number | at_most: 3 }}</p> 
+
+{% assign tags = "red,blue,red,green,blue" | split: ',' %}
+<p>{{ tags | uniq | join: ', ' }}</p>
+
+
+
+  </section>
 
 {% schema %}
 
@@ -12,4 +68,4 @@ check
     }
 ]
 }
-{% endschema %}gi
+{% endschema %}
