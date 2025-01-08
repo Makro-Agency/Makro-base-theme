@@ -35,19 +35,24 @@
 </div>
 
 <div class="main-blog">
-{% assign blog_handle = 'news' %}  <!-- Replace with your blog's handle -->
-{% assign blog = blogs[blog_handle] %}
 
-<div id="blog-count-section">
-  <h2>Live Blog Posts</h2>
+<div class="main-blog">
 
-  {% if blog %}
-    <p>Total Blogs: {{ blog.articles_count }}</p>
+  {% assign blog_handle = 'news' %}  <!-- Replace with your blog's handle -->
+  {% assign blog = blogs[blog_handle] %}
 
-    <div id="blog-list">
-      {% for article in blog.articles %}
-        <div class="blog-post">
-         <img
+  <div id="blog-count-section">
+    <h2>Live Blog Posts</h2>
+
+    {% if blog %}
+      <p>Total Blogs: {{ blog.articles_count }}</p>
+
+      <div id="blog-list">
+        {% paginate blog.articles by 5 %} <!-- This will paginate the blog posts, showing 5 articles per page -->
+
+          {% for article in blog.articles %}
+            <div class="blog-post">
+              <img
                 srcset="
                   {%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
                   {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
@@ -67,16 +72,33 @@
                 width="{{ article.image.width }}"
                 height="{{ article.image.height }}"
               >
-          <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
-          <p> {{ article.excerpt | strip_html | truncatewords: 30 }} </p>
-          <p> {{ article.content | strip_html | truncatewords: 30 }} </p>
-        </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p>No blogs found.</p>
-  {% endif %}
+              <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+              <p> {{ article.excerpt | strip_html | truncatewords: 30 }} </p>
+              <p> {{ article.content | strip_html | truncatewords: 30 }} </p>
+            </div>
+          {% endfor %}
+
+          <!-- Pagination -->
+          <div class="pagination">
+            {% if paginate.previous %}
+              <a href="{{ paginate.previous.url }}" class="prev">Previous</a>
+            {% endif %}
+
+            {% if paginate.next %}
+              <a href="{{ paginate.next.url }}" class="next">Next</a>
+            {% endif %}
+          </div>
+
+        {% endpaginate %}
+      </div>
+
+    {% else %}
+      <p>No blogs found.</p>
+    {% endif %}
+  </div>
+
 </div>
+
 
 </div>
 
