@@ -49,6 +49,9 @@
  <h4> {{ article.title }} </h4>
  <p> {{ article.description }}  </p>
  {% endfor %}
+ {% if paginate.pages > 2 %}
+ {{ paginate | default_pagination }}
+ {% endif %}
  {% endpaginate %}
 </div>
 
