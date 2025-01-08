@@ -164,6 +164,7 @@
     },
     "title_image_Ubm6Nd": {
       "type": "title-image",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/product_h.png",
         "show_right_side": false,
@@ -175,6 +176,7 @@
     },
     "title_image_m7zgwi": {
       "type": "title-image",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/product_h.png",
         "show_right_side": true,
@@ -186,6 +188,7 @@
     },
     "title_image_second_k4fJJx": {
       "type": "title-image-second",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Image_3.png",
         "show_right_side": false,
@@ -199,6 +202,7 @@
     },
     "title_image_second_AEaM8g": {
       "type": "title-image-second",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Image_3.png",
         "show_right_side": true,
@@ -340,6 +344,7 @@
     },
     "text_only_hdnNeW": {
       "type": "text-only",
+      "disabled": true,
       "settings": {
         "title": "SOLUTIONS FOR QUICKLY AND EASILY ACHIEVING YOUR HAIRSTYLE AT HOME",
         "description": "<p>Forem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.</p><p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>",
@@ -357,6 +362,7 @@
     },
     "title_video_pkxVPa": {
       "type": "title-video",
+      "disabled": true,
       "settings": {
         "videoLayout": "right_video",
         "enable_video_looping": false,
@@ -372,6 +378,7 @@
     },
     "title_video_CecyRU": {
       "type": "title-video",
+      "disabled": true,
       "settings": {
         "videoLayout": "",
         "enable_video_looping": true,
