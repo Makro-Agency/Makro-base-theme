@@ -63,6 +63,7 @@
         "block_7NxMrj",
         "block_KdbLMF"
       ],
+      "disabled": true,
       "settings": {
         "layout": "layout_1",
         "has_first_section": true,
@@ -124,6 +125,7 @@
         "image_6MJRFr",
         "image_qTaTd8"
       ],
+      "disabled": true,
       "settings": {
         "slideAutoPlay": true,
         "slideAutoPlaySpeed": 5
@@ -157,6 +159,7 @@
         "image_VjmEDW",
         "image_qt3e3W"
       ],
+      "disabled": true,
       "settings": {}
     },
     "title_image_Ubm6Nd": {
@@ -241,6 +244,7 @@
         "text_VnrKw3",
         "text_dy7XdM"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/product_h.png",
         "show_right_side": true,
@@ -283,6 +287,7 @@
         "text_dFUK6h",
         "text_cDx7Yx"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/title-statement.png",
         "textLayout": "",
@@ -325,6 +330,7 @@
         "text_RVexHn",
         "text_FchbWn"
       ],
+      "disabled": true,
       "settings": {
         "textLayout": "left_title",
         "title": "SOLUTIONS FOR QUICKLY AND EASILY ACHIEVING YOUR HAIRSTYLE AT HOME",
@@ -343,6 +349,7 @@
     },
     "large_quotation_6RyxdM": {
       "type": "large-quotation",
+      "disabled": true,
       "settings": {
         "subTitle": "OUR MISSION",
         "title": "GIVING BACK TO THE WOMEN WHO SUPPORTED ME AND ALLOWED ME TO MAKE A LIVING FROM MY PASSION, HAIRDRESSING."
@@ -441,10 +448,12 @@
         "text_GA33kV",
         "text_LheQ76"
       ],
+      "disabled": true,
       "settings": {}
     },
     "makro_title_product_carousel_paXJVE": {
       "type": "makro-title-product-carousel",
+      "disabled": true,
       "settings": {
         "title": "Luc Vincent Bestsellers",
         "collection": "frontpage",
@@ -484,6 +493,7 @@
         "collection_ihwmbx",
         "collection_XCb33E"
       ],
+      "disabled": true,
       "settings": {
         "title": "Luc Vincent Bestsellers"
       }
@@ -603,6 +613,7 @@
         "text_nWHzaV",
         "text_3WUkJJ"
       ],
+      "disabled": true,
       "settings": {
         "title": "shop by collection"
       }
