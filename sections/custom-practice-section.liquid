@@ -22,55 +22,65 @@
     <h3>  {{  all_products['square-hair-brush-32mm'].title | replace: '32mm','40mm'  }} : {{ all_products['square-hair-brush-32mm'].price | money | replace: '$','Rs' }} </h3>
 </div>
 
+{% assign articles_per_page = 2 %}
+{% assign current_page = request.params.page | default: 1 %}
+
+{% assign total_articles = blog.articles.size %}
+{% assign total_pages = total_articles | divided_by: articles_per_page %}
+{% if total_articles != total_pages * articles_per_page %}
+  {% assign total_pages = total_pages | plus: 1 %}
+{% endif %}
+
+{% assign start_index = articles_per_page | times: current_page | minus: articles_per_page %}
+{% assign end_index = start_index | plus: articles_per_page %}
+
+{% assign paginated_articles = blog.articles | slice: start_index, articles_per_page %}
+
 <div class="blog-list">
-  {% assign articles = blog.articles %}
-  
-  {% paginate articles by 2 %}
-    {% for article in articles %}
-      <div class="article-item">
-        <img
-          srcset="
-            {%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
-            {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
-            {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
-            {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
-            {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
-            {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
-            {{ article.image.src | image_url }} {{ article.image.src.width }}w
-          "
-          src="{{ article.image.src | image_url: width: 533 }}"
-          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
-          alt="{{ article.image.src.alt | escape }}"
-          class="motion-reduce"
-          {% unless lazy_load == false %}
-            loading="lazy"
-          {% endunless %}
-          width="{{ article.image.width }}"
-          height="{{ article.image.height }}"
-        >
-        
-        <h4>{{ article.title }}</h4>
-        <p>{{ article.description }}</p>
-      </div>
+  {% for article in paginated_articles %}
+    <div class="article-item">
+      <img
+        srcset="
+          {%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+          {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+          {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+          {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+          {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+          {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {{ article.image.src | image_url }} {{ article.image.src.width }}w
+        "
+        src="{{ article.image.src | image_url: width: 533 }}"
+        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+        alt="{{ article.image.src.alt | escape }}"
+        class="motion-reduce"
+        {% unless lazy_load == false %}
+          loading="lazy"
+        {% endunless %}
+        width="{{ article.image.width }}"
+        height="{{ article.image.height }}"
+      >
+      
+      <h4>{{ article.title }}</h4>
+      <p>{{ article.description }}</p>
+    </div>
+  {% endfor %}
+</div>
+
+{% if total_pages > 1 %}
+  <div class="pagination">
+    {% if current_page > 1 %}
+      <a href="?page={{ current_page | minus: 1 }}" class="prev">Previous</a>
+    {% endif %}
+
+    {% for i in (1..total_pages) %}
+      <a href="?page={{ i }}" class="page {% if i == current_page %}active{% endif %}">{{ i }}</a>
     {% endfor %}
 
-    {% if paginate.pages > 1 %}
-      <div class="pagination">
-        {% if paginate.previous %}
-          <a href="{{ paginate.previous.url }}" class="prev">Previous</a>
-        {% endif %}
-
-        {% for part in paginate.parts %}
-          <a href="{{ part.url }}" class="page">{{ part.title }}</a>
-        {% endfor %}
-
-        {% if paginate.next %}
-          <a href="{{ paginate.next.url }}" class="next">Next</a>
-        {% endif %}
-      </div>
+    {% if current_page < total_pages %}
+      <a href="?page={{ current_page | plus: 1 }}" class="next">Next</a>
     {% endif %}
-  {% endpaginate %}
-</div>
+  </div>
+{% endif %}
 
 
 </div>
