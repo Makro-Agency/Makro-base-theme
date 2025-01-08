@@ -63,6 +63,7 @@
         "block_7NxMrj",
         "block_KdbLMF"
       ],
+      "disabled": true,
       "settings": {
         "layout": "layout_1",
         "has_first_section": true,
@@ -124,6 +125,7 @@
         "image_6MJRFr",
         "image_qTaTd8"
       ],
+      "disabled": true,
       "settings": {
         "slideAutoPlay": true,
         "slideAutoPlaySpeed": 5
@@ -157,10 +159,12 @@
         "image_VjmEDW",
         "image_qt3e3W"
       ],
+      "disabled": true,
       "settings": {}
     },
     "title_image_Ubm6Nd": {
       "type": "title-image",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/product_h.png",
         "show_right_side": false,
@@ -172,6 +176,7 @@
     },
     "title_image_m7zgwi": {
       "type": "title-image",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/product_h.png",
         "show_right_side": true,
@@ -183,6 +188,7 @@
     },
     "title_image_second_k4fJJx": {
       "type": "title-image-second",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Image_3.png",
         "show_right_side": false,
@@ -196,6 +202,7 @@
     },
     "title_image_second_AEaM8g": {
       "type": "title-image-second",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Image_3.png",
         "show_right_side": true,
@@ -241,6 +248,7 @@
         "text_VnrKw3",
         "text_dy7XdM"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/product_h.png",
         "show_right_side": true,
@@ -283,6 +291,7 @@
         "text_dFUK6h",
         "text_cDx7Yx"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/title-statement.png",
         "textLayout": "",
@@ -325,6 +334,7 @@
         "text_RVexHn",
         "text_FchbWn"
       ],
+      "disabled": true,
       "settings": {
         "textLayout": "left_title",
         "title": "SOLUTIONS FOR QUICKLY AND EASILY ACHIEVING YOUR HAIRSTYLE AT HOME",
@@ -334,6 +344,7 @@
     },
     "text_only_hdnNeW": {
       "type": "text-only",
+      "disabled": true,
       "settings": {
         "title": "SOLUTIONS FOR QUICKLY AND EASILY ACHIEVING YOUR HAIRSTYLE AT HOME",
         "description": "<p>Forem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.</p><p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>",
@@ -343,6 +354,7 @@
     },
     "large_quotation_6RyxdM": {
       "type": "large-quotation",
+      "disabled": true,
       "settings": {
         "subTitle": "OUR MISSION",
         "title": "GIVING BACK TO THE WOMEN WHO SUPPORTED ME AND ALLOWED ME TO MAKE A LIVING FROM MY PASSION, HAIRDRESSING."
@@ -350,6 +362,7 @@
     },
     "title_video_pkxVPa": {
       "type": "title-video",
+      "disabled": true,
       "settings": {
         "videoLayout": "right_video",
         "enable_video_looping": false,
@@ -365,6 +378,7 @@
     },
     "title_video_CecyRU": {
       "type": "title-video",
+      "disabled": true,
       "settings": {
         "videoLayout": "",
         "enable_video_looping": true,
@@ -380,6 +394,7 @@
     },
     "text_with_image_PNcQpV": {
       "type": "text-with-image",
+      "disabled": true,
       "settings": {
         "image_1": "shopify://shop_images/image_1.png",
         "image_2": "shopify://shop_images/image_2_269e6f3e-8617-4a37-965e-82c3eea01e82.png",
@@ -392,6 +407,7 @@
     },
     "text_with_image_TmbwQ6": {
       "type": "text-with-image",
+      "disabled": true,
       "settings": {
         "image_1": "shopify://shop_images/image_1.png",
         "image_2": "shopify://shop_images/image_2_269e6f3e-8617-4a37-965e-82c3eea01e82.png",
@@ -441,10 +457,12 @@
         "text_GA33kV",
         "text_LheQ76"
       ],
+      "disabled": true,
       "settings": {}
     },
     "makro_title_product_carousel_paXJVE": {
       "type": "makro-title-product-carousel",
+      "disabled": true,
       "settings": {
         "title": "Luc Vincent Bestsellers",
         "collection": "frontpage",
@@ -484,12 +502,14 @@
         "collection_ihwmbx",
         "collection_XCb33E"
       ],
+      "disabled": true,
       "settings": {
         "title": "Luc Vincent Bestsellers"
       }
     },
     "makro_text_banner_KBAPgt": {
       "type": "makro-text-banner",
+      "disabled": true,
       "settings": {
         "layout": "layout-1",
         "title": "SOLUTIONS FOR QUICKLY AND EASILY ACHIEVING YOUR HAIRSTYLE AT HOME",
@@ -503,6 +523,7 @@
     },
     "makro_text_banner_dHXVKJ": {
       "type": "makro-text-banner",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Copy-min.jpg",
         "image_mobile": "shopify://shop_images/Copy_1_-min.jpg",
@@ -518,6 +539,7 @@
     },
     "makro_text_banner_cNHAab": {
       "type": "makro-text-banner",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Copy-min.jpg",
         "image_mobile": "shopify://shop_images/Copy_1_-min.jpg",
@@ -603,12 +625,14 @@
         "text_nWHzaV",
         "text_3WUkJJ"
       ],
+      "disabled": true,
       "settings": {
         "title": "shop by collection"
       }
     },
     "home_blog_post_HR6kLg": {
       "type": "home-blog-post",
+      "disabled": true,
       "settings": {
         "title": "Articles & Recipes",
         "description": "Discover the joy of cooking with our expert tips, mouthwatering recipes, and reviews of the finest pots, pans, and kitchen gadgets to elevate your culinary adventures. Copy",
@@ -628,7 +652,7 @@
     "custom_practice_section_Eqqfdz": {
       "type": "custom-practice-section",
       "settings": {
-        "description": "new heading"
+        "description": "List of product in collection"
       }
     }
   },
