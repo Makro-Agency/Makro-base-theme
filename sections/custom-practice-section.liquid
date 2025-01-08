@@ -61,6 +61,7 @@
               >
           <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
           <p> {{ article.excerpt | strip_html | truncatewords: 30 }} </p>
+          <p> {{ article.content | strip_html | truncatewords: 30 }} </p>
         </div>
       {% endfor %}
     </div>
