@@ -624,6 +624,12 @@
         "show_date": true,
         "show_author": false
       }
+    },
+    "custom_practice_section_Eqqfdz": {
+      "type": "custom-practice-section",
+      "settings": {
+        "description": "new heading"
+      }
     }
   },
   "order": [
@@ -650,6 +656,7 @@
     "makro_text_banner_dHXVKJ",
     "makro_text_banner_cNHAab",
     "makro_title_carousel_6mChJp",
-    "home_blog_post_HR6kLg"
+    "home_blog_post_HR6kLg",
+    "custom_practice_section_Eqqfdz"
   ]
 }
