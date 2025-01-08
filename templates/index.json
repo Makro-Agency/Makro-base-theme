@@ -624,63 +624,6 @@
         "show_date": true,
         "show_author": false
       }
-    },
-    "custom_home_product_carousel_EzPMq4": {
-      "type": "custom-home-product-carousel",
-      "blocks": {
-        "image_j7mWpj": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/product2-img.png",
-            "mobile_image": "shopify://shop_images/product2-img.png",
-            "alt_text": "img",
-            "product": "1-75-quart-saucepan-with-cover"
-          }
-        },
-        "image_wdG94d": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/product-images_1.png",
-            "mobile_image": "shopify://shop_images/product-images_1.png",
-            "alt_text": "img",
-            "product": "1-quart-saucepan-with-cover"
-          }
-        },
-        "image_ijwbEx": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Rectangle_23_655101d7-74c2-4925-9966-fe646b4b89f2.png",
-            "mobile_image": "shopify://shop_images/Rectangle_23_655101d7-74c2-4925-9966-fe646b4b89f2.png",
-            "alt_text": "img",
-            "product": "1-quart-saucepan-with-cover"
-          }
-        },
-        "image_HbxGfd": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/product-images_1_1.png",
-            "mobile_image": "shopify://shop_images/product-images_1_1.png",
-            "alt_text": "img",
-            "product": "2-quart-saucepan-with-cover"
-          }
-        }
-      },
-      "block_order": [
-        "image_j7mWpj",
-        "image_wdG94d",
-        "image_ijwbEx",
-        "image_HbxGfd"
-      ],
-      "settings": {
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "padding_top_responsive": 40,
-        "padding_bottom_responsive": 40,
-        "title": "Flexifloor in your Spaces",
-        "sub_title": "Get Inspired",
-        "btn_text": "Shop Now",
-        "btn_url": "shopify://collections"
-      }
     }
   },
   "order": [
@@ -707,7 +650,6 @@
     "makro_text_banner_dHXVKJ",
     "makro_text_banner_cNHAab",
     "makro_title_carousel_6mChJp",
-    "home_blog_post_HR6kLg",
-    "custom_home_product_carousel_EzPMq4"
+    "home_blog_post_HR6kLg"
   ]
 }
