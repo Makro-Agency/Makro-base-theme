@@ -5,11 +5,14 @@
    <div class="section-wrapper">
      <h3>{{ section.settings.description }}</h3>
    </div>
-   <div class="product-list">
-   {% for product in collection.products %}
-   <h4> {{ product.title }} </h4><br>
-   {% endfor %}
-   </div> 
+<div class="product-list">
+  {% for product in collection.products %}
+    <h4>{{ product.title }}</h4>
+  {% else %}
+    <p>No products available in this collection.</p>
+  {% endfor %}
+</div>
+
 </div>
 </div>
 
