@@ -51,6 +51,8 @@
     {%- if paginate.pages > 1 -%}
         {%- if paginate.parts.size > 0 -%}
             {% assign pagenavs = paginate.parts %}
+            <p>paginate.pages: {{ paginate.pages }}</p>
+            <p>paginate.parts.size: {{ paginate.parts }}</p>
             <div class="pagination-wrapper center">
                 <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
                   <ul class="pagination__list list-unstyled" role="list">
