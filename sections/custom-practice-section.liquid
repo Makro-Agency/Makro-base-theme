@@ -77,8 +77,6 @@
               <p> {{ article.content | strip_html | truncatewords: 30 }} </p>
             </div>
           {% endfor %}
-
-          <!-- Pagination -->
           <div class="pagination">
             {% if paginate.previous %}
               <a href="{{ paginate.previous.url }}" class="prev">Previous</a>
@@ -89,7 +87,6 @@
               <a href="{{ paginate.next.url }}" class="next">Next</a>
             {% endif %}
           </div>
-
         {% endpaginate %}
       </div>
 
@@ -103,7 +100,49 @@
 
 </div>
 
+<div class="custom-products">
 
+<div class="products-section">
+
+  <h2>All Products</h2>
+
+  <div class="products-list">
+    {% assign all_products = collections.all.products %} <!-- Fetch all products from the 'all' collection -->
+    
+    {% if all_products.size > 0 %}
+      <div class="grid">
+        {% for product in all_products %}
+          <div class="product-item">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+              <h3>{{ product.title }}</h3>
+              <p>{{ product.price | money }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      
+      <!-- Pagination (if you have many products) -->
+      {% if paginate.pages > 1 %}
+        <div class="pagination">
+          {% if paginate.previous %}
+            <a href="{{ paginate.previous.url }}" class="prev">Previous</a>
+          {% endif %}
+
+          {% if paginate.next %}
+            <a href="{{ paginate.next.url }}" class="next">Next</a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    {% else %}
+      <p>No products found.</p>
+    {% endif %}
+  </div>
+
+</div>
+
+</div>
  
 
 </div>
