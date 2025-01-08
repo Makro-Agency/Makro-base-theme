@@ -6,13 +6,18 @@
      <h3>{{ section.settings.description }}</h3>
    </div>
 <div class="product-list">
-  {% for product in collection.products %}
-    <h4>{{ product.title }}</h4>
+ <div class="product-list">
+  {% assign frontpage_collection = collections['frontpage'] %}
+  
+  {% if frontpage_collection.products.size > 0 %}
+    {% for product in frontpage_collection.products %}
+      <h4>{{ product.title }}</h4>
+    {% endfor %}
   {% else %}
     <p>No products available in this collection.</p>
-    <p>Number of products: {{ collection.products.size }}</p>
+  {% endif %}
+</div>
 
-  {% endfor %}
 </div>
 
 </div>
