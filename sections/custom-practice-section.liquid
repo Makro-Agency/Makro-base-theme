@@ -24,10 +24,10 @@
 
 <div class="main-blog">
 <h3>   {{ blog.title | escape }} </h3>
+{% for article in blog.articles %}
+  <h3>{{ article.title }}</h3>
+{% endfor %}
 
-    {% for article in blog.articles %}
-     <h3>{{ article.title }}</h3>
-    {% endif %}
 </div>
 
 
