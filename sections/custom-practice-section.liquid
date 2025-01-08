@@ -22,6 +22,8 @@
     <h3>  {{  all_products['square-hair-brush-32mm'].title | replace: '32mm','40mm'  }} : {{ all_products['square-hair-brush-32mm'].price | money | replace: '$','Rs' }} </h3>
 </div>
 
+
+
 {%- paginate blog.articles by 6 -%}
   <div class="main-blog page-width section-{{ section.id }}-padding">
     {%- render 'breadcrumb' -%}
