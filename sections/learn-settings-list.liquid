@@ -1,0 +1,132 @@
+<section>
+    <div class="page-width">
+      {% if section.settings.text != blank %}<div class="title">{{ section.settings.text }}</div>{% endif %}
+      {% if section.settings.textarea != blank %}<div class="sample_text">{{ section.settings.textarea }}</div>{% endif %}
+      {% if section.settings.richtext != blank %}<div class="richtext">{{ section.settings.richtext }}</div>{% endif %}
+      {% if section.settings.inline_richtext != blank %}<div class="inline_richtext">{{ section.settings.inline_richtext }}</div>{% endif %}
+      {% if section.settings.image !=blank %}
+      {% endif %}
+    </div>
+  </section>
+  
+  
+  {% schema %}
+  {
+    "name": "Learn settings list",
+    "class": "setting-list",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Learn List"
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "My Learn List",
+        "default": "My Learn List"
+      },
+      {
+        "type": "textarea",
+        "label": "textarea",
+        "id": "textarea"
+      },
+      {
+        "type": "richtext",
+        "label": "richtext",
+        "id": "richtext"
+      },
+      {
+        "type": "inline_richtext",
+        "label": "inline_richtext",
+        "id": "inline_richtext"
+      },
+      {
+        "type": "html",
+        "label": "html",
+        "id": "html"
+      },
+      {
+        "type": "image_picker",
+        "label": "select image",
+        "id": "image"
+      },
+      {
+        "type": "range",
+        "label": "overlay opacity",
+        "id": "overlay_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "unit": "%",
+        "default": 0,
+      },
+      {
+        "type": "select",
+        "label": "select",
+        "id": "select",
+        "options": [
+          {
+            "value": "option 1",
+            "label": "option 1"
+          },
+          {
+            "value": "option 2",
+            "label": "option 2"
+          },
+          {
+            "value": "option 3",
+            "label": "option 3"
+          },
+          {
+            "value": "option 4",
+            "label": "option 4"
+          }
+        ],
+        "default": "option 1"
+      },
+      {
+        "type": "radio",
+        "label": "radio",
+        "id": "radio",
+        "options": [
+          {
+            "value": "option 1",
+            "label": "option 1"
+          },
+          {
+            "value": "option 2",
+            "label": "option 2"
+          },
+          {
+            "value": "option 3",
+            "label": "option 3"
+          },
+          {
+            "value": "option 4",
+            "label": "option 4"
+          }
+        ],
+        "default": "option 1"
+      },
+      {
+        "type": "checkbox",
+        "label": "checkbox",
+        "id": "checkbox",
+        "default": true
+      },
+    ],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Learn settings list"
+      }
+    ]
+  }
+  {% endschema %}
+  
+  {% stylesheet %}
+  {% endstylesheet %}
+  
+  {% javascript %}
+  {% endjavascript %}
+  
