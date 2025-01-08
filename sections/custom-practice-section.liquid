@@ -1,5 +1,9 @@
 
-
+{% style %}
+#blog-list{
+     display:flex; 
+}
+{% endstyle %}
 <div class="section custom-section">
 <div class="home-blog-posts page-width section-padding">
    <div class="section-wrapper">
@@ -56,6 +60,7 @@
                 height="{{ article.image.height }}"
               >
           <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+          <p> {{ article.excerpt | strip_html | truncatewords: 30 }} </p>
         </div>
       {% endfor %}
     </div>
