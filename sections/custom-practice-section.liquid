@@ -1,0 +1,27 @@
+
+
+<div class="section-wrapper">
+<h3>{{ section.settings.description }}</h3>
+</div>
+
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "custom practice section" ,
+  "tag": "section"
+  "class": "custom-practice",
+  "settings":[
+    "type": "text",
+    "id" : "description",
+    "label" : "description
+  ],
+  "presets":[
+    "name": "custom practice section"
+  ]
+}
+{% endschema %}
