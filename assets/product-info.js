@@ -198,7 +198,8 @@ if (!customElements.get('product-info')) {
 
           this.productForm?.toggleSubmitButton(
             html.getElementById(`ProductSubmitButton-${this.sectionId}`)?.hasAttribute('disabled') ?? true,
-            window.variantStrings.soldOut
+            window.variantStrings.soldOut,
+            alert("test"),
           );
 
           publish(PUB_SUB_EVENTS.variantChange, {
@@ -414,3 +415,79 @@ if (!customElements.get('product-info')) {
     }
   );
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const addToCartButton = document.querySelector('[data-add-to-cart]');
+  const cartCountElement = document.getElementById('cart-icon-count');
+  const swatchElements = document.querySelectorAll('.swatch-option'); // Update with your swatch class
+
+  // Update product ID when a swatch is clicked
+  swatchElements.forEach((swatch) => {
+    swatch.addEventListener('click', function () {
+      const selectedVariantId = this.getAttribute('data-variant-id'); // Ensure your swatches have this attribute
+      const selectedVariantName = this.getAttribute('data-variant-name'); // Optional: track swatch name
+      
+      addToCartButton.setAttribute('data-product-id', selectedVariantId);
+
+      console.log(`Selected Variant: ${selectedVariantName} (ID: ${selectedVariantId})`);
+    });
+  });
+
+  // Add to cart functionality remains the same
+  addToCartButton?.addEventListener('click', function () {
+    const productId = this.getAttribute('data-product-id');
+    const productName = this.getAttribute('data-product-name');
+
+    if (!productId) {
+      alert('Product ID is missing.');
+      return;
+    }
+
+    const quantityInput = document.querySelector('[name="quantity"]');
+    const quantity = quantityInput ? parseInt(quantityInput.value, 10) : 1;
+
+    if (quantity < 1) {
+      alert('Please select a valid quantity.');
+      return;
+    }
+
+    addToCartButton.setAttribute('disabled', 'true');
+    addToCartButton.classList.add('loading');
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: productId,
+        quantity: quantity,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(`${productName} added to cart`, data);
+
+        fetch('/cart.js')
+          .then((response) => response.json())
+          .then((cartData) => {
+            cartCountElement.textContent = cartData.item_count;
+          });
+
+        addToCartButton.removeAttribute('disabled');
+        addToCartButton.classList.remove('loading');
+      })
+      .catch((error) => {
+        console.error('Error adding to cart:', error);
+        alert('An error occurred. Please try again.');
+        addToCartButton.removeAttribute('disabled');
+        addToCartButton.classList.remove('loading');
+      });
+  });
+});
+

@@ -26,7 +26,7 @@
   display: inline-block;
 }
 
-.cart-icon .cart-count {
+.cart-icon .cart-icon-count {
   position: absolute;
   top: 0;
   right: 0px;
@@ -42,11 +42,11 @@
     justify-content: center;
 }
 
-.cart-icon.has-items .cart-count {
+.cart-icon.has-items .cart-icon-count {
   display: block;
 }
 
-.cart-icon .cart-count {
+.cart-icon .cart-icon-count {
   display: none;
 }
 .quantity-selector {
