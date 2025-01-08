@@ -23,10 +23,26 @@
 </div>
 
 <div class="main-blog">
-<h3>   {{ blog.title | escape }} </h3>
-{% for article in blog.articles %}
-  <h3>{{ article.title }}</h3>
-{% endfor %}
+{% assign blog_handle = 'news' %}  <!-- Replace with your blog's handle -->
+{% assign blog = blogs[blog_handle] %}
+
+<div id="blog-count-section">
+  <h2>Live Blog Posts</h2>
+
+  {% if blog %}
+    <p>Total Blogs: {{ blog.articles_count }}</p>
+
+    <div id="blog-list">
+      {% for article in blog.articles %}
+        <div class="blog-post">
+          <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No blogs found.</p>
+  {% endif %}
+</div>
 
 </div>
 
