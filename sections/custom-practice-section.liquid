@@ -23,7 +23,7 @@
 </div>
 
 <div class="blog-list">
- {% padinate blog.articles by 2 %}
+ {% paginate blog.articles by 2 %}
  {% for article in blog.articles %}
   <img
                 srcset="
@@ -45,7 +45,7 @@
                 width="{{ article.image.width }}"
                 height="{{ article.image.height }}"
               >
-              
+
  <h4> {{ article.title }} </h4>
  <p> {{ article.description }}  </p>
  {% endfor %}
