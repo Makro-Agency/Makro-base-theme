@@ -26,34 +26,43 @@
 
 
   <div class="main-blog page-width section-{{ section.id }}-padding">
-    {%- render 'breadcrumb' -%}
-    <div class="main-blog-header">
-      <h6 class="h5">tsr blog</h6>
-      <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-        {{ blog.title | escape }}
-      </h1>
-    </div>
-    <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
-      {%- for article in blog.articles -%}
-        <div
-          class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-            style="--animation-order: {{ forloop.index }};"
-          {% endif %}
-        >
-          {%- render 'article-card',
-            article: article,
-            media_height: section.settings.image_height,
-            media_aspect_ratio: article.image.aspect_ratio,
-            show_image: section.settings.show_image,
-            show_date: section.settings.show_date,
-            show_author: section.settings.show_author,
-            show_excerpt: true
-          -%}
-        </div>
-      {%- endfor -%}
-    </div>
+  <div class="main-blog-header">
+    <h6 class="h5">tsr blog</h6>
+    <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {{ blog.title | escape }}
+    </h1>
+  </div>
+
+  <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+    {%- for article in blog.articles -%}
+      <div
+        class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+          style="--animation-order: {{ forloop.index }};"
+        {% endif %}
+      >
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.excerpt | strip_html | truncatewords: 50 }}</p> <!-- Excerpt of the article -->
+        <p><a href="{{ article.url }}">Read More</a></p>
+        {% if section.settings.show_date %}
+          <p>{{ article.published_at | date: "%B %d, %Y" }}</p> <!-- Published date -->
+        {% endif %}
+        {% if section.settings.show_author %}
+          <p>By {{ article.author }}</p> <!-- Author name -->
+        {% endif %}
+        {% if section.settings.show_image %}
+          <img src="{{ article.image.src }}" alt="{{ article.title }}" />
+        {% endif %}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if paginate.pages > 1 -%}
+    {%- render 'pagination', paginate: paginate -%}
+  {%- endif -%}
+</div>
+
 
     {%- if paginate.pages > 1 -%}
       {%- render 'pagination', paginate: paginate -%}
