@@ -10,6 +10,8 @@
     <h4>{{ product.title }}</h4>
   {% else %}
     <p>No products available in this collection.</p>
+    <p>Number of products: {{ collection.products.size }}</p>
+
   {% endfor %}
 </div>
 
