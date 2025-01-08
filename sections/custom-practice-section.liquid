@@ -48,7 +48,7 @@
       <p>Total Blogs: {{ blog.articles_count }}</p>
 
       <div id="blog-list">
-        {% paginate blog.articles by 5 %} <!-- This will paginate the blog posts, showing 5 articles per page -->
+        {% paginate blog.articles by 2 %} <!-- This will paginate the blog posts, showing 5 articles per page -->
 
           {% for article in blog.articles %}
             <div class="blog-post">
@@ -83,6 +83,7 @@
             {% if paginate.previous %}
               <a href="{{ paginate.previous.url }}" class="prev">Previous</a>
             {% endif %}
+
 
             {% if paginate.next %}
               <a href="{{ paginate.next.url }}" class="next">Next</a>
