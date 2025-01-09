@@ -151,7 +151,7 @@
 <p> {{ first_product.price }} </p>
 
 
-
+<h2> join all product tags </h2>
 {% for product in collections.all.products %}
   {% for all_tags in product.tags %}
   {% comment %}  {% unless all_tags contains tag %}
@@ -163,6 +163,8 @@
 
 <p>{{ all_tags }}</p>
 
+{% assign product-list = collections.all.products | map: title %}
+{{ product-list | join: ',' }}
 
 </div>
 </div>
