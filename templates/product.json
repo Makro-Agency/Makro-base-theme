@@ -367,6 +367,10 @@
         "show_secondary_image": true
       }
     },
+    "main_product_2_nATfiq": {
+      "type": "main-product-2",
+      "settings": {}
+    },
     "17313003662de7178c": {
       "type": "apps",
       "blocks": {
@@ -381,10 +385,6 @@
       "settings": {
         "include_margins": true
       }
-    },
-    "main_product_2_nATfiq": {
-      "type": "main-product-2",
-      "settings": {}
     }
   },
   "order": [
@@ -397,7 +397,7 @@
     "b4cff4f7-9e01-4acf-a25d-3d5f63585588",
     "review-widget",
     "b63a31ae-770c-4aa5-b6cf-81976eb3c1d0",
-    "17313003662de7178c",
-    "main_product_2_nATfiq"
+    "main_product_2_nATfiq",
+    "17313003662de7178c"
   ]
 }
