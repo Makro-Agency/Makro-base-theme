@@ -13,19 +13,24 @@
 <div class="row">
 <div class="col-md-6">
 
-  {% assign current_product = product.selected_or_first_available_variant %}
+{% assign current_product = product.selected_or_first_available_variant %}
 {% assign product_image = current_product.featured_image %}
 
-<!-- Check variant image -->
-<p>Variant Image URL: {{ product_image | img_url: 'large' }}</p>
+<!-- Debug: Output the current variant's image -->
+<p>Variant Image: {{ current_product.featured_image | img_url: 'large' }}</p>
 
-<!-- Check product image -->
-<p>Product Image URL: {{ product.featured_image | img_url: 'large' }}</p>
-
+<!-- Check if variant image is available -->
 {% if product_image %}
   <img class="product-image" src="{{ product_image | img_url: 'large' }}" alt="{{ product_image.alt | escape }}" id="main-product-image">
 {% else %}
-  <p>No image available</p>
+  <!-- Debug: Variant doesn't have image, fallback to main product image -->
+  <p>Variant doesn't have an image, falling back to product image.</p>
+
+  {% if product.featured_image %}
+    <img class="product-image" src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" id="main-product-image">
+  {% else %}
+    <p>No image available</p>
+  {% endif %}
 {% endif %}
 
 </div>
