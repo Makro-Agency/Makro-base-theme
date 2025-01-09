@@ -3,9 +3,20 @@
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
-  
+ {% assign current_product = product.selected_or_first_available_variant %} 
+ {% asign product_image = current_product.featured_image | product.featured_image %}
 <div class="main-product-template">
 <h2> Hello this is main product </h2>
+<div class="container">
+<div calss="row">
+<div class="col-md-6">
+<img class="product-image" src="{{ product_image | img_url: 'large'  }}" alt="{{ product_image.alt }}" id="main-product-image" >
+</div>
+<div class="col-md-6">
+
+</div>
+</div>
+</div>
 </div>
 
 {% schema %}
