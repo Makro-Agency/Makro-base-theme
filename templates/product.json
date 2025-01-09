@@ -123,6 +123,45 @@
     },
     "bundle_product_section_Aw8y7z": {
       "type": "bundle-product-section",
+      "blocks": {
+        "product_e6WrJ3": {
+          "type": "product",
+          "settings": {
+            "product": "vanilla"
+          }
+        },
+        "product_DNnx3P": {
+          "type": "product",
+          "settings": {
+            "product": "wild-berries"
+          }
+        },
+        "product_7KWULA": {
+          "type": "product",
+          "settings": {
+            "product": "banana"
+          }
+        },
+        "product_MN38yM": {
+          "type": "product",
+          "settings": {
+            "product": "chocolate"
+          }
+        },
+        "product_JRAiad": {
+          "type": "product",
+          "settings": {
+            "product": "coffee"
+          }
+        }
+      },
+      "block_order": [
+        "product_e6WrJ3",
+        "product_DNnx3P",
+        "product_7KWULA",
+        "product_MN38yM",
+        "product_JRAiad"
+      ],
       "settings": {
         "padding_top": 36,
         "padding_bottom": 36,
