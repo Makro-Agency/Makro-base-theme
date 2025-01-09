@@ -25,8 +25,8 @@
   <img class="product-image" src="{{ product_image | img_url: 'large' }}" alt="{{ product_image.alt | escape }}" id="main-product-image">
   {% for image in product.images %}
   <img src="{{ image.src | img_url: 'medium' }}">
-  {% endif %}
-  
+  {% endfor %}
+
 {% else %}
   {% if product.featured_image %}
     <img class="product-image" src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" id="main-product-image">
