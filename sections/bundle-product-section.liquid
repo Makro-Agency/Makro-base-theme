@@ -1,0 +1,436 @@
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+  
+  {% assign bundle_product = section.settings.bundle_product %}
+  {% assign free_product = section.settings.free_product %}
+  {% assign discount_amount = section.settings.discount_amount | default: "10" %}
+  
+  <div class="bundle-data">
+    <div class="page-width section-{{ section.id }}-padding">
+      <div class="bundle-product main-bundle-flex">
+        <div class="main-left main-product">
+          <div class="product-image">
+            {{ bundle_product.featured_image | image_url: width: 500 | image_tag: alt: bundle_product.title }}
+          </div>
+        </div>
+        <div class="main-right">
+          <div class="product-desc">
+            <h3>{{ bundle_product.title }}</h3>
+            <div class="pdp_desc">{{ bundle_product.description | truncatewords: 20 }}</div>
+            <div class="img-text-main">
+              <div class="img-text-item">
+                <div class="item-img">
+                   {{ section.settings.item_img_1 | image_url: width: 32 | image_tag: alt: bundle_product.title }}
+                </div>
+                <div class="item-text">
+                  {{ section.settings.item_text_1 }}
+                </div>
+              </div>
+              <div class="img-text-item">
+                <div class="item-img">
+                   {{ section.settings.item_img_2 | image_url: width: 32 | image_tag: alt: bundle_product.title }}
+                </div>
+                <div class="item-text">
+                  {{ section.settings.item_text_2 }}
+                </div>
+              </div>
+              <div class="img-text-item">
+                <div class="item-img">
+                   {{ section.settings.item_img_3 | image_url: width: 32 | image_tag: alt: bundle_product.title }}
+                </div>
+                <div class="item-text">
+                  {{ section.settings.item_text_3 }}
+                </div>
+              </div>
+            </div>
+            <div class="price-data">Price: {{ bundle_product.price | money }}</div>
+            <div class="flavour-text">
+             <h4>{{ section.settings.flavour-text }}</h4>
+              <div class="flavour-desc">
+                {{ section.settings.flavour_desc }}
+              </div>
+            </div>
+          </div>
+          <div class="block-products-outer">
+        {% for block in section.blocks %}
+          {% assign product = block.settings.product %}
+          <div class="block-product" data-variant-id="{{ product.variants.first.id }}">
+            <div class="block-flex">
+            <div class="left-block">
+            <h4>{{ product.title }}</h4>
+            <div>{{ product.description | truncatewords: 20 }}</div>
+            </div>
+            <div class="right-block">
+             <div class="quantity">
+              <button type="button" class="qty-minus">-</button>
+              <input type="number" class="qty" value="0" min="0" data-price="{{ product.price | money_without_currency }}">
+              <button type="button" class="qty-plus">+</button>
+            </div>
+            </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    
+       {% if section.blocks.size >= 4 %}
+         
+        <div class="free-product" data-variant-id="{{ free_product.variants.first.id }}" style="display: none;">
+          <div class="offer-labels">
+           <div class="offerlabel cmn-offer">
+             Save 20%
+           </div>
+          <div class="offerlabel_2 cmn-offer">
+            €1.43 / meal
+           </div>
+         </div>
+          
+          <div class="free-product-flex">
+            <div class="free-product-left">
+              <h4>{{ free_product.title }}</h4>
+              <p>{{ free_product.description | truncatewords: 20 }}</p>
+            </div>
+            <div class="free-product-right">
+              <div class="totals">
+                <span class="subtotal">€0.00</span>
+                <span class="discount">€0.00</span>
+              </div>
+            </div>
+          </div>
+          <div class="extra-text">In your box:</div>
+            <div class="additional-text">
+               <div class="addional-info">
+                 <div class="info-text">{{ section.settings.additinal_info }}</div>
+               </div>
+              
+            </div>
+        </div>
+      {% endif %}
+    
+      <div class="add-to-cart">
+        {% if section.blocks.size >= 4 %}
+          <button class="btn" disabled>Add 5 Bags To Unlock Offer</button>
+        {% else %}
+          <p>Please select at least 4 products to enable the "Add to Cart" button.</p>
+        {% endif %}
+      </div>
+  
+      <div class="shipping-text">
+        <div class="shiping-item">
+          <div class="shipping-left">
+             {{ section.settings.icon_img_1 | image_url: width: auto | image_tag }}
+          </div>
+          <div class="shipping-text">
+            {{ section.settings.icon_text_1 }}
+          </div>
+        </div>
+        <div class="shiping-item">
+          <div class="shipping-left">
+             {{ section.settings.icon_img_2 | image_url: width: auto | image_tag }}
+          </div>
+          <div class="shipping-text">
+            {{ section.settings.icon_text_2 }}
+          </div>
+        </div>
+        <div class="shiping-item">
+          <div class="shipping-left">
+             {{ section.settings.icon_img_3 | image_url: width: auto | image_tag }}
+          </div>
+          <div class="shipping-text">
+            {{ section.settings.icon_text_3 }}
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+      
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  
+  <script>
+  $(document).ready(function() {
+    var mainProductPrice = parseFloat('{{ bundle_product.price | money_without_currency | replace: ',', '.' }}');
+    var freeProductPrice = parseFloat('{{section.settings.discount_amount}}');
+    var discountAmount = 0;
+    var itemCount = 0;
+  
+    function calculateTotals() {
+      var subtotal = mainProductPrice;
+      itemCount = 0;
+  
+      $('.block-product .qty').each(function() {
+        var qty = parseInt($(this).val());
+        if (qty >= 1) {
+          var price = parseFloat($(this).data('price'));
+          subtotal += qty * price;
+          itemCount += qty;
+        }
+      });
+  
+      if (itemCount >= 4) {
+        discountAmount = freeProductPrice;
+        $('.free-product').show();
+        $('.add-to-cart .btn').prop('disabled', false);
+      } else {
+        discountAmount = 0;
+        $('.free-product').hide();
+        $('.add-to-cart .btn').prop('disabled', true);
+      }
+  
+      var total = subtotal - discountAmount;
+  
+      $('.subtotal').text('€' + subtotal.toFixed(2));
+      $('.discount').text('€' + discountAmount.toFixed(2));
+      $('.total').text('€' + total.toFixed(2));
+    }
+  
+    $('.qty').on('input', function() {
+      calculateTotals();
+    });
+  
+    $('.qty-plus').on('click', function() {
+      var $input = $(this).siblings('.qty');
+      $input.val(parseInt($input.val()) + 1);
+      $input.trigger('input');
+    });
+  
+    $('.qty-minus').on('click', function() {
+      var $input = $(this).siblings('.qty');
+      if ($input.val() > 0) {
+        $input.val(parseInt($input.val()) - 1);
+        $input.trigger('input');
+      }
+    });
+  
+    calculateTotals();
+  
+    $('.add-to-cart .btn').on('click', function() {
+      var items = [];
+  
+      items.push({
+        id: '{{ bundle_product.variants.first.id }}',
+        quantity: 1,
+        properties: {
+          'Bundle Product': true
+        }
+      });
+  
+      $('.block-product .qty').each(function() {
+        var qty = parseInt($(this).val());
+        var variantId = $(this).closest('.block-product').data('variant-id');
+        if (qty >= 1) {
+          items.push({
+            id: variantId,
+            quantity: qty
+          });
+        }
+      });
+  
+      if (itemCount >= 4) {
+        items.push({
+          id: $('.free-product').data('variant-id'),
+          quantity: 1,
+          properties: {
+            'Free Product': true
+          }
+        });
+      }
+  
+      addToCart(items);
+    });
+  
+    function addToCart(items) {
+      var addItemToCart = function(item, callback) {
+        $.ajax({
+          type: 'POST',
+          url: '/cart/add.js',
+          data: {
+            id: item.id,
+            quantity: item.quantity,
+            properties: item.properties
+          },
+          dataType: 'json',
+          success: function() {
+            callback();
+          },
+          error: function(xhr, status, error) {
+            console.error('Error adding item to cart:', xhr, status, error);
+          }
+        });
+      };
+  
+      var processItems = function(index) {
+        if (index < items.length) {
+          addItemToCart(items[index], function() {
+            processItems(index + 1);
+          });
+        } else {
+          window.location.href = '/checkout';
+        }
+      };
+  
+      processItems(0);
+    }
+  });
+  </script>
+  
+  
+  {% schema %}
+  {
+    "name": "Bundle Product Section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      },
+      {
+        "type": "header",
+        "content": "Item Image Text"
+      },
+       {
+        "type": "image_picker",
+        "id": "item_img_1",
+        "label": "item image 1"
+      },
+       {
+        "type": "text",
+        "id": "item_text_1",
+        "label": "item image Text 1"
+      },
+       {
+        "type": "image_picker",
+        "id": "item_img_2",
+        "label": "item image 2"
+      },
+       {
+        "type": "text",
+        "id": "item_text_2",
+        "label": "item image Text 2"
+      },
+       {
+        "type": "image_picker",
+        "id": "item_img_3",
+        "label": "item image 3"
+      },
+       {
+        "type": "text",
+        "id": "item_text_3",
+        "label": "item image Text 3"
+      },    
+      {
+        "type": "text",
+        "id": "flavour-text",
+        "label": "flavour-text"
+      },
+      {
+        "type": "richtext",
+        "id": "flavour_desc",
+        "label": "flavour-desc"
+      },
+      {
+        "type": "product",
+        "id": "bundle_product",
+        "label": "Main Product"
+      },
+      {
+        "type": "product",
+        "id": "free_product",
+        "label": "Free Product"
+      },
+      {
+        "type": "text",
+        "id": "discount_amount",
+        "label": "Discount Amount",
+        "default": "10"
+      },
+       {
+        "type": "richtext",
+        "id": "additinal_info",
+        "label": "Free product Additinal Info"
+      },
+      {
+        "type": "header",
+        "content": "Icon Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_img_1",
+        "label": "Icon 1"
+      },
+       {
+        "type": "text",
+        "id": "icon_text_1",
+        "label": "Icon text 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_img_2",
+        "label": "Icon 2"
+      },
+       {
+        "type": "text",
+        "id": "icon_text_2",
+        "label": "Icon text 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon_img_3",
+        "label": "Icon 3"
+      },
+       {
+        "type": "text",
+        "id": "icon_text_3",
+        "label": "Icon text 3"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Block Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Bundle Product Section"
+      }
+    ]
+  }
+  {% endschema %}
