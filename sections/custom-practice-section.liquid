@@ -145,7 +145,7 @@
 </div>
  
  <h2> Display first product </h2>
- {% assign  first_product = collection.products | first %}
+ {% assign  first_product = collections.all.products | first %}
  <p>{{ first_product.title }}</p>
  <p>{{ first_product.price }}</p>
 </div>
