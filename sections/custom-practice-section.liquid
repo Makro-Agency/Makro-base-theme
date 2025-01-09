@@ -162,10 +162,11 @@
 {% endfor %}
 
 <p>{{ all_tags }}</p>
+<h4>map filter</h4>
 
 {% assign product-list = collections.all.products | map: 'title' %}
 <p> {{ product-list | join: ',' }} </p>
-
+<p>{{ collections.all.products | map: 'title' | reverse | join: ','}}</p>
 </div>
 </div>
 
