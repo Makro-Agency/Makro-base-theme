@@ -163,8 +163,8 @@
 
 <p>{{ all_tags }}</p>
 
-{% assign product-list = collections.all.products | map: title %}
-{{ product-list | join: ',' }}
+{% assign product-list = collections.all.products | map: 'title' %}
+<p> {{ product-list | join: ',' }} </p>
 
 </div>
 </div>
