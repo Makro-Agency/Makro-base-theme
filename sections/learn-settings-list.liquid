@@ -11,8 +11,8 @@
       {% endif %}
       {% if section.settings.textarea != blank %}<div class="sample_text">{{ section.settings.textarea }}</div>{% endif %}
 
-      {% unless section.settings.textarea != blank %}
-        {{ section.settings.textarea }}
+      {% unless section.settings.textarea == blank %}
+        This is sample text are unless condition.
       {% endunless %}
 
       {% if section.settings.richtext != blank %}<div class="richtext">{{ section.settings.richtext }}</div>{% endif %}
@@ -130,10 +130,22 @@
         "default": true
       },
     ],
-    "blocks": [],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "image block",
+        "limit": 2
+
+      },
+    ],
     "presets": [
       {
-        "name": "Learn settings list"
+        "name": "Learn settings list",
+        "blocks": [
+          {
+            "type": "image"
+          }
+        ]
       }
     ]
   }
