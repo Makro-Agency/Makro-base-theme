@@ -14,7 +14,7 @@
 <div class="col-md-6">
 
 {% assign current_product = product.selected_or_first_available_variant %}
-{% assign product_image = current_product.featured_image | default: product.featutrd_image %}
+{% assign product_image = current_product.featured_image | default: product.featured_image  %}
 
 <!-- Debug: Output the current variant's image -->
 <p>Variant Image: {{ current_product.featured_image | img_url: 'large' }}</p>
