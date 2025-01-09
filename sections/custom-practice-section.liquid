@@ -150,13 +150,14 @@
 <p> {{ first_product.title }} </p>
 <p> {{ first_product.price }} </p>
 
-<p> {{ collections.all_tags }} </p>
+
 {% assign all_tags = '' %}
 {% for product in collections.all.products %}
   {% for tag in product.tags %}
-    {% unless all_tags contains tag %}
+  {% comment %}  {% unless all_tags contains tag %}
       {% assign all_tags = all_tags | append: tag | append: ',' %}
-    {% endunless %}
+    {% endunless %}  {%endcomment %}
+    {{ all_tags | join: ','  }}
   {% endfor %}
 {% endfor %}
 
