@@ -1,3 +1,30 @@
+{%- style -%}
+
+.image-cards {
+    display: flex;
+    gap: 30px;
+}
+.image-block a {
+  position: relative;
+  display: block;
+  line-height: 0;
+}
+.image-block a::before {
+  content: "";
+  background: #000;
+  opacity: {{ section.settings.overlay_opacity }}%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+
+}
+  
+{%- endstyle -%}
+
 <section>
     <div class="page-width">
       {% if section.settings.text != blank %}
@@ -9,18 +36,55 @@
             <h1>This is my learning list title</h1>
           </div>
       {% endif %}
-      {% if section.settings.textarea != blank %}<div class="sample_text">{{ section.settings.textarea }}</div>{% endif %}
-
-      {% unless section.settings.textarea == blank %}
-        This is sample text are unless condition.
+      
+    
+      {% unless section.settings.textarea != blank %}
+        <div class="sample_text">This is sample text are unless condition.</div>
+      {% elsif section.settings.textarea != blank %}
+        <div class="sample_text">{{ section.settings.textarea }}</div>
       {% endunless %}
 
       {% if section.settings.richtext != blank %}<div class="richtext">{{ section.settings.richtext }}</div>{% endif %}
       {% if section.settings.inline_richtext != blank %}<div class="inline_richtext">{{ section.settings.inline_richtext }}</div>{% endif %}
       {% if section.settings.html != blank %}<div class="inline_richtext">{{ section.settings.html }}</div>{% endif %}
-      {% if section.settings.image != blank %}
-        <img src="{{ section.settings.image | image_url }}" alt="image" height="auto" width="auto">
-      {% endif %}
+      
+
+      {% assign selected_option = "option 2" %}
+
+      {% case selected_option %}
+        {% when "option 1" %}
+          option 1 is selected
+        {% when "option 2" %}
+          option 2 is selected
+        {% when "option 3" %}
+          option 3 is selected
+        {% else %}
+          option 4 is selected
+      {% endcase %}
+
+      <div class="image-cards">
+        {%- for block in section.blocks -%}
+            <div class="image-block">
+              {% if block.settings.image_card != blank %}   
+                {%- liquid
+                  assign height = block.settings.image_card.width | divided_by: block.settings.image_card.aspect_ratio | round              
+                  assign sizes = '(min-width: 750px) 50vw, 100vw'
+                  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                -%}
+                {% assign cardimage = 'image_card' %}
+                <a href="#">
+                  {{
+                    block.settings.image_card
+                    | image_url: width: 1100
+                    | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths, class: cardimage
+                  }}
+                </a>
+              {%- else -%}                     
+                {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}        
+              {%- endif -%}
+            </div>
+        {%- endfor -%}
+      </div>
     </div>
   </section>
   
@@ -134,7 +198,18 @@
       {
         "type": "image",
         "name": "image block",
-        "limit": 2
+        "limit": 2,
+        "settings": [
+          {
+            "type": "header",
+            "content": "Add Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_card",
+            "label": "image block 1"
+          }
+        ]
 
       },
     ],
@@ -142,6 +217,9 @@
       {
         "name": "Learn settings list",
         "blocks": [
+          {
+            "type": "image"
+          },
           {
             "type": "image"
           }
