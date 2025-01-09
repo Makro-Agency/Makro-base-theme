@@ -18,10 +18,10 @@
 
 <!-- Debug: Output the current variant's image -->
 <p>Variant Image: {{ current_product.featured_image | img_url: 'large' }}</p>
-
+ <p>Product image:</p>
 <!-- Check if variant image is available -->
 {% if product_image %}
- <p>Product image:</p>
+
   <img class="product-image" src="{{ product_image | img_url: 'large' }}" alt="{{ product_image.alt | escape }}" id="main-product-image">
   {% for image in product.images %}
   <img src="{{ image.src | img_url: 'medium' }}">
@@ -38,7 +38,7 @@
 
 </div>
 <div class="col-md-6">
-<h1>{{ }}</h1>
+<h1>/h1>
 
 
 
