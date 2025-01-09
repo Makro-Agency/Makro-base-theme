@@ -14,7 +14,7 @@
 <div class="col-md-6">
 
 {% assign current_product = product.selected_or_first_available_variant %}
-{% assign product_image = current_product.featured_image %}
+{% assign product_image = current_product.featured_image | default: product.featutrd_image %}
 
 <!-- Debug: Output the current variant's image -->
 <p>Variant Image: {{ current_product.featured_image | img_url: 'large' }}</p>
@@ -23,9 +23,6 @@
 {% if product_image %}
   <img class="product-image" src="{{ product_image | img_url: 'large' }}" alt="{{ product_image.alt | escape }}" id="main-product-image">
 {% else %}
-  <!-- Debug: Variant doesn't have image, fallback to main product image -->
-  <p>Variant doesn't have an image, falling back to product image.</p>
-
   {% if product.featured_image %}
     <img class="product-image" src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" id="main-product-image">
   {% else %}
@@ -35,6 +32,7 @@
 
 </div>
 <div class="col-md-6">
+<h1>{{ }}</h1>
 
 
 
