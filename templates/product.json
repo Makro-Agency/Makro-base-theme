@@ -105,6 +105,7 @@
     },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -188,7 +189,7 @@
   },
   "order": [
     "main",
-    "related-products",
-    "bundle_product_section_Aw8y7z"
+    "bundle_product_section_Aw8y7z",
+    "related-products"
   ]
 }
