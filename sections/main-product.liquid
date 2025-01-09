@@ -21,10 +21,12 @@
 
 <!-- Check if variant image is available -->
 {% if product_image %}
+ <p>Product iamge</p>
   <img class="product-image" src="{{ product_image | img_url: 'large' }}" alt="{{ product_image.alt | escape }}" id="main-product-image">
 {% else %}
   {% if product.featured_image %}
     <img class="product-image" src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" id="main-product-image">
+
   {% else %}
     <p>No image available</p>
   {% endif %}
