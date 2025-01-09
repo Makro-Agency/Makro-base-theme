@@ -240,6 +240,7 @@
         "6b9357c1-7c43-4d06-8b96-b8ec6dfe19ee",
         "bde8f409-0041-4a50-b3b2-e981feb36a6e"
       ],
+      "disabled": true,
       "custom_css": [
         ".custompromo {background-color: #990000; text-align: left; padding-top: 10px; padding-bottom: 20px; color: #ffffff; padding-left: 20px; padding-right: 20px;}",
         ".custompromo a {color: #ffffff; font-size: 70%;}",
@@ -380,6 +381,10 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "main_product_2_nATfiq": {
+      "type": "main-product-2",
+      "settings": {}
     }
   },
   "order": [
@@ -392,6 +397,7 @@
     "b4cff4f7-9e01-4acf-a25d-3d5f63585588",
     "review-widget",
     "b63a31ae-770c-4aa5-b6cf-81976eb3c1d0",
-    "17313003662de7178c"
+    "17313003662de7178c",
+    "main_product_2_nATfiq"
   ]
 }
