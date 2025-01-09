@@ -78,6 +78,10 @@ red,green,blue,yellow,violet,red,yellow
 
 {% assign tagsword = "sale,mens,womens,awesome" | split: "," %}
 <p>{{ tagsword[2] }}</p>
+<p>{{ 2 | at_least: 5 }}</p>
+<p>{{ 4.6 | floor }}</p>
+<p>{{ 4.3 | floor }}</p>
+<p>{{ 12 | modulo:3 }}</p>
 
   </section>
 

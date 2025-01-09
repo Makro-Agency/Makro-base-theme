@@ -1,0 +1,65 @@
+
+<section class="product-template">
+    <div class="product-container">
+      <h1 class="product-title">{{ product.title }}</h1>
+      <p class="product-price">
+        {% if product.compare_at_price > product.price %}
+          <span class="original-price">{{ product.compare_at_price | money }}</span>
+          <span class="sale-price">{{ product.price | money }}</span>
+        {% else %}
+          <span class="current-price">{{ product.price | money }}</span>
+        {% endif %}
+      </p>
+
+      <div class="product-description">
+        {{ product.description |strip_html | truncate: 200 }}
+      </div>
+      <form method="post" action="/cart/add">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+  
+        {% if product.variants.size > 1 %}
+          <label for="variant-select">Choose an option:</label>
+          <select name="id" id="variant-select">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}">
+                {{ variant.title }} - {{ variant.price | money }}
+              </option>
+            {% endfor %}
+          </select>
+        {% endif %}
+        <button type="submit" class="btn btn-primary" {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %} Add to Cart {% else %} Sold Out {% endif %}
+        </button>
+      </form>
+  
+      {% if product.media.size > 0 %}
+        <div class="product-media">
+          {% for media in product.media %}
+            {% case media.media_type %}
+              {% when 'image' %}
+                <img src="{{ media.image.src | image_url: 'large' }}" alt="{{ media.alt }}">
+              {% when 'video' %}
+                <video controls>
+                  <source src="{{ media.src }}" type="video/mp4">
+                </video>
+              {% when 'external_video' %}
+                {{ media.external_video.html }}
+            {% endcase %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% schema %}
+{
+"name": "custom-product-template",
+"settings":[],
+"presets": [
+    {
+    "name":"custom-product-template"
+    }
+    
+]
+}
+
+{% endschema %}
