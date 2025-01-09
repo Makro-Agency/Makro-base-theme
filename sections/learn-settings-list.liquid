@@ -10,6 +10,11 @@
           </div>
       {% endif %}
       {% if section.settings.textarea != blank %}<div class="sample_text">{{ section.settings.textarea }}</div>{% endif %}
+
+      {% unless section.settings.textarea != blank %}
+        {{ section.settings.textarea }}
+      {% endunless %}
+
       {% if section.settings.richtext != blank %}<div class="richtext">{{ section.settings.richtext }}</div>{% endif %}
       {% if section.settings.inline_richtext != blank %}<div class="inline_richtext">{{ section.settings.inline_richtext }}</div>{% endif %}
       {% if section.settings.html != blank %}<div class="inline_richtext">{{ section.settings.html }}</div>{% endif %}
