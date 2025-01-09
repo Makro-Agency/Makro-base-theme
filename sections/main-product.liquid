@@ -6,7 +6,7 @@
 <style>
 
 .main-product-template .row{ display:flex; }
-
+.main-product-template .product-content{ max-width:600px; }
 </style>
 
 <div class="main-product-template">
@@ -44,7 +44,7 @@
   {% endfor %}
  </div>
 </div>
-<div class="col-md-6">
+<div class="col-md-6 product-content ">
 <h1> {{ product.title }}</h1>
 
 <p> {{ product.description }} </p>
