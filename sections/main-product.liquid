@@ -48,7 +48,20 @@
 <h1> {{ product.title }}</h1>
 <h6>{{ current_product.price | money_with_currency }}</h6>
 <p> {{ product.description }} </p>
+{% form 'product' , product , class: 'product-form' , id: 'AddToCartForm' %}
+<div class="product-option">
+<select name="id" class="form-select" id="productSelect">
+{% for variant in product.variants %}
+{% if variant.available %}
+<option value="{{ variant.id }}">{{ variant.title }}</option>
+{% else %}
+<option value="{{ variant.id }}" disabled="disabled" > {{ variant.id }}</option>
+{% endif %}
+{% endfor %}
+</select>
+</div>
 
+{% endform %}
 </div>
 </div>
 </div>
