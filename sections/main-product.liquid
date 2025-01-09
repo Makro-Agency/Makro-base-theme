@@ -7,12 +7,19 @@
 <div class="main-product-template">
 <h2> Hello this is main product </h2>
 <p>test</p>
- {% assign current_product = product.selected_or_first_available_variant %} 
- {% assign product_image = current_product.featured_image  %}
+{% assign current_product = product.selected_or_first_available_variant %}
+{% assign product_image = current_product.featured_image %}
 <div class="container">
 <div class="row">
 <div class="col-md-6">
-<img class="product-image" src="{{ product_image | img_url: 'large'  }}" alt="{{ product_image.alt }}" id="main-product-image" >
+
+  
+{% if product_image %}
+  <img class="product-image" src="{{ product_image | img_url: 'large' }}" alt="{{ product_image.alt | escape }}" id="main-product-image">
+{% else %}
+  <p>No image available</p>
+{% endif %}
+
 </div>
 <div class="col-md-6">
 
