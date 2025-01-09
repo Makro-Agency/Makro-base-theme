@@ -37,9 +37,14 @@
       <li>No products found in the "All Products" collection.</li>
     {% endif %}
   </ul>
-  {% assign html_content = "<p>Hello, <strong>World!</strong></p><p>Welcome to C360.</p>" %}
-  {% assign plain_text = html_content | strip_html | newline_to_br %}
-  <p>{{ plain_text }}</p>
+  {% capture plain_text %} 
+    one
+    two
+    three
+    four
+    five
+  {% endcapture %}
+  <p>{{ plain_text | newline_to_br }}</p>
 
   {% assign string = "Makro rocks!" %}
 <p>{{ string | slice: 0, 7 }}</p> 
@@ -52,7 +57,27 @@
 {% assign tags = "red,blue,red,green,blue" | split: ',' %}
 <p>{{ tags | uniq | join: ', ' }}</p>
 
+{% capture text_remove %}
+red,green,blue,yellow,violet,red,yellow
+{% endcapture %}
 
+<p>{{ text_remove | remove: "red"}}</p>
+<p>{{ text_remove | remove_first: "red,yellow"}}</p>
+<p>{{' too many spaces gergegegg  gggegegegege               gerggg'| strip }}</p>
+<p>{{ "Ground control to Major Tom." | split: "" | reverse | join: ""}}</p>
+{% assign my_secret_string = "ShopifyIsAwesome!" | sha1 %} My encoded string is: {{ my_secret_string }}
+{% assign description = "Shop the best organic skincare products here." %}
+{% assign keyword = "organic" %}
+{{ description | highlight: keyword }}
+<p>{{ 'Shopify' | link_to: 'https://www.shopify.com' }}</p>
+<p>{{ 'collection-1' | placeholder_svg_tag }}</p>
+{% assign fruits = "apples, oranges" | split: ", " %}
+{% assign vegetables = "broccoli, carrots" | split: ", " %}
+{% assign plants = fruits | concat: vegetables %}
+<p>{{ plants | join: ", " }}</p>
+
+{% assign tagsword = "sale,mens,womens,awesome" | split: "," %}
+<p>{{ tagsword[2] }}</p>
 
   </section>
 
