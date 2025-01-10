@@ -47,9 +47,92 @@
     {%- assign blog_cap = blog_cap | strip -%}
     {%- if blog_cap != blank -%}
     <div class="tab-nav">
+
       {{ blog_cap }}
     </div>
     {%- endif -%}
+{% comment %}
+  This section will display blog posts with an option to show all or just the latest posts.
+{% endcomment %}
+
+<div class="blog-posts">
+
+  <h2>Blog Posts</h2>
+
+  <div class="blog-buttons">
+    <button id="show-latest">Show Latest</button>
+    <button id="show-all">Show All</button>
+  </div>
+
+  <!-- Latest News Post -->
+  <div class="news-post">
+    <h3>Latest News</h3>
+    {% assign news_blog = blogs['news'] %}
+    {% assign latest_news_post = news_blog.articles.first %}
+    {% if latest_news_post %}
+      <div class="news-excerpt">
+        <p>{{ latest_news_post.excerpt | strip_html | truncate: 150 }}</p>
+        <a href="{{ latest_news_post.url }}" class="read-more">Read More</a>
+      </div>
+    {% else %}
+      <p>No news posts available.</p>
+    {% endif %}
+  </div>
+
+  <!-- Latest Recipe Post -->
+  <div class="recipe-post">
+    <h3>Latest Recipe</h3>
+    {% assign recipe_blog = blogs['recipes'] %}
+    {% assign latest_recipe_post = recipe_blog.articles.first %}
+    {% if latest_recipe_post %}
+      <div class="recipe-excerpt">
+        <p>{{ latest_recipe_post.excerpt | strip_html | truncate: 150 }}</p>
+        <a href="{{ latest_recipe_post.url }}" class="read-more">Read More</a>
+      </div>
+    {% else %}
+      <p>No recipe posts available.</p>
+    {% endif %}
+  </div>
+
+  <!-- Display All Blog Posts when "Show All" is clicked -->
+  <div class="all-posts" style="display:none;">
+    <h3>All News Posts</h3>
+    {% assign all_news_posts = news_blog.articles %}
+    {% for post in all_news_posts %}
+      <div class="news-post-item">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+        <a href="{{ post.url }}" class="read-more">Read More</a>
+      </div>
+    {% endfor %}
+
+    <h3>All Recipe Posts</h3>
+    {% assign all_recipe_posts = recipe_blog.articles %}
+    {% for post in all_recipe_posts %}
+      <div class="recipe-post-item">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+        <a href="{{ post.url }}" class="read-more">Read More</a>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- Add JavaScript to toggle between showing the latest and all posts -->
+<script>
+  document.getElementById("show-latest").addEventListener("click", function() {
+    document.querySelector(".all-posts").style.display = "none";
+    document.querySelector(".news-post").style.display = "block";
+    document.querySelector(".recipe-post").style.display = "block";
+  });
+
+  document.getElementById("show-all").addEventListener("click", function() {
+    document.querySelector(".all-posts").style.display = "block";
+    document.querySelector(".news-post").style.display = "none";
+    document.querySelector(".recipe-post").style.display = "none";
+  });
+</script>
 
     <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
       {%- for article in blog.articles -%}
