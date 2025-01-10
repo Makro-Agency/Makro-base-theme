@@ -71,7 +71,7 @@
         {% for media in product.media %}
           {% case media.media_type %}
             {% when 'image' %}
-              <img src="{{ media.image.src | image_url: width: 500}" alt="{{ media.alt }}">
+              <img src="{{ media.image.src | image_url: width: 500}}" alt="{{ media.alt }}" width="500" height="500">
             {% when 'video' %}
               <video controls>
                 <source src="{{ media.src }}" type="video/mp4">
