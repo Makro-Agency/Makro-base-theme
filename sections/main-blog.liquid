@@ -24,7 +24,32 @@
       <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
         {{ blog.title | escape }}
       </h1>
+    </div> 
     </div>
+
+   {% assign blogs_list = '360-cookware-blog,recipes' | split: ',' %}
+    {%- assign blog_cap = blank -%}
+    {%- for b in blogs_list -%}
+      {%- assign temp_blog = blogs[b] -%}
+      {%- capture blog_cap -%}{{ blog_cap }}
+        {%- if temp_blog != blank -%}
+          <a class="tab-link {% if temp_blog.handle == blog.handle %}active{% endif %}" href="{{ temp_blog.url }}" data-tab="blog-articles">
+            {% comment %}{% if temp_blog.handle == blog.handle %}Selected {% endif %}{% endcomment %}
+            {% if temp_blog.title == "360 Cookware Blog" %}
+              Blog Articles
+            {% else %}
+            {{ temp_blog.title }}
+            {% endif %}
+          </a>
+        {%- endif -%}
+      {%- endcapture -%}
+    {%- endfor -%}{%- assign blog_cap = blog_cap | strip -%}
+    {%- if blog_cap != blank -%}
+    <div class="tab-nav">
+      {{ blog_cap }}
+    </div>
+    {%- endif -%}
+
     <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
       {%- for article in blog.articles -%}
         <div
