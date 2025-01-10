@@ -83,7 +83,7 @@
     padding-bottom: 82.5rem;
   }
    .blog-content{ width:100%; }
-   .main-blog .tag-link{ padding: 5px 10px; border:1px solid;  }
+   .tag-link{ padding: 5px 10px; border:1px solid; margin:0 10px;  }
    .blog-inner{ 
         display: flex;
         max-width: var(--page-width);
