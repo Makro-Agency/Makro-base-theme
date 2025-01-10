@@ -27,28 +27,25 @@
     </div> 
     </div>
 
- {% assign blogs_list = 'news,recipes' | split: ',' %}
-{%- assign blog_links = blank -%}
+   {% assign blogs_list = 'news,recipes' | split: ',' %}
+{%- assign blog_tabs = blank -%}
+
 {%- for b in blogs_list -%}
   {%- assign temp_blog = blogs[b] -%}
-  {%- capture blog_links -%}
-    {%- if temp_blog != blank -%}
-      <a class="tab-link" href="{{ temp_blog.url }}" data-tab="blog-articles">
+  {%- if temp_blog != blank -%}
+    {%- capture blog_tabs %}
+      <a class="tab-link {% if temp_blog.handle == blog.handle %}active{% endif %}" href="{{ temp_blog.url }}" data-tab="blog-articles">
         {% if temp_blog.title == "News" %}
           Default Blogs
         {% else %}
           {{ temp_blog.title }}
         {% endif %}
       </a>
-    {%- endif -%}
-  {%- endcapture -%}
+    {%- endcapture %}
+    {{ blog_tabs }}
+  {%- endif -%}
 {%- endfor -%}
-{%- assign blog_links = blog_links | strip -%}
-{%- if blog_links != blank -%}
-  <div class="tab-nav">
-    {{ blog_links }}
-  </div>
-{%- endif -%}
+
 
     <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
       {%- for article in blog.articles -%}
