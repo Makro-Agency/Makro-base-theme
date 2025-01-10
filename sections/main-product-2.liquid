@@ -1,65 +1,177 @@
 
 <section class="product-template">
-    <div class="product-container">
-      <h1 class="product-title">{{ product.title }}</h1>
-      <p class="product-price">
-        {% if product.compare_at_price > product.price %}
-          <span class="original-price">{{ product.compare_at_price | money }}</span>
-          <span class="sale-price">{{ product.price | money }}</span>
-        {% else %}
-          <span class="current-price">{{ product.price | money }}</span>
-        {% endif %}
-      </p>
-
-      <div class="product-description">
-        {{ product.description |strip_html | truncate: 200 }}
-      </div>
-      <form method="post" action="/cart/add">
-        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-  
-        {% if product.variants.size > 1 %}
-          <label for="variant-select">Choose an option:</label>
-          <select name="id" id="variant-select">
-            {% for variant in product.variants %}
-              <option value="{{ variant.id }}">
-                {{ variant.title }} - {{ variant.price | money }}
-              </option>
-            {% endfor %}
-          </select>
-        {% endif %}
-        <button type="submit" class="btn btn-primary" {% unless product.available %}disabled{% endunless %}>
-          {% if product.available %} Add to Cart {% else %} Sold Out {% endif %}
-        </button>
-      </form>
-  
-      {% if product.media.size > 0 %}
-        <div class="product-media">
-          {% for media in product.media %}
-            {% case media.media_type %}
-              {% when 'image' %}
-                <img src="{{ media.image.src | image_url: 'large' }}" alt="{{ media.alt }}">
-              {% when 'video' %}
-                <video controls>
-                  <source src="{{ media.src }}" type="video/mp4">
-                </video>
-              {% when 'external_video' %}
-                {{ media.external_video.html }}
-            {% endcase %}
-          {% endfor %}
-        </div>
+  <div class="product-container">
+    <h1 class="product-title">{{ product.title }}</h1>
+    <p class="product-price">
+      {% if product.compare_at_price > product.price %}
+        <span class="original-price">{{ product.compare_at_price | money }}</span>
+        <span class="sale-price">{{ product.price | money }}</span>
+      {% else %}
+        <span class="current-price">{{ product.price | money }}</span>
       {% endif %}
+    </p>
+    <p class="product-stock">
+      {% if product.available %}
+        {% if product.variants.first.inventory_quantity > 10 %}
+          <span class="in-stock">In Stock</span>
+        {% elsif product.variants.first.inventory_quantity > 0 %}
+          <span class="low-stock">Hurry! Only {{ product.variants.first.inventory_quantity }} left in stock!</span>
+        {% else %}
+          <span class="out-of-stock">Out of Stock</span>
+        {% endif %}
+      {% else %}
+        <span class="out-of-stock">Sold Out</span>
+      {% endif %}
+    </p>
+    <div class="product-description">
+      {{ product.description | strip_html | truncate: 200 }}
     </div>
-  </section>
+    <div class="custom-countdown">
+      <div class="custom-countdown__item">
+      <span class="countdown-time countdown-days">00</span>
+      <span class="countdown-label">Days</span>
+      </div>
+      <div class="custom-countdown__item">
+      <span class="countdown-time countdown-hours">00</span>
+      <span class="countdown-label">Hours</span>
+      </div>
+      <div class="custom-countdown__item">
+      <span class="countdown-time countdown-minutes">00</span>
+      <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="custom-countdown__item">
+      <span class="countdown-time countdown-seconds">00</span>
+      <span class="countdown-label">Seconds</span>
+      </div>
+      </div>
+    <form method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+  
+      {% if product.variants.size > 1 %}
+        <label for="variant-select">Choose an option:</label>
+        <select name="id" id="variant-select">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}">
+              {{ variant.title }} - {{ variant.price | money }}
+            </option>
+          {% endfor %}
+        </select>
+      {% endif %}
+      <button type="submit" class="btn btn-primary" {% unless product.available %}disabled{% endunless %}>
+        {% if product.available %} Add to Cart {% else %} Sold Out {% endif %}
+      </button>
+      {% if product.available %}
+        <button class="btn btn-secondary buy-now" onclick="location.href='/checkout?add={{ product.variants.first.id }}:1'">
+          Buy Now
+        </button>
+      {% endif %}
+    </form>
+    {% if product.media.size > 0 %}
+      <div class="product-media">
+        {% for media in product.media %}
+          {% case media.media_type %}
+            {% when 'image' %}
+              <img src="{{ media.image.src | image_url: width: 500,height: 500 }}" alt="{{ media.alt }}">
+            {% when 'video' %}
+              <video controls>
+                <source src="{{ media.src }}" type="video/mp4">
+              </video>
+            {% when 'external_video' %}
+              {{ media.external_video.html }}
+          {% endcase %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+<style>
+  .custom-countdown {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    margin: 20px;
+    padding: 10px;
+    background: #2c3e50;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .custom-countdown__item {
+    text-align: center;
+  }
+
+  .countdown-time {
+    font-size: 40px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .countdown-label {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    opacity: 0.7;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const metafieldDate = "{{ product.metafields.custom.deal_end_date }}";
+    if (!metafieldDate) {
+      document.querySelector(".custom-countdown").innerHTML = "No deal available!";
+      return;
+    }
+    const targetDate = new Date(metafieldDate).getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const remainingTime = targetDate - now;
+      const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((remainingTime % (1000 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remainingTime % (1000)) / 1000);
+
+      document.querySelector(".countdown-days").textContent = days < 10 ? "0" + days : days;
+      document.querySelector(".countdown-hours").textContent = hours < 10 ? "0" + hours : hours;
+      document.querySelector(".countdown-minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
+      document.querySelector(".countdown-seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
+
+      if (remainingTime < 0) {
+        clearInterval(countdownInterval);
+        document.querySelector(".custom-countdown").innerHTML = "Deal Ended!";
+        
+        document.querySelector(".btn.btn-primary")?.remove(); 
+        document.querySelector(".btn.btn-secondary.buy-now")?.remove(); 
+      }
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  });
+</script>
+
+
+
 {% schema %}
 {
-"name": "custom-product-template",
-"settings":[],
-"presets": [
+  "name": "custom-product-template",
+  "settings": [],
+  "blocks": [
     {
-    "name":"custom-product-template"
+      "type": "product information",
+      "name": "Product Deal",
+    },
+    {
+      "type": "deal",
+      "name": "Product Deal",
     }
-    
-]
+  ],
+  "presets": [
+    {
+      "name": "custom-product-template"
+    }
+  ]
 }
-
 {% endschema %}
