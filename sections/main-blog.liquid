@@ -30,8 +30,8 @@
 <div class="blog-content">
    {% assign blogs_list = 'news,recipes' | split: ',' %}
     {%- assign blog_cap = blank -%}
-    {%- for b in blogs_list -%}
-      {%- assign temp_blog = blogs[b] -%}
+    {%- for blo in blogs_list -%}
+      {%- assign temp_blog = blogs[blo] -%}
       {%- capture blog_cap -%}{{ blog_cap }}
         {%- if temp_blog != blank -%}
           <a class="tab-link {% if temp_blog.handle == blog.handle %}active{% endif %}" href="{{ temp_blog.url }}" data-tab="blog-articles">
@@ -103,7 +103,7 @@
   <div class="accordion">
     <button class="accordion-btn">Accordian</button>
     <div class="accordion-content">
-      <p>This is the content of Section 1.</p>
+      <p>This is the content of accordian.</p>
     </div>
   </div>
 </div>
