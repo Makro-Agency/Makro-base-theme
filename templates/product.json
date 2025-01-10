@@ -270,6 +270,7 @@
     },
     "product-lookbook": {
       "type": "product-lookbook",
+      "disabled": true,
       "settings": {}
     },
     "887aa455-a2ec-4b52-99ae-dc4a5e9bd88d": {
@@ -358,6 +359,10 @@
         "padding_bottom": 0
       }
     },
+    "main_product_2_nATfiq": {
+      "type": "main-product-2",
+      "settings": {}
+    },
     "b63a31ae-770c-4aa5-b6cf-81976eb3c1d0": {
       "type": "recently-viewed-products",
       "disabled": true,
@@ -367,8 +372,8 @@
         "show_secondary_image": true
       }
     },
-    "main_product_2_nATfiq": {
-      "type": "main-product-2",
+    "custom_learning_section_7VQ9Wk": {
+      "type": "custom-learning-section",
       "settings": {}
     },
     "17313003662de7178c": {
@@ -385,10 +390,6 @@
       "settings": {
         "include_margins": true
       }
-    },
-    "custom_learning_section_7VQ9Wk": {
-      "type": "custom-learning-section",
-      "settings": {}
     }
   },
   "order": [
@@ -400,9 +401,9 @@
     "1e70c938-42e9-490b-9daa-f9895ceb9c34",
     "b4cff4f7-9e01-4acf-a25d-3d5f63585588",
     "review-widget",
+    "main_product_2_nATfiq",
     "b63a31ae-770c-4aa5-b6cf-81976eb3c1d0",
     "custom_learning_section_7VQ9Wk",
-    "main_product_2_nATfiq",
     "17313003662de7178c"
   ]
 }
