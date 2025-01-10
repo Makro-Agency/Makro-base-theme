@@ -1,0 +1,251 @@
+{% style %}
+  .title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .property-mangement-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+{% endstyle %}
+
+<div class="page-width">
+    <div class="title-wrapper">
+        <div class="heading-wrap">
+            {% if section.settings.sub_heading != blank %}
+            <div class="subtitle">{{ section.settings.sub_heading }}</div>
+            {% endif %}
+            {% if section.settings.heading %}
+                <h2 class="heading">{{ section.settings.heading }}</h2>
+            {% endif %}
+        </div>
+        {% if section.settings.btn_text != blank %}<a href="{{ section.settings.button_url }}">{{ section.settings.btn_text }}</a>{% endif %}
+    </div>
+    <div class="property-mangement-wrapper">
+        {% for block in section.blocks %}
+            {% case block.type %}
+            {% when 'experience' %}
+                <div class="service-portal experience">
+                    <div class="service-content">
+                        <div class="icon">
+                            {{ block.settings.icon_svg  }}
+                        </div>
+                        <div class="details">
+                            {% if block.settings.experience_title != blank %}
+                                <h3 class="title">{{ block.settings.experience_title }}</h3>
+                            {% endif %}
+                            {% if block.settings.experience_desc != blank %}
+                                <p class="description">{{ block.settings.experience_desc }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="service-image">
+                        {% if block.settings.experience_image != blank %}
+                            <div class="media-container">
+                                {%-  liquid
+                                  assign height = block.settings.experience_image.width | divided_by: block.settings.experience_image.aspect_ratio | round
+                                  assign sizes = '(min-width: 750px) 50vw, 100vw'
+                                  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                                -%}
+
+                                {{ 
+                                    block.settings.experience_image
+                                    | image_url: width: 1100
+                                    | image_tag: loading: 'lazy',  height: height, sizes: sizes, widths: widths
+                                 }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% when 'delivery' %}
+                <div class="service-portal delivery">
+                    <div class="service-content">
+                        <div class="icon">
+                            {{ block.settings.icon_svg  }}
+                        </div>
+                        <div class="details">
+                            {% if block.settings.delivery_title != blank %}
+                                <h3 class="title">{{ block.settings.delivery_title }}</h3>
+                            {% endif %}
+                            {% if block.settings.delivery_desc != blank %}
+                                <p class="description">{{ block.settings.delivery_desc }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="service-image">
+                        {% if block.settings.delivery_image != blank %}
+                            <div class="media-container">
+                                {%-  liquid
+                                  assign height = block.settings.delivery_image.width | divided_by: block.settings.delivery_image.aspect_ratio | round
+                                  assign sizes = '(min-width: 750px) 50vw, 100vw'
+                                  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                                -%}
+
+                                {{ 
+                                    block.settings.delivery_image
+                                    | image_url: width: 1100
+                                    | image_tag: loading: 'lazy',  height: height, sizes: sizes, widths: widths
+                                 }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            
+            {% endcase %}
+        {% endfor %}
+        <div class="services-list-wrap">
+            {% for block in section.blocks %}
+                {% case block.type %}
+                {% when 'services' %}
+                    <div class="service-item">
+                        <div class="service-content">
+                            <div class="icon">
+                                {{ block.settings.icon_svg }}
+                            </div>
+                            <div class="details">
+                                <h3 class="title">{{ block.settings.services_title }}</h3>
+                                <p class="description">{{ block.settings.services_desc }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endcase %}
+            {% endfor %}
+        </div>
+    </div>  
+</div>
+
+
+{% schema %}
+{
+    "name": "Property Management",
+    "tag": "section",
+    "class": "property-management",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Sub Heading"
+        },
+        {
+            "type": "inline_richtext",
+            "label": "sub heading",
+            "id": "sub_heading"
+        },
+        {
+            "type": "header",
+            "content": "Heading"
+        },
+        {
+            "type": "inline_richtext",
+            "label": "heading",
+            "id": "heading"
+        },
+        {
+            "type": "text",
+            "label": "button text",
+            "id": "btn_text",
+            "default": "Get Started Now"
+        },
+        {
+            "type": "url",
+            "label": "button url",
+            "id": "button_url"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "experience",
+            "name": "experience",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "label": "Experience Image",
+                    "id": "experience_image"
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "experience_title",
+                    "label": "Experience Title"
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "experience_desc",
+                    "label": "Experience Description"
+                },
+                {
+                    "type": "textarea",
+                    "id": "icon_svg",
+                    "label": "SVG Icon",
+                    "default": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'><path d='M9.33333 20H22.6667M9.33333 16H22.6667M9.33333 24H22.6667M4 8.82073V28H28V8.82073L15.8639 4L4 8.82073ZM8 12H24V28H8V12Z' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+                }
+            ]
+        },
+        {
+            "type": "delivery",
+            "name": "delivery",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "label": "Delivery Image",
+                    "id": "delivery_image"
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "delivery_title",
+                    "label": "Delivery Title"
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "delivery_desc",
+                    "label": "Delivery Description"
+                },
+                {
+                    "type": "textarea",
+                    "id": "icon_svg",
+                    "label": "SVG Icon",
+                    "default": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'><path d='M9.33333 20H22.6667M9.33333 16H22.6667M9.33333 24H22.6667M4 8.82073V28H28V8.82073L15.8639 4L4 8.82073ZM8 12H24V28H8V12Z' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+                }
+            ]
+        },
+        {
+            "type": "services",
+            "name": "services",
+            "settings": [
+                {
+                    "type": "inline_richtext",
+                    "id": "services_title",
+                    "label": "Services Title"
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "services_desc",
+                    "label": "Services Description"
+                },
+                {
+                    "type": "textarea",
+                    "id": "icon_svg",
+                    "label": "SVG Icon",
+                    "default": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'><path d='M9.33333 20H22.6667M9.33333 16H22.6667M9.33333 24H22.6667M4 8.82073V28H28V8.82073L15.8639 4L4 8.82073ZM8 12H24V28H8V12Z' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Property Management",
+            "blocks": [
+                {
+                    "type": "experience"
+                },
+                {
+                    "type": "delivery"
+                },
+                {
+                    "type": "services"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

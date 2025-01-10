@@ -7,24 +7,148 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
-    "learn_settings_list_EzPMq4": {
-      "type": "learn-settings-list",
+    "custom_services_4DwUic": {
+      "type": "custom-services",
+      "blocks": {
+        "custom_services_Y7RHgF": {
+          "type": "custom_services",
+          "settings": {
+            "service_image": "shopify://shop_images/service1_1.png",
+            "service_title": "Program Management",
+            "service_description": "Service brief description ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+            "button_text": "Learn More",
+            "button_url": "shopify://collections/all"
+          }
+        },
+        "custom_services_VeizxJ": {
+          "type": "custom_services",
+          "settings": {
+            "service_image": "shopify://shop_images/service2_1.png",
+            "service_title": "Site Coordinators",
+            "service_description": "Service brief description ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+            "button_text": "Learn More",
+            "button_url": ""
+          }
+        },
+        "custom_services_eXzYtB": {
+          "type": "custom_services",
+          "settings": {
+            "service_image": "shopify://shop_images/service1_1.png",
+            "service_title": "Service Title",
+            "service_description": "Service brief description ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+            "button_text": "Learn More",
+            "button_url": ""
+          }
+        },
+        "custom_services_4f9Y7b": {
+          "type": "custom_services",
+          "settings": {
+            "service_image": "shopify://shop_images/service2_1.png",
+            "service_title": "Service Title",
+            "service_description": "Service brief description ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+            "button_text": "Learn More",
+            "button_url": ""
+          }
+        },
+        "custom_services_aE8kzC": {
+          "type": "custom_services",
+          "settings": {
+            "service_image": "shopify://shop_images/service1_1.png",
+            "service_title": "Service Title",
+            "service_description": "Service brief description ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+            "button_text": "Learn More",
+            "button_url": ""
+          }
+        },
+        "custom_services_73yjm8": {
+          "type": "custom_services",
+          "settings": {
+            "service_image": "shopify://shop_images/service1_1.png",
+            "service_title": "Service Title",
+            "service_description": "Service brief description ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+            "button_text": "Learn More",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "custom_services_Y7RHgF",
+        "custom_services_VeizxJ",
+        "custom_services_eXzYtB",
+        "custom_services_4f9Y7b",
+        "custom_services_aE8kzC",
+        "custom_services_73yjm8"
+      ],
       "settings": {
-        "text": "My Learn List",
-        "textarea": "This is the sample text of text area block",
-        "richtext": "",
-        "inline_richtext": "",
-        "html": "<h1>Elevate Your Culinary Experience <br>with 360 Cookware</h1>",
-        "overlay_opacity": 0,
-        "select": "option 1",
-        "radio": "option 1",
-        "checkbox": true
+        "sub_heading": "TA Services",
+        "heading": "Service Section Title"
+      }
+    },
+    "custom_property_management_nmRgcU": {
+      "type": "custom-property-management",
+      "blocks": {
+        "experience_jNt7Nd": {
+          "type": "experience",
+          "settings": {
+            "experience_image": "shopify://shop_images/portal1_1.png",
+            "experience_title": "Easy Access and Personalized Experience",
+            "experience_desc": "Service brief description ipsum dolor sit amet, consectetur lorem tu idot adipiscing elit. Nunc vulputate libero et velit interdum.",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewbox=\"0 0 32 32\" fill=\"none\"><path d=\"M9.33333 20H22.6667M9.33333 16H22.6667M9.33333 24H22.6667M4 8.82073V28H28V8.82073L15.8639 4L4 8.82073ZM8 12H24V28H8V12Z\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>"
+          }
+        },
+        "delivery_QU4jcU": {
+          "type": "delivery",
+          "settings": {
+            "delivery_image": "shopify://shop_images/portal2_1.png",
+            "delivery_title": "48 HourGuaranteed Delivery",
+            "delivery_desc": "Service brief description ipsum dolor sit amet, consectetur lorem tu idot adipiscing elit. Nunc vulputate libero et velit interdum.",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewbox=\"0 0 32 32\" fill=\"none\"><path d=\"M9.33333 20H22.6667M9.33333 16H22.6667M9.33333 24H22.6667M4 8.82073V28H28V8.82073L15.8639 4L4 8.82073ZM8 12H24V28H8V12Z\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>"
+          }
+        },
+        "services_KDRVeq": {
+          "type": "services",
+          "settings": {
+            "services_title": "Guaranteed Stock",
+            "services_desc": "Service brief description ipsum dolor sit amet, consectetur lorem tu idot adipiscing elit. Nunc vulputate libero et velit interdum.",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewbox=\"0 0 32 32\" fill=\"none\"><path d=\"M9.33333 20H22.6667M9.33333 16H22.6667M9.33333 24H22.6667M4 8.82073V28H28V8.82073L15.8639 4L4 8.82073ZM8 12H24V28H8V12Z\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>"
+          }
+        },
+        "services_4Rpdxf": {
+          "type": "services",
+          "settings": {
+            "services_title": "Full Catalog",
+            "services_desc": "Service brief description ipsum dolor sit amet, consectetur lorem tu idot adipiscing elit. Nunc vulputate libero et velit interdum.",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewbox=\"0 0 32 32\" fill=\"none\"><path d=\"M9.33333 20H22.6667M9.33333 16H22.6667M9.33333 24H22.6667M4 8.82073V28H28V8.82073L15.8639 4L4 8.82073ZM8 12H24V28H8V12Z\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>"
+          }
+        },
+        "services_rWcEU6": {
+          "type": "services",
+          "settings": {
+            "services_title": "Custom Pricing",
+            "services_desc": "Service brief description ipsum dolor sit amet, consectetur lorem tu idot adipiscing elit. Nunc vulputate libero et velit interdum.",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewbox=\"0 0 32 32\" fill=\"none\"><path d=\"M9.33333 20H22.6667M9.33333 16H22.6667M9.33333 24H22.6667M4 8.82073V28H28V8.82073L15.8639 4L4 8.82073ZM8 12H24V28H8V12Z\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>"
+          }
+        }
+      },
+      "block_order": [
+        "experience_jNt7Nd",
+        "delivery_QU4jcU",
+        "services_KDRVeq",
+        "services_4Rpdxf",
+        "services_rWcEU6"
+      ],
+      "settings": {
+        "sub_heading": "Right Away At TA",
+        "heading": "TA Exclusive Property Management Portal Title",
+        "btn_text": "Get Started Now",
+        "button_url": ""
       }
     }
   },
   "order": [
-    "learn_settings_list_EzPMq4"
+    "custom_services_4DwUic",
+    "custom_property_management_nmRgcU"
   ]
 }
