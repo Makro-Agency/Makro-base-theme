@@ -11,6 +11,17 @@
   "sections": {
     "learn_settings_list_EzPMq4": {
       "type": "learn-settings-list",
+      "settings": {
+        "text": "My Learn List",
+        "textarea": "This is the sample text of text area block",
+        "richtext": "",
+        "inline_richtext": "",
+        "html": "<h1>Elevate Your Culinary Experience <br>with 360 Cookware</h1>",
+        "overlay_opacity": 0,
+        "select": "option 1",
+        "radio": "option 1",
+        "checkbox": true
+      }
     }
   },
   "order": [
