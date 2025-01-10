@@ -84,6 +84,7 @@
   }
    .blog-content{ width:100%; }
    .tag-link{ padding: 5px 10px; border:1px solid; margin:0 10px 0 0;  }
+   .blog-inner{ padding:0 20px; }
    .blog-inner{ 
         display: flex;
         max-width: var(--page-width);
@@ -91,8 +92,9 @@
         gap:30px; 
         padding: 0 20px; }
        .blog-inner .sidebar{
-         padding:60px 10px; 
-          max-width:25rem; width:100%; 
+         padding:20px 20px; 
+          max-width:25rem; width:100%;
+          border-left: 1px solid; 
         }
         .blog-inner .sidebar .tag-link{ color:#000; }
         .blog-inner .sidebar .tag-link.active{ background-color:#000; color:#fff; }
