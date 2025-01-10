@@ -91,11 +91,12 @@
     {%- endif -%}
   </div>
 {%- endpaginate -%}
+  <div class="custom-learning page-width">
 <h3>Js Learning </h3>
 <p>Click the button to display the date.</p>
 <p id="demo"></p>
 <button onclick="displayDate()">The time is?</button>
-
+</div>
 <script>
 function displayDate() {
   document.getElementById("demo").innerHTML = Date();
