@@ -66,6 +66,7 @@
   .main-blog-header h6 {
     margin: 0 0 25px; }
 }
+.blog-inner{ padding:0 20px; }
 .blog-inner .sidebar .tag-link{ color:#000; }
 .blog-inner .sidebar .tag-link.active{ background-color:#000; color:#fff; }
 .tag-link{ padding: 5px 10px; border:1px solid; margin:0 10px 0 0;  }
