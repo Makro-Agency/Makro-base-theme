@@ -71,7 +71,7 @@
         {% for media in product.media %}
           {% case media.media_type %}
             {% when 'image' %}
-              <img src="{{ media.image.src | image_url: width: 500,height: 500 }}" alt="{{ media.alt }}">
+              <img src="{{ media.image.src | image_url: width: 500}" alt="{{ media.alt }}">
             {% when 'video' %}
               <video controls>
                 <source src="{{ media.src }}" type="video/mp4">
@@ -137,7 +137,6 @@
       document.querySelector(".countdown-hours").textContent = hours < 10 ? "0" + hours : hours;
       document.querySelector(".countdown-minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
       document.querySelector(".countdown-seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
-
       if (remainingTime < 0) {
         clearInterval(countdownInterval);
         document.querySelector(".custom-countdown").innerHTML = "Deal Ended!";
