@@ -43,7 +43,8 @@
           </a>
         {%- endif -%}
       {%- endcapture -%}
-    {%- endfor -%}{%- assign blog_cap = blog_cap | strip -%}
+    {%- endfor -%}
+    {%- assign blog_cap = blog_cap | strip -%}
     {%- if blog_cap != blank -%}
     <div class="tab-nav">
       {{ blog_cap }}
