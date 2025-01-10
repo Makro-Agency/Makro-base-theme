@@ -87,7 +87,7 @@
     margin-bottom: 36px; }
   
   .blog-articles {
-    grid-template-columns: 1fr 1fr 1fr; }
+    grid-template-columns: 1fr 1fr; }
 
   .main-blog-header {
     margin-bottom: 60px; }
