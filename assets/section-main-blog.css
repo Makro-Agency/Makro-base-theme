@@ -25,7 +25,8 @@
       align-items: center;
       justify-content: center;
     }
-    .tab-nav  a.tab-link{ padding:5px 10px; margin:10px; border:1px solid; color:#000;  }
+    .tab-nav  a.tab-link:hover{ background-color:#000; color:#fff; }
+    .tab-nav  a.tab-link{ padding:5px 10px; margin:10px; border:1px solid; color:#000; transition:all 0.3s linear; min-width:100px; text-align:center;  }
 @media screen and (min-width: 750px) {
   .blog-articles {
     grid-template-columns: 1fr 1fr;
