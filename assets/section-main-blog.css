@@ -132,7 +132,18 @@
 .accordion.active .accordion-content {
   display: block;
 }
-
+.accordion-btn{
+  background-color: #f1f1f1;
+  color: #000;
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 .accordion.active .accordion-content {
   padding-top: 15px;
   padding-bottom: 15px;
