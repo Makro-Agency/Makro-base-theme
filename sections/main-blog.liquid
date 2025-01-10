@@ -27,7 +27,7 @@
     </div> 
     </div>
 
-   {% assign blogs_list = '360-cookware-blog,recipes' | split: ',' %}
+   {% assign blogs_list = 'news,recipes' | split: ',' %}
     {%- assign blog_cap = blank -%}
     {%- for b in blogs_list -%}
       {%- assign temp_blog = blogs[b] -%}
