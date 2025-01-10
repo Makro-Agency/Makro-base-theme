@@ -77,12 +77,13 @@
     </div>
       <div class="sidebar">
        <div class="blog-tags">
+       <h4>Blog Tags: </h4>
        {% for tag in blog.tags %}
       <a href="#" class="tag-link" > {{ tag }} </a>
        {% endfor %}
        </div>
       </div>
-      
+
       </div>
     {%- if paginate.pages > 1 -%}
       {%- render 'pagination', paginate: paginate -%}
