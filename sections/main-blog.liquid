@@ -95,12 +95,35 @@
 <h3>Js Learning </h3>
 <p>Click the button to display the date.</p>
 <p id="demo"></p>
-<button class="btn" onclick="displayDate()">The time is?</button>
+<button class="btn" onclick="displayDate()">Check Time</button>
+<br>
+<div class="accordian" id="accordian" >
+<div class="accordion-container">
+  <div class="accordion">
+    <button class="accordion-btn">Section 1</button>
+    <div class="accordion-content">
+      <p>This is the content of Section 1.</p>
+    </div>
+  </div>
 </div>
+</div>
+
 <script>
 function displayDate() {
   document.getElementById("demo").innerHTML = Date();
-}
+};
+
+
+const accordionButtons = document.querySelectorAll('.accordion-btn');
+accordionButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    const accordion = this.parentElement;
+    
+    // Toggle the active class to show/hide the content
+    accordion.classList.toggle('active');
+  });
+});
+
 </script>
 {% schema %}
 {

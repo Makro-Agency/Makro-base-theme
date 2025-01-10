@@ -120,3 +120,21 @@
   .blog-articles {
     row-gap: calc(30px - 1.3rem); }
 }
+
+.accordion-content {
+  padding: 15px;
+  background-color: #f9f9f9;
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.accordion.active .accordion-content {
+  display: block;
+}
+
+.accordion.active .accordion-content {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-height: 500px; /* Adjust as needed */
+}
