@@ -80,7 +80,7 @@
        <h4>Blog Tags: </h4>
        {% for tag in blog.tags %}
        
-      <a href="href="{{ blog.url }}/tagged/{{ tag | handle }}" class="tag-link {% if current_tags contains tag %} active {% endif %} " > {{ tag }} </a>
+      <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="tag-link {% if current_tags contains tag %} active {% endif %} " > {{ tag }} </a>
        {% endfor %}
        </div>
       </div>
