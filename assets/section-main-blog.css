@@ -95,6 +95,7 @@
           max-width:25rem; width:100%; 
         }
         .blog-inner .sidebar .tag-link{ color:#000; }
+        .blog-inner .sidebar .tag-link.active{ background-color:#000; color:#fff; }
   .main-blog {
     margin-bottom: 36px; }
   
