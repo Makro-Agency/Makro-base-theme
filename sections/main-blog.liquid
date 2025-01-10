@@ -26,7 +26,8 @@
       </h1>
     </div> 
     </div>
-
+<div class="blog-inner">
+<div class="blog-content">
    {% assign blogs_list = 'news,recipes' | split: ',' %}
     {%- assign blog_cap = blank -%}
     {%- for b in blogs_list -%}
@@ -51,7 +52,7 @@
       {{ blog_cap }}
     </div>
     {%- endif -%}
-
+    
     <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
       {%- for article in blog.articles -%}
         <div
@@ -73,12 +74,14 @@
         </div>
       {%- endfor -%}
     </div>
+    </div>
       <div class="sidebar">
        <div class="blog-tags">
        {% for tag in blog.tags %}
       <a href="#"> {{ tag }} </a>
        {% endfor %}
        </div>
+      </div>
       </div>
     {%- if paginate.pages > 1 -%}
       {%- render 'pagination', paginate: paginate -%}
