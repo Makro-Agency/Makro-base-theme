@@ -6,6 +6,7 @@
   {% if block.settings.stick %}
     {% assign option_check = option_check | plus:1 %}
   {% endif %}
+  
 {%- endfor -%}
 {% capture announceData %}
   {%- for block in section.blocks -%}
