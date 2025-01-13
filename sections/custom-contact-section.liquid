@@ -1,0 +1,344 @@
+{{ 'section-contact-form-1.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+    .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Master class for all form inputs and textarea */
+        .custom-form {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .custom-form:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        /* Custom styles for submit button */
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 20px;
+            }
+        }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+<div class="container">
+    <h2>Contact Us</h2>
+<form id="contactForm">
+    <!-- Name Field -->
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="contact[name]" class="custom-form" placeholder="Your Name *">
+        <span id="Errorname" class="error"></span>
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="contact[email]" class="custom-form" placeholder="Your Email *">
+        <span id="Erroremail" class="error"></span>
+    </div>
+
+    <!-- Subject Field -->
+    <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="contact[subject]" class="custom-form" placeholder="Subject *">
+        <span id="Errorsubject" class="error"></span>
+    </div>
+
+    <!-- Message Field -->
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="contact[message]" class="custom-form" placeholder="Your Message"></textarea>
+        <span id="Errormessage" class="error"></span>
+    </div>
+
+    <!-- Single Checkbox -->
+    <div class="form-group">
+        <label>
+            <input type="checkbox" id="agree" name="contact[agree]">
+            I agree to the terms and conditions
+        </label>
+        <span id="Erroragree" class="error"></span>
+    </div>
+
+    <!-- Multiple Checkboxes -->
+    <div class="form-group">
+        <label>Select your interests:</label>
+        <div>
+            <label>
+                <input type="checkbox" name="contact[interests][]" value="Web Development">
+                Web Development
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" name="contact[interests][]" value="Design">
+                Design
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" name="contact[interests][]" value="Marketing">
+                Marketing
+            </label>
+        </div>
+        <span id="Errorinterests" class="error"></span>
+    </div>
+
+    <!-- Dropdown Field -->
+    <div class="form-group">
+        <label for="contact-reason">Reason for Contact:</label>
+        <select id="contact-reason" name="contact[reason]" class="custom-form">
+            <option value="">Select a reason</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Support">Support</option>
+            <option value="Feedback">Feedback</option>
+        </select>
+        <span id="Errorreason" class="error"></span>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+        <input type="submit" value="Send Message">
+    </div>
+</form>
+
+
+</div>
+</div>
+
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  let isValid = true;
+
+  // Form field values
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const agree = document.getElementById('agree').checked;
+  const interests = document.querySelectorAll('input[name="contact[interests][]"]:checked');
+  const reason = document.getElementById('contact-reason').value;
+
+  // Error message elements
+  const errorname = document.getElementById('Errorname');
+  const erroremail = document.getElementById('Erroremail');
+  const errorsubject = document.getElementById('Errorsubject');
+  const errormessage = document.getElementById('Errormessage');
+  const erroragree = document.getElementById('Erroragree');
+  const errorinterests = document.getElementById('Errorinterests');
+  const errorreason = document.getElementById('Errorreason');
+
+  // Clear previous error messages
+  errorname.textContent = '';
+  erroremail.textContent = '';
+  errorsubject.textContent = '';
+  errormessage.textContent = '';
+  if (erroragree) erroragree.textContent = '';
+  if (errorinterests) errorinterests.textContent = '';
+  if (errorreason) errorreason.textContent = '';
+
+  // Validation checks
+  if (name === '') {
+    errorname.textContent = "Please enter your name.";
+    isValid = false;
+  }
+
+  if (email === '') {
+    erroremail.textContent = "Please enter your email.";
+    isValid = false;
+  } else {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      erroremail.textContent = "Please enter a valid email address.";
+      isValid = false;
+    }
+  }
+
+  if (subject === '') {
+    errorsubject.textContent = "Please enter your subject.";
+    isValid = false;
+  }
+
+  if (message === '') {
+    errormessage.textContent = "Please enter your message.";
+    isValid = false;
+  }
+
+  if (!agree) {
+    if (erroragree) erroragree.textContent = "You must agree to the terms and conditions.";
+    isValid = false;
+  }
+
+  if (interests.length === 0) {
+    if (errorinterests) errorinterests.textContent = "Please select at least one interest.";
+    isValid = false;
+  }
+
+  if (reason === '') {
+    if (errorreason) errorreason.textContent = "Please select a reason for contact.";
+    isValid = false;
+  }
+
+  // Prevent form submission if not valid
+  if (!isValid) {
+    event.preventDefault();
+  }
+});
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Custom contact",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "t:sections.contact-form.settings.title.default",
+      "label": "t:sections.contact-form.settings.title.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom contact"
+    }
+  ]
+}
+{% endschema %}
