@@ -47,6 +47,7 @@
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
   {{ 'product-page.css' | asset_url | stylesheet_tag }}
   {{ 'main-product.css' | asset_url | stylesheet_tag }}
+  {{'productdealcounter.css' | asset_url | stylesheet_tag }}
 
   {%- style -%}
     .section-{{ section.id }}-padding {
@@ -700,7 +701,61 @@
                   {%- endif -%}
                 </div>
               </div>
-            
+            {%- when 'dealcounter'   -%}
+              <h4>Deal Ends in</h4>
+              <div class="custom-countdown">
+                <div class="custom-countdown__item">
+                <span class="countdown-time countdown-days">00</span>
+                <span class="countdown-label">Days</span>
+                </div>
+                <div class="custom-countdown__item">
+                <span class="countdown-time countdown-hours">00</span>
+                <span class="countdown-label">Hours</span>
+                </div>
+                <div class="custom-countdown__item">
+                <span class="countdown-time countdown-minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="custom-countdown__item">
+                <span class="countdown-time countdown-seconds">00</span>
+                <span class="countdown-label">Seconds</span>
+                </div>
+                </div>
+                <script>
+                  document.addEventListener("DOMContentLoaded", function () {
+                    const metafieldDate = "{{ product.metafields.custom.deal_end_date }}";
+                    if (!metafieldDate) {
+                      document.querySelector(".custom-countdown").innerHTML = "No deal available!";
+                      return;
+                    }
+                    const targetDate = new Date(metafieldDate).getTime();
+                
+                    function updateCountdown() {
+                      const now = new Date().getTime();
+                      const remainingTime = targetDate - now;
+                      const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+                      const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+                      document.querySelector(".countdown-days").textContent = days < 10 ? "0" + days : days;
+                      document.querySelector(".countdown-hours").textContent = hours < 10 ? "0" + hours : hours;
+                      document.querySelector(".countdown-minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
+                      document.querySelector(".countdown-seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
+                      if (remainingTime < 0) {
+                        clearInterval(countdownInterval);
+                        document.querySelector(".custom-countdown").innerHTML = "Deal Ended!";
+                        
+                        document.querySelector(".btn.btn-primary")?.remove(); 
+                        document.querySelector(".btn.btn-secondary.buy-now")?.remove(); 
+                      }
+                    }
+                
+                    const countdownInterval = setInterval(updateCountdown, 1000);
+                    updateCountdown();
+                  });
+                
+                </script>
+
             {%- when 'popup' -%}
               <modal-opener
                 class="product-popup-modal__opener no-js-hidden quick-add-hidden"
@@ -2914,6 +2969,10 @@ document.addEventListener('DOMContentLoaded', function () {
           "label": "t:sections.main-product.blocks.popup.settings.page.label"
         }
       ]
+    },
+    {
+      "type": "dealcounter",
+      "name": "Deal Counter"
     },
     {
       "type": "rating",

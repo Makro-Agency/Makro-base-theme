@@ -1,3 +1,7 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
 
 <section class="product-template">
   <div class="product-container">
@@ -68,54 +72,31 @@
     </form>
     {% if product.media.size > 0 %}
       <div class="product-media">
+        <div class="custom-product-swiper">
+          <div class="swiper-wrapper">
         {% for media in product.media %}
           {% case media.media_type %}
             {% when 'image' %}
+              <div class="swiper-slide">
               <img src="{{ media.image.src | image_url: width: 500}}" alt="{{ media.alt }}" width="500" height="500">
+              </div>
             {% when 'video' %}
+              <div class="swiper-slide">
               <video controls>
                 <source src="{{ media.src }}" type="video/mp4">
               </video>
+            </div>
             {% when 'external_video' %}
               {{ media.external_video.html }}
           {% endcase %}
         {% endfor %}
+        </div>
+        </div>
       </div>
     {% endif %}
   </div>
 </section>
-<style>
-  .custom-countdown {
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Arial', sans-serif;
-    font-size: 18px;
-    margin: 20px;
-    padding: 10px;
-    background: #2c3e50;
-    border-radius: 10px;
-    color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
 
-  .custom-countdown__item {
-    text-align: center;
-  }
-
-  .countdown-time {
-    font-size: 40px;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  .countdown-label {
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 1px;
-    opacity: 0.7;
-  }
-</style>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const metafieldDate = "{{ product.metafields.custom.deal_end_date }}";
@@ -151,10 +132,23 @@
     const countdownInterval = setInterval(updateCountdown, 1000);
     updateCountdown();
   });
+
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var swiper = new Swiper(".custom-product-swiper", {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      loop: true, // Optional: Adds continuous looping.
+      slidesPerView: 1, // Adjust as needed.
+      spaceBetween: 10, // Adjust spacing.
+    });
+  });  
 </script>
 
-
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 {% schema %}
 {
   "name": "custom-product-template",
