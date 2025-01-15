@@ -109,7 +109,60 @@
 </div>
 <br>
 </div>
+ <h2>Practice To-Do List</h2>
+  
+  <input type="text" id="task-input" placeholder="Enter a new task...">
+  <button id="add-task-button">Add Task</button>
 
+  <ul id="tasks"></ul>
+
+  <script>
+  
+    const taskInput = document.getElementById('task-input');
+    const addTaskButton = document.getElementById('add-task-button');
+    const taskList = document.getElementById('tasks');
+
+   
+    function addTask() {
+      const taskText = taskInput.value.trim();
+
+      if (taskText === '') {
+        alert('Please enter a task!');
+        return;
+      }
+
+      // Create the task item
+      const li = document.createElement('li');
+      li.classList.add('task');
+
+   
+      const taskContent = document.createElement('span');
+      taskContent.textContent = taskText;
+      li.appendChild(taskContent);
+
+     
+      li.addEventListener('click', function () {
+        li.classList.toggle('completed');
+      });
+      const removeButton = document.createElement('button');
+      removeButton.textContent = 'Remove';
+      removeButton.classList.add('remove-btn');
+      removeButton.addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevent the task from being toggled
+        li.remove();
+      });
+
+      li.appendChild(removeButton);
+      taskList.appendChild(li);
+      taskInput.value = '';
+    }
+    addTaskButton.addEventListener('click', addTask);
+    taskInput.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        addTask();
+      }
+    });
+  </script>
 <script>
 function displayDate() {
   document.getElementById("demo").innerHTML = Date();
@@ -120,8 +173,6 @@ const accordionButtons = document.querySelectorAll('.accordion-btn');
 accordionButtons.forEach(button => {
   button.addEventListener('click', function() {
     const accordion = this.parentElement;
-    
-    // Toggle the active class to show/hide the content
     accordion.classList.toggle('active');
   });
 });
