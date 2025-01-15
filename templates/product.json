@@ -73,6 +73,10 @@
             "buy_online_link": "#"
           }
         },
+        "dealcounter_ca3PUj": {
+          "type": "dealcounter",
+          "settings": {}
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -224,6 +228,7 @@
         "flavour_tag_JzbxGW",
         "product_refrence_9YmDfA",
         "buy_online_btn_kVLpL3",
+        "dealcounter_ca3PUj",
         "buy_buttons",
         "custom_liquid_GWJjEK",
         "pdp_faq_tabs_83k8JA",
@@ -240,7 +245,6 @@
         "6b9357c1-7c43-4d06-8b96-b8ec6dfe19ee",
         "bde8f409-0041-4a50-b3b2-e981feb36a6e"
       ],
-      "disabled": true,
       "custom_css": [
         ".custompromo {background-color: #990000; text-align: left; padding-top: 10px; padding-bottom: 20px; color: #ffffff; padding-left: 20px; padding-right: 20px;}",
         ".custompromo a {color: #ffffff; font-size: 70%;}",
