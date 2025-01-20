@@ -117,9 +117,38 @@
   <button id="add-task-button" class="btn" >Add Task</button>
 
   <ul id="tasks"></ul>
+  <div id="myDiv">Hello</div>
+
+<div class="myClass">Hello</div>
+<div class="myClass">World</div>
+<div>Hello</div>
+<div>World</div>
+<div class="myClass">Hello</div>
+<div class="myClass">World</div>
+<div class="myClass">Hello</div>
+<div class="myClass">World</div>
+<div class="parent">
+  <button class="child">Click me</button>
+</div>
+
+
+
 </div>
   <script>
-  
+   const button = document.querySelector('.child');
+  const parent = button.closest('.parent');
+  console.log(parent);  // Output: <div class="parent">...</div>
+   const divs = document.querySelectorAll('.myClass');
+  console.log(divs[0].textContent);  // Output: Hello
+   const div = document.querySelector('.myClass');
+  console.log(div.textContent);  // Output: Hello (first element with 'myClass')
+   const divs = document.getElementsByTagName('div');
+  console.log(divs[0].textContent);  // Output: Hello
+  const divs = document.getElementsByClassName('myClass');
+  console.log(divs[0].textContent);  // Output: Hello
+  const div = document.getElementById('myDiv');
+  console.log(div.textContent);  // Output: Hello
+
     const taskInput = document.getElementById('task-input');
     const addTaskButton = document.getElementById('add-task-button');
     const taskList = document.getElementById('tasks');
