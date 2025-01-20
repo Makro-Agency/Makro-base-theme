@@ -1,0 +1,109 @@
+<div class="banner-wrapper"> 
+  <div class="row {{ section.settings.content_position }}">
+    <div class="image-wrapper">
+      {% if section.settings.image != blank %}
+        <img 
+          src="{{ section.settings.image | image_url }}" 
+          alt="Desktop Banner" 
+          loading="lazy" 
+          width="auto" 
+          height="auto" 
+          class="desktop-banner" 
+          sizes="(max-width: 768px) 100vw, 768px">
+      {% endif %}
+      {% if section.settings.image_mobile != blank %}
+        <img 
+          src="{{ section.settings.image_mobile | image_url}}" 
+          alt="Mobile Banner" 
+          width="auto" 
+          height="auto" 
+          class="mobile-banner" 
+          sizes="(max-width: 768px) 100vw, 768px">
+      {% endif %}
+    </div>
+    <div class="content-wrapper">
+        <div class="content-inner-wrapper">
+            {% if section.settings.heading  != blank %}
+            <h2>{{ section.settings.heading }}</h2>
+            {% endif %}
+            {% if section.settings.description  != blank %}
+            <p>{{ section.settings.description }}</p>
+             {% endif %}
+             {% if section.settings.btn_text  != blank %}
+            <a href="{% if section.settings.btn_link != blank %}{{ section.settings.btn_link }} else #{% endif  %}"> {{ section.settings.btn_text }}</a>
+             {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+<style>
+.custom-banner-bio-k .row {display: flex;}
+.custom-banner-bio-k .row >*{flex: 1 0 0;}
+.custom-banner-bio-k .row.content-left{flex-flow: row-reverse;}
+</style>
+{% schema %}
+{
+  "name": "Custom Banner Bio-K",
+  "tag": "section",
+  "class": "custom-banner-bio-k",
+  "settings": [
+    {
+        "type": "text",
+        "id": "heading",
+        "default": "Heading",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "default": "Description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "default": "Button Text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "default": "Button Link",
+        "label": "Button Link"
+      },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image"
+    },
+    {
+    "type": "select",
+    "id": "content_position",
+    "options": [
+    {
+    "value": "content-left",
+    "label": "content left"
+    },
+    {
+    "value": "content-right",
+    "label": "content right"
+    }
+    ],
+    "default": "content-right",
+    "label": "Content Position",
+    "info": "Select for content position"
+    }
+   
+  ],
+  "presets": [
+    {
+      "name": "Custom Banner Bio-K"
+    }
+  ]
+}
+{% endschema %}
