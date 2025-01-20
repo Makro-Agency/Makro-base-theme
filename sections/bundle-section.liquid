@@ -1,0 +1,85 @@
+<div class="bundle-container">
+    <h3>Bundle Includes:</h3>
+    <ul class="bundle-list">
+     {% for product in section.settings.bundle_products %}
+        <li class="bundle-item" data-bundle-id="{{ product.id }}">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: '100x100' }}" alt="{{ product.title }}" />
+            <span>{{ product.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <button id="add-bundle-to-cart" type="button" class="btn">
+    Add Bundle to Cart
+  </button>
+  
+  <script>
+   document.addEventListener('DOMContentLoaded', function () {
+    const bundleVariantIds = [
+      44631811424421,
+      44640244170917
+    ];
+  
+    const addBundleButton = document.getElementById('add-bundle-to-cart');
+    if (addBundleButton) {
+      addBundleButton.addEventListener('click', async function () {
+        try {
+          for (const variantId of bundleVariantIds) {
+            await addItemToCart(variantId, 1); 
+          }
+          alert('Bundle added to cart successfully!');
+          window.location.href = '/cart'; 
+        } catch (error) {
+          console.error('Error adding bundle to cart:', error);
+          alert('There was an error adding the bundle to the cart. Please try again.');
+        }
+      });
+    }
+    async function addItemToCart(variantId, quantity = 1) {
+      console.log(variantId,'variantId');
+      const response = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          id: variantId,
+          quantity: quantity
+        })
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.description || `Failed to add variant ${variantId} to cart.`);
+      }
+      return response.json();
+    }
+  });
+  </script>
+  
+  {% schema %}
+    {
+      "name": "Pdp Bundle",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_bundle",
+          "label": "Enable Bundle for this Product",
+          "default": false
+        },
+        {
+          "type": "product_list",
+          "id": "bundle_products",
+          "label": "Select Products for Bundle",
+          "limit": 10
+        }
+      ],
+    "presets": [
+        {
+          "name": "Pdp Bundle",
+        }
+      ]
+    }
+  {% endschema %}
