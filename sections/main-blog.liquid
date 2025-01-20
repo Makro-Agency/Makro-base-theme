@@ -132,15 +132,17 @@
 <div class="myClass">World</div>
 
  <div class="container">
-    <h1>display text using onkeyup</h1>
+    <h1>Live Text Display with onkeyup</h1>
+    <!-- Input field to type text -->
     <input type="text" id="textInput" placeholder="Type something..." onkeyup="displayText()" />
+    <!-- Output area where typed text will appear -->
     <div class="output" id="textOutput"></div>
   </div>
 
 
 </div>
   <script>
- function displayText() {
+function displayText() {
       var inputText = document.getElementById('textInput').value;
       document.getElementById('textOutput').textContent = inputText;
     }
