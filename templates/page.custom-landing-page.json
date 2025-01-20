@@ -45,7 +45,7 @@
         "card_VtxAp8"
       ],
       "settings": {
-        "bg_color": "#212D3D",
+        "bg_color": "#212d3d",
         "form_title": "TA Inquiry Form",
         "form_subtitle": "Fill the form below to get access to your personal TA Account",
         "form_instruction": "Start With Selecting your Inquiry Type",
@@ -313,6 +313,31 @@
         "padding_top": 0,
         "padding_bottom": 100
       }
+    },
+    "custom_banner_section_land_47ARLp": {
+      "type": "custom-banner-section-land",
+      "settings": {
+        "heading": "Heading",
+        "description": "<p>Description</p>",
+        "btn_text": "Button Text",
+        "btn_link": "shopify://products/coffee",
+        "image": "shopify://shop_images/service2_1.png",
+        "image_mobile": "shopify://shop_images/service1_1.png",
+        "content_position": "content-right",
+        "bg-image-desktop": "shopify://shop_images/product2-img.png",
+        "bg-image-mobile": "shopify://shop_images/hero-section-layout-first.png"
+      }
+    },
+    "custom_split_section_nntNx8": {
+      "type": "custom-split-section",
+      "settings": {
+        "heading": "Welcome to Shopify Development",
+        "highlighted_positions": "1,4",
+        "color": "",
+        "highlight_color": "",
+        "heading_case": "upper-case",
+        "text_alignment": "left"
+      }
     }
   },
   "order": [
@@ -322,6 +347,8 @@
     "97199040-bf2b-41c3-a062-7ff04d324137",
     "039b79ec-24b4-4f50-b22e-06c26db54608",
     "9b21fb92-1f78-4a48-b72a-20933e293c16",
-    "f6be46da-e20e-4e12-834f-b38922f5a31c"
+    "f6be46da-e20e-4e12-834f-b38922f5a31c",
+    "custom_banner_section_land_47ARLp",
+    "custom_split_section_nntNx8"
   ]
 }
