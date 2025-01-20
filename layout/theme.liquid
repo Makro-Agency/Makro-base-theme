@@ -642,7 +642,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.description || `Failed to remove variant ${variantId} from cart.`);
+      throw new Error(errorData.description || 'Failed to remove variant ${variantId} from cart.');
     }
     return response.json();
   }
