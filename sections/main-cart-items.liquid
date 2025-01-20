@@ -45,9 +45,9 @@
   <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
     <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
       <div class="js-contents">
-        <table class="cart-table">
+        <table class="cart-table 1">
           {% for item in cart.items %}
-            <tr class="cart-item 1" 
+            <tr class="cart-item" 
                 data-line-item="{{ item.properties.line_item }}" 
                 data-bundle="{{ item.properties.line_item ? 'true' : 'false' }}">
                 <td class="cart-item-image">
