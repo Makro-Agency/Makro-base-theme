@@ -553,56 +553,48 @@
     </script>
     {% endcomment %}
     <script>
-     document.addEventListener('DOMContentLoaded', function () {
-  document.addEventListener('click', async function (event) {
-    if (event.target.classList.contains('remove-item')) {
-      const lineItemId = event.target.getAttribute('data-line-item');
-
-      if (lineItemId) {
-        // Find all cart items with the same line_item ID
-        const cartItems = document.querySelectorAll(
-          `.cart-item[data-line-item="${lineItemId}"]`
-        );
-
-        // Collect variant IDs to remove
-        const variantIdsToRemove = Array.from(cartItems).map((item) =>
-          item.getAttribute('data-variant-id')
-        );
-
-        // Remove each item
-        try {
-          for (const variantId of variantIdsToRemove) {
-            await removeItemFromCart(variantId);
+    document.addEventListener('DOMContentLoaded', function () {
+      const bundleVariantIds = [44631811424421, 44640244170917];
+      const addBundleButton = document.getElementById('add-bundle-to-cart');
+    
+      if (addBundleButton) {
+        addBundleButton.addEventListener('click', async function () {
+          try {
+            const lineItemId = Date.now().toString(); // Unique identifier for the bundle
+            for (const variantId of bundleVariantIds) {
+              await addItemToCart(variantId, 1, { line_item: lineItemId });
+            }
+            alert('Bundle added to cart successfully!');
+            window.location.reload(); // Reload to show updated cart
+          } catch (error) {
+            console.error('Error adding bundle to cart:', error);
+            alert('There was an error adding the bundle to the cart. Please try again.');
           }
-          alert('Bundle removed from cart!');
-          window.location.reload(); // Reload to reflect changes
-        } catch (error) {
-          console.error('Error removing bundle from cart:', error);
-          alert('There was an error removing the bundle. Please try again.');
-        }
+        });
       }
-    }
-  });
-
-  async function removeItemFromCart(variantId) {
-    const response = await fetch(`/cart/change.js`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        id: variantId,
-        quantity: 0, // Set quantity to 0 to remove the item
-      }),
+    
+      async function addItemToCart(variantId, quantity = 1, properties = {}) {
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            id: variantId,
+            quantity: quantity,
+            properties: properties,
+          }),
+        });
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.description || `Failed to add variant ${variantId} to cart.`);
+        }
+        return response.json();
+      }
     });
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.description || `Failed to remove variant ${variantId} from cart.`);
-    }
-    return response.json();
-  }
-});
+
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -613,7 +605,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (lineItemId) {
         // Find all cart items with the same line_item ID
         const cartItems = document.querySelectorAll(
-          `.cart-item[data-line-item="${lineItemId}"]`
+          '.cart-item[data-line-item="${lineItemId}"]'
         );
 
         // Collect variant IDs to remove
