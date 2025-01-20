@@ -338,6 +338,64 @@
         "heading_case": "upper-case",
         "text_alignment": "left"
       }
+    },
+    "custom_cards_setion_37ETzY": {
+      "type": "custom-cards-setion",
+      "blocks": {
+        "card_89MdC7": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_hLPTkc": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_n97gYi": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_KTKjUz": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_GMWHtB": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        }
+      },
+      "block_order": [
+        "card_89MdC7",
+        "card_hLPTkc",
+        "card_n97gYi",
+        "card_KTKjUz",
+        "card_GMWHtB"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -349,6 +407,7 @@
     "9b21fb92-1f78-4a48-b72a-20933e293c16",
     "f6be46da-e20e-4e12-834f-b38922f5a31c",
     "custom_banner_section_land_47ARLp",
-    "custom_split_section_nntNx8"
+    "custom_split_section_nntNx8",
+    "custom_cards_setion_37ETzY"
   ]
 }
