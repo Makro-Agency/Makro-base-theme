@@ -45,14 +45,14 @@
   <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
     <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
       <div class="js-contents">
-        <table class="cart-table 1">
+        <table class="cart-table">
           {% for item in cart.items %}
             <tr class="cart-item" 
                 data-line-item="{{ item.properties.line_item }}" 
                 data-bundle="{% if item.properties.line_item %}true{% else %}false{% endif %}">
-                <td class="cart-item-image">
-                  <img src="{{ item.image | img_url: '100x100' }}" alt="{{ item.product.title }}">
-                </td>
+              <td class="cart-item-image">
+                <img src="{{ item.image | img_url: '100x100' }}" alt="{{ item.product.title }}">
+              </td>
               <td class="cart-item-details">
                 <a href="{{ item.url }}">{{ item.product.title }}</a>
                 {% if item.properties.line_item %}
