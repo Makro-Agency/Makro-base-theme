@@ -1,0 +1,117 @@
+<div class="split-text-wrapper">
+  {% assign words = section.settings.heading | split: ' ' %}
+  {% assign highlighted_positions = section.settings.highlighted_positions %}
+  {% liquid  
+  assign text_case = section.settings.heading_case
+  case  text_case
+   when 'upper-case'
+      assign text_case_selected = "uppercase"
+   when 'lower-case"'
+      assign text_case_selected = "lowercase"
+   else 
+      assign text_case_selected = "capitalize"  
+  endcase
+
+  assign text_alignment = section.settings.text_alignment
+  case  text_alignment
+  when 'left'
+     assign text_alignment_selected = "left"
+  when 'center"'
+     assign text_alignment_selected = "center"
+  else 
+     assign text_alignment_selected = "right"  
+ endcase
+
+  %}
+  <h2 style="color:{{ section.settings.color }};text-transform:{{text_case_selected}};text-align: {{text_alignment_selected}};">
+    {% for word in words %}
+      {% assign index = forloop.index %}
+      <span 
+        {% if highlighted_positions contains index %}
+          class="highlight" {% if section.settings.highlight_color %} style="color: {{ section.settings.highlight_color }};" {% endif %}
+        {% endif %}
+      >
+        {{ word }}
+      </span>
+    {% endfor %}
+  </h2>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Split Text Bio-K",
+  "tag": "section",
+  "class": "custom-split-text-bio-k",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Welcome to Shopify Development",
+      "label": "Heading"
+    },
+
+    {
+      "type": "text",
+      "id": "highlighted_positions",
+      "default": "1,4",
+      "label": "Highlight Word Positions",
+      "info": "Enter the positions of words to highlight (comma-separated, starting from 1)."
+    },
+    {
+        "type": "color",
+        "id":"color",
+        "label":"Heading Color"
+    },
+    {
+        "type": "color",
+        "id":"highlight_color",
+        "label":"Pick the color to highlight the text"
+    },
+    {
+      "type": "select",
+      "id": "heading_case",
+      "options": [
+        {
+          "value": "upper-case",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lower-case",
+          "label": "Lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "upper-case",
+      "label": "TextCase"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "label": "Text Alignment"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Split Text Bio-K"
+    }
+  ]
+}
+{% endschema %}
