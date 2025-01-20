@@ -36,6 +36,22 @@
     </div>
   </div>
 </div>
+{% style %}
+{% if section.settings.bg-image-desktop %}
+{% if section.settings.bg-image-mobile != blank %}
+@media only screen and (min-width: 769px){
+.custom-banner-bio-k .banner-wrapper { background-image: url('{{ section.settings.bg-image-desktop | image_url }}') }
+}
+{% else %}
+.custom-banner-bio-k .banner-wrapper { background-image: url('{{ section.settings.bg-image-desktop | image_url }}') }
+{% endif %}
+{% endif %}
+{% if section.settings.bg-image-mobile %}
+@media only screen and (max-width: 768px){
+.custom-banner-bio-k .banner-wrapper {background-image: url('{{ section.settings.bg-image-mobile | image_url }}')}
+}
+{% endif %}
+{% endstyle %}
 <style>
 .custom-banner-bio-k .row {display: flex;}
 .custom-banner-bio-k .row >*{flex: 1 0 0;}
@@ -56,7 +72,7 @@
       {
         "type": "richtext",
         "id": "description",
-        "default": "Description",
+        "default": "<p>Description</p>",
         "label": "Description"
       },
       {
@@ -68,7 +84,6 @@
       {
         "type": "url",
         "id": "btn_link",
-        "default": "Button Link",
         "label": "Button Link"
       },
     {
@@ -97,7 +112,18 @@
     "default": "content-right",
     "label": "Content Position",
     "info": "Select for content position"
-    }
+    },
+    {
+    "type": "image_picker",
+    "id": "bg-image-desktop",
+    "label": "Desktop BG Image"
+    },
+    {
+    "type": "image_picker",
+    "id": "bg-image-mobile",
+    "label": "Desktop Mobile Image"
+    },
+
    
   ],
   "presets": [
