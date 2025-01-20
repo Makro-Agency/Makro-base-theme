@@ -331,10 +331,10 @@
     "custom_split_section_nntNx8": {
       "type": "custom-split-section",
       "settings": {
-        "heading": "Welcome to Shopify Development",
-        "highlighted_positions": "1,4",
-        "color": "",
-        "highlight_color": "",
+        "heading": "Your gut matters. We're here to help it thrive with science you can trust and results you can feel. Experience the power of probiotics that work for everyone, at every stage of life.",
+        "highlighted_positions": "1,4,10,15,12",
+        "color": "#0d0707",
+        "highlight_color": "#dd1d1d",
         "heading_case": "upper-case",
         "text_alignment": "left"
       }
