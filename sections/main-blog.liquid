@@ -117,27 +117,33 @@
   <button id="add-task-button" class="btn" >Add Task</button>
 
   <ul id="tasks"></ul>
-  <div id="myDiv">Hello</div>
-
-<div class="myClass">Hello</div>
-<div class="myClass">World</div>
+ 
+<h5>Selecting Element by class</h5>
+<div class="myClass">First Div</div>
+<div class="myClass">second Div</div>
+<h5>Selecting Element by tag</h5>
 <div>Hello</div>
 <div>World</div>
+<h5>Selecting Element by querySelector</h5>
 <div class="myClass">Hello</div>
 <div class="myClass">World</div>
+<h5>Selecting Element by querySelector</h5>
 <div class="myClass">Hello</div>
 <div class="myClass">World</div>
-<div class="parent">
-  <button class="child">Click me</button>
-</div>
 
+ <div class="container">
+    <h1>display text using onkeyup</h1>
+    <input type="text" id="textInput" placeholder="Type something..." onkeyup="displayText()" />
+    <div class="output" id="textOutput"></div>
+  </div>
 
 
 </div>
   <script>
-   const button = document.querySelector('.child');
-  const parent = button.closest('.parent');
-  console.log(parent);  // Output: <div class="parent">...</div>
+ function displayText() {
+      var inputText = document.getElementById('textInput').value;
+      document.getElementById('textOutput').textContent = inputText;
+    }
    const divs = document.querySelectorAll('.myClass');
   console.log(divs[0].textContent);  // Output: Hello
    const div = document.querySelector('.myClass');
@@ -146,8 +152,7 @@
   console.log(divs[0].textContent);  // Output: Hello
   const divs = document.getElementsByClassName('myClass');
   console.log(divs[0].textContent);  // Output: Hello
-  const div = document.getElementById('myDiv');
-  console.log(div.textContent);  // Output: Hello
+
 
     const taskInput = document.getElementById('task-input');
     const addTaskButton = document.getElementById('add-task-button');
