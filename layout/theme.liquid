@@ -655,11 +655,9 @@
           const errorData = await response.json();
           throw new Error(errorData.description || 'Failed to remove variant ${variantId} from cart.');
         }
-    
         return response.json();
       }
     });
-});
     </script>
   </body>
 </html>
