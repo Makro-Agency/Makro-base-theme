@@ -133,19 +133,13 @@
 
   <div class="container">
     <h1>Live Text Display with onkeyup</h1>
-    <!-- Input field to type text -->
     <input type="text" id="textInput" placeholder="Type something..." onkeyup="displayText()" />
-    <!-- Output area where typed text will appear -->
     <div class="output" id="textOutput"></div>
   </div>
 
   <script>
-    // This function is triggered every time the user types something in the input field
     function displayText() {
-      // Get the value of the input field with the ID "textInput"
       var inputText = document.getElementById('textInput').value;
-
-      // Set the text content of the element with ID "textOutput" to the value typed in the input field
       document.getElementById('textOutput').textContent = inputText;
     }
   </script>
