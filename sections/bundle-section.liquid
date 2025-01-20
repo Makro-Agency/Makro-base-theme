@@ -33,7 +33,11 @@
             for (const variantId of bundleVariantIds) {
               await addItemToCart(variantId, 1, commonAttribute); 
             }
-            alert('Bundle added to cart successfully!');
+            const cartItems = document.querySelectorAll('.cart-item');
+             cartItems.forEach(function (item) {
+                item.setAttribute('data-bundle', 'true');
+                item.classList.add('is-bundle');
+              });
             window.location.href = '/cart'; 
           } catch (error) {
             console.error('Error adding bundle to cart:', error);
