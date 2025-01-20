@@ -49,10 +49,12 @@
 
         <table class="cart-table">
           {% for item in cart.items %}
-            <tr class="cart-item" data-line-item="{{ item.properties.line_item }}">
-              <td class="cart-item-image">
-                <img src="{{ item.image | img_url: '100x100' }}" alt="{{ item.product.title }}">
-              </td>
+            <tr class="cart-item" 
+                data-line-item="{{ item.properties.line_item }}" 
+                data-bundle="{{ item.properties.line_item ? 'true' : 'false' }}">
+                <td class="cart-item-image">
+                  <img src="{{ item.image | img_url: '100x100' }}" alt="{{ item.product.title }}">
+                </td>
               <td class="cart-item-details">
                 <a href="{{ item.url }}">{{ item.product.title }}</a>
                 {% if item.properties.line_item %}
@@ -66,7 +68,6 @@
             </tr>
           {% endfor %}
         </table>
-        
 
         {%- if cart != empty -%}
           <table class="cart-items">
