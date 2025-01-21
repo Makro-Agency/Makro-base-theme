@@ -16,11 +16,11 @@
   }
   .practice-list{ text-align:center; }
   .popup-btn{ background-color:#fafafa; color:#000; font-size:18px; min-width:100px; padding:6px 10px; border:1px solid; cursor:pointer;  }
-  .popup-overlay{ position:absolute; top:0; left:0; background-color:#000; opacity:0.7; z-index:1; width:100%; height:100%; display:none; }
+  .popupoverlay{ position:absolute; top:0; left:0; background-color:#000; opacity:0.7; z-index:1; width:100%; height:100%; display:none; }
   .main-blog { position:relative; }
   .custom-popup{ position:relative; }
   .custom-popup{ min-height:50rem; position:relative; }
-  .popup-content{ background-color:#fff; padding:20px; position:absolute; left:0; right:0; width:50%;  top:50%; color:#000; z-index:2; margin:0 auto; display:none;  }
+  .popupcontent{ background-color:#fff; padding:20px; position:absolute; left:0; right:0; width:50%;  top:50%; color:#000; z-index:2; margin:0 auto; display:none;  }
 {%- endstyle -%}
 
 {%- paginate blog.articles by 6 -%}
@@ -153,9 +153,9 @@
   
 <div class="custom-popup">
 <div class="popup-inner">
-  <button onclick="show()" class="popup-btn" >popup</button>
-  <div class="popup-overlay"></div>
-  <div class="popup-content">
+  <button onclick="show()" class="popup-btn">popup</button>
+  <div class="popupoverlay"></div>
+  <div class="popupcontent">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
  <button onclick="close()"> Close </button>
   </div>
@@ -166,16 +166,16 @@
 <script>
 
   
-var popup-overlay = documnent.querySelector(".popup-overlay")
-var popup-content = documnent.querySelector(".popup-content")
+var popupoverlay = documnent.querySelector(".popupoverlay")
+var popupcontent = documnent.querySelector(".popupcontent")
 
   function show(){
-    popup-overlay.style.display="block"
-    popup-content.style.display="block"
+    popupoverlay.style.display = "block"
+    popupcontent.style.display = "block"
   }
   function close(){
-    popup-overlay.style.display="none"
-    popup-content.style.display="none"
+    popupoverlay.style.display = "none"
+    popupcontent.style.display = "none"
   
   
 var ul = document.getElementById("listcontainer")
