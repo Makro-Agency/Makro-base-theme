@@ -395,7 +395,66 @@
         "card_KTKjUz",
         "card_GMWHtB"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "Heading",
+        "description": "<p>Description</p>"
+      }
+    },
+    "custom_accordion_bio_k_jLJiwm": {
+      "type": "custom-accordion-bio-k",
+      "blocks": {
+        "accordion_KxEeDD": {
+          "type": "accordion",
+          "settings": {
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
+          }
+        },
+        "accordion_zi46bP": {
+          "type": "accordion",
+          "settings": {
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
+          }
+        },
+        "accordion_UmT77A": {
+          "type": "accordion",
+          "settings": {
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
+          }
+        },
+        "accordion_Nik3zE": {
+          "type": "accordion",
+          "settings": {
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
+          }
+        },
+        "accordion_CxqcFr": {
+          "type": "accordion",
+          "settings": {
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_KxEeDD",
+        "accordion_zi46bP",
+        "accordion_UmT77A",
+        "accordion_Nik3zE",
+        "accordion_CxqcFr"
+      ],
+      "settings": {
+        "heading": "Section Heading",
+        "bottom_heading": "Heading",
+        "description": "<p>Description</p>",
+        "btn_text": "Button Text",
+        "btn_link": "",
+        "bg_color": "#990000",
+        "image": "shopify://shop_images/service2_1.png"
+      }
     }
   },
   "order": [
@@ -408,6 +467,7 @@
     "f6be46da-e20e-4e12-834f-b38922f5a31c",
     "custom_banner_section_land_47ARLp",
     "custom_split_section_nntNx8",
-    "custom_cards_setion_37ETzY"
+    "custom_cards_setion_37ETzY",
+    "custom_accordion_bio_k_jLJiwm"
   ]
 }
