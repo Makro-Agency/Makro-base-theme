@@ -140,7 +140,7 @@
 <div class="practice-section">
 <label>TO DO List </label>
 <input id="input">
-<button id="add" onclick="add-items()"> Add </button>
+<button id="add" onclick="additems()"> Add </button>
 <ul id ="list">
 </ul>
 </div>
@@ -151,7 +151,7 @@
 var list = document.getElementById("list")
 var add = document.getElementById("add")
 var input = document.getElementById("input")
-function add-items(){
+function additems(){
  var listitems =document.createElement(li)
 listitems.innerHTML= input.value + " <button onclick='deleteitems()'>Delete</button>"
 list.append(listitems)
