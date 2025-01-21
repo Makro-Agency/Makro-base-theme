@@ -386,6 +386,15 @@
             "link": "shopify://collections",
             "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
           }
+        },
+        "card_n9L3EB": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
         }
       },
       "block_order": [
@@ -393,9 +402,129 @@
         "card_hLPTkc",
         "card_n97gYi",
         "card_KTKjUz",
-        "card_GMWHtB"
+        "card_GMWHtB",
+        "card_n9L3EB"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "Heading",
+        "description": "<p>Description</p>"
+      }
+    },
+    "custom_image_with_text_section_QpEeiM": {
+      "type": "custom-image-with-text-section",
+      "settings": {
+        "heading": "Heading",
+        "description": "<p>Description</p>",
+        "featured-icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21\" height=\"20\" viewbox=\"0 0 21 20\" fill=\"none\">\n  <g clip-path=\"url(#clip0_910_11935)\">\n    <path d=\"M8.71989 0L15.1987 0.00608041L14.1048 6.83438H20.7171L19.7036 13.1823L13.0867 13.1778L11.9957 20L5.51992 19.9954L6.61085 13.1687L0 13.1641L1.01204 6.81918L7.63047 6.82374L8.71989 0Z\" fill=\"#009845\"></path>\n  </g>\n  <defs>\n    <clippath id=\"clip0_910_11935\">\n      <rect width=\"20.7171\" height=\"20\" fill=\"white\"></rect>\n    </clippath>\n  </defs>\n</svg>",
+        "feature-text": "Feature Text",
+        "btn_text": "Button Text",
+        "btn_link": "",
+        "image": "shopify://shop_images/service2_1.png",
+        "image_mobile": "shopify://shop_images/service1_1.png",
+        "content_position": "content-right"
+      }
+    },
+    "custom_accordion_bio_k_jLJiwm": {
+      "type": "custom-accordion-bio-k",
+      "blocks": {
+        "accordion_KxEeDD": {
+          "type": "accordion",
+          "settings": {
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
+          }
+        },
+        "accordion_zi46bP": {
+          "type": "accordion",
+          "settings": {
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
+          }
+        },
+        "accordion_UmT77A": {
+          "type": "accordion",
+          "settings": {
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
+          }
+        },
+        "accordion_Nik3zE": {
+          "type": "accordion",
+          "settings": {
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
+          }
+        },
+        "accordion_CxqcFr": {
+          "type": "accordion",
+          "settings": {
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_KxEeDD",
+        "accordion_zi46bP",
+        "accordion_UmT77A",
+        "accordion_Nik3zE",
+        "accordion_CxqcFr"
+      ],
+      "settings": {
+        "heading": "Section Heading",
+        "bottom_heading": "Heading",
+        "description": "<p>Description</p>",
+        "btn_text": "Button Text",
+        "btn_link": "",
+        "bg_color": "#990000",
+        "image": "shopify://shop_images/service2_1.png"
+      }
+    },
+    "custom_grid_blocks_iqdmUd": {
+      "type": "custom-grid-blocks",
+      "blocks": {
+        "grid_z6wRJ9": {
+          "type": "grid",
+          "settings": {
+            "number_count": "20+",
+            "title": "Title",
+            "description": "<p>Description</p>",
+            "grid_bg_image": "shopify://shop_images/Rectangle_23_655101d7-74c2-4925-9966-fe646b4b89f2.png"
+          }
+        },
+        "grid_xgVzJh": {
+          "type": "grid",
+          "settings": {
+            "number_count": "20+",
+            "title": "Title",
+            "description": "<p>Description</p>",
+            "grid_bg_image": "shopify://shop_images/Rectangle_23_655101d7-74c2-4925-9966-fe646b4b89f2.png"
+          }
+        },
+        "grid_f8GaHY": {
+          "type": "grid",
+          "settings": {
+            "number_count": "20+",
+            "title": "Title",
+            "description": "<p>Description</p>",
+            "grid_bg_image": "shopify://shop_images/product2-img_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "grid_z6wRJ9",
+        "grid_xgVzJh",
+        "grid_f8GaHY"
+      ],
+      "settings": {
+        "heading": "Heading",
+        "description": "Description",
+        "btn_text": "Button Text",
+        "btn_link": "",
+        "grid_block_height": 300,
+        "grid_block_mob_height": 300,
+        "text_alignment": "left"
+      }
     }
   },
   "order": [
@@ -408,6 +537,9 @@
     "f6be46da-e20e-4e12-834f-b38922f5a31c",
     "custom_banner_section_land_47ARLp",
     "custom_split_section_nntNx8",
-    "custom_cards_setion_37ETzY"
+    "custom_cards_setion_37ETzY",
+    "custom_image_with_text_section_QpEeiM",
+    "custom_accordion_bio_k_jLJiwm",
+    "custom_grid_blocks_iqdmUd"
   ]
 }
