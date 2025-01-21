@@ -137,14 +137,35 @@
     <div class="output" id="textOutput"></div>
   </div>
 
-  <script>
+<div class="practice-section">
+<label>TO DO List </label>
+<input id="input">
+<button id="add" onclick="add-items()"> Add </button>
+<ul id ="list">
+</ul>
+</div>
+  
+
+</div>
+<script>
+
+var list = document.getElementById("list")
+var add = document.getElementById("add")
+var input = document.getElementById("input")
+function add-items(event){
+ var listitems =document.createElement(li)
+listitems.innerHTML= input.value + " <button onclick='deleteitems()'>Delete</button>"
+}
+function deleteitems(event){
+event.target.parentElement.remove()
+}
+
+
     function displayText() {
       var inputText = document.getElementById('textInput').value;
       document.getElementById('textOutput').textContent = inputText;
     }
   </script>
-
-</div>
   <script>
 
    const divs = document.querySelectorAll('.myClass');
