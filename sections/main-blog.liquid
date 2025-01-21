@@ -141,20 +141,20 @@
 <label>TO DO List </label>
 <input id="input">
 <button id="add" onclick="additems()"> Add </button>
-<ul id = "list">
+<ul id = "listcontainer">
 </ul>
 </div>
   
 
 </div>
 <script>
-var list = document.getElementById("list")
+var listcontainer = document.getElementById("listcontainer")
 var add = document.getElementById("add")
 var input = document.getElementById("input")
 function additems(){
  var listitems = document.createElement(li)
 listitems.innerHTML= input.value + " <button onclick ='deleteitems()'>Delete</button>"
-list.append(listitems)
+listcontainer.append(listitems)
 }
 function deleteitems(event){
 event.target.parentElement.remove()
