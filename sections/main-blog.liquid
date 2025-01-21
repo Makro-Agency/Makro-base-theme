@@ -157,7 +157,7 @@
   <div class="popupoverlay"></div>
   <div class="popupcontent">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
- <button onclick="closee()"> Close </button>
+ <button onclick="closee()" class="closebtn" > Close </button>
   </div>
 </div>
 </div>
@@ -166,16 +166,17 @@
 <script>
 var popupoverlay = document.querySelector(".popupoverlay")
 var popupcontent = document.querySelector(".popupcontent")
+var deletebtn = document.querySelector(".closebtn")
 var buttonn= document.querySelector(".popupbtn")
 buttonn.addEventListener( "click" , function(){
    popupoverlay.style.display = "block"
     popupcontent.style.display = "block"
 });
-
-  function closee(){
+deletebtn.addEventListener("click" , function(){
     popupoverlay.style.display = "none"
     popupcontent.style.display = "none"
-  }
+})
+
   
 </script>
     
