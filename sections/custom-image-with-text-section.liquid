@@ -1,0 +1,132 @@
+<div class="row {{ section.settings.content_position }}">
+    <div class="content-wrapper">
+        <div class="content-inner-wrapper">
+            {% if section.settings.heading  != blank %}
+            <h2>{{ section.settings.heading }}</h2>
+            {% endif %}
+            {% if section.settings.description  != blank %}
+            <p>{{ section.settings.description }}</p>
+             {% endif %}
+             {% if section.settings.btn_text  != blank %}
+            <a href="{% if section.settings.btn_link != blank %}{{ section.settings.btn_link }} else #{% endif  %}"> {{ section.settings.btn_text }}</a>
+             {% endif %}
+        </div>
+    </div>
+    <div class="image-wrapper">
+      {% if section.settings.image != blank %}
+        <img 
+          src="{{ section.settings.image | image_url }}" 
+          alt="Desktop image" 
+          loading="lazy" 
+          width="auto" 
+          height="auto" 
+          class="desktop-banner" 
+          sizes="(max-width: 768px) 100vw, 768px">
+      {% endif %}
+      {% if section.settings.image_mobile != blank %}
+        <img 
+          src="{{ section.settings.image_mobile | image_url}}" 
+          alt="Mobile image" 
+          width="auto" 
+          height="auto" 
+          class="mobile-banner" 
+          sizes="(max-width: 768px) 100vw, 768px">
+      {% endif %}
+    </div>
+    <style>
+    .custom-image-text .row {display: flex;}
+    .custom-image-text .row >*{flex: 1 0 0;}
+    .custom-image-text .row.content-left{flex-flow: row-reverse;}
+    </style>
+  </div>
+{% schema %}
+    {
+      "name": "Custom Image With Text",
+      "tag": "section",
+      "class": "custom-image-text",
+      "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "default": "Heading",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "default": "<p>Description</p>",
+            "label": "Description"
+          },
+          {
+            "type":"header",
+            "content": "Featured Content"
+          },
+          {
+            "type": "html",
+            "id": "featured-icon",
+            "label": "Featured Icon"
+          },
+          {
+            "type": "text",
+            "id": "feature-text",
+            "default": "Feature Text",
+            "label": "Feature Text"
+          },
+          {
+            "type": "text",
+            "id": "btn_text",
+            "default": "Button Text",
+            "label": "Button Text"
+          },
+          {
+            "type": "url",
+            "id": "btn_link",
+            "label": "Button Link"
+          },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image"
+        },
+        {
+        "type": "select",
+        "id": "content_position",
+        "options": [
+        {
+        "value": "content-left",
+        "label": "content left"
+        },
+        {
+        "value": "content-right",
+        "label": "content right"
+        }
+        ],
+        "default": "content-right",
+        "label": "Content Position",
+        "info": "Select for content position"
+        },
+        {
+        "type": "image_picker",
+        "id": "bg-image-desktop",
+        "label": "Desktop BG Image"
+        },
+        {
+        "type": "image_picker",
+        "id": "bg-image-mobile",
+        "label": "Desktop Mobile Image"
+        }
+       
+      ],
+      "presets": [
+        {
+          "name": "Custom Image With Text"
+        }
+      ]
+    }
+    {% endschema %}
+    

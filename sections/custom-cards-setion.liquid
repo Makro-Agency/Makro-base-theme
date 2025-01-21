@@ -1,8 +1,22 @@
+<div class="content-wrapper">
+        <div class="content-inner-wrapper">
+            {% if section.settings.heading  != blank %}
+            <h2>{{ section.settings.heading }}</h2>
+            {% endif %}
+            {% if section.settings.description  != blank %}
+            <p>{{ section.settings.description }}</p>
+             {% endif %}
+        </div>
+    </div>
 <div class="cards-wrapper">
   {% assign cards_count = section.blocks | size %}
-  
-  <div class="{% if cards_count > 4 %}carousel{% else %}grid{% endif %}">
+  <div class="{% if cards_count <= 4 %} grid {% endif %}" style="width: 100%;">
+    {% if cards_count > 4 %}
+  <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        {% endif %}
     {% for block in section.blocks %}
+      <div class="swiper-slide">
       <div class="card">
         <a href="{{ block.settings.link }}">
           {% if block.settings.image != blank %}
@@ -22,16 +36,57 @@
           </div>
         </a>
       </div>
+      </div>
     {% endfor %}
+    {% if cards_count > 4 %}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    </div>
+    {% endif %}
   </div>
 </div>
+<!-- Swiper JS -->
 
+
+<!-- Initialize Swiper -->
+<script>
+  window.onload = function () {
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 6,
+    loop: true,
+    spaceBetween: 30,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      320: { slidesPerView: 1, spaceBetween: 10 },
+      768: { slidesPerView: 3, spaceBetween: 20 },
+      1024: { slidesPerView: 6, spaceBetween: 30 },
+    },
+  });
+};
+</script>
 {% schema %}
 {
   "name": "Custom Cards Section",
   "tag": "section",
   "class": "custom-cards-section",
-  "settings": [],
+  "settings": [
+    {
+    "type": "text",
+    "id": "heading",
+    "default": "Heading",
+    "label": "Heading"
+    },
+    {g
+    "type": "richtext",
+    "id": "description",
+    "default": "<p>Description</p>",
+    "label": "Description"
+    }
+  ],
   "blocks": [
     {
       "type": "card",
@@ -94,7 +149,6 @@
   overflow: hidden;
   transition: transform 0.3s ease;
   width: 100%;
-  max-width: 300px;
   flex-shrink: 0;
   scroll-snap-align: start;
   text-align: center;
@@ -134,5 +188,12 @@
 }
 .arrow {
   transition: transform 0.3s ease;
+}
+.swiper {
+  width: 100%; /* Make sure it spans the full width of its container */
+  max-width: 100%; /* Ensure it does not exceed container width */
+}
+.cards-wrapper .swiper {
+  width: 100%;
 }
 </style>
