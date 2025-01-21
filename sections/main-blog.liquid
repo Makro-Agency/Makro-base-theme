@@ -148,13 +148,12 @@
 
 </div>
 <script>
-var listcontainer = document.getElementById("listcontainer")
-var add = document.getElementById("add")
+var ul = document.getElementById("listcontainer")
 var input = document.getElementById("input")
 function additems(){
- var listitems = document.createElement(li)
-listitems.innerHTML= input.value + " <button onclick ='deleteitems()'>Delete</button>"
-listcontainer.append(listitems)
+ var listitems = document.createElement("li")
+listitems.innerHTML= input.value + " <button onclick ='deleteitems(event)'>Delete</button>"
+ul.append(listitems)
 }
 function deleteitems(event){
 event.target.parentElement.remove()
