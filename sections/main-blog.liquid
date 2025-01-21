@@ -152,8 +152,8 @@ var list = document.getElementById("list")
 var add = document.getElementById("add")
 var input = document.getElementById("input")
 function additems(){
- var listitems =document.createElement(li)
-listitems.innerHTML= input.value + " <button onclick='deleteitems()'>Delete</button>"
+ var listitems = document.createElement(li)
+listitems.innerHTML= input.value + " <button onclick ='deleteitems()'>Delete</button>"
 list.append(listitems)
 }
 function deleteitems(event){
