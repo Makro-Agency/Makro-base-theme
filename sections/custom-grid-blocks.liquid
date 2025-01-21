@@ -1,0 +1,162 @@
+<div class="row">
+    <div class="content-wrapper">
+        <div class="content-inner-wrapper">
+            {% if section.settings.heading != blank %}
+            <h2 style="color:black">{{ section.settings.heading }}</h2>
+            {% endif %}
+            {% if section.settings.description != blank %}
+            <p>{{ section.settings.description }}</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="grid-item-wrapper">
+        {% for block in section.blocks %}
+            <div class="grid-item-blocks" style="background-image: url('{{ block.settings.grid_bg_image | image_url }}');background-size: cover;">
+            {% if block.settings.title != blank %}<h2 style="color: black;">{{ block.settings.number_count }}</h2> {%
+            endif %}
+            {% if block.settings.title != blank %}<h3 style="color: black;">{{ block.settings.title }}</h3> {% endif %}
+            {% if block.settings.description != blank %}{{ block.settings.description }} {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        {% if section.settings.btn_text  != blank %}
+        <a href="{% if section.settings.btn_link != blank %}{{ section.settings.btn_link }} else #{% endif  %}"> {{ section.settings.btn_text }}</a>
+        {% endif %}
+    </div>
+</div>
+{% style %}
+{% liquid  
+  assign text_alignment = section.settings.text_alignment
+  case  text_alignment
+  when 'left'
+     assign text_alignment_selected = "left"
+  when 'center"'
+     assign text_alignment_selected = "center"
+  else 
+     assign text_alignment_selected = "right"  
+ endcase
+
+  %}
+{% assign blocks_count = section.blocks | size %}
+.grid-item-blocks {
+    text-align: {{ text_alignment_selected }};
+}
+.grid-item-wrapper {display:grid;grid-gap: 30px;grid-template-columns: repeat(
+    {% if blocks_count <= 3 %} {{ blocks_count }} {% else %} 3 {% endif %},
+    1fr)
+}
+@media only screen and (min-width: 769px){
+.grid-item-blocks { min-height: {{ section.settings.grid_block_height }}px; }
+}
+
+@media only screen and (max-width: 768px){
+.grid-item-blocks { min-height: {{ section.settings.grid_block_mob_height }}px; }
+}
+{% endstyle %}
+{% schema %}
+{
+"name": "Custom Grid Blocks Bio-k",
+"tag": "section",
+"class": "custom-grid-blocks",
+"settings": [
+{
+"type": "text",
+"id": "heading",
+"default": "Heading",
+"label": "Heading"
+},
+{
+"type": "textarea",
+"id": "description",
+"default": "Description ",
+"label": "Description"
+},
+{
+"type": "text",
+"id": "btn_text",
+"default": "Button Text",
+"label": "Button Text"
+},
+{
+"type": "url",
+"id": "btn_link",
+"label": "Button Link"
+},
+{
+  "type": "header",
+  "content": "Settings For Grid Blocks"
+},
+{
+"type": "number",
+"id": "grid_block_height",
+"default": 300,
+"label": "Desktop Grid Block Height",
+"info": "The above value for px unit"
+},
+{
+"type": "number",
+"id": "grid_block_mob_height",
+"default": 300,
+"label": "Mobile Grid Block Height",
+"info": "The above value for px unit"
+},
+{
+      "type": "select",
+      "id": "text_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "label": "Text Alignment"
+    }
+],
+"blocks": [
+{
+"type": "grid",
+"name": "Grid Block",
+"settings": [
+{
+"type": "text",
+"id": "number_count",
+"label": "Number Count",
+"default": "20+"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Block Title",
+"default": "Title"
+},
+{
+"type": "richtext",
+"id": "description",
+"default": "<p>Description</p>",
+"label": "Block Description"
+},
+{
+"type": "image_picker",
+"id": "grid_bg_image",
+"label": "Grid Bg Image"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Custom Grid Blocks Bio-k"
+}
+]
+}
+{% endschema %}

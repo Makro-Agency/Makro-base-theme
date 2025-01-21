@@ -1,0 +1,173 @@
+<div class="row">
+    {% if section.settings.heading  %}
+    <div>
+        <h2 style="color: black;">{{ section.settings.heading }}</h2>
+    </div>
+    {% endif %}
+    <div class="accordion-wrapper">
+        {% for block in section.blocks %}
+            <div class="accordion-item">
+                {% if block.settings.accordion_title %}
+                    <div class="accordion-title">
+                        {{ block.settings.accordion_title }} {{ forloop.index}}
+                    </div>
+                {% endif %}
+                {% if block.settings.accordion_desc %}
+                <div class="accordion-description">
+                    {{ block.settings.accordion_desc }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+    </div>
+<div class="accordion-bottom-content" style="background-color: {{ section.settings.bg_color }};{% if section.settings.image %} background-image: url('{{ section.settings.image |  image_url  }}'); {% endif %}">
+    <div class="left-group">
+        {% if section.settings.bottom_heading  != blank %}
+            <h2>{{ section.settings.bottom_heading }}</h2>
+            {% endif %}
+            {% if section.settings.description  != blank %}
+            <p>{{ section.settings.description }}</p>
+             {% endif %}
+    </div>
+    <div class="right-group">
+        {% if section.settings.btn_text  != blank %}
+        <a href="{% if section.settings.btn_link != blank %}{{ section.settings.btn_link }} else #{% endif  %}"> {{ section.settings.btn_text }}</a>
+         {% endif %}
+    </div>
+</div>
+    
+</div>
+
+<script>
+    const accordionTargets = document.querySelectorAll('.accordion-title');
+    accordionTargets.forEach(title => {
+        title.addEventListener('click', () => {
+            document.querySelectorAll('.accordion-item.active').forEach(item => {
+                item.classList.remove('active');
+                const description = item.querySelector('.accordion-description');
+                if (description) description.classList.remove('visible');
+            });
+            const parentItem = title.parentElement;
+            const description = title.nextElementSibling;
+            if (description) {
+                const isVisible = description.classList.contains('visible');
+                parentItem.classList.toggle('active', !isVisible);
+                description.classList.toggle('visible', !isVisible);
+            }
+        });
+    });
+</script>
+
+<style>
+    .accordion-description {
+        display: none;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-top: none;
+    }
+
+    .accordion-description.visible {
+        display: block;
+    }
+
+    .accordion-title {
+        cursor: pointer;
+        padding: 10px;
+        background-color: #ddd;
+        border: 1px solid #ddd;
+        transition: background-color 0.3s;
+    }
+
+    .accordion-title.mystyle {
+        background-color: #bbb;
+    }
+
+    .accordion-item.active .accordion-title {
+        background-color: #bbb;
+        font-weight: bold;
+    }
+
+    .accordion-item.active .accordion-description {
+        border: 1px solid #bbb;
+    }
+</style>
+
+
+{% schema %}
+{
+"name": "Custom Accordion Bio-k",
+"tag": "section",
+"class": "custom-accordion-bio-k",
+"settings": [
+    {
+        "type": "text",
+        "id": "heading",
+        "default": "Section Heading",
+        "label": "Section Heading"
+      },
+    {
+        "type": "header",
+        "content": "Accordion Bottom Content Options"
+    },
+    {
+        "type": "text",
+        "id": "bottom_heading",
+        "default": "Heading",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "default": "<p>Description</p>",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "default": "Button Text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "label": "Button Link"
+      },
+      {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Bottom Section Bg Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Bottom Section Bg"
+    }
+],
+"blocks": [
+{
+"type": "accordion",
+"name": "Accordion",
+"settings": [
+{
+"type": "text",
+"id": "accordion_title",
+"default": "Accordion Title",
+"label": "Accordion Title"
+},
+{
+"type": "inline_richtext",
+"id": "accordion_desc",
+"default": "Accordion Description",
+"label": "Accordion Description"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Custom Accordion Bio-k"
+}
+]
+}
+{% endschema %}
