@@ -386,6 +386,15 @@
             "link": "shopify://collections",
             "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
           }
+        },
+        "card_n9L3EB": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
         }
       },
       "block_order": [
@@ -393,7 +402,8 @@
         "card_hLPTkc",
         "card_n97gYi",
         "card_KTKjUz",
-        "card_GMWHtB"
+        "card_GMWHtB",
+        "card_n9L3EB"
       ],
       "settings": {
         "heading": "Heading",
