@@ -455,6 +455,52 @@
         "bg_color": "#990000",
         "image": "shopify://shop_images/service2_1.png"
       }
+    },
+    "custom_grid_blocks_iqdmUd": {
+      "type": "custom-grid-blocks",
+      "blocks": {
+        "grid_z6wRJ9": {
+          "type": "grid",
+          "settings": {
+            "number_count": "20+",
+            "title": "Title",
+            "description": "<p>Description</p>",
+            "grid_bg_image": "shopify://shop_images/Rectangle_23_655101d7-74c2-4925-9966-fe646b4b89f2.png"
+          }
+        },
+        "grid_xgVzJh": {
+          "type": "grid",
+          "settings": {
+            "number_count": "20+",
+            "title": "Title",
+            "description": "<p>Description</p>",
+            "grid_bg_image": "shopify://shop_images/Rectangle_23_655101d7-74c2-4925-9966-fe646b4b89f2.png"
+          }
+        },
+        "grid_f8GaHY": {
+          "type": "grid",
+          "settings": {
+            "number_count": "20+",
+            "title": "Title",
+            "description": "<p>Description</p>",
+            "grid_bg_image": "shopify://shop_images/product2-img_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "grid_z6wRJ9",
+        "grid_xgVzJh",
+        "grid_f8GaHY"
+      ],
+      "settings": {
+        "heading": "Heading",
+        "description": "Description",
+        "btn_text": "Button Text",
+        "btn_link": "",
+        "grid_block_height": 300,
+        "grid_block_mob_height": 300,
+        "text_alignment": "left"
+      }
     }
   },
   "order": [
@@ -468,6 +514,7 @@
     "custom_banner_section_land_47ARLp",
     "custom_split_section_nntNx8",
     "custom_cards_setion_37ETzY",
-    "custom_accordion_bio_k_jLJiwm"
+    "custom_accordion_bio_k_jLJiwm",
+    "custom_grid_blocks_iqdmUd"
   ]
 }
