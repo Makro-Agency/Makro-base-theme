@@ -400,6 +400,20 @@
         "description": "<p>Description</p>"
       }
     },
+    "custom_image_with_text_section_QpEeiM": {
+      "type": "custom-image-with-text-section",
+      "settings": {
+        "heading": "Heading",
+        "description": "<p>Description</p>",
+        "featured-icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21\" height=\"20\" viewbox=\"0 0 21 20\" fill=\"none\">\n  <g clip-path=\"url(#clip0_910_11935)\">\n    <path d=\"M8.71989 0L15.1987 0.00608041L14.1048 6.83438H20.7171L19.7036 13.1823L13.0867 13.1778L11.9957 20L5.51992 19.9954L6.61085 13.1687L0 13.1641L1.01204 6.81918L7.63047 6.82374L8.71989 0Z\" fill=\"#009845\"></path>\n  </g>\n  <defs>\n    <clippath id=\"clip0_910_11935\">\n      <rect width=\"20.7171\" height=\"20\" fill=\"white\"></rect>\n    </clippath>\n  </defs>\n</svg>",
+        "feature-text": "Feature Text",
+        "btn_text": "Button Text",
+        "btn_link": "",
+        "image": "shopify://shop_images/service2_1.png",
+        "image_mobile": "shopify://shop_images/service1_1.png",
+        "content_position": "content-right"
+      }
+    },
     "custom_accordion_bio_k_jLJiwm": {
       "type": "custom-accordion-bio-k",
       "blocks": {
@@ -514,6 +528,7 @@
     "custom_banner_section_land_47ARLp",
     "custom_split_section_nntNx8",
     "custom_cards_setion_37ETzY",
+    "custom_image_with_text_section_QpEeiM",
     "custom_accordion_bio_k_jLJiwm",
     "custom_grid_blocks_iqdmUd"
   ]
