@@ -148,7 +148,6 @@
 
 </div>
 <script>
-
 var list = document.getElementById("list")
 var add = document.getElementById("add")
 var input = document.getElementById("input")
@@ -161,7 +160,8 @@ function deleteitems(event){
 event.target.parentElement.remove()
 }
 
-
+</script>
+<script>
     function displayText() {
       var inputText = document.getElementById('textInput').value;
       document.getElementById('textOutput').textContent = inputText;
@@ -169,8 +169,6 @@ event.target.parentElement.remove()
   </script>
   <script>
 
-   const divs = document.querySelectorAll('.myClass');
-  console.log(divs[0].textContent);  // Output: Hello
    const div = document.querySelector('.myClass');
   console.log(div.textContent);  // Output: Hello (first element with 'myClass')
    const divs = document.getElementsByTagName('div');
