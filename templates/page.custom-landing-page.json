@@ -728,6 +728,18 @@
         "padding_top_res": 36,
         "padding_bottom_res": 36
       }
+    },
+    "custom_blog_section_bio_k_h8rmaL": {
+      "type": "custom-blog-section-bio-k",
+      "settings": {
+        "heading": "Heading",
+        "btn_text": "Button Text",
+        "btn_link": "shopify://collections/all",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_res": 36,
+        "padding_bottom_res": 36
+      }
     }
   },
   "order": [
@@ -745,6 +757,7 @@
     "custom_accordion_bio_k_jLJiwm",
     "custom_grid_blocks_iqdmUd",
     "custom_testimonials_bio_k_igBQYd",
-    "custom_section_kommunity_gYWgGD"
+    "custom_section_kommunity_gYWgGD",
+    "custom_blog_section_bio_k_h8rmaL"
   ]
 }
