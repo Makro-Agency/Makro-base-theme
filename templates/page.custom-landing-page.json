@@ -325,7 +325,11 @@
         "image_mobile": "shopify://shop_images/service1_1.png",
         "content_position": "content-right",
         "bg-image-desktop": "shopify://shop_images/product2-img.png",
-        "bg-image-mobile": "shopify://shop_images/hero-section-layout-first.png"
+        "bg-image-mobile": "shopify://shop_images/hero-section-layout-first.png",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_res": 36,
+        "padding_bottom_res": 36
       }
     },
     "custom_split_section_nntNx8": {
@@ -336,7 +340,11 @@
         "color": "#0d0707",
         "highlight_color": "#dd1d1d",
         "heading_case": "upper-case",
-        "text_alignment": "left"
+        "text_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_res": 36,
+        "padding_bottom_res": 36
       }
     },
     "custom_cards_setion_37ETzY": {
@@ -407,7 +415,11 @@
       ],
       "settings": {
         "heading": "Heading",
-        "description": "<p>Description</p>"
+        "description": "<p>Description</p>",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_res": 36,
+        "padding_bottom_res": 36
       }
     },
     "custom_image_with_text_section_QpEeiM": {
@@ -477,7 +489,11 @@
         "btn_text": "Button Text",
         "btn_link": "",
         "bg_color": "#990000",
-        "image": "shopify://shop_images/service2_1.png"
+        "image": "shopify://shop_images/service2_1.png",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_res": 36,
+        "padding_bottom_res": 36
       }
     },
     "custom_grid_blocks_iqdmUd": {
@@ -523,7 +539,96 @@
         "btn_link": "",
         "grid_block_height": 300,
         "grid_block_mob_height": 300,
-        "text_alignment": "left"
+        "text_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_res": 36,
+        "padding_bottom_res": 36
+      }
+    },
+    "custom_cards_setion_3yUTGq": {
+      "type": "custom-cards-setion",
+      "blocks": {
+        "card_qmAfF3": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections/all",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_CXycPL": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections/all",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_9LU4ka": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections/all",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_bUPaG6": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections/all",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_wgT3R3": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections/all",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_3pGGKH": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections/all",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_aP7xE9": {
+          "type": "card",
+          "settings": {
+            "title": "Card Title",
+            "button_text": "Learn More",
+            "link": "shopify://collections/all",
+            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        }
+      },
+      "block_order": [
+        "card_qmAfF3",
+        "card_CXycPL",
+        "card_9LU4ka",
+        "card_bUPaG6",
+        "card_wgT3R3",
+        "card_3pGGKH",
+        "card_aP7xE9"
+      ],
+      "settings": {
+        "heading": "Heading",
+        "description": "<p>Description</p>",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_res": 36,
+        "padding_bottom_res": 36
       }
     }
   },
@@ -540,6 +645,7 @@
     "custom_cards_setion_37ETzY",
     "custom_image_with_text_section_QpEeiM",
     "custom_accordion_bio_k_jLJiwm",
-    "custom_grid_blocks_iqdmUd"
+    "custom_grid_blocks_iqdmUd",
+    "custom_cards_setion_3yUTGq"
   ]
 }
