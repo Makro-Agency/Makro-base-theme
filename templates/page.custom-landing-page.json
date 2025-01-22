@@ -548,6 +548,122 @@
     },
     "custom_testimonials_bio_k_igBQYd": {
       "type": "custom-testimonials-bio-k",
+      "blocks": {
+        "card_UkC6zV": {
+          "type": "card",
+          "settings": {
+            "review_rating": 3,
+            "rating_unfilled_color": "#000000",
+            "rating_filled_color": "#0e860e",
+            "title": "Review Content",
+            "reviewer_name": "Reviewer Name",
+            "product_title": "Product Title",
+            "product_link": "shopify://collections/all",
+            "product_image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_tqmCmT": {
+          "type": "card",
+          "settings": {
+            "review_rating": 3,
+            "rating_unfilled_color": "#000000",
+            "rating_filled_color": "#0e860e",
+            "title": "Review Content",
+            "reviewer_name": "Reviewer Name",
+            "product_title": "Product Title",
+            "product_link": "shopify://collections/all",
+            "product_image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_ca8BxM": {
+          "type": "card",
+          "settings": {
+            "review_rating": 3,
+            "rating_unfilled_color": "#000000",
+            "rating_filled_color": "#0e860e",
+            "title": "Review Content",
+            "reviewer_name": "Reviewer Name",
+            "product_title": "Product Title",
+            "product_link": "shopify://collections/all",
+            "product_image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_PX7iCY": {
+          "type": "card",
+          "settings": {
+            "review_rating": 3,
+            "rating_unfilled_color": "#000000",
+            "rating_filled_color": "#0e860e",
+            "title": "Review Content",
+            "reviewer_name": "Reviewer Name",
+            "product_title": "Product Title",
+            "product_link": "shopify://collections/all",
+            "product_image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_hr83F9": {
+          "type": "card",
+          "settings": {
+            "review_rating": 3,
+            "rating_unfilled_color": "#000000",
+            "rating_filled_color": "#0e860e",
+            "title": "Review Content",
+            "reviewer_name": "Reviewer Name",
+            "product_title": "Product Title",
+            "product_link": "shopify://collections/all",
+            "product_image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_ePMBaE": {
+          "type": "card",
+          "settings": {
+            "review_rating": 3,
+            "rating_unfilled_color": "#000000",
+            "rating_filled_color": "#0e860e",
+            "title": "Review Content",
+            "reviewer_name": "Reviewer Name",
+            "product_title": "Product Title",
+            "product_link": "shopify://collections/all",
+            "product_image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_Q3xFLj": {
+          "type": "card",
+          "settings": {
+            "review_rating": 3,
+            "rating_unfilled_color": "#000000",
+            "rating_filled_color": "#0e860e",
+            "title": "Review Content",
+            "reviewer_name": "Reviewer Name",
+            "product_title": "Product Title",
+            "product_link": "shopify://collections/all",
+            "product_image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        },
+        "card_XiqjNw": {
+          "type": "card",
+          "settings": {
+            "review_rating": 3,
+            "rating_unfilled_color": "#000000",
+            "rating_filled_color": "#0e860e",
+            "title": "Review Content",
+            "reviewer_name": "Reviewer Name",
+            "product_title": "Product Title",
+            "product_link": "shopify://collections/all",
+            "product_image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+          }
+        }
+      },
+      "block_order": [
+        "card_UkC6zV",
+        "card_tqmCmT",
+        "card_ca8BxM",
+        "card_PX7iCY",
+        "card_hr83F9",
+        "card_ePMBaE",
+        "card_Q3xFLj",
+        "card_XiqjNw"
+      ],
       "settings": {
         "heading": "Heading",
         "description": "<p>Description</p>",
