@@ -165,48 +165,6 @@
 </div>
 
 <script>
-let tasks = [
-    { id: 1, title: "Buy groceries", completed: false },
-    { id: 2, title: "Walk the dog", completed: true },
-    { id: 3, title: "Read a book", completed: false }
-];
-
-function addTask(title) {
-    const newTask = {
-        id: tasks.length + 1,
-        title: title,
-        completed: false
-    };
-    tasks.push(newTask);
-}
-
-function completeTask(id) {
-    const task = tasks.find(t => t.id === id);
-    if (task) task.completed = true;
-}
-function deleteTask(id) {
-    tasks = tasks.filter(t => t.id !== id);
-}
-addTask("Finish homework");
-console.log(tasks);
-
-completeTask(1);
-console.log(tasks);
-
-deleteTask(2);
-console.log(tasks);
-
-console.log(person.name);     
-console.log(person["age"]);    
-console.log(person.occupation); 
-let person = {
-    name: "John",
-    age: 30,
-    greet: function() {
-        console.log("Hello, my name is " + this.name + " and I am " + this.age + " years old.");
-    }
-};
-person.greet(); 
 
 var popupoverlay = document.querySelector(".popupoverlay")
 var popupcontent = document.querySelector(".popupcontent")
