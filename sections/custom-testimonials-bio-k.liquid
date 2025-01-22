@@ -1,231 +1,366 @@
 <div class="content-wrapper">
-        <div class="content-inner-wrapper">
-            {% if section.settings.heading  != blank %}
-            <h2>{{ section.settings.heading }}</h2>
-            {% endif %}
-            {% if section.settings.description  != blank %}
-            <p>{{ section.settings.description }}</p>
-             {% endif %}
-        </div>
-    </div>
-<div class="cards-wrapper">
-  {% assign cards_count = section.blocks | size %}
-  <div class="{% if cards_count <= 4 %} grid {% endif %}" style="width: 100%;">
-    {% if cards_count > 4 %}
-  <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        {% endif %}
-    {% for block in section.blocks %}
-        
-      <div class="swiper-slide">
-      <div class="card">
-        <a href="{{ block.settings.link }}">
-          {% if block.settings.image != blank %}
-            <img 
-          src="{{ block.settings.image | image_url}}" 
-          alt="Mobile Banner" 
-          width="100%" 
-          height="100%" 
-         >
-          {% endif %}
-          <div class="card-content">
-            {% assign  rating_given = block.settings.review_rating  %}
-        {%  liquid  
-        case  rating_given
-           when '1'
-               assign  rating_num = "one"
-           when '2'
-               assign  rating_num = "two"
-           when '3'
-               assign  rating_num =  "three"
-           when '4'
-               assign  rating_num =  "four"
-           else 
-              assign  rating_num =  "five"
-        
-        %}
-            <svg class="star-rating {{ rating_num }}" xmlns="http://www.w3.org/2000/svg" width="180" height="32" viewBox="0 0 180 32" fill="none">
-            <path d="M15.1033 1.81698C15.4701 1.07374 16.5299 1.07374 16.8967 1.81699L20.4696 9.05642C20.6153 9.35157 20.8968 9.55614 21.2225 9.60346L29.2117 10.7644C30.032 10.8835 30.3595 11.8915 29.766 12.4701L23.9849 18.1052C23.7492 18.3349 23.6417 18.6659 23.6973 18.9903L25.062 26.9472C25.2022 27.7641 24.3447 28.3871 23.6111 28.0014L16.4653 24.2446C16.174 24.0915 15.826 24.0915 15.5347 24.2446L8.38891 28.0014C7.65528 28.3871 6.79785 27.7641 6.93796 26.9472L8.30268 18.9903C8.35831 18.6659 8.25077 18.3349 8.01508 18.1052L2.23404 12.4701C1.64053 11.8915 1.96804 10.8835 2.78826 10.7644L10.7775 9.60346C11.1032 9.55614 11.3847 9.35157 11.5304 9.05642L15.1033 1.81698Z" fill="#009845"/>
-            <path d="M52.1033 1.81698C52.4701 1.07374 53.5299 1.07374 53.8967 1.81699L57.4696 9.05642C57.6153 9.35157 57.8968 9.55614 58.2225 9.60346L66.2117 10.7644C67.032 10.8835 67.3595 11.8915 66.766 12.4701L60.9849 18.1052C60.7492 18.3349 60.6417 18.6659 60.6973 18.9903L62.062 26.9472C62.2022 27.7641 61.3447 28.3871 60.6111 28.0014L53.4653 24.2446C53.174 24.0915 52.826 24.0915 52.5347 24.2446L45.3889 28.0014C44.6553 28.3871 43.7978 27.7641 43.938 26.9472L45.3027 18.9903C45.3583 18.6659 45.2508 18.3349 45.0151 18.1052L39.234 12.4701C38.6405 11.8915 38.968 10.8835 39.7883 10.7644L47.7775 9.60346C48.1032 9.55614 48.3847 9.35157 48.5304 9.05642L52.1033 1.81698Z" fill="#009845"/>
-            <path d="M89.1033 1.81698C89.4701 1.07374 90.5299 1.07374 90.8967 1.81699L94.4696 9.05642C94.6153 9.35157 94.8968 9.55614 95.2225 9.60346L103.212 10.7644C104.032 10.8835 104.359 11.8915 103.766 12.4701L97.9849 18.1052C97.7492 18.3349 97.6417 18.6659 97.6973 18.9903L99.062 26.9472C99.2022 27.7641 98.3447 28.3871 97.6111 28.0014L90.4653 24.2446C90.174 24.0915 89.826 24.0915 89.5347 24.2446L82.3889 28.0014C81.6553 28.3871 80.7978 27.7641 80.938 26.9472L82.3027 18.9903C82.3583 18.6659 82.2508 18.3349 82.0151 18.1052L76.234 12.4701C75.6405 11.8915 75.968 10.8835 76.7883 10.7644L84.7775 9.60346C85.1032 9.55614 85.3847 9.35157 85.5304 9.05642L89.1033 1.81698Z" fill="#009845"/>
-            <path d="M126.103 1.81698C126.47 1.07374 127.53 1.07374 127.897 1.81699L131.47 9.05642C131.615 9.35157 131.897 9.55614 132.223 9.60346L140.212 10.7644C141.032 10.8835 141.359 11.8915 140.766 12.4701L134.985 18.1052C134.749 18.3349 134.642 18.6659 134.697 18.9903L136.062 26.9472C136.202 27.7641 135.345 28.3871 134.611 28.0014L127.465 24.2446C127.174 24.0915 126.826 24.0915 126.535 24.2446L119.389 28.0014C118.655 28.3871 117.798 27.7641 117.938 26.9472L119.303 18.9903C119.358 18.6659 119.251 18.3349 119.015 18.1052L113.234 12.4701C112.641 11.8915 112.968 10.8835 113.788 10.7644L121.777 9.60346C122.103 9.55614 122.385 9.35157 122.53 9.05642L126.103 1.81698Z" fill="#009845"/>
-            <path d="M163.103 1.81698C163.47 1.07374 164.53 1.07374 164.897 1.81699L168.47 9.05642C168.615 9.35157 168.897 9.55614 169.223 9.60346L177.212 10.7644C178.032 10.8835 178.359 11.8915 177.766 12.4701L171.985 18.1052C171.749 18.3349 171.642 18.6659 171.697 18.9903L173.062 26.9472C173.202 27.7641 172.345 28.3871 171.611 28.0014L164.465 24.2446C164.174 24.0915 163.826 24.0915 163.535 24.2446L156.389 28.0014C155.655 28.3871 154.798 27.7641 154.938 26.9472L156.303 18.9903C156.358 18.6659 156.251 18.3349 156.015 18.1052L150.234 12.4701C149.641 11.8915 149.968 10.8835 150.788 10.7644L158.777 9.60346C159.103 9.55614 159.385 9.35157 159.53 9.05642L163.103 1.81698Z" fill="#009845"/>
-            </svg>
-            <h3 class="card-title">{{ block.settings.title }}</h3>
-            <button class="card-button">
-              {{ block.settings.button_text }}
-              <span class="arrow">&rarr;</span>
-            </button>
-          </div>
-        </a>
-      </div>
-      </div>
-    {% endfor %}
-    {% if cards_count > 4 %}
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    </div>
+  <div class="content-inner-wrapper">
+    {% if section.settings.heading != blank %}
+    <h2 style="color:black">
+      {% if section.settings.title_image != blank %}<span>
+        <img src="{{ section.settings.title_image | image_url}}" alt="Product Image" width="100%" height="100%"
+          style="max-width:100px">
+      </span>{% endif %}
+      {{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+    <p>{{ section.settings.description }}</p>
     {% endif %}
   </div>
 </div>
-{%  style  %}  
+<div class="testimonial-wrapper">
+  {% assign cards_count = section.blocks | size %}
+  <div class="{% if cards_count <= 4 %} grid {% endif %}" style="width: 100%;">
+    {% if cards_count > 4 %}
+    <div class="swiper testSwiper">
+      <div class="swiper-wrapper">
+        {% endif %}
+        {% for block in section.blocks %}
+
+        <div class="swiper-slide">
+          <div class="card testimonial-item {{ block.id }}">
 
 
+            <div class="card-content">
+              {% assign rating_given = block.settings.review_rating %}
+              {% liquid
+              case rating_given
+              when 1
+              assign rating_num = "one"
+              when 2
+              assign rating_num = "two"
+              when 3
+              assign rating_num = "three"
+              when 4
+              assign rating_num = "four"
+              else
+              assign rating_num = "five"
+              endcase
+              %}
+              <svg class="star-rating {{ rating_num }}" xmlns="http://www.w3.org/2000/svg" width="180" height="32"
+                viewBox="0 0 180 32" fill="none">
+                <path
+                  d="M15.1033 1.81698C15.4701 1.07374 16.5299 1.07374 16.8967 1.81699L20.4696 9.05642C20.6153 9.35157 20.8968 9.55614 21.2225 9.60346L29.2117 10.7644C30.032 10.8835 30.3595 11.8915 29.766 12.4701L23.9849 18.1052C23.7492 18.3349 23.6417 18.6659 23.6973 18.9903L25.062 26.9472C25.2022 27.7641 24.3447 28.3871 23.6111 28.0014L16.4653 24.2446C16.174 24.0915 15.826 24.0915 15.5347 24.2446L8.38891 28.0014C7.65528 28.3871 6.79785 27.7641 6.93796 26.9472L8.30268 18.9903C8.35831 18.6659 8.25077 18.3349 8.01508 18.1052L2.23404 12.4701C1.64053 11.8915 1.96804 10.8835 2.78826 10.7644L10.7775 9.60346C11.1032 9.55614 11.3847 9.35157 11.5304 9.05642L15.1033 1.81698Z"
+                  fill="#009845" />
+                <path
+                  d="M52.1033 1.81698C52.4701 1.07374 53.5299 1.07374 53.8967 1.81699L57.4696 9.05642C57.6153 9.35157 57.8968 9.55614 58.2225 9.60346L66.2117 10.7644C67.032 10.8835 67.3595 11.8915 66.766 12.4701L60.9849 18.1052C60.7492 18.3349 60.6417 18.6659 60.6973 18.9903L62.062 26.9472C62.2022 27.7641 61.3447 28.3871 60.6111 28.0014L53.4653 24.2446C53.174 24.0915 52.826 24.0915 52.5347 24.2446L45.3889 28.0014C44.6553 28.3871 43.7978 27.7641 43.938 26.9472L45.3027 18.9903C45.3583 18.6659 45.2508 18.3349 45.0151 18.1052L39.234 12.4701C38.6405 11.8915 38.968 10.8835 39.7883 10.7644L47.7775 9.60346C48.1032 9.55614 48.3847 9.35157 48.5304 9.05642L52.1033 1.81698Z"
+                  fill="#009845" />
+                <path
+                  d="M89.1033 1.81698C89.4701 1.07374 90.5299 1.07374 90.8967 1.81699L94.4696 9.05642C94.6153 9.35157 94.8968 9.55614 95.2225 9.60346L103.212 10.7644C104.032 10.8835 104.359 11.8915 103.766 12.4701L97.9849 18.1052C97.7492 18.3349 97.6417 18.6659 97.6973 18.9903L99.062 26.9472C99.2022 27.7641 98.3447 28.3871 97.6111 28.0014L90.4653 24.2446C90.174 24.0915 89.826 24.0915 89.5347 24.2446L82.3889 28.0014C81.6553 28.3871 80.7978 27.7641 80.938 26.9472L82.3027 18.9903C82.3583 18.6659 82.2508 18.3349 82.0151 18.1052L76.234 12.4701C75.6405 11.8915 75.968 10.8835 76.7883 10.7644L84.7775 9.60346C85.1032 9.55614 85.3847 9.35157 85.5304 9.05642L89.1033 1.81698Z"
+                  fill="#009845" />
+                <path
+                  d="M126.103 1.81698C126.47 1.07374 127.53 1.07374 127.897 1.81699L131.47 9.05642C131.615 9.35157 131.897 9.55614 132.223 9.60346L140.212 10.7644C141.032 10.8835 141.359 11.8915 140.766 12.4701L134.985 18.1052C134.749 18.3349 134.642 18.6659 134.697 18.9903L136.062 26.9472C136.202 27.7641 135.345 28.3871 134.611 28.0014L127.465 24.2446C127.174 24.0915 126.826 24.0915 126.535 24.2446L119.389 28.0014C118.655 28.3871 117.798 27.7641 117.938 26.9472L119.303 18.9903C119.358 18.6659 119.251 18.3349 119.015 18.1052L113.234 12.4701C112.641 11.8915 112.968 10.8835 113.788 10.7644L121.777 9.60346C122.103 9.55614 122.385 9.35157 122.53 9.05642L126.103 1.81698Z"
+                  fill="#009845" />
+                <path
+                  d="M163.103 1.81698C163.47 1.07374 164.53 1.07374 164.897 1.81699L168.47 9.05642C168.615 9.35157 168.897 9.55614 169.223 9.60346L177.212 10.7644C178.032 10.8835 178.359 11.8915 177.766 12.4701L171.985 18.1052C171.749 18.3349 171.642 18.6659 171.697 18.9903L173.062 26.9472C173.202 27.7641 172.345 28.3871 171.611 28.0014L164.465 24.2446C164.174 24.0915 163.826 24.0915 163.535 24.2446L156.389 28.0014C155.655 28.3871 154.798 27.7641 154.938 26.9472L156.303 18.9903C156.358 18.6659 156.251 18.3349 156.015 18.1052L150.234 12.4701C149.641 11.8915 149.968 10.8835 150.788 10.7644L158.777 9.60346C159.103 9.55614 159.385 9.35157 159.53 9.05642L163.103 1.81698Z"
+                  fill="#009845" />
+              </svg>
+              <h3 class="card-title">{{ block.settings.title }}</h3>
+              <button class="card-button">
+                {{ block.settings.button_text }}
+                <span class="arrow">&rarr;</span>
+              </button>
+            </div>
+            <div class="bottom-content">
+              <div class="product-image-wrapper">
+                {% if block.settings.product_image != blank %}
+                <img src="{{ block.settings.product_image | image_url}}" alt="Product Image" width="100%" height="100%"
+                  style="max-width:100px">
+                {% endif %}
+              </div>
+              <div class="bottom-content-group">
+                {% if block.settings.reviewer_name %}<h3>{{ block.settings.reviewer_name }}</h3>{% endif %}
+                <div class="product-info-group">
+                  <span>About</span>{% if block.settings.product_title %}<a href="{{ block.settings.product_link }}">{{
+                    block.settings.product_title }}</a>{% endif %}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        {% endfor %}
+        {% if cards_count > 4 %}
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    {% endif %}
+  </div>
+  {% if section.settings.btn_text != blank %}
+  <a href="{% if section.settings.btn_link != blank %}{{ section.settings.btn_link }} else #{% endif  %}"> {{
+    section.settings.btn_text }}</a>
+  {% endif %}
+</div>
+
+{% style %}
+{% for block in section.blocks %}
+.testimonial-item.{{ block.id }} .star-rating path{fill:{{ block.settings.rating_unfilled_color }};}
+.testimonial-item.{{ block.id }} .star-rating.one path:first-child,
+.testimonial-item.{{ block.id }} .star-rating.two path:nth-child(-n+2),
+.testimonial-item.{{ block.id }} .star-rating.three path:nth-child(-n+3),
+.testimonial-item.{{ block.id }} .star-rating.four path:nth-child(-n+4),
+.testimonial-item.{{ block.id }} .star-rating.five path:nth-child(-n+5){fill: {{ block.settings.rating_filled_color }};}
+{% endfor %}
+.custom-testimonials-section {padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+}
+
+@media only screen and (max-width: 768px){
+.custom-testimonials-section {padding: {{ section.settings.padding_top_res }}px 0 {{ section.settings.padding_bottom_res
+}}px 0;}
+}
 {% endstyle %}
-<!-- Swiper JS -->
-
-
-<!-- Initialize Swiper -->
 <script>
   window.onload = function () {
-  var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 6,
-    loop: true,
-    spaceBetween: 30,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-      320: { slidesPerView: 1, spaceBetween: 10 },
-      768: { slidesPerView: 3, spaceBetween: 20 },
-      1024: { slidesPerView: 6, spaceBetween: 30 },
-    },
-  });
-};
+    var swiper = new Swiper(".testSwiper", {
+      slidesPerView: 5,
+      loop: true,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: ".testSwiper .swiper-button-next",
+        prevEl: ".testSwiper .swiper-button-prev",
+      },
+      breakpoints: {
+        320: { slidesPerView: 1, spaceBetween: 10 },
+        768: { slidesPerView: 3, spaceBetween: 20 },
+        1024: { slidesPerView: 5, spaceBetween: 30 },
+      },
+    });
+  };
 </script>
 {% schema %}
 {
-  "name": "Custom Testimnials Bio-k",
-  "tag": "section",
-  "class": "custom-testimonials-section",
-  "settings": [
-    {
-    "type": "text",
-    "id": "heading",
-    "default": "Heading",
-    "label": "Heading"
-    },
-    {
-    "type": "richtext",
-    "id": "description",
-    "default": "<p>Description</p>",
-    "label": "Description"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "card",
-      "name": "Card",
-      "settings": [
-        {
-            "type": "number",
-            "id": "review_rating",
-            "default": 1,
-            "label": "Star Rating"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Card Title",
-          "default": "Card Title"
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button Text",
-          "default": "Learn More"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Card Link"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Card Image"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Custom Testimnials Bio-k"
-    }
-  ]
-}   
+"name": "Custom Testimnials Bio-k",
+"tag": "section",
+"class": "custom-testimonials-section",
+"settings": [
+{
+"type": "text",
+"id": "heading",
+"default": "Heading",
+"label": "Heading"
+},
+{
+"type": "image_picker",
+"id": "title_image",
+"label": "Title Imae"
+},
+{
+"type": "richtext",
+"id": "description",
+"default": "<p>Description</p>",
+"label": "Description"
+},
+{
+"type": "text",
+"id": "btn_text",
+"default": "Button Text",
+"label": "Button Text"
+},
+{
+"type": "url",
+"id": "btn_link",
+"label": "Button Link"
+},
+{
+"type": "header",
+"content": "Section Padding Setting For Desktop"
+},
+{
+"type": "range",
+"id": "padding_top",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Padding Top",
+"default": 36
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Padding Bottom",
+"default": 36
+},
+{
+"type": "header",
+"content": "Section Padding Setting For Responsiveness"
+},
+{
+"type": "range",
+"id": "padding_top_res",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Padding top responsive",
+"default": 36
+},
+{
+"type": "range",
+"id": "padding_bottom_res",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Padding bottom responsive",
+"default": 36
+}
+],
+"blocks": [
+{
+"type": "card",
+"name": "Card",
+"settings": [
+
+{
+"type": "range",
+"id": "review_rating",
+"default": 1,
+"label": "Star Rating",
+"min": 1,
+"max": 5,
+"step": 1
+},
+{
+"type": "color",
+"id": "rating_unfilled_color",
+"label": "Pick the color for unfilled ratings"
+},
+{
+"type": "color",
+"id": "rating_filled_color",
+"label": "Pick the color for filled ratings"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Review Content",
+"default": "Review Content"
+},
+{
+"type": "text",
+"id": "reviewer_name",
+"label": "Reviewer Name",
+"default": "Reviewer Name"
+},
+{
+"type": "text",
+"id": "product_title",
+"label": "Product Title",
+"default": "Product Title"
+},
+{
+"type": "url",
+"id": "product_link",
+"label": "Product Link"
+},
+{
+"type": "image_picker",
+"id": "product_image",
+"label": "Product Imaage"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Custom Testimnials Bio-k"
+}
+]
+}
 {% endschema %}
 
 <style>
-.cards-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1rem;
-}
-.card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  width: 100%;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  text-align: center;
-}
-.card:hover {
-  transform: translateY(-5px);
-}
-.card a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  height: 100%;
-}
-.card-image {
-  width: 100%;
-  height: auto;
-}
-.card-content {
-  padding: 1rem;
-}
-.card-title {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-.card-button {
-  background: none;
-  border: none;
-  color: #007acc;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.card-button:hover .arrow {
-  transform: translateX(5px);
-}
-.arrow {
-  transition: transform 0.3s ease;
-}
-.swiper {
-  width: 100%; /* Make sure it spans the full width of its container */
-  max-width: 100%; /* Ensure it does not exceed container width */
-}
-.cards-wrapper .swiper {
-  width: 100%;
-}
+  .testimonial-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    text-align: center;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+  }
+
+  .card-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-button {
+    background: none;
+    border: none;
+    color: #007acc;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-button:hover .arrow {
+    transform: translateX(5px);
+  }
+
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .swiper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .testimonial-wrapper .swiper {
+    width: 100%;
+  }
 </style>

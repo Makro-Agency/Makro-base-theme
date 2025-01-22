@@ -1,59 +1,57 @@
+{% style %}
+.custom-cards-section {padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0; }
+@media screen and (max-width: 768px){
+.custom-cards-section {padding: {{ section.settings.padding_top_res }}px 0 {{ section.settings.padding_bottom_res }}px 0;}
+}
+{% endstyle %}
 <div class="content-wrapper">
-        <div class="content-inner-wrapper">
-            {% if section.settings.heading  != blank %}
-            <h2>{{ section.settings.heading }}</h2>
-            {% endif %}
-            {% if section.settings.description  != blank %}
-            <p>{{ section.settings.description }}</p>
-             {% endif %}
-        </div>
-    </div>
+  <div class="content-inner-wrapper">
+    {% if section.settings.heading != blank %}
+    <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+    <p>{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+</div>
 <div class="cards-wrapper">
   {% assign cards_count = section.blocks | size %}
   <div class="{% if cards_count <= 4 %} grid {% endif %}" style="width: 100%;">
     {% if cards_count > 4 %}
-  <div class="swiper mySwiper">
+    <div class="swiper cardsSwiper">
       <div class="swiper-wrapper">
         {% endif %}
-    {% for block in section.blocks %}
-      <div class="swiper-slide">
-      <div class="card">
-        <a href="{{ block.settings.link }}">
-          {% if block.settings.image != blank %}
-            <img 
-          src="{{ block.settings.image | image_url}}" 
-          alt="Mobile Banner" 
-          width="100%" 
-          height="100%" 
-         >
-          {% endif %}
-          <div class="card-content">
-            <h3 class="card-title">{{ block.settings.title }}</h3>
-            <button class="card-button">
-              {{ block.settings.button_text }}
-              <span class="arrow">&rarr;</span>
-            </button>
+        {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <div class="card">
+            <a href="{{ block.settings.link }}">
+              {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url}}" alt="Mobile Banner" width="100%" height="100%">
+              {% endif %}
+              <div class="card-content">
+                <h3 class="card-title">{{ block.settings.title }}</h3>
+                <button class="card-button">
+                  {{ block.settings.button_text }}
+                  <span class="arrow">&rarr;</span>
+                </button>
+              </div>
+            </a>
           </div>
-        </a>
+        </div>
+        {% endfor %}
+        {% if cards_count > 4 %}
       </div>
-      </div>
-    {% endfor %}
-    {% if cards_count > 4 %}
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
     {% endif %}
   </div>
 </div>
-<!-- Swiper JS -->
 
-
-<!-- Initialize Swiper -->
 <script>
-  window.onload = function () {
-  var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 6,
+  document.addEventListener("DOMContentLoaded", function () {
+  var swiper = new Swiper(".cardsSwiper", {
+    slidesPerView: 5,
     loop: true,
     spaceBetween: 30,
     navigation: {
@@ -63,136 +61,190 @@
     breakpoints: {
       320: { slidesPerView: 1, spaceBetween: 10 },
       768: { slidesPerView: 3, spaceBetween: 20 },
-      1024: { slidesPerView: 6, spaceBetween: 30 },
+      1024: { slidesPerView: 5, spaceBetween: 30 },
     },
   });
-};
+});
 </script>
+<style>
+  .cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    text-align: center;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+  }
+
+  .card-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-button {
+    background: none;
+    border: none;
+    color: #007acc;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-button:hover .arrow {
+    transform: translateX(5px);
+  }
+
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .swiper {
+    width: 100%;
+    max-width: 100%;
+
+  }
+
+  .cards-wrapper .swiper {
+    width: 100%;
+  }
+</style>
 {% schema %}
 {
-  "name": "Custom Cards Section",
-  "tag": "section",
-  "class": "custom-cards-section",
-  "settings": [
-    {
-    "type": "text",
-    "id": "heading",
-    "default": "Heading",
-    "label": "Heading"
-    },
-    {
-    "type": "richtext",
-    "id": "description",
-    "default": "<p>Description</p>",
-    "label": "Description"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "card",
-      "name": "Card",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Card Title",
-          "default": "Card Title"
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button Text",
-          "default": "Learn More"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Card Link"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Card Image"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Custom Cards Section"
-    }
-  ]
-}   
+"name": "Custom Cards Section",
+"tag": "section",
+"class": "custom-cards-section",
+"settings": [
+{
+"type": "text",
+"id": "heading",
+"default": "Heading",
+"label": "Heading"
+},
+{
+"type": "richtext",
+"id": "description",
+"default": "<p>Description</p>",
+"label": "Description"
+},
+{
+"type": "header",
+"content": "Section Padding Setting For Desktop"
+},
+{
+"type": "range",
+"id": "padding_top",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Padding Top",
+"default": 36
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Padding Bottom",
+"default": 36
+},
+{
+"type": "header",
+"content": "Section Padding Setting For Responsiveness"
+},
+{
+"type": "range",
+"id": "padding_top_res",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Padding top responsive",
+"default": 36
+},
+{
+"type": "range",
+"id": "padding_bottom_res",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Padding bottom responsive",
+"default": 36
+}
+],
+"blocks": [
+{
+"type": "card",
+"name": "Card",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Card Title",
+"default": "Card Title"
+},
+{
+"type": "text",
+"id": "button_text",
+"label": "Button Text",
+"default": "Learn More"
+},
+{
+"type": "url",
+"id": "link",
+"label": "Card Link"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Card Image"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Custom Cards Section"
+}
+]
+}
 {% endschema %}
-
-<style>
-.cards-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1rem;
-}
-.card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  width: 100%;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  text-align: center;
-}
-.card:hover {
-  transform: translateY(-5px);
-}
-.card a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  height: 100%;
-}
-.card-image {
-  width: 100%;
-  height: auto;
-}
-.card-content {
-  padding: 1rem;
-}
-.card-title {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-.card-button {
-  background: none;
-  border: none;
-  color: #007acc;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.card-button:hover .arrow {
-  transform: translateX(5px);
-}
-.arrow {
-  transition: transform 0.3s ease;
-}
-.swiper {
-  width: 100%; /* Make sure it spans the full width of its container */
-  max-width: 100%; /* Ensure it does not exceed container width */
-}
-.cards-wrapper .swiper {
-  width: 100%;
-}
-</style>
