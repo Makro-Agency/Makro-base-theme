@@ -687,10 +687,32 @@
             "featured_text": "Exclusive Access to Expert Advice and Insights",
             "featured_text_color": "#ffffff"
           }
+        },
+        "caption_with_text_8UMipR": {
+          "type": "caption-with-text",
+          "settings": {
+            "bg_color": "#0e860e",
+            "caption_text": "Place Caption Text here",
+            "caption_color": "#ffffff",
+            "featured_text": "Exclusive Access to Expert Advice and Insights",
+            "featured_text_color": "#ffffff"
+          }
+        },
+        "svg_with_text_9KWq7K": {
+          "type": "svg-with-text",
+          "settings": {
+            "bg_color": "#228b22",
+            "svg_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewbox=\"0 0 32 32\" fill=\"none\">\n  <path d=\"M28 16C27.9999 13.5704 27.2623 11.198 25.8848 9.19671C24.5072 7.19538 22.5547 5.65934 20.2853 4.79172C18.0159 3.9241 15.5366 3.76578 13.1753 4.3377C10.8139 4.90962 8.68183 6.18483 7.06093 7.99469C5.44003 9.80455 4.40668 12.0638 4.09754 14.4736C3.78841 16.8835 4.21805 19.3304 5.32965 21.4908C6.44125 23.6512 8.18244 25.4233 10.3229 26.5727C12.4634 27.7221 14.9024 28.1947 17.3173 27.928M12 13.3333H12.0133M20 13.3333H20.0133M12.6667 20C13.1548 20.469 13.7368 20.8292 14.3744 21.0567C15.012 21.2843 15.6906 21.374 16.3653 21.32M25.3253 28.6666L28.6827 25.2266C29.0993 24.7951 29.3326 24.2189 29.3336 23.619C29.3346 23.0192 29.1032 22.4422 28.688 22.0093C28.486 21.7983 28.2435 21.6302 27.975 21.5152C27.7065 21.4002 27.4175 21.3406 27.1254 21.3399C26.8333 21.3393 26.5441 21.3977 26.2751 21.5116C26.0061 21.6254 25.7629 21.7925 25.56 22.0026L25.336 22.232L25.112 22.0026C24.9099 21.7917 24.6674 21.6237 24.3988 21.5088C24.1303 21.3939 23.8413 21.3344 23.5491 21.3339C23.257 21.3334 22.9678 21.3919 22.6989 21.5059C22.4299 21.6199 22.1868 21.787 21.984 21.9973C21.5677 22.4288 21.3347 23.0047 21.3337 23.6042C21.3327 24.2038 21.5638 24.7804 21.9787 25.2133L25.3253 28.6666Z\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
+            "svg_color": "#ffffff",
+            "featured_text": "Exclusive Access to Expert Advice and Insights",
+            "featured_text_color": "#ffffff"
+          }
         }
       },
       "block_order": [
-        "svg_with_text_kzjFPe"
+        "svg_with_text_kzjFPe",
+        "caption_with_text_8UMipR",
+        "svg_with_text_9KWq7K"
       ],
       "settings": {
         "sub_title": "Sub Title",
