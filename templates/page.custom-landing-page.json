@@ -546,85 +546,82 @@
         "padding_bottom_res": 36
       }
     },
-    "custom_cards_setion_3yUTGq": {
-      "type": "custom-cards-setion",
+    "custom_image_with_text_section_8QnnnQ": {
+      "type": "custom-image-with-text-section",
+      "settings": {
+        "heading": "Heading",
+        "description": "<p>Description</p>",
+        "featured-icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21\" height=\"20\" viewbox=\"0 0 21 20\" fill=\"none\">\n  <g clip-path=\"url(#clip0_910_11935)\">\n    <path d=\"M8.71989 0L15.1987 0.00608041L14.1048 6.83438H20.7171L19.7036 13.1823L13.0867 13.1778L11.9957 20L5.51992 19.9954L6.61085 13.1687L0 13.1641L1.01204 6.81918L7.63047 6.82374L8.71989 0Z\" fill=\"#009845\"></path>\n  </g>\n  <defs>\n    <clippath id=\"clip0_910_11935\">\n      <rect width=\"20.7171\" height=\"20\" fill=\"white\"></rect>\n    </clippath>\n  </defs>\n</svg>",
+        "feature-text": "Feature Text",
+        "btn_text": "Button Text",
+        "btn_link": "shopify://collections/all",
+        "image": "shopify://shop_images/service2_1.png",
+        "image_mobile": "shopify://shop_images/service1_1.png",
+        "content_position": "content-right"
+      }
+    },
+    "custom_accordion_bio_k_cnHHUV": {
+      "type": "custom-accordion-bio-k",
       "blocks": {
-        "card_qmAfF3": {
-          "type": "card",
+        "accordion_EwKPF9": {
+          "type": "accordion",
           "settings": {
-            "title": "Card Title",
-            "button_text": "Learn More",
-            "link": "shopify://collections/all",
-            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
           }
         },
-        "card_CXycPL": {
-          "type": "card",
+        "accordion_xAXXrK": {
+          "type": "accordion",
           "settings": {
-            "title": "Card Title",
-            "button_text": "Learn More",
-            "link": "shopify://collections/all",
-            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
           }
         },
-        "card_9LU4ka": {
-          "type": "card",
+        "accordion_xVM3Qw": {
+          "type": "accordion",
           "settings": {
-            "title": "Card Title",
-            "button_text": "Learn More",
-            "link": "shopify://collections/all",
-            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
           }
         },
-        "card_bUPaG6": {
-          "type": "card",
+        "accordion_38tEGM": {
+          "type": "accordion",
           "settings": {
-            "title": "Card Title",
-            "button_text": "Learn More",
-            "link": "shopify://collections/all",
-            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
           }
         },
-        "card_wgT3R3": {
-          "type": "card",
+        "accordion_yKRDcY": {
+          "type": "accordion",
           "settings": {
-            "title": "Card Title",
-            "button_text": "Learn More",
-            "link": "shopify://collections/all",
-            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
           }
         },
-        "card_3pGGKH": {
-          "type": "card",
+        "accordion_bbwWbE": {
+          "type": "accordion",
           "settings": {
-            "title": "Card Title",
-            "button_text": "Learn More",
-            "link": "shopify://collections/all",
-            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
-          }
-        },
-        "card_aP7xE9": {
-          "type": "card",
-          "settings": {
-            "title": "Card Title",
-            "button_text": "Learn More",
-            "link": "shopify://collections/all",
-            "image": "shopify://shop_images/pdp1_3d0eb217-6755-4ad4-88ca-a46144462da8.png"
+            "accordion_title": "Accordion Title",
+            "accordion_desc": "Accordion Description"
           }
         }
       },
       "block_order": [
-        "card_qmAfF3",
-        "card_CXycPL",
-        "card_9LU4ka",
-        "card_bUPaG6",
-        "card_wgT3R3",
-        "card_3pGGKH",
-        "card_aP7xE9"
+        "accordion_EwKPF9",
+        "accordion_xAXXrK",
+        "accordion_xVM3Qw",
+        "accordion_38tEGM",
+        "accordion_yKRDcY",
+        "accordion_bbwWbE"
       ],
       "settings": {
-        "heading": "Heading",
+        "heading": "Section Heading",
+        "bottom_heading": "Heading",
         "description": "<p>Description</p>",
+        "btn_text": "Button Text",
+        "btn_link": "shopify://collections",
+        "bg_color": "#0e860e",
+        "image": "shopify://shop_images/portal1_1.png",
         "padding_top": 100,
         "padding_bottom": 100,
         "padding_top_res": 36,
@@ -646,6 +643,7 @@
     "custom_image_with_text_section_QpEeiM",
     "custom_accordion_bio_k_jLJiwm",
     "custom_grid_blocks_iqdmUd",
-    "custom_cards_setion_3yUTGq"
+    "custom_image_with_text_section_8QnnnQ",
+    "custom_accordion_bio_k_cnHHUV"
   ]
 }
