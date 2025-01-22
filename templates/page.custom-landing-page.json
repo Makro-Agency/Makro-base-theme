@@ -731,6 +731,52 @@
     },
     "custom_blog_section_bio_k_h8rmaL": {
       "type": "custom-blog-section-bio-k",
+      "blocks": {
+        "blog_dTeHnA": {
+          "type": "blog",
+          "settings": {
+            "blog_handle": "news"
+          }
+        },
+        "blog_94FC6p": {
+          "type": "blog",
+          "settings": {
+            "blog_handle": "recipes"
+          }
+        },
+        "blog_dFRKDa": {
+          "type": "blog",
+          "settings": {
+            "blog_handle": "news"
+          }
+        },
+        "blog_7a9Q4K": {
+          "type": "blog",
+          "settings": {
+            "blog_handle": "recipes"
+          }
+        },
+        "blog_YeDYgz": {
+          "type": "blog",
+          "settings": {
+            "blog_handle": "news"
+          }
+        },
+        "blog_GQGhEF": {
+          "type": "blog",
+          "settings": {
+            "blog_handle": "recipes"
+          }
+        }
+      },
+      "block_order": [
+        "blog_dTeHnA",
+        "blog_94FC6p",
+        "blog_dFRKDa",
+        "blog_7a9Q4K",
+        "blog_YeDYgz",
+        "blog_GQGhEF"
+      ],
       "settings": {
         "heading": "Heading",
         "btn_text": "Button Text",
