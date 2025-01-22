@@ -674,6 +674,23 @@
         "padding_top_res": 36,
         "padding_bottom_res": 36
       }
+    },
+    "custom_section_kommunity_gYWgGD": {
+      "type": "custom-section-kommunity",
+      "settings": {
+        "sub_title": "Sub Title",
+        "heading": "Heading",
+        "description": "<p>Description</p>",
+        "btn_text": "Button Text",
+        "btn_link": "shopify://collections",
+        "image": "shopify://shop_images/product-images_1.png",
+        "image_mobile": "shopify://shop_images/product2-img.png",
+        "content_position": "content-right",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_res": 36,
+        "padding_bottom_res": 36
+      }
     }
   },
   "order": [
@@ -690,6 +707,7 @@
     "custom_image_with_text_section_QpEeiM",
     "custom_accordion_bio_k_jLJiwm",
     "custom_grid_blocks_iqdmUd",
-    "custom_testimonials_bio_k_igBQYd"
+    "custom_testimonials_bio_k_igBQYd",
+    "custom_section_kommunity_gYWgGD"
   ]
 }
