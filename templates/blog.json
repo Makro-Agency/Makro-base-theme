@@ -21,6 +21,46 @@
         "padding_bottom": 100
       }
     },
+    "custom_slider_GnERj8": {
+      "type": "custom-slider",
+      "blocks": {
+        "column_byBEwP": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/service1_1.png",
+            "title": "Your Title",
+            "subtitle": "Your Subtitle",
+            "description": "Your description goes here."
+          }
+        },
+        "column_zncdFC": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/service2_1.png",
+            "title": "Your Title",
+            "subtitle": "Your Subtitle",
+            "description": "Your description goes here."
+          }
+        },
+        "column_Uqez3r": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/service1_1.png",
+            "title": "Your Title",
+            "subtitle": "Your Subtitle",
+            "description": "Your description goes here."
+          }
+        }
+      },
+      "block_order": [
+        "column_byBEwP",
+        "column_zncdFC",
+        "column_Uqez3r"
+      ],
+      "settings": {
+        "padding_bottom": 36
+      }
+    },
     "custom_contact_section_Nqg39M": {
       "type": "custom-contact-section",
       "settings": {
@@ -34,6 +74,7 @@
   },
   "order": [
     "main",
+    "custom_slider_GnERj8",
     "custom_contact_section_Nqg39M"
   ]
 }
