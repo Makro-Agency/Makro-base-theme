@@ -15,6 +15,7 @@
         "heading": "",
         "heading_size": "h1",
         "enable_video_looping": false,
+        "video": "shopify://files/videos/SampleVideo_720x480_10mb.mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "full_width": false,
@@ -168,12 +169,63 @@
         "btn_text": "Get Started Now",
         "button_url": ""
       }
+    },
+    "custom_faq_CJC3Qe": {
+      "type": "custom-faq",
+      "blocks": {
+        "accordian_QChfwb": {
+          "type": "accordian",
+          "settings": {
+            "heading": "Nunc vulputate libero et velit interdum, ac aliquet odio mattis?",
+            "answer": "<p>Nunc vulputate libero et velit interdum, ac aliquet odio mattis</p>"
+          }
+        },
+        "accordian_qfL9dV": {
+          "type": "accordian",
+          "settings": {
+            "heading": "Nunc vulputate libero et velit interdum, ac aliquet odio mattis?",
+            "answer": "<p>Nunc vulputate libero et velit interdum, ac aliquet odio mattis</p>"
+          }
+        },
+        "accordian_gK3gFM": {
+          "type": "accordian",
+          "settings": {
+            "heading": "Nunc vulputate libero et velit interdum, ac aliquet odio mattis?",
+            "answer": "<p>Nunc vulputate libero et velit interdum, ac aliquet odio mattis</p>"
+          }
+        },
+        "accordian_QY9iak": {
+          "type": "accordian",
+          "settings": {
+            "heading": "Nunc vulputate libero et velit interdum, ac aliquet odio mattis?",
+            "answer": "<p>Nunc vulputate libero et velit interdum, ac aliquet odio mattis</p>"
+          }
+        },
+        "accordian_yWdYUw": {
+          "type": "accordian",
+          "settings": {
+            "heading": "Nunc vulputate libero et velit interdum, ac aliquet odio mattis?",
+            "answer": "<p>Nunc vulputate libero et velit interdum, ac aliquet odio mattis</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordian_QChfwb",
+        "accordian_qfL9dV",
+        "accordian_gK3gFM",
+        "accordian_QY9iak",
+        "accordian_yWdYUw"
+      ],
+      "settings": {
+        "heading": "Your Questions Answered"
+      }
     }
   },
   "order": [
     "video_Hfp6YN",
     "custom_hero_slider_gL4DXm",
     "custom_services_4DwUic",
-    "custom_property_management_nmRgcU"
+    "custom_property_management_nmRgcU",
+    "custom_faq_CJC3Qe"
   ]
 }
