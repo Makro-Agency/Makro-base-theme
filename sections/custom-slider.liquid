@@ -59,7 +59,7 @@
 .slick-content p {
   margin: 5px 0;
 }
-
+.slick-title{ color:#fff; }
 {%  endstyle %}
 
 <div class="slick-slider">
@@ -82,11 +82,6 @@
         <h2 class="slick-title">{{ block.settings.title }}</h2>
         <h3 class="slick-subtitle">{{ block.settings.subtitle }}</h3>
         <p class="slick-description">{{ block.settings.description }}</p>
-
-        <!-- Debugging variables -->
-        <p><strong>Title:</strong> {{ block.settings.title }}</p>
-        <p><strong>Subtitle:</strong> {{ block.settings.subtitle }}</p>
-        <p><strong>Description:</strong> {{ block.settings.description }}</p>
       </div>
     </div>
   {%- endfor -%}
