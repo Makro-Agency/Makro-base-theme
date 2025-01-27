@@ -1,0 +1,97 @@
+<h1>JavaScript Objects</h1>
+<h2>Creating an Object</h2>
+
+<p id="demo"></p>
+<p id="demo-2"></p>
+<p id="age-sec"></p>
+<p id="time"></p>
+<button onclick="document.getElementById('time').innerHTML=Date()">The time is?</button>
+<p id="day"></p>
+<button onclick="displayTodayDay()">The Day Is</button>
+<button onmouseover="displayTodayDay()">Onmouse Hover The Day Is</button>
+<button onmouseout="displayTodayDay()">When cursor moves from this button: The Day Is</button>
+<button onkeydown="displayTodayDay()">When Down Key Is Pressed: The Day Is</button>
+<p id="dayonload"></p>
+<p id="paragraph">This is a sample paragraph to measure its length dynamically using JavaScript.</p>
+<p id="count"></p>
+
+<script>
+    const car = {
+        type: "Fiat",
+        model: "500",
+        color: "white",
+        colorsAvl: {
+            color1: "Color 1",
+            color2: "Color 2"
+        },
+        carInfo: function () {
+            return "My car brand is " + this.type +
+                ", its color is " + this.colorsAvl.color1 +
+                ", and it has " + this.steering + ".";
+        }
+    };
+
+    car.steering = "Power Steering";
+    let text = "";
+    for (let x in car) {
+        if (typeof car[x] === "function") {
+            text += `${x}: ${car[x]()} `;
+        } else {
+            text += `${x}: ${car[x]} `;
+        }
+    }
+
+    document.getElementById("demo-2").innerHTML = text;
+    document.getElementById("demo").innerHTML = car.carInfo();
+
+    function Biodata(first, last, age, father) {
+        this.firstName = first;
+        this.lastName = last;
+        this.fatherName = father;
+    }
+
+    const myFather = new Biodata("Jeeva", "J", "22", "Jayavel");
+    Biodata.prototype.nationality = "English";
+
+    document.getElementById("age-sec").innerHTML = myFather.nationality;
+
+    function displayTodayDay() {
+        const today = new Date();
+        const dayIndex = today.getDay();
+        const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const dayName = dayNames[dayIndex];
+        document.getElementById("day").innerHTML = `Today is: ${dayName}`;
+    }
+
+    function displayTodayDayOnload() {
+        const today = new Date();
+        const dayIndex = today.getDay();
+        const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const dayName = dayNames[dayIndex];
+        document.getElementById("dayonload").innerHTML = `Today is: ${dayName}`;
+    }
+
+    function displayCharcount() {
+        const textString = document.getElementById("paragraph").innerText;
+        document.getElementById("count").innerHTML = `Length of the paragraph is ${textString.length}`;
+    }
+
+    window.onload = function () {
+        displayTodayDayOnload();
+        displayCharcount();
+    };
+</script>
+
+{% schema %}
+{
+    "name": "Custom Js Learn Section",
+    "tag": "section",
+    "class": "custom-js-learn",
+    "settings": [],
+    "presets": [
+        {
+            "name": "Custom Js Learn Section"
+        }
+    ]
+}
+{% endschema %}
