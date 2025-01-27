@@ -1,0 +1,193 @@
+
+{% for block in section.blocks %}
+{% assign product = collections[block.settings.collection_handle].products.first %}
+{% assign col_total_products = collections[block.settings.collection_handle].products %}
+{% assign lowest_price = blank %}
+{% assign highest_price = blank %}
+
+
+{% if product %}
+  <div class="product-card">
+    <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}"  width="100%" height="100%">
+    <span> {{ col_total_products.size }} Items</span>
+    <h2><a href="{{ collections[block.settings.collection_handle].url }}">{{ collections[block.settings.collection_handle].title }}</a></h2> 
+    {% for product in col_total_products %}
+      {% if product.variants.size > 1 %}
+      {% for variant in product.variants %}
+        {% if lowest_price == blank or variant.price < lowest_price %}
+          {% assign lowest_price = variant.price %}
+        {% endif %}
+        {% if highest_price == blank or variant.price > highest_price %}
+          {% assign highest_price = variant.price %}
+        {% endif %}
+      {% endfor %}
+      {% else %}
+    {% if lowest_price == blank or product.price < lowest_price %}
+      {% assign lowest_price = product.price %}
+    {% endif %}
+    {% if highest_price == blank or product.price > highest_price %}
+      {% assign highest_price = product.price %}
+    {% endif %}
+    {% endif  %}
+    {% endfor %}
+    
+    <p>Price Starts From {{ lowest_price | money}} - {{ highest_price | money}}</p>
+    <a href="{{ collections[block.settings.collection_handle].url }}" class="btn">View Products</a>
+  </div>
+{% else %}
+  <p>No products found in this collection.</p>
+{% endif %}
+{% endfor %}
+
+{%  style  %}  
+.custom-collection-section {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+
+.custom-collection-section .product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.custom-collection-section .product-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.custom-collection-section .product-card h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.custom-collection-section .product-card span {
+  font-size: 14px;
+  color: #888;
+}
+
+.custom-collection-section .product-card p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.custom-collection-section .product-card .btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-collection-section .product-card .btn:hover {
+  background-color: #0056b3;
+}
+
+@media (min-width: 768px) {
+  .custom-collection-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-collection-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-collection-section {
+    display: block;
+  }
+
+  .custom-collection-section .product-card {
+    margin-bottom: 20px;
+  }
+}
+
+{% endstyle %}
+{% schema %}
+    {
+    "name": "Custom Collection Section",
+    "tag": "section",
+    "class": "custom-collection-section",
+    "settings": [
+    {
+    "type": "header",
+    "content": "Section Padding Setting For Desktop"
+    },
+    {
+    "type": "range",
+    "id": "padding_top",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "Padding Top",
+    "default": 36
+    },
+    {
+    "type": "range",
+    "id": "padding_bottom",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "Padding Bottom",
+    "default": 36
+    },
+    {
+    "type": "header",
+    "content": "Section Padding Setting For Responsiveness"
+    },
+    {
+    "type": "range",
+    "id": "padding_top_res",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "Padding top responsive",
+    "default": 36
+    },
+    {
+    "type": "range",
+    "id": "padding_bottom_res",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "Padding bottom responsive",
+    "default": 36
+    }
+    ],
+    "blocks": [
+    {
+    "type": "collection",
+    "name": "Collections",
+    "settings": [
+        {
+      "type": "collection",
+      "id": "collection_handle",
+      "label": "Select Collection"
+    }
+    ]
+    }
+    ],
+    "presets": [
+    {
+    "name": "Custom Collection Section",
+    }
+    ]
+    }
+    {% endschema %}
