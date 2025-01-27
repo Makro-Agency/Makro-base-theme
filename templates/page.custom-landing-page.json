@@ -828,6 +828,22 @@
         "padding_top_res": 36,
         "padding_bottom_res": 36
       }
+    },
+    "custom_product_grid_7FNeaR": {
+      "type": "custom-product-grid",
+      "settings": {
+        "title": "Product Grid",
+        "collection_select": "frontpage",
+        "products_per_row": 5,
+        "show_vendor": true,
+        "show_tags": true,
+        "show_price": true,
+        "show_color_swatches": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_res": 36,
+        "padding_bottom_res": 36
+      }
     }
   },
   "order": [
@@ -847,6 +863,7 @@
     "custom_testimonials_bio_k_igBQYd",
     "custom_section_kommunity_gYWgGD",
     "custom_blog_section_bio_k_h8rmaL",
-    "custom_collection_section_eFEpzx"
+    "custom_collection_section_eFEpzx",
+    "custom_product_grid_7FNeaR"
   ]
 }
