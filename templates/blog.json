@@ -21,16 +21,6 @@
         "padding_bottom": 100
       }
     },
-    "custom_contact_section_Nqg39M": {
-      "type": "custom-contact-section",
-      "settings": {
-        "heading": "missing translation: \"t:sections.contact-form.settings.title.default\"",
-        "heading_size": "h1",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "custom_slider_GnERj8": {
       "type": "custom-slider",
       "blocks": {
@@ -70,11 +60,21 @@
       "settings": {
         "padding_bottom": 36
       }
+    },
+    "custom_contact_section_Nqg39M": {
+      "type": "custom-contact-section",
+      "settings": {
+        "heading": "missing translation: \"t:sections.contact-form.settings.title.default\"",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "custom_contact_section_Nqg39M",
-    "custom_slider_GnERj8"
+    "custom_slider_GnERj8",
+    "custom_contact_section_Nqg39M"
   ]
 }
