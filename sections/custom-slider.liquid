@@ -1,0 +1,181 @@
+<!-- Slick Slider CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+{%  style %}
+.slick-slider {
+  height: 700px;
+  max-height: 700px; 
+  overflow: hidden; 
+  position: relative;
+}
+
+.slick-slider .slick-slide img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.slick-slider .slick-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.slick-slider .slick-subtitle {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.slick-slider .slick-description {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.slick-slide-item {
+  position: relative;
+}
+.slick-slide{ max-height:700px; }
+.slick-slide-item .slick-content {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  bottom: 0;
+  right: 20px;
+  z-index: 10; /* Ensure text is above the image */
+  color: white;
+  padding: 20px;
+  display: flex;
+ flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+  background-color: rgba(0, 0, 0, 0.6); /* Solid background for visibility */
+}
+
+.slick-content h2,
+.slick-content h3,
+.slick-content p {
+  margin: 5px 0;
+}
+
+{%  endstyle %}
+
+<div class="slick-slider">
+  {%- for block in section.blocks -%}
+    <div class="slick-slide-item slick-slide-{{ forloop.index }}">
+      <!-- Image -->
+      <div class="slick-image">
+        {{
+          block.settings.image
+          | image_url: width: 3200
+          | image_tag:
+            widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+            sizes: sizes,
+            class: 'multicolumn-card__image'
+        }}
+      </div>
+
+      <!-- Content -->
+      <div class="slick-content">
+        <h2 class="slick-title">{{ block.settings.title }}</h2>
+        <h3 class="slick-subtitle">{{ block.settings.subtitle }}</h3>
+        <p class="slick-description">{{ block.settings.description }}</p>
+
+        <!-- Debugging variables -->
+        <p><strong>Title:</strong> {{ block.settings.title }}</p>
+        <p><strong>Subtitle:</strong> {{ block.settings.subtitle }}</p>
+        <p><strong>Description:</strong> {{ block.settings.description }}</p>
+      </div>
+    </div>
+  {%- endfor -%}
+</div>
+
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  $('.slick-slider').slick({
+    autoplay: false,        // Enable autoplay
+    arrows: true,          // Show arrows
+    dots: true,            // Show navigation dots
+    infinite: true,        // Infinite scrolling
+    speed: 500,            // Transition speed in milliseconds
+    slidesToShow: 1,       // Show 1 slide at a time
+    slidesToScroll: 1      // Scroll 1 slide at a time
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "custom image",
+  "class": "section",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "t:sections.multicolumn.blocks.column.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+         {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Your Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Your Subtitle"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Your description goes here."
+        }
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom slider",
+      "blocks": [
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
