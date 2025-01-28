@@ -1,0 +1,63 @@
+{% assign countdownEndDate = section.settings.countdown_end_date %}
+<div id="countdown-timer"></div>
+{% stylesheet %}
+  #countdown-timer{
+    text-align: center;
+    padding: 10px;
+    background: mediumpurple;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+  }
+{% endstylesheet %}
+
+<script>
+  // Get the countdown end date from Shopify theme settings
+  var countdownEndDate = new Date("{{ countdownEndDate }}").getTime();
+
+  // Update the countdown every 1 second
+  var x = setInterval(function() {
+
+    // Get the current date and time
+    var now = new Date().getTime();
+
+    // Calculate the time remaining
+    var distance = countdownEndDate - now;
+
+    // Calculate days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the countdown
+    document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+
+    // If the countdown is finished, display a message
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("countdown-timer").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+</script>
+
+{% schema %}
+  {
+    "name": "countdown Timer",
+    "class": "custom-bg-img",
+    "settings": [
+      {
+      "type": "text",
+      "id": "countdown_end_date",
+      "label": "enddate",
+      "info": "sept 26, 2024 22:15:10"
+      }
+    ],
+   "presets": [
+    {
+      "name": "countdown Timer"
+    }
+  ]
+  }
+{% endschema %}

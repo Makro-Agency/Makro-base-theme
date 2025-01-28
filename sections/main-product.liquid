@@ -105,6 +105,19 @@
                     </h2>
                   </a>
                 </div>
+                {% when 'limited_offer' %}
+                  {% if product.tags contains 'offers' %}
+                  <div id="limited-time-offer">
+                    <p class="offer-text">Hurry! Offer ends in:</p>
+                    <div id="countdown">
+                      <span id="days">00</span> Days 
+                      <span id="hours">00</span> Hours 
+                      <span id="minutes">00</span> Minutes 
+                      <span id="seconds">00</span> Seconds
+                    </div>
+                  </div>
+                  {% endif %}
+
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -994,6 +1007,11 @@
           "content": "t:sections.main-product.blocks.share.settings.title_info.content"
         }
       ]
+    },
+    {
+      "type": "limited_offer",
+      "name": "limited offer",
+      "limit": 1
     },
     {
       "type": "custom_liquid",

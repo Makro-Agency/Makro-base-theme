@@ -1,0 +1,153 @@
+<style>
+.container{
+    padding: 0 5rem;
+    max-width: var(--page-width);
+}
+.video-grid {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 20px;
+  white-space: nowrap;
+}
+
+.video-block {
+  position: relative;
+  width: 200px;
+  height: 350px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.view-count {
+    padding: 1px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    background: #fff;
+    display: inline-block;
+    width: auto;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.product-info {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 10px;
+  color: black;
+}
+
+.product-info img {
+    width: 30%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.product-info p {
+    margin: 0;
+    font-size: 12px;
+    display: block;
+    break-after: 25;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+</style>
+<div class="page-width">
+<div class="video-grid">
+    
+    {% for block in section.blocks %}
+        <div class="video-block">
+          <video class="background-video" autoplay muted loop playsinline>
+            <source src="{{ block.settings.video }}" type="video/mp4">
+          </video>
+          <div class="overlay">
+            <span class="view-count">👁️ {{ block.settings.views }}</span>
+            {% if block.settings.product != blank %}
+              <div class="product-info">
+                <img src="{{ block.settings.product.featured_image | img_url: 'small' }}" alt="{{ block.settings.product.title }}">
+                <div>
+                  <p>{{ block.settings.product.title }}</p>
+                  <p>₹{{ block.settings.product.price | money_without_currency }} 
+                    <del>₹{{ block.settings.product.compare_at_price | money_without_currency }}</del>
+                  </p>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+    
+{% schema %}
+    {
+      "name": "Video Grid",
+      "settings": [],
+      "blocks": [
+        {
+          "type": "video_block",
+          "name": "Video Block",
+          "settings": [
+            {
+              "type": "url",
+              "id": "video",
+              "label": "Video URL"
+            },
+            {
+              "type": "text",
+              "id": "views",
+              "label": "View Count",
+              "default": "1K"
+            },
+            {
+              "type": "product",
+              "id": "product",
+              "label": "Select Product"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Video Grid",
+          "category": "Custom",
+          "blocks": [
+            {
+              "type": "video_block"
+            }
+          ]
+        }
+      ]
+    }
+    {% endschema %}
+    
+    

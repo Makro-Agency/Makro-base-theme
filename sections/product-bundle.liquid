@@ -1,0 +1,133 @@
+<div class="bundle-container">
+  <h2>Create Your Bundle</h2>
+  <p>Select products to include in your bundle and enjoy a discount!</p>
+
+  <div class="bundle-products">
+    
+      {% for product in collections[settings.bundle-products].products %}
+        <div class="bundle-product" data-product-id="{{ product.id }}">
+          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.price | money }}</p>
+          <button class="add-to-bundle" data-product-id="{{ product.id }}">Add to Bundle</button>
+        </div>
+      {% endfor %}
+    
+  </div>
+
+  <div class="bundle-summary">
+    <h3>Your Bundle</h3>
+    <ul id="bundle-summary-list">
+      <!-- Bundle items will be dynamically added here -->
+    </ul>
+    <p>Total Price: <span id="bundle-total-price">$0.00</span></p>
+    <button id="checkout-bundle" class="disabled" disabled>Checkout Bundle</button>
+  </div>
+</div>
+
+<style>
+  .bundle-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  .bundle-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .bundle-product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .bundle-summary {
+    margin-top: 20px;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const bundleProducts = document.querySelectorAll(".add-to-bundle");
+    const bundleSummaryList = document.getElementById("bundle-summary-list");
+    const bundleTotalPrice = document.getElementById("bundle-total-price");
+    const checkoutButton = document.getElementById("checkout-bundle");
+
+    let selectedProducts = [];
+    let totalPrice = 0;
+
+    function updateSummary() {
+      bundleSummaryList.innerHTML = "";
+      selectedProducts.forEach(product => {
+        const li = document.createElement("li");
+        li.textContent = `${product.title} - ${product.price}`;
+        bundleSummaryList.appendChild(li);
+      });
+      bundleTotalPrice.textContent = `$${totalPrice.toFixed(2)}`;
+      checkoutButton.disabled = selectedProducts.length === 0;
+      checkoutButton.classList.toggle("disabled", selectedProducts.length === 0);
+    }
+
+    bundleProducts.forEach(button => {
+      button.addEventListener("click", function () {
+        const productId = this.dataset.productId;
+        const productElement = this.closest(".bundle-product");
+        const productTitle = productElement.querySelector("h3").textContent;
+        const productPrice = parseFloat(productElement.querySelector("p").textContent.replace("$", ""));
+
+        if (!selectedProducts.find(product => product.id === productId)) {
+          selectedProducts.push({ id: productId, title: productTitle, price: productPrice });
+          totalPrice += productPrice;
+        }
+
+        updateSummary();
+      });
+    });
+
+    checkoutButton.addEventListener("click", function () {
+      if (selectedProducts.length === 0) return;
+
+      const bundleData = selectedProducts.map(product => ({
+        id: product.id,
+        quantity: 1
+      }));
+
+      fetch("/cart/add.js", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ items: bundleData })
+      })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = "/cart";
+          } else {
+            alert("Error adding bundle to cart.");
+          }
+        });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Bundling",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "bundle-products",
+      "label": "Bundle Products Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Bundling",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

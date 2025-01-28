@@ -1,3 +1,38 @@
+//limited offer
+document.addEventListener("DOMContentLoaded", function () {
+  const countdownElement = document.getElementById("countdown");
+
+  // Set the end date for the offer
+  const offerEndDate = new Date("2025-01-31T23:59:59"); // Adjust the date and time as needed
+
+  function updateCountdown() {
+    const now = new Date();
+    const timeRemaining = offerEndDate - now;
+
+    if (timeRemaining > 0) {
+      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days.toString().padStart(2, "0");
+      document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+      document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+      document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+    } else {
+      countdownElement.innerHTML = "Offer has ended!";
+    }
+  }
+
+  // Update the countdown every second
+  setInterval(updateCountdown, 1000);
+  updateCountdown(); // Run immediately to avoid delay
+});
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   // Set default selected swatch on page load
   const firstAvailableSwatch = document.querySelector('.swatch:not(.swatch--disabled)');

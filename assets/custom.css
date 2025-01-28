@@ -1,3 +1,31 @@
+/* limited offer */
+
+#limited-time-offer {
+  background-color: #ffedd5;
+  border: 1px solid #fb923c;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.offer-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #dc2626;
+}
+
+#countdown {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1c1917;
+}
+
+#countdown span {
+  display: inline-block;
+  margin: 0 5px;
+}
+
 .quantity-control {
   display: flex;
   align-items: center;
@@ -424,6 +452,9 @@ p,span,.item-text{
 .quantity{
   width:110px;
 }
+
+
+
 @media only screen and (max-width: 990px) {
    header-drawer{
     display:none;
