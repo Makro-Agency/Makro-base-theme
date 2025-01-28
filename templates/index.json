@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -31,9 +40,9 @@
         "image_height": "large",
         "desktop_content_position": "bottom-center",
         "show_text_box": false,
-        "image_behavior": "none",
         "desktop_content_alignment": "center",
         "color_scheme": "scheme-3",
+        "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
@@ -50,12 +59,11 @@
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -63,13 +71,59 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "product_cards_video_section_P8qU4c": {
+      "type": "product-cards-video-section",
+      "blocks": {
+        "video_block_JWHhGi": {
+          "type": "video_block",
+          "settings": {
+            "video": "https://cdn.shopify.com/s/files/1/0681/3296/2546/files/whatmore_tn_c91b0f6e-56ab-4ab8-b9da-26edde5d09d9.mp4?v=1722077571",
+            "views": "200",
+            "product": "1-quart-saucepan-with-cover"
+          }
+        },
+        "video_block_Np4ffR": {
+          "type": "video_block",
+          "settings": {
+            "video": "https://cdn.shopify.com/s/files/1/0681/3296/2546/files/whatmore_tn_2ec1675c-559b-456a-84c0-4c0090d08a06.mp4?v=1734787310",
+            "views": "300",
+            "product": "1-75-quart-saucepan-with-cover"
+          }
+        },
+        "video_block_CGnEew": {
+          "type": "video_block",
+          "settings": {
+            "video": "https://cdn.shopify.com/s/files/1/0681/3296/2546/files/whatmore_tn_54e871f0-41e8-4979-aacd-bd4597a1d146.mp4?v=1722327497",
+            "views": "1K",
+            "product": "2-quart-saucepan-with-cover"
+          }
+        },
+        "video_block_BazV38": {
+          "type": "video_block",
+          "settings": {
+            "video": "https://cdn.shopify.com/s/files/1/0681/3296/2546/files/whatmore_tn_650e429b-b412-4afd-91a2-cbf790f871e2.mp4?v=1732194098",
+            "views": "300k",
+            "product": "chocolate"
+          }
+        }
+      },
+      "block_order": [
+        "video_block_JWHhGi",
+        "video_block_Np4ffR",
+        "video_block_CGnEew",
+        "video_block_BazV38"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "product_cards_video_section_P8qU4c"
   ]
 }
