@@ -73,6 +73,15 @@
             "image_ratio": "square",
             "enable_quick_add": true
           }
+        },
+        "upsell_products_YBC8di": {
+          "type": "upsell_products",
+          "settings": {
+            "heading": "Up Sell Products",
+            "heading_font_size": 18,
+            "heading_color": "#121212",
+            "hover_border_color": "#121212"
+          }
         }
       },
       "block_order": [
@@ -85,7 +94,8 @@
         "buy_buttons",
         "description",
         "share",
-        "complementary_feabfV"
+        "complementary_feabfV",
+        "upsell_products_YBC8di"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -101,25 +111,6 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
-      }
-    },
-    "related-products": {
-      "type": "related-products",
-      "disabled": true,
-      "settings": {
-        "heading": "You may also like",
-        "heading_size": "h2",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 28
       }
     },
     "bundle_product_section_Aw8y7z": {
@@ -184,6 +175,25 @@
         "icon_text_2": "Free Shipping",
         "icon_img_3": "shopify://shop_images/HouseLine.png",
         "icon_text_3": "Front Door Delivery"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
       }
     }
   },
