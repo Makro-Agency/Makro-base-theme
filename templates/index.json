@@ -110,13 +110,22 @@
             "views": "300k",
             "product": "chocolate"
           }
+        },
+        "video_block_GBqEY3": {
+          "type": "video_block",
+          "settings": {
+            "video": "https://cdn.shopify.com/s/files/1/0681/3296/2546/files/whatmore_tn_cba0bbe8-a76c-4901-b754-93b4c4e2c6eb.mp4?v=1735649622",
+            "views": "2k",
+            "product": "coffee"
+          }
         }
       },
       "block_order": [
         "video_block_JWHhGi",
         "video_block_Np4ffR",
         "video_block_CGnEew",
-        "video_block_BazV38"
+        "video_block_BazV38",
+        "video_block_GBqEY3"
       ],
       "settings": {}
     }
