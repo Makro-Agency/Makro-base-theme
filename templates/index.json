@@ -84,10 +84,23 @@
         "video_block_GBqEY3"
       ],
       "settings": {}
+    },
+    "before_after_slider_rDQJAt": {
+      "type": "before-after-slider",
+      "settings": {
+        "bf_image": "shopify://shop_images/bb.png",
+        "af_image": "shopify://shop_images/aa.webp",
+        "show_badge": true,
+        "grayscale_before": true,
+        "show_content": true,
+        "ba_heading": "Before After Slider",
+        "ba_content": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>"
+      }
     }
   },
   "order": [
     "video_background_9i6Gcy",
-    "product_cards_video_section_P8qU4c"
+    "product_cards_video_section_P8qU4c",
+    "before_after_slider_rDQJAt"
   ]
 }
