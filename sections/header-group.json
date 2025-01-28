@@ -232,7 +232,7 @@
         "#HeaderMenu-sale-80-off {color: #ef3e3e; font-weight: 550;}"
       ],
       "settings": {
-        "logo_position": "middle-left",
+        "logo_position": "middle-center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "always",
