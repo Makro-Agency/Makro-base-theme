@@ -1,3 +1,176 @@
+// cart upsell
+
+$(document).ready(function () {
+  $('.add_upsell').prop('checked', true);
+  $('.productVariantId').toggleClass('active');
+
+  $(".upsell_product_container .add_upsell").click(function() {
+      // $(this).toggleClass('active');
+
+      var addUpsellBoxID = $(this).attr('data-id');
+      $('.productVariantId').filter(function() {
+          return $(this).attr('data-id') === addUpsellBoxID;
+      }).toggleClass('active');
+
+      // updatting total payment of upsell
+      updateTotalPayment();
+
+
+  });
+
+  $('#btn_addcart_upsell').click(function (event) {
+      this.disabled = true;
+      $('.loading__spinner').removeClass('hidden');
+
+      event.preventDefault();
+      var itemsToAddCart = [];
+      i = 0;
+      $('.upsell_product_container .productVariantId.active').each(function() {
+          itemsToAddCart[i++] = $(this).val();
+      });
+      console.log('itemsToAddCart ', itemsToAddCart);
+      
+      // merging an array with comma (,)
+      var newitemsToAddCart = [itemsToAddCart.join(',')];
+      var newvalue = newitemsToAddCart;
+
+      Shopify.queue = [];
+      var newArray = newvalue.toString().split(',');
+      for (var i = 0; i < newArray.length; i++) {
+          product = newArray[i];
+          Shopify.queue.push({
+              variantId: product,
+          });
+      }
+
+      Shopify.moveAlong = function () {
+          // If we still have requests in the queue, let's process the next one.
+          if (Shopify.queue.length) {
+              var request = Shopify.queue.shift();
+              var data = 'id=' + request.variantId + '&quantity=1'
+              $.ajax({
+                  type: 'POST',
+                  url: '/cart/add.js',
+                  dataType: 'json',
+                  data: data,
+                  success: function (response) {
+                      Shopify.moveAlong();
+                      // console.log('response ', response);
+                      $('#btn_addcart_upsell').removeAttr('disabled');
+                      $('.loading__spinner').addClass('hidden');
+
+                      $('#cart-icon-bubble').load(location.href + " #cart-icon-bubble");
+                      
+                      //submit form after success 
+                      // setTimeout(function () {
+                      //     window.location.href = "/cart";
+                      // }, 1000);
+                  },
+                  error: function (response) {
+                      console.log('error response ', response);
+                      $('#btn_addcart_upsell').removeAttr('disabled');
+                      $('.loading__spinner').addClass('hidden');
+                  }
+              });
+          }
+      };
+      Shopify.moveAlong();
+
+      $('#cart-icon-bubble').trigger('click');
+      setTimeout(function () {
+          $('cart-drawer').addClass("active");
+          $('.drawer__inner-empty').hide();
+          $('cart-drawer').load(location.href + " #CartDrawer");
+          $(".drawer").removeClass("is-empty");
+      }, 3000);
+      
+  });
+
+
+  const {
+      host, hostname, href, origin, pathname, port, protocol, search
+    } = window.location;
+
+  function updateVariationDetails(variantOption, isChanged) {
+      let currPID = $(variantOption).attr('data-pid');
+      
+      var selectedOption = $('option:selected', variantOption);
+      var dataset = selectedOption[0].dataset;
+      
+      // Update price and title
+      $('.selected_variation_price[data-pid="' + currPID + '"]').text(dataset.price);
+      $('.selected_variation_title[data-pid="' + currPID + '"]').text(dataset.prodname +' - '+ dataset.title);
+      
+      // Update image src
+      var prodImage = $('.selected_variation_image[data-pid="' + currPID + '"]')[0];
+      prodImage.src = origin+'/cdn/shop/'+dataset.img_url;
+      
+      // Update selected variation id in input to pass value during add to cart
+      $('.selected_variation_id[data-pid="' + currPID + '"]').val(variantOption.value);
+
+      if (isChanged) {
+          // updatting new id with new selected varient price
+          var priceToUpdate = dataset.price.split('.');
+          $('.selected_variation_id[data-pid="' + currPID + '"]').attr('id', 'price_'+priceToUpdate[1]);
+          updateTotalPayment();
+      }
+
+
+  }
+
+  $('.product_variations').each(function() {
+      updateVariationDetails(this, false);
+  });
+
+  $('.product_variations').change(function() {
+      updateVariationDetails(this, true);
+      console.log('selecetd option ',this)
+  });
+
+
+  function updateTotalPayment() {
+      i = 0;
+      var upSellItems = [];
+      $('.upsell_product_container .productVariantId.active').each(function() {
+          upSellItems[i++] = $(this).attr('id');
+      });
+      console.log('upSellItems ', upSellItems);
+
+      var totalPayment = 0;
+      for (var i = 0; i < upSellItems.length; i++) {
+          var parts = upSellItems[i].split('_');
+          var value = parseFloat(parts[1].replace(',', ''));
+          totalPayment += value;
+      }
+      console.log('totalPayment :', totalPayment.toFixed(2));
+
+      // format price function as per store
+      function localizeCurrency(amount) {
+          const locale = window.Shopify.locale;
+          const country = window.Shopify.country
+          const currencyCode = window.Shopify.currency.active;
+      
+          return new Intl.NumberFormat(`${locale}-${country}`, {
+              style: 'currency',
+              currency: currencyCode,
+          }).format(amount);
+      }
+  
+
+      $('.total_payment').text(localizeCurrency(totalPayment));
+      if (totalPayment <= 0) {
+          $('#btn_addcart_upsell').prop('disabled', true);
+          $('#btn_addcart_upsell span').text('Select Products to Buy');
+      } else {
+          $('#btn_addcart_upsell').removeAttr('disabled');
+          $('#btn_addcart_upsell span').text('Add to cart Up-Sell');
+      }
+  }
+
+  updateTotalPayment();
+});
+
+
 //limited offer
 document.addEventListener("DOMContentLoaded", function () {
   const countdownElement = document.getElementById("countdown");

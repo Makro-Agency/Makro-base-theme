@@ -204,6 +204,201 @@
                     {%- endif -%}
                   {%- endif -%}
                 </p>
+              {% comment %} custom code starts here for upsell {% endcomment %}
+{%- when 'upsell_products' -%}
+  {% if product.metafields.custom.upsell_products %}
+    {% assign upsellProducts = product.metafields.custom.upsell_products.value %}
+    <!-- check at least one recommended product is available --> 
+    {%- liquid 
+      assign has1product = false
+      for prod in upsellProducts
+        if prod.available == true
+          assign has1product = true
+        endif
+      endfor
+    -%}
+    {% if has1product %}
+      <p class="upsell-products-heading" style="font-size: {{block.settings.heading_font_size}}px; color: {{block.settings.heading_color}};">{{ block.settings.heading }}</p>
+      <div class="upsell-products" id="upsell-products-{{ block.id }}">
+        {% comment %} adding main product into upsell {% endcomment %}
+        <div class="upsell_product_container">
+          <div class="upsell_product_details">
+            <div class="add_upsell_box">
+              <input class="add_upsell" type="checkbox" data-id="{{ product.first_available_variant.id }}">
+            </div>
+
+            {% comment %} start of checking varient producds {% endcomment %}
+            <div class="product_image_details">
+              {% if product.has_only_default_variant %}
+                <div class="product_image">
+                  <a href="{{ product.url }}" class="upsell-product" aria-label="{{ product.title }}" title="{{ product.title }}">
+                    <img class="upsell-product__image" src="{{ product.images[0] | img_url: '500x' }}" alt="{{ product.title }}">
+                  </a>
+                </div>
+
+                <div class="product_details">
+                  <a href="{{ product.url }}" class="upsell-product" aria-label="{{ product.title }}" title="{{ product.title }}">
+                    <p>{{ product.title }}</p>
+                  </a>
+
+                  <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                    {%- render 'price',
+                      product: product,
+                      use_variant: true,
+                      show_badges: false,
+                      price_class: 'price--large'
+                    -%}
+                  </div>
+                  <input class="productVariantId" id="price_{{ product.price | money_without_currency }}" type="hidden" value="{{ product.first_available_variant.id }}" data-id="{{ product.first_available_variant.id }}">
+                </div>
+
+              {% else %}
+
+                <div class="product_image">
+                  <a href="{{ product.url }}" class="upsell-product" aria-label="{{ product.title }}" title="{{ product.title }}">
+                    <img class="selected_variation_image upsell-product__image" data-pid="{{ product.id }}" src="{{ product.images[0] | img_url: '500x' }}" alt="{{ product.title }}">
+                  </a>
+                </div>
+                
+                <div class="product_details">
+                  <a href="{{ product.url }}" class="upsell-product" aria-label="{{ product.title }}" title="{{ product.title }}">
+                    <p class="selected_variation_title" data-pid="{{ product.id }}">{{ product.title }}</p>
+                  </a>
+                  <p class="selected_variation_price" data-pid="{{ product.id }}"> {{ product.price | money_with_currency }}</p>
+
+                  <input class="selected_variation_id productVariantId" id="price_{{ product.price | money_without_currency }}" data-pid="{{ product.id }}" type="hidden" value="{{ product.first_available_variant.id }}" data-id="{{ product.first_available_variant.id }}">
+
+                  <select name="id" data-pid="{{ product.id }}" id="productSelect-{{ section.id }}" class="product_variations">
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        <option data-prodname="{{ product.title }}" data-img_url="{{ variant.image.src }}" data-title="{{ variant.title }}" value="{{ variant.id }}" data-price="{{ variant.price | money_with_currency }}"> {{ variant.title }} - {{ variant.price | money_with_currency }} 
+                        </option>
+                      {% else %}
+                        <option disabled="disabled">
+                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                        </option>
+                      {% endif %}
+
+                    {% endfor %}
+                  </select>
+                </div>
+
+              {% endif %}
+              
+            </div>
+            {% comment %} end of varient checking {% endcomment %}
+
+          </div>
+          {% render 'icon-plus' %}
+        </div>
+
+        {% comment %} list of up-sell products from meta field {% endcomment %}
+        {% for prod in upsellProducts %}
+          {% if prod.available == true %}
+            <div class="upsell_product_container">
+              <div class="upsell_product_details">
+                <div class="add_upsell_box">
+                  {% for variant in prod.variants %}
+                    {% assign variantid = variant.id %}
+                  {% endfor %}
+                  <input class="add_upsell" type="checkbox" data-id="{{ prod.first_available_variant.id }}">
+                </div>
+
+                <div class="product_image_details">
+                  {% if prod.has_only_default_variant %}
+                    <div class="product_image">
+                      <a href="{{ prod.url }}" class="upsell-product" aria-label="{{prod.title}}" title="{{ prod.title }}">
+                        <img class="upsell-product__image" src="{{ prod.images[0] | img_url: '500x' }}" alt="{{ prod.title }}">
+                      </a>
+                    </div>
+
+                    <div class="product_details">
+                      <a href="{{ prod.url }}" class="upsell-product" aria-label="{{prod.title}}" title="{{ prod.title }}">
+                        <p>{{ prod.title }}</p>
+                      </a>
+
+                      <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                        {%- render 'price',
+                          product: prod,
+                          use_variant: true,
+                          show_badges: false,
+                          price_class: 'price--large'
+                        -%}
+                      </div>
+                      <input class="productVariantId" id="price_{{ prod.price | money_without_currency }}" type="hidden" value="{{ prod.first_available_variant.id }}" data-id="{{ prod.first_available_variant.id }}">
+                    </div>
+
+                  {% else %}
+
+                    <div class="product_image">
+                      <a href="{{ prod.url }}" class="upsell-product" aria-label="{{prod.title}}" title="{{ prod.title }}">
+                        <img class="selected_variation_image upsell-product__image" data-pid="{{ prod.id }}" src="{{ prod.images[0] | img_url: '500x' }}" alt="{{ prod.title }}">
+                      </a>
+                    </div>
+                    
+                    <div class="product_details">
+                      <a href="{{ prod.url }}" class="upsell-product" aria-label="{{prod.title}}" title="{{ prod.title }}">
+                        <p class="selected_variation_title" data-pid="{{ prod.id }}">{{ prod.title }}</p>
+                      </a>
+                      <p class="selected_variation_price" data-pid="{{ prod.id }}"> {{ prod.price |  money_with_currency }}</p>
+
+                      <input class="selected_variation_id productVariantId" id="price_{{ prod.price | money_without_currency }}" data-pid="{{ prod.id }}" type="hidden" value="{{ prod.first_available_variant.id }}" data-id="{{ prod.first_available_variant.id }}">
+
+                      <select name="id" data-pid="{{ prod.id }}" id="productSelect-{{ section.id }}" class="product_variations">
+                        {% for variant in prod.variants %}
+                          {% if variant.available %}
+                            <option data-prodname="{{ prod.title }}" data-img_url="{{ variant.image.src }}" data-title="{{ variant.title }}" value="{{ variant.id }}" data-price="{{ variant.price | money_with_currency }}"> {{ variant.title }} - {{ variant.price | money_with_currency }} 
+                            </option>
+                          {% else %}
+                            <option disabled="disabled">
+                              {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                            </option>
+                          {% endif %}
+
+                        {% endfor %}
+                      </select>
+                    </div>
+
+                  {% endif %}
+                </div>
+              </div>
+                
+              {% if forloop.last  != true %}
+                {% render 'icon-plus' %}
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        <div class="upsell_add_to_cart">
+          <p><span>Total Payment </span><span class="total_payment"></span></p>
+
+          <button id="btn_addcart_upsell" type="submit" name="add" class="button button--full-width button--secondary">
+            <span>Add to cart Up-Sell </span>
+            <div class="loading__spinner hidden">
+              <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+            </div>
+          </button>
+        </div>
+
+      </div>
+      <style>
+        
+        #upsell-products-{ { block.id }} .upsell-product__image {
+          width: 100px;
+          max-width: 100px;
+          height: 100px;
+          padding: 2px;
+        }
+        .upsell_product_details:hover {
+          border-color: {{ block.settings.hover_border_color }};
+        }
+      </style>
+    {% endif %}
+  {% endif %}
+  {% comment %} custom code ends here for upsell {% endcomment %}
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
@@ -1529,6 +1724,38 @@
           "id": "enable_quick_add",
           "label": "t:sections.main-product.blocks.complementary_products.settings.enable_quick_add.label",
           "default": false
+        }
+      ]
+    },
+    {
+      "type": "upsell_products",
+      "name": "⚡️ Up Sell Products",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Up Sell Products"
+        },
+      {
+          "type": "number",
+          "id": "heading_font_size",
+          "label": "Heading font size (px)",
+          "default": 18
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading color",
+          "default": "#121212"
+        },
+        {
+          "type": "color",
+          "id": "hover_border_color",
+          "label": "Border color (hover)",
+          "default": "#121212",
+          "info": "Make color field blank (transparent) if you don't want a border"
         }
       ]
     },
