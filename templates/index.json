@@ -106,7 +106,7 @@
         "form_instruction": "Start With Selecting your Inquiry Type",
         "form_btn_text": "Send Form",
         "form_msg_sent": "Thanks for filling out the inquiry form! <br> We will contact you via the provided email within next 48 hours.",
-        "form_action_1": ""
+        "form_action_1": "https://hooks.zapier.com/hooks/catch/11368025/2kog60s/"
       }
     }
   },
