@@ -16,6 +16,7 @@
           "type": "video",
           "settings": {
             "video_link": "https://cdn.shopify.com/videos/c/o/v/0032cec234c54183a325d0188092671a.mp4",
+            "video_image": "shopify://shop_images/joanna-kosinska-1_CMoFsPfso-unsplash_425fb2dd-2a15-44e0-9430-cdb91b359c88.jpg",
             "overlay_opacity": 0,
             "title": "Video slide",
             "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
