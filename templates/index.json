@@ -97,11 +97,23 @@
         "ba_heading": "Before After Slider",
         "ba_content": "<p><strong>Lorem Ipsum</strong>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>"
       }
+    },
+    "custom_form_m8hE4J": {
+      "type": "custom-form",
+      "settings": {
+        "form_title": "Request a Service",
+        "form_subtitle": "Fill the form below to lorem ipsum dolor sit amet",
+        "form_instruction": "Start With Selecting your Inquiry Type",
+        "form_btn_text": "Send Form",
+        "form_msg_sent": "Thanks for filling out the inquiry form! <br> We will contact you via the provided email within next 48 hours.",
+        "form_action_1": ""
+      }
     }
   },
   "order": [
     "video_background_9i6Gcy",
     "product_cards_video_section_P8qU4c",
-    "before_after_slider_rDQJAt"
+    "before_after_slider_rDQJAt",
+    "custom_form_m8hE4J"
   ]
 }
