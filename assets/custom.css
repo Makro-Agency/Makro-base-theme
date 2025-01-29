@@ -59,6 +59,26 @@
   display: none;
 }
 /* upsell product ends here */
+
+/*  zoom css start*/
+.zoomable {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.zoomable__img {
+  transform-origin: var(--zoom-pos-x, 0%) var(--zoom-pos-y, 0%);
+  transition: transform 0.15s linear;
+}
+
+.zoomable--zoomed .zoomable__img {
+  cursor: zoom-in;
+  transform: scale(var(--zoom, 2));
+}
+/*  zoom css end*/
+
 /* limited offer */
 
 #limited-time-offer {
