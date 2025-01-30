@@ -487,70 +487,15 @@
             "collection": "test",
             "noOfProduct": 10
           }
-        },
-        "collection_XCb33E": {
-          "type": "collection",
-          "settings": {
-            "title": "Option #",
-            "collection": "frontpage",
-            "noOfProduct": 10
-          }
         }
       },
       "block_order": [
         "collection_hkL9bk",
-        "collection_ihwmbx",
-        "collection_XCb33E"
+        "collection_ihwmbx"
       ],
       "disabled": true,
       "settings": {
         "title": "Luc Vincent Bestsellers"
-      }
-    },
-    "makro_text_banner_KBAPgt": {
-      "type": "makro-text-banner",
-      "disabled": true,
-      "settings": {
-        "layout": "layout-1",
-        "title": "SOLUTIONS FOR QUICKLY AND EASILY ACHIEVING YOUR HAIRSTYLE AT HOME",
-        "description": "<p>Worem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.</p>",
-        "btn_text": "Shop Now",
-        "url": "",
-        "BG_color": "#272727",
-        "text_color": "#ffffff",
-        "overlay_opacity": 60
-      }
-    },
-    "makro_text_banner_dHXVKJ": {
-      "type": "makro-text-banner",
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/Copy-min.jpg",
-        "image_mobile": "shopify://shop_images/Copy_1_-min.jpg",
-        "layout": "layout-2",
-        "title": "SOLUTIONS FOR QUICKLY AND EASILY ACHIEVING YOUR HAIRSTYLE AT HOME",
-        "description": "<p>Worem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.</p>",
-        "btn_text": "Shop Now",
-        "url": "",
-        "BG_color": "#272727",
-        "text_color": "#ffffff",
-        "overlay_opacity": 60
-      }
-    },
-    "makro_text_banner_cNHAab": {
-      "type": "makro-text-banner",
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/Copy-min.jpg",
-        "image_mobile": "shopify://shop_images/Copy_1_-min.jpg",
-        "layout": "layout-3 text-align-right",
-        "title": "SOLUTIONS FOR QUICKLY AND EASILY ACHIEVING YOUR HAIRSTYLE AT HOME",
-        "description": "<p>Worem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.</p>",
-        "btn_text": "Shop Now",
-        "url": "",
-        "BG_color": "#272727",
-        "text_color": "#ffffff",
-        "overlay_opacity": 60
       }
     },
     "makro_title_carousel_6mChJp": {
@@ -654,6 +599,70 @@
       "settings": {
         "description": "List of product in collection"
       }
+    },
+    "video_with_text_RnwbWJ": {
+      "type": "video-with-text",
+      "blocks": {
+        "tip_KKaN3q": {
+          "type": "tip",
+          "settings": {
+            "tip_title": "Dolor sit amet, consectetur elit",
+            "tip_description": "Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
+          }
+        },
+        "tip_azRGTe": {
+          "type": "tip",
+          "settings": {
+            "tip_title": "Dolor sit amet, consectetur elit",
+            "tip_description": "Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
+          }
+        },
+        "tip_KhgJYX": {
+          "type": "tip",
+          "settings": {
+            "tip_title": "Dolor sit amet, consectetur elit",
+            "tip_description": "Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
+          }
+        },
+        "benefit_mRq8GR": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Benefit"
+          }
+        },
+        "benefit_Rr8kjT": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Benefit"
+          }
+        },
+        "benefit_y3KeGR": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Benefit"
+          }
+        }
+      },
+      "block_order": [
+        "tip_KKaN3q",
+        "tip_azRGTe",
+        "tip_KhgJYX",
+        "benefit_mRq8GR",
+        "benefit_Rr8kjT",
+        "benefit_y3KeGR"
+      ],
+      "settings": {
+        "subtitle": "",
+        "title": "Dorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "enable_video_looping": false,
+        "video": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "button_text": "Try this Method",
+        "button_link": "",
+        "cover_image": "shopify://shop_images/service2_1.png",
+        "product_link_text": "View Products",
+        "product_link": ""
+      }
     }
   },
   "order": [
@@ -676,11 +685,9 @@
     "image_cards_3dgR4n",
     "makro_title_product_carousel_paXJVE",
     "makro_title_product_grid_rDtEYQ",
-    "makro_text_banner_KBAPgt",
-    "makro_text_banner_dHXVKJ",
-    "makro_text_banner_cNHAab",
     "makro_title_carousel_6mChJp",
     "home_blog_post_HR6kLg",
-    "custom_practice_section_Eqqfdz"
+    "custom_practice_section_Eqqfdz",
+    "video_with_text_RnwbWJ"
   ]
 }
