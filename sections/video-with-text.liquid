@@ -1,6 +1,6 @@
 {{ 'video-with-text.css' | asset_url | stylesheet_tag }}
 {% style %}
-     custom-deferred-media.video_group {
+     custom-deferred-mediaa.video_group {
       display: block;
     }
    .video_group {
@@ -28,7 +28,7 @@
       visibility: visible;
       opacity: 1;
     }
-  custom-deferred-media.video_group{ display:block; height:100%; }
+  custom-deferred-mediaa.video_group{ display:block; height:100%; }
   .cover-image{ position:relative; height:100%; }
 .play-button.video-wrapper__play-button{
         background: none;
@@ -73,7 +73,7 @@
         <div class="why-video-column-inner">
 
 
-            <custom-deferred-media class="video_group">
+            <custom-deferred-mediaa class="video_group">
                   <div class="cover-image">
                      {%- if section.settings.cover_image != blank -%}
                      <img src="{{ section.settings.cover_image | image_url: width: 3840 }}" class="img-desktop" alt="{{ block.settings.title }}">
@@ -120,7 +120,7 @@
                      {{ section.settings.video | video_tag: autoplay: true, loop: block.settings.enable_video_looping, controls: true }}
                      {%- endif -%}
                   </template>
-               </custom-deferred-media>
+               </custom-deferred-mediaa>
           
            <!-- <img src="{{ section.settings.cover_image | image_url: width: 3840 }}" class="img-desktop" alt="{{ block.settings.title }}">
           <video autoplay loop muted playsinline height="700px" class="background-video" poster=" {{ section.settings.cover_image | image_url: width: 3840 }} ">
@@ -176,7 +176,7 @@ class CustomDeferredMedia extends HTMLElement {
   }
 }
 
-customElements.define('custom-deferred-media', CustomDeferredMedia);
+customElements.define('custom-deferred-mediaa', CustomDeferredMedia);
 </script>
 {% schema %}
 {
