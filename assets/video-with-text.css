@@ -328,13 +328,7 @@
       height: 35px;
     }
   }
-  
-  @media (max-aspect-ratio: 16/9) {
-    .background-video {
-      /* width: auto;
-                  height: 100%; */
-    }
-  }
+
   /* updated code */
 
   #video-with-text-why .banner-icon-text img{ 
