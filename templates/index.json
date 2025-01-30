@@ -655,6 +655,7 @@
         "subtitle": "",
         "title": "Dorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "enable_video_looping": false,
+        "video": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "button_text": "Try this Method",
         "button_link": "",
