@@ -185,7 +185,7 @@
   .why-video-column {
     position: relative;
   }
-  
+  .why-video-column-inner .cover-image img{ max-width:100%; }
   .why-video-btn-eye {
     display: inline-flex;
     padding: 15px 25px;
