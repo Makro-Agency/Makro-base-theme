@@ -688,7 +688,7 @@
           "type": "video",
           "settings": {
             "enable_autoplay": true,
-            "enable_video_looping": false,
+            "enable_video_looping": true,
             "video": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_url_mobile": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
@@ -704,7 +704,7 @@
           "type": "video",
           "settings": {
             "enable_autoplay": true,
-            "enable_video_looping": false,
+            "enable_video_looping": true,
             "video": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_url_mobile": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
@@ -720,8 +720,9 @@
           "type": "video",
           "settings": {
             "enable_autoplay": true,
-            "enable_video_looping": false,
+            "enable_video_looping": true,
             "video": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
+            "video_mobile": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_url_mobile": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "desktop-overlay": 0,
