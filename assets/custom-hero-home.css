@@ -87,9 +87,9 @@
     /* height: 100vh; */
   }
 
-  .template-index .title_video_wrapper:not(.right_video) .video_group{
+  /* .template-index .title_video_wrapper:not(.right_video) .video_group{
      height: 100vh;
-  }
+  } */
   @media screen and (min-width: 990px){
     .title_video_wrapper.right_video {
       display: flex;
