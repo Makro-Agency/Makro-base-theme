@@ -73,7 +73,7 @@
         <div class="swiper-wrapper">
       {%  for block in section.blocks %}
 <div class="swiper-slide title_video_wrapper {{ block.settings.videoLayout }}"> 
-  <custom-deferred-media1 class="cust-autoplay-video video_group{% if block.settings.enable_autoplay %} autoplay-enabled{% endif %}">
+  <custom-deferred-media2 class="cust-autoplay-video video_group{% if block.settings.enable_autoplay %} autoplay-enabled{% endif %}">
     <div class="cover-image">
       {% if posterMobile != blank %}
         {% assign pclass = 'img-desktop' %}
@@ -180,7 +180,7 @@
         }}
       {%- endif -%}
     </template>
-  </custom-deferred-media1>
+  </custom-deferred-media2>
   <div class="video_title">
     {%- if block.settings.title != blank -%}
       <h2 class="main_heading h2">{{ block.settings.title }}</h2>
@@ -236,7 +236,7 @@
         },
      });
   }); 
-              class CustomDeferredMedia1 extends HTMLElement {
+              class CustomDeferredMedia2 extends HTMLElement {
   constructor() {
     super();
     this.playButton = this.querySelector('.play-button');
@@ -301,7 +301,7 @@
   }
 }
 
-customElements.define('custom-deferred-media1', CustomDeferredMedia1);
+customElements.define('custom-deferred-media2', CustomDeferredMedia2);
  </script>
       
 {% schema %}
