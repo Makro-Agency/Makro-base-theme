@@ -670,8 +670,8 @@
         "video_zwzRhU": {
           "type": "video",
           "settings": {
-            "enable_autoplay": false,
-            "enable_video_looping": false,
+            "enable_autoplay": true,
+            "enable_video_looping": true,
             "video": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
             "video_mobile": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
@@ -687,8 +687,9 @@
         "video_chRDey": {
           "type": "video",
           "settings": {
-            "enable_autoplay": false,
-            "enable_video_looping": false,
+            "enable_autoplay": true,
+            "enable_video_looping": true,
+            "video": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_url_mobile": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "desktop-overlay": 0,
@@ -702,8 +703,26 @@
         "video_b7PRJi": {
           "type": "video",
           "settings": {
-            "enable_autoplay": false,
-            "enable_video_looping": false,
+            "enable_autoplay": true,
+            "enable_video_looping": true,
+            "video": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video_url_mobile": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "desktop-overlay": 0,
+            "mobile-overlay": 0,
+            "title": "SOLUTIONS FOR QUICKLY AND EASILY ACHIEVING YOUR HAIRSTYLE AT HOME",
+            "detail": "Worem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.",
+            "btn_text": "Shop Now",
+            "url": ""
+          }
+        },
+        "video_eaUxCw": {
+          "type": "video",
+          "settings": {
+            "enable_autoplay": true,
+            "enable_video_looping": true,
+            "video": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
+            "video_mobile": "shopify://files/videos/istockphoto-1145225290-640_adpp_is.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_url_mobile": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "desktop-overlay": 0,
@@ -718,7 +737,8 @@
       "block_order": [
         "video_zwzRhU",
         "video_chRDey",
-        "video_b7PRJi"
+        "video_b7PRJi",
+        "video_eaUxCw"
       ],
       "settings": {}
     }
