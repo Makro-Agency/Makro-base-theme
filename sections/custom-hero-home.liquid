@@ -236,72 +236,7 @@
         },
      });
   }); 
-              class CustomDeferredMedia2 extends HTMLElement {
-  constructor() {
-    super();
-    this.playButton = this.querySelector('.play-button');
-    this.autoplayEnabled = this.classList.contains('autoplay-enabled');
-    this.videoElement = null;
-
-    // Initialize the content based on autoplay setting
-    if (this.autoplayEnabled) {
-      this.loadContent();
-    } else {
-      this.setupPlayButton();
-    }
-  }
-
-  setupPlayButton() {
-    this.playButton.addEventListener('click', () => {
-      this.loadContent(true);
-      this.playButton.style.display = 'none'; // Hide play button after clicking
-    });
-  }
-
-  loadContent(focus = true) {
-    window.pauseAllMedia?.(); // Ensure this method is safe to call if defined
-    if (!this.getAttribute('loaded')) {
-      const content = document.createElement('div');
-      if (
-        window.innerWidth < 750 &&
-        this.querySelector('template').content.querySelector('.js-mobile-video')
-      ) {
-        content.appendChild(
-          this.querySelector('template').content
-            .querySelector('.js-mobile-video')
-            .cloneNode(true)
-        );
-      } else {
-        content.appendChild(
-          this.querySelector('template').content.firstElementChild.cloneNode(
-            true
-          )
-        );
-      }
-
-      this.setAttribute('loaded', true);
-      this.videoElement = this.appendChild(
-        content.querySelector('video, model-viewer, iframe')
-      );
-
-      if (this.videoElement.nodeName === 'VIDEO') {
-        this.videoElement.setAttribute('playsinline', true);
-        this.videoElement.muted = true; // Muted for autoplay compatibility
-
-        if (this.autoplayEnabled) {
-          this.videoElement.autoplay = true;
-          this.videoElement.play().catch((error) => {
-            console.error('Autoplay failed:', error);
-          });
-        }
-      }
-
-      if (focus) this.videoElement.focus();
-    }
-  }
-}
-
-customElements.define('custom-deferred-media2', CustomDeferredMedia2);
+  
  </script>
       
 {% schema %}
