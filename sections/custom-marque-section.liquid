@@ -1,28 +1,38 @@
-{%  style  %}
-   .custom-marquee .in-wrapper:not(.cloned) {
-        -webkit-animation: MarqueeRight {{ section.settings.marqee_duration }}s linear infinite 0ms;
-        animation: MarqueeRight {{ section.settings.marqee_duration }}s linear infinite 0ms;
+{% style %}
+.custom-marquee .in-wrapper.left-to-right:not(.cloned) {
+-webkit-animation: MarqueeRight {{ section.settings.marqee_duration }}s linear infinite 0ms;
+animation: MarqueeRight {{ section.settings.marqee_duration }}s linear infinite 0ms;
+}
+.custom-marquee .in-wrapper.right-to-left:not(.cloned) {
+-webkit-animation: MarqueeLeft {{ section.settings.marqee_duration }}s linear infinite 0ms;
+animation: MarqueeLeft {{ section.settings.marqee_duration }}s linear infinite 0ms;
+}
+.custom-marquee .in-wrapper {
+        width: 100%;
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat({{ section.blocks.size }}, 1fr);
+        align-items: center;
     }
-
 {% endstyle %}
 <div class="row">
     <div class="wrapper">
         {% liquid
-            assign marqee_dir = section.settings.marque_direct
-            case marqee_dir
-            when 'right-to-left'
-            assign marqee_dir = "right-to-left"
-            else
-            assign marqee_dir = "left-to-right"
-            endcase
-            %}
+        assign marqee_dir = section.settings.marque_direct
+        case marqee_dir
+        when 'right-to-left'
+        assign marqee_dir = "right-to-left"
+        else
+        assign marqee_dir = "left-to-right"
+        endcase
+        %}
         <div class="in-wrapper {{ marqee_dir }}">
-            
+
             {% for block in section.blocks %}
             {%- case block.type -%}
             {%- when 'image' -%}
             <div class="content-item">
-                <div class="content-item-wrapper">
+                <div class="content-item-wrapper item-image">
                     <img src="{{ block.settings.image | image_url }}" alt="{{ product.title }}" width="100%"
                         height="100%">
                 </div>
@@ -51,17 +61,16 @@
         const contentItems = document.querySelectorAll(".content-item");
 
         contentItems.forEach(item => {
-            totalWidth += item.offsetWidth; // Get each content-item's width and sum it
+            totalWidth += item.offsetWidth;
         });
 
         const inWrapper = document.querySelector(".in-wrapper");
-
-        // Set the total width as a CSS variable on .in-wrapper
         inWrapper.style.setProperty("--total-width", totalWidth + "px");
+        inWrapper.style.setProperty("--total-width-minus", `-${totalWidth}px`);
 
         // Clone the .in-wrapper
-        const clonedWrapper = inWrapper.cloneNode(true); // true = deep clone with children
-        clonedWrapper.classList.add("cloned"); // Add the "cloned" class
+        const clonedWrapper = inWrapper.cloneNode(true);
+        clonedWrapper.classList.add("cloned");
 
         // Append the cloned element to .wrapper
         document.querySelector(".wrapper").appendChild(clonedWrapper);
@@ -77,31 +86,40 @@
         overflow: hidden;
     }
 
-    .custom-marquee .in-wrapper {
-        width: 100%;
-        flex: 0 0 auto;
-        display: grid;
-        grid-auto-flow: column;
-        align-items: center;
-    }
+
 
     .custom-marquee .content-item {
         display: flex;
         justify-content: center;
         width: 100%;
     }
+    .custom-marquee .content-item .content-item-wrapper.item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
- 
+
 
     @keyframes MarqueeRight {
         from {
-            margin-left: var(--total-width);
+            margin-left: var(--total-width-minus);
 
             to {
-                margin-left: 0
+                margin-left: 0;
             }
         }
     }
+
+    @keyframes MarqueeLeft {
+    from {
+        margin-left: 0;
+    }
+
+    to {
+        margin-left: var(--total-width-minus);
+    }
+}
 </style>
 
 {% schema %}
@@ -127,10 +145,10 @@
 "label": "Marque Direction"
 },
 {
-    "type": "number",
-    "id": "marqee_duration",
-    "default": 30,
-    "label": "Marqee Duration in sec"
+"type": "number",
+"id": "marqee_duration",
+"default": 30,
+"label": "Marqee Duration in sec"
 }
 ],
 "blocks": [
