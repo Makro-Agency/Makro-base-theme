@@ -603,7 +603,7 @@
   
               const cartItem = event.target.closest('.cart-item');
               const lineItemId = Number(event.target.getAttribute('data-line-item')); // Convert to number
-              alert("lineItemId" +lineItemId);
+              alert("lineItemId" + lineItemId);
               const isBundle = cartItem?.getAttribute('data-bundle') === 'true';
   
               if (isNaN(lineItemId)) {
@@ -623,7 +623,7 @@
                   alert('Item removed successfully!');
                   window.location.reload();
               } catch (error) {
-                  console.error('Error removing item from cart:', error);
+                  {% comment %} console.error('Error removing item from cart:', error); {% endcomment %}
                   alert(`There was an error removing the item: ${error.message}`);
               }
           }
