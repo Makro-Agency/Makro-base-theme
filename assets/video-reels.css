@@ -1,0 +1,260 @@
+/* video card outer css */
+
+.template-index .app-wrap {
+    background-color: #F1F0EA !important;
+}
+
+.whatmore-carousel-events>div>p {
+    font-family: var(--heading-family) !important;
+    font-size: 72px !important;
+}
+
+.whatmore-carousel-events>div {
+    margin-bottom: 30px;
+}
+
+.template-index .whatmore-widget-container {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 80px 0 40px;
+}
+
+.whatmore-event-tile-scale-in-animation {
+    border-radius: 25px !important;
+    border: 1px solid #090510 !important;
+    box-shadow: none !important;
+}
+
+.whatmore-event-tile-scale-out-animation {
+    border-radius: 25px !important;
+    border: 1px solid #090510 !important;
+    box-shadow: none !important;
+}
+
+/******* video card viewers css ******/
+
+.whatmore-template-b-event-tile>div:nth-child(2) {
+    display: none !important;
+}
+
+.swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div>div>div>div {
+    border-radius: 41px !important;
+    background-color: #FFFFFFCC !important;
+    padding: 1px 9px !important;
+}
+
+.MuiSvgIcon-root {
+    filter: invert(1);
+}
+
+/* video card viewers css */
+.whatmore-ios-css-relative-fix>div>div>div>div>div>div>div>p {
+    filter: invert(1);
+}
+
+.swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div:nth-child(1)>div {
+    margin-left: 20px !important;
+    margin-top: 12px !important;
+}
+
+/* video card detail css */
+
+.swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div:nth-child(3) {
+    border-radius: 20px !important;
+    bottom: 6px !important;
+    border: 1px solid black !important;
+}
+
+.swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div:nth-child(3)>div>div {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div:nth-child(3)>div>div>div>div:nth-child(1) {
+    border-radius: 15px !important;
+    background-color: black !important;
+    border-color: black !important;
+    object-fit: cover !important;
+    border-width: 1px !important;
+}
+
+.swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div:nth-child(3)>div>div>div>div:nth-child(1)>img {
+    background-color: black !important;
+    object-fit: cover !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+.swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div:nth-child(3)>div>div>div>div:nth-child(2)>div {
+    justify-content: start !important;
+    align-items: start !important;
+}
+
+html .whatmore-landscape-modal .swiper-button-next,
+html .whatmore-landscape-modal .swiper-button-prev,
+html .whatmore-root .swiper-button-next,
+html .whatmore-root .swiper-button-prev {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 40px;
+    background-color: #fff !important;
+    border-radius: 41px !important;
+    top: 50% !important;
+}
+
+html .whatmore-landscape-modal .swiper-button-next:after,
+html .whatmore-landscape-modal .swiper-button-prev:after,
+.whatmore-root .swiper-button-next:after,
+.whatmore-root .swiper-button-prev:after {
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    font-size: 0 !important;
+}
+
+.whatmore-root .swiper-button-next:after {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8278 8.7236L15.8278 7.2756C11.6638 6.42627 8.16116 0.271601 8.16116 0.271601L6.2085 1.91093C7.92983 5.53027 12.8585 7.71093 12.8585 7.71093C12.8585 7.71093 8.96716 7.1696 6.93917 7.1696H0.027832L0.027832 8.8296H6.93917C8.9665 8.8296 12.8585 8.28827 12.8585 8.28827C12.8585 8.28827 7.92916 10.4696 6.2085 14.0883L8.1665 15.7276C8.1665 15.7276 11.6672 9.57293 15.8278 8.7236Z' fill='%23090510'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.whatmore-root .swiper-button-prev:after {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.0276375 7.27561V8.72361C4.19164 9.57294 7.6943 15.7276 7.6943 15.7276L9.64697 14.0883C7.92564 10.4689 2.99697 8.28827 2.99697 8.28827C2.99697 8.28827 6.8883 8.82961 8.9163 8.82961L15.8276 8.82961V7.16961L8.9163 7.16961C6.88897 7.16961 2.99697 7.71094 2.99697 7.71094C2.99697 7.71094 7.9263 5.52961 9.64697 1.91094L7.68897 0.271606C7.68897 0.271606 4.1883 6.42627 0.0276375 7.27561Z' fill='%23090510'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* video card click open modal css */
+
+.whatmore-landscape-modal .swiper-button-next::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8278 8.7236L15.8278 7.2756C11.6638 6.42627 8.16116 0.271601 8.16116 0.271601L6.2085 1.91093C7.92983 5.53027 12.8585 7.71093 12.8585 7.71093C12.8585 7.71093 8.96716 7.1696 6.93917 7.1696H0.027832L0.027832 8.8296H6.93917C8.9665 8.8296 12.8585 8.28827 12.8585 8.28827C12.8585 8.28827 7.92916 10.4696 6.2085 14.0883L8.1665 15.7276C8.1665 15.7276 11.6672 9.57293 15.8278 8.7236Z' fill='%23090510'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.whatmore-landscape-modal .swiper-button-prev::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.0276375 7.27561V8.72361C4.19164 9.57294 7.6943 15.7276 7.6943 15.7276L9.64697 14.0883C7.92564 10.4689 2.99697 8.28827 2.99697 8.28827C2.99697 8.28827 6.8883 8.82961 8.9163 8.82961L15.8276 8.82961V7.16961L8.9163 7.16961C6.88897 7.16961 2.99697 7.71094 2.99697 7.71094C2.99697 7.71094 7.9263 5.52961 9.64697 1.91094L7.68897 0.271606C7.68897 0.271606 4.1883 6.42627 0.0276375 7.27561Z' fill='%23090510'%3E%3C/path%3E%3C/svg%3E");
+
+}
+
+.swiper-horizontal .swiper-wrapper>div>div>div>div>.chakra-stack[class*="whatmore-css-sv"] {
+    background-color: white;
+}
+
+.swiper-wrapper>div>div>div>div>div>div:nth-child(2)>div:nth-child(2) {
+    display: none !important;
+}
+
+.swiper-wrapper>div>div>div>div>div>div:nth-child(2)>div:nth-child(1) {
+    align-items: start !important;
+    justify-content: start !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}
+
+.swiper-wrapper>div>div>div>div>div>div:nth-child(2)>div:nth-child(1)>div.chakra-stack[class*=whatmore-css-sv] {
+    padding-left: 0 !important;
+}
+
+.swiper-horizontal .swiper-wrapper>div>div>div>div>.chakra-stack[class*=whatmore-css-sv]:nth-child(2)>div[class*=whatmore-css-sv]:nth-child(1) {
+    background-color: black !important;
+}
+
+.swiper-horizontal .swiper-wrapper>div>div>div>.chakra-stack[class*=whatmore-css-sv] {
+    margin-bottom: 20px !important;
+    border-radius: 28px !important;
+    border: 1px solid black;
+}
+
+.whatmore-css-sv-jysjpy {
+    margin-left: 0 !important;
+    height: auto !important;
+}
+
+.swiper-horizontal .swiper-wrapper>div>div>div>div>.chakra-stack[class*=whatmore-css-sv]:nth-child(1)>div[class*="whatmore-css-sv"]:nth-child(1) {
+    border-radius: 20px !important;
+    width: 94px !important;
+    height: 94px !important;
+    margin: 12px !important;
+    margin-right: 0 !important;
+    background-color: black !important;
+    border-color: black !important;
+    border: 1px solid !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.swiper-horizontal .swiper-wrapper>div>div>div>div>.chakra-stack[class*=whatmore-css-sv]:nth-child(1)>div[class*="whatmore-css-sv"]:nth-child(1)>img {
+    width: 90px !important;
+    height: 90px !important;
+    border-radius: 18px !important;
+    object-fit: cover !important;
+}
+
+.swiper-horizontal .swiper-wrapper>div>div>div>div>.chakra-stack[class*=whatmore-css-sv]:nth-child(1)>div[class*=whatmore-css-sv]:nth-child(2) {
+    height: auto !important;
+}
+
+.whatmore-landscape-modal-content > .chakra-stack > [class*="whatmore-css-sv"]:nth-child(2) {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+
+    .whatmore-event-tile-scale-in-animation,
+    .whatmore-event-tile-scale-out-animation {
+        width:
+            calc(100% - 10px) !important
+    }
+
+    .template-index .whatmore-widget-container {
+        padding: 40px 0 20px;
+    }
+
+    .whatmore-carousel-events>div {
+        margin-bottom: 15px;
+    }
+
+    .swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div:nth-child(3) {
+        border-radius: 8px !important;
+        width: 94% !important;
+    }
+
+    .whatmore-event-tile-scale-in-animation,
+    .whatmore-event-tile-scale-out-animation {
+        border-radius: 10px !important;
+    }
+
+    .swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div:nth-child(3)>div>div>div>div:nth-child(1) {
+        border-radius: 6px !important;
+    }
+
+    .swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div:nth-child(3)>div>div>div>div:nth-child(1)>img {
+        width: auto !important;
+        height: auto !important;
+    }
+
+    .swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div>div>div>div {
+        width: 96% !important;
+        gap: 8px !important;
+    }
+
+    /* video click open cart */
+    .swiper-horizontal .swiper-wrapper>div>div>div>div>.chakra-stack[class*=whatmore-css-sv]:nth-child(1)>div[class*="whatmore-css-sv"]:nth-child(1) {
+        border-radius: 10px !important;
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .swiper-horizontal .swiper-wrapper>div>div>div>div>.chakra-stack[class*=whatmore-css-sv]:nth-child(1)>div[class*="whatmore-css-sv"]:nth-child(1)>img {
+        border-radius: 8px !important;
+        width: 76px !important;
+        height: 76px !important;
+    }
+
+    .swiper-horizontal .swiper-wrapper>div>div>div>.chakra-stack[class*=whatmore-css-sv] {
+        border-radius: 18px !important;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .swiper-slide-visible>div>.whatmore-ios-css-relative-fix>div>div:nth-child(3)>div>div>div>div:nth-child(1) {
+        margin-left: 10px !important;
+    }
+}

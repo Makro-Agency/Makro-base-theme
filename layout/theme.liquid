@@ -299,11 +299,11 @@
         localStorage.setItem("lookbook-url",url);
       </script>
     {% endif %}
-    
     {% if template.suffix == 'sale-terms-conditions' or template.suffix == 'instagram' or template.directory == "customers" %}
       {{ 'flickity.css' | asset_url | stylesheet_tag }}
     {% endif %}
-      
+    {{ 'video-reels.css' | asset_url | stylesheet_tag }}
+
     {% if settings.customFont == false %}
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
@@ -593,10 +593,6 @@
         return response.json();
       }
     });
-
-
-
-
     document.addEventListener('DOMContentLoaded', function () {
       document.addEventListener('click', async function (event) {
         if (event.target.classList.contains('remove-item')) {
@@ -607,9 +603,8 @@
           
           if (isBundle) {
             alert('This item is part of a bundle. Please remove the entire bundle.');
-            return; // Stop further action
+            {% comment %} return; // Stop further action {% endcomment %}
           }
-    
           // Proceed with single item removal for non-bundled items
           try {
             await removeItemFromCart(lineItemId);
