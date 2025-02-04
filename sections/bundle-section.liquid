@@ -1,0 +1,41 @@
+<div class="bundle-container">
+    <h3>Bundle Includes:</h3>
+    <ul class="bundle-list">
+      {% for product in section.settings.bundle_products %}
+        <li class="bundle-item" data-bundle-id="{{ product.id }}">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: '100x100' }}" alt="{{ product.title }}" />
+            <span>{{ product.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <button id="add-bundle-to-cart" type="button" class="button btn">
+    Add Bundle to Cart
+  </button>
+  
+  {% schema %}
+    {
+      "name": "Pdp Bundle",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_bundle",
+          "label": "Enable Bundle for this Product",
+          "default": false
+        },
+        {
+          "type": "product_list",
+          "id": "bundle_products",
+          "label": "Select Products for Bundle",
+          "limit": 10
+        }
+      ],
+    "presets": [
+        {
+          "name": "Pdp Bundle",
+        }
+      ]
+    }
+  {% endschema %}

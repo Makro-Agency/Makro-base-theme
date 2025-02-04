@@ -267,6 +267,16 @@
         "custom-popup-text": "Popup Text"
       }
     },
+    "bundle_section_gFbqN3": {
+      "type": "bundle-section",
+      "settings": {
+        "enable_bundle": true,
+        "bundle_products": [
+          "1-quart-saucepan-with-cover",
+          "1-75-quart-saucepan-with-cover"
+        ]
+      }
+    },
     "product-lookbook": {
       "type": "product-lookbook",
       "settings": {}
@@ -384,6 +394,7 @@
   },
   "order": [
     "main",
+    "bundle_section_gFbqN3",
     "product-lookbook",
     "887aa455-a2ec-4b52-99ae-dc4a5e9bd88d",
     "1692814955229f5a22",

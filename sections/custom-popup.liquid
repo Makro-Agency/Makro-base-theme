@@ -1,0 +1,352 @@
+
+{{ 'custom-popup.css' | asset_url | stylesheet_tag }}
+{% for block in section.blocks %}
+    {% if block.type == "layout1" %}
+      <button id="show-popup" class="popup-btn">{{ block.settings.btn_text}}<span class="popup-arrow-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M4 17L12 9L4 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+    </span></button>
+    {% endif %}
+  {% if block.type == "layout2" %}
+      <button id="show-popup" class="popup-btn">{{ block.settings.btn_text}}<span class="popup-arrow-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M4 17L12 9L4 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+    </span></button>
+    {% endif %}
+    
+  {% if block.type == "layout3" %}
+      <button id="show-popup" class="popup-btn">{{ block.settings.btn_text}}<span class="popup-arrow-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M4 17L12 9L4 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+    </span></button>
+    {% endif %}
+  {% endfor %}
+
+<!-- Overlay for the background dim effect -->
+<div class="overlay" id="overlay" style="display: none;"></div>
+
+<div id="popup" class="popup">
+   <button type="button" class="popup-close">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
+        <path d="M4 17L12 9L4 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+   </button>
+  {% for block in section.blocks %}
+    {% if block.type == "layout1" %}
+      <div class="popup-details">
+          <div class="col-left">
+            {% if block.settings.left_img != blank %}
+               <img src='{{ block.settings.left_img | img_url:"medium"}}' alt="img">
+            {% endif %}
+          </div>
+          <div class="col-right">
+             {% if block.settings.popup_title != blank %}
+              <h3>{{ block.settings.popup_title}}</h3>
+             {% endif %}
+            {% if block.settings.popup_description != blank %}
+              <p>{{ block.settings.popup_description}}</p>
+             {% endif %}
+            {%- if block.settings.button_label != blank -%}
+                    <a
+                      {% if block.settings.button_link == blank %}
+                        role="link" aria-disabled="true"
+                      {% else %}
+                        href="{{ block.settings.button_link }}"
+                      {% endif %}
+                      class="button btn-primary btn-primary-hover"
+                    >
+                      {{ block.settings.button_label | escape }}
+                    </a>
+            {%- endif -%}
+          </div>
+           
+      </div>
+      
+    {% elsif block.type == "layout2" %}
+      <div class="popup-details">
+          <div class="col-left">
+            {% if block.settings.left_img != blank %}
+               <img src="{{ block.settings.left_img | img_url:"medium"}}" alt="img">
+            {% endif %}
+          </div>
+          <div class="col-right">
+             {% if block.settings.popup_title != blank %}
+              <h3>{{ block.settings.popup_title}}</h3>
+             {% endif %}
+            {% if block.settings.popup_description != blank %}
+              <p>{{ block.settings.popup_description}}</p>
+             {% endif %}
+            {%- if block.settings.button_label != blank -%}
+                    <a
+                      {% if block.settings.button_link == blank %}
+                        role="link" aria-disabled="true"
+                      {% else %}
+                        href="{{ block.settings.button_link }}"
+                      {% endif %}
+                      class="button btn-primary btn-primary-hover"
+                    >
+                      {{ block.settings.button_label | escape }}
+                    </a>
+            {%- endif -%}
+          </div>
+           
+      </div>
+    {% elsif block.type == "layout3" %}
+     <div class="popup-details">
+          <div class="col-left">
+            {% if block.settings.left_img != blank %}
+               <img src='{{ block.settings.left_img | img_url:"large"}}' alt="img">
+            {% endif %}
+          </div>
+          <div class="col-right">
+             {% if block.settings.popup_title != blank %}
+              <h3>{{ block.settings.popup_title}}</h3>
+             {% endif %}
+            {% if block.settings.popup_description != blank %}
+              <p>{{ block.settings.popup_description}}</p>
+             {% endif %}
+            {%- if block.settings.button_label != blank -%}
+                <a
+                    {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                    {% else %}
+                    href="{{ block.settings.button_link }}"
+                    {% endif %}
+                    class="button btn-primary btn-primary-hover"
+                >
+                    {{ block.settings.button_label | escape }}
+                </a>
+            {%- endif -%}
+
+            {% assign klaviyoListId = 'Yfnh5v' %}
+                <form id="email_signup_pop3" class="klaviyo_styling klaviyo_gdpr_embed_{{ klaviyoListId }} footer__newsletter newsletter-form" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" _novalidate="novalidate" data-klaviyo-notify-form>
+                  <input type="hidden" name="g" value="{{ klaviyoListId }}">
+                  <input type="hidden" name="$fields" value="language">
+                  <input type="hidden" name="language" value='{{ request.locale.iso_code }}'>
+                  <div class="newsletter-form__field-wrapper">
+                    <div class="klaviyo_field_group field kgrid">
+                      <div class="klaviyo_field _email">
+                        <input class="input-item field__input" type="email" value="" name="email" id="k_id_email" placeholder="E-mail" required="required" autocomplete="off">
+                        <label class="field__label" for="k_id_email">Enter Your E-mail</label>
+                        <button type="submit" class="newsletter-form__button field__button klaviyo_submit_button">Subscribe</button>
+                      </div>
+                      <!-- <div class="klaviyo_form_actions btn-actions">
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="klaviyo_messages">
+                      <div class="success_message" style="display:none;"></div>
+                      <div class="error_message" style="display:none;"></div>
+                    </div>
+                </form>
+                <script>
+                document.querySelector("#klSubJS").addEventListener("load", (event) => {
+                  let crLocation = window.location.href;
+                  KlaviyoSubscribe.attachToForms('#email_signup_pop3', {
+                    hide_form_on_success: true,
+                    success_message: "Thanks for subscribing!",
+                    extra_properties: {
+                      $source: crLocation,
+                      $method_type: "Klaviyo Form",
+                      $method_id: 'embed'
+                    },
+                    success: function ($form) {
+                      //success code
+                      $form.find('.newsletter-form__field-wrapper').addClass('hidden');
+                    },error : function(){
+                      // for if errors occurs
+                    }
+                  }); 
+                });
+                </script>
+           {% comment %} {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <div class="newsletter-form__field-wrapper">
+                  <div class="field">
+                    <input
+                      id="NewsletterForm--{{ section.id }}"
+                      type="email"
+                      name="contact[email]"
+                      class="field__input"
+                      value="{{ form.email }}"
+                      aria-required="true"
+                      autocorrect="off"
+                      autocapitalize="off"
+                      autocomplete="email"
+                      {% if form.errors %}
+                        autofocus
+                        aria-invalid="true"
+                        aria-describedby="ContactFooter-error"
+                      {% elsif form.posted_successfully? %}
+                        aria-describedby="ContactFooter-success"
+                      {% endif %}
+                      placeholder="{{ 'newsletter.label' | t }}"
+                      required
+                    >
+                    <label class="field__label" for="NewsletterForm--{{ section.id }}">
+                    </label>
+                    <button
+                      type="submit"
+                      class="newsletter-form__button field__button"
+                      name="commit"
+                      id="Subscribe"
+                      aria-label="{{ 'newsletter.button_label' | t }}"
+                    >
+                      Subscribe
+                    </button>
+                  </div>
+                  {%- if form.errors -%}
+                    <small class="newsletter-form__message form__message" id="ContactFooter-error">
+                      {%- render 'icon-error' -%}
+                      {{- form.errors.translated_fields.email | capitalize }}
+                      {{ form.errors.messages.email -}}
+                    </small>
+                  {%- endif -%}
+                </div>
+                {%- if form.posted_successfully? -%}
+                  <h3
+                    class="newsletter-form__message newsletter-form__message--success form__message"
+                    id="ContactFooter-success"
+                    tabindex="-1"
+                    autofocus
+                  >
+                    {% render 'icon-success' -%}
+                    {{- 'newsletter.success' | t }}
+                  </h3>
+                {%- endif -%}
+              {%- endform -%} {% endcomment %}
+            
+          </div>
+           
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Popup",
+  "settings": [
+    
+  ],
+  "blocks": [
+    {
+      "type": "layout1",
+      "name": "Layout 1",
+      "settings": [
+        {
+          "type":"text",
+          "id":"btn_text",
+          "label":"Popup Button"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_img",
+          "label": "Layout Image",
+        },
+        {
+          "type": "text",
+          "id": "popup_title",
+          "label": "Title",
+        },
+        {
+          "type": "inline_richtext",
+          "id": "popup_description",
+          "label": "Description",
+        },
+        {
+          "type": "inline_richtext",
+          "id": "button_label",
+          "label": "Button",
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Url",
+        },
+      ]
+    },
+    {
+      "type": "layout2",
+      "name": "Layout 2",
+      "settings": [
+        {
+          "type":"text",
+          "id":"btn_text",
+          "label":"Popup Button"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_img",
+          "label": "Layout Image",
+        },
+        {
+          "type": "text",
+          "id": "popup_title",
+          "label": "Title",
+        },
+        {
+          "type": "inline_richtext",
+          "id": "popup_description",
+          "label": "Description",
+        },
+        {
+          "type": "inline_richtext",
+          "id": "button_label",
+          "label": "Button",
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Url",
+        },
+      ]
+    },
+    {
+      "type": "layout3",
+      "name": "Layout 3",
+      "settings": [
+        {
+          "type":"text",
+          "id":"btn_text",
+          "label":"Popup Button"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_img",
+          "label": "Layout Image",
+        },
+        {
+          "type": "text",
+          "id": "popup_title",
+          "label": "Title",
+        },
+        {
+          "type": "inline_richtext",
+          "id": "popup_description",
+          "label": "Description",
+        },
+        {
+          "type": "inline_richtext",
+          "id": "button_label",
+          "label": "Button",
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Url",
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Popup",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
