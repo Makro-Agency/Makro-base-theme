@@ -593,51 +593,70 @@
         return response.json();
       }
     });
+
+
+
     document.addEventListener('DOMContentLoaded', function () {
-      document.addEventListener('click', async function (event) {
+    document.addEventListener('click', async function (event) {
         if (event.target.classList.contains('remove-item')) {
-          event.preventDefault(); // Prevent default removal behavior
-          
-          const lineItemId = event.target.getAttribute('data-line-item');
-          const isBundle = event.target.closest('.cart-item').getAttribute('data-bundle') === 'true';
-          
-          if (isBundle) {
-            alert('This item is part of a bundle. Please remove the entire bundle.');
-            {% comment %} return; // Stop further action {% endcomment %}
-          }
-          // Proceed with single item removal for non-bundled items
-          try {
-            await removeItemFromCart(lineItemId);
-            alert('Item removed successfully!');
-            window.location.reload();
-          } catch (error) {
-            console.error('Error removing item from cart:', error);
-            alert('There was an error removing the item. Please try again.');
-          }
+            event.preventDefault(); // Prevent default removal behavior
+
+            const lineItemId = event.target.getAttribute('data-line-item');
+            const cartItem = event.target.closest('.cart-item');
+            const isBundle = cartItem?.getAttribute('data-bundle') === 'true';
+
+            if (!lineItemId) {
+                console.error('Error: No line item ID found.');
+                alert('Error: Could not find the item to remove.');
+                return;
+            }
+
+            if (isBundle) {
+                alert('This item is part of a bundle. Please remove the entire bundle.');
+                return; // Stop further action
+            }
+
+            // Proceed with removal
+            try {
+                console.log(`Attempting to remove line item ID: ${lineItemId}`);
+                await removeItemFromCart(lineItemId);
+                alert('Item removed successfully!');
+                window.location.reload();
+            } catch (error) {
+                console.error('Error removing item from cart:', error);
+                alert(`There was an error removing the item: ${error.message}`);
+            }
         }
-      });
-    
-      async function removeItemFromCart(variantId) {
-        const response = await fetch('/cart/change.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify({
-            id: variantId,
-            quantity: 0, // Set quantity to 0 to remove the item
-          }),
-        });
-    
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.description || `Failed to remove variant ${variantId} from cart.`);
-        }
-    
-        return response.json();
-      }
     });
+
+    async function removeItemFromCart(lineItemId) {
+        try {
+            const response = await fetch('/cart/change.js', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: lineItemId,
+                    quantity: 0, // Set quantity to 0 to remove the item
+                }),
+            });
+
+            const responseData = await response.json();
+            console.log('API Response:', responseData);
+
+            if (!response.ok) {
+                throw new Error(responseData.description || `Failed to remove item ID: ${lineItemId}`);
+            }
+
+            return responseData;
+        } catch (error) {
+            console.error('Error in removeItemFromCart:', error);
+            throw error; // Rethrow error to be caught in the calling function
+        }
+    }
+  });
     </script>
   </body>
 </html>
