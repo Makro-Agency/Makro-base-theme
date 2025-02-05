@@ -602,20 +602,30 @@
               event.preventDefault();
   
               const cartItem = event.target.closest('.cart-item');
-              const lineItemId = Number(event.target.getAttribute('data-line-item')); // Convert to number
-              alert("lineItemId" +lineItemId);
-              const isBundle = cartItem?.getAttribute('data-bundle') === 'true';
+              let lineItemId = event.target.getAttribute('data-line-item');
   
-              if (isNaN(lineItemId)) {
-                  console.error('Error: No valid line item ID found.');
-                  alert('Error: Could not find the item to remove.');
+              console.log("Raw lineItemId:", lineItemId);
+              
+              if (!lineItemId) {
+                  alert('Error: No valid line item ID found.');
                   return;
               }
   
+              lineItemId = lineItemId.trim(); // Remove spaces
+              lineItemId = isNaN(lineItemId) ? null : Number(lineItemId);
+              console.log("Converted lineItemId:", lineItemId, typeof lineItemId);
+  
+              if (!lineItemId) {
+                  alert('Error: Could not determine item ID.');
+                  return;
+              }
+  
+              const isBundle = cartItem?.getAttribute('data-bundle') === 'true';
               if (isBundle) {
                   alert('This item is part of a bundle. Please remove the entire bundle.');
                   return;
               }
+  
               try {
                   console.log(`Removing line item ID: ${lineItemId}`);
                   await removeItemFromCart(lineItemId);
