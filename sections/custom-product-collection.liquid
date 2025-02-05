@@ -1,0 +1,273 @@
+{% assign collection_handle = section.settings.collection_select %}
+{% assign products_per_row = section.settings.products_per_row %}
+{% assign collection = collections[collection_handle] %}
+
+<div class="custom-grid-wrapper"
+    style="padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;">
+    <h2>{{ section.settings.title }}</h2>
+    {% if collection and collection.products.size > 0 %}
+    <div class="custom-pro-grid">
+        {% for product in collection.products %}
+        <div class="product-card" style="width: calc(100% / {{ products_per_row }});">
+            <a href="{{ product.url }}">
+                {% if product.featured_image %}
+                <div class="product-image">
+                    <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" width="100%" height="100%">
+                </div>
+                {% endif %}
+                <div class="product-details">
+                    <h3>{{ product.title }}</h3>
+                    {% if section.settings.show_price %}
+                    <p class="product-price">{{ product.price | money }}</p>
+                    {% endif %}
+
+                    {% if section.settings.show_vendor and product.vendor %}
+                    <p class="product-vendor">{{ product.vendor }}</p>
+                    {% endif %}
+
+                    {% if section.settings.show_tags and product.tags.size > 0 %}
+                    <p class="product-tags">{{ product.tags | join: ', ' }}</p>
+                    {% endif %}
+
+                    {% if section.settings.show_thumbnail %}
+                    <div class="product-swatch">
+                        {% assign displayed_options = '' %}
+                        <div class="swiper thumbSwiper">
+                            <div class="swiper-wrapper">
+                                {% for variant in product.variants %}
+                                {% assign color_option = variant.option1 %}
+                                {% unless displayed_options contains color_option %}
+                                <div class="swiper-slide">
+                                    {% if variant.image %}
+                                    <a href="{{ variant.url }}">
+                                        <img src="{{ variant.image | image_url }}"
+                                            alt="{{ product.title }} - {{ color_option }}" class="card-thumb" width="100%" height="100%">
+                                    </a>
+                                    {% endif %}
+                              
+                                    {% assign displayed_options = displayed_options | append: color_option | append: ','
+                                    %}
+                                </div>
+                                {% endunless %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No products found in the selected collection.</p>
+    {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.querySelectorAll('.thumbSwiper').forEach(function (swiperContainer) {
+        new Swiper(swiperContainer, {
+            slidesPerView: 3,
+            spaceBetween: 5,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    });
+</script>
+
+<style>
+    .custom-grid-wrapper {
+        text-align: center;
+        background-color: #f9f9f9;
+    }
+
+    .custom-pro-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .product-card {
+        border: 1px solid;
+        padding: 15px;
+        background: #fff;
+        transition: all 0.3s linear; 
+        text-align: center;
+    }
+
+    .product-card:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-details h3 {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    .product-price {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .product-vendor,
+    .product-tags {
+        font-size: 12px;
+        color: #777;
+    }
+
+    .product-swatch {
+        margin-top: 10px;
+    }
+
+    .card-thumb {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        margin: 5px;
+        border-radius: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .custom-grid-wrapper {
+            padding: {
+                    {
+                    section.settings.padding_top_res
+                }
+            }
+
+            px 0 {
+                    {
+                    section.settings.padding_bottom_res
+                }
+            }
+
+            px;
+        }
+
+        .custom-pro-grid {
+            gap: 15px;
+        }
+    }
+</style>
+
+{% schema %}
+    {
+    "name": "Product Grid Section",
+    "class": "custom-custom-pro-grid",
+    "settings": [
+    {
+    "type": "text",
+    "id": "title",
+    "label":"Section Title",
+    "info":"Section Title"
+    },
+    {
+    "type": "collection",
+    "id": "collection_select",
+    "label": "Select Collection",
+    "info": "Choose a collection to display products from."
+    },
+    {
+    "type": "number",
+    "id": "products_per_row",
+    "label": "Products per row",
+    },
+    {
+    "type": "checkbox",
+    "id":"show_vendor",
+    "label": "Display Vendor"
+    },
+    {
+    "type": "checkbox",
+    "id":"show_tags",
+    "label": "Display Tags"
+    },
+    {
+    "type": "checkbox",
+    "id":"show_price",
+    "label": "Display Price"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_thumbnail",
+      "label": "Display Product Card Thumbnail"
+    },
+    {
+    "type": "header",
+    "content": "Section Padding Setting For Desktop"
+    },
+    {
+    "type": "range",
+    "id": "padding_top",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "Padding Top",
+    "default": 36
+    },
+    {
+    "type": "range",
+    "id": "padding_bottom",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "Padding Bottom",
+    "default": 36
+    },
+    {
+    "type": "header",
+    "content": "Section Padding Setting For Responsiveness"
+    },
+    {
+    "type": "range",
+    "id": "padding_top_res",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "Padding top responsive",
+    "default": 36
+    },
+    {
+    "type": "range",
+    "id": "padding_bottom_res",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "Padding bottom responsive",
+    "default": 36
+    }
+    ],
+    "blocks": [
+    {
+    "type": "product_card",
+    "name": "Product Card",
+    "settings": [
+    {
+    "type": "image_picker",
+    "id": "product_image",
+    "label": "Product Image"
+    }
+    ]
+    }
+    ],
+    "presets": [
+    {
+    "name": "Product Grid Section",
+    }
+    ]
+    }
+    
+    {% endschema %}
