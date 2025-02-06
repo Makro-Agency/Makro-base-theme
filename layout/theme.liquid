@@ -553,119 +553,65 @@
     </script>
     {% endcomment %}
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const bundleVariantIds = [44631811424421, 44640244170917];
-      const addBundleButton = document.getElementById('add-bundle-to-cart');
+      document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('click', async function (event) {
+            if (event.target.classList.contains('remove-item')) {
+                event.preventDefault();
     
-      if (addBundleButton) {
-        addBundleButton.addEventListener('click', async function () {
-          try {
-            const lineItemId = Date.now().toString(); // Unique identifier for the bundle
-            for (const variantId of bundleVariantIds) {
-              await addItemToCart(variantId, 1, { line_item: lineItemId });
+                const cartItem = event.target.closest('.cart-item');
+                const lineItemKey = event.target.getAttribute('data-line-item');
+    
+                if (!lineItemKey) {
+                    alert('Error: No valid line item key found.');
+                    return;
+                }
+    
+                const isBundle = cartItem?.getAttribute('data-bundle') === 'true';
+                if (isBundle) {
+                    alert('This item is part of a bundle. Please remove the entire bundle.');
+                    return;
+                }
+    
+                try {
+                    console.log(`Removing line item key: ${lineItemKey}`);
+                    await removeItemFromCart(lineItemKey);
+                    alert('Item removed successfully!');
+                    window.location.reload();
+                } catch (error) {
+                    console.error('Error removing item from cart:', error);
+                    alert(`There was an error removing the item: ${error.message}`);
+                }
             }
-            alert('Bundle added to cart successfully!');
-            window.location.reload(); // Reload to show updated cart
-          } catch (error) {
-            console.error('Error adding bundle to cart:', error);
-            alert('There was an error adding the bundle to the cart. Please try again.');
-          }
         });
-      }
     
-      async function addItemToCart(variantId, quantity = 1, properties = {}) {
-        const response = await fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify({
-            id: variantId,
-            quantity: quantity,
-            properties: properties,
-          }),
-        });
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.description || `Failed to add variant ${variantId} to cart.`);
+        async function removeItemFromCart(lineItemKey) {
+            try {
+                const response = await fetch('/cart/change.js', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        id: lineItemKey, // Shopify expects the unique line item key
+                        quantity: 0,
+                    }),
+                });
+    
+                const responseData = await response.json();
+                console.log('API Response:', responseData);
+    
+                if (!response.ok) {
+                    throw new Error(responseData.description || `Failed to remove item with key: ${lineItemKey}`);
+                }
+    
+                return responseData;
+            } catch (error) {
+                console.error('Error in removeItemFromCart:', error);
+                throw error;
+            }
         }
-        return response.json();
-      }
     });
-
-
-
-    document.addEventListener('DOMContentLoaded', function () {
-      document.addEventListener('click', async function (event) {
-          if (event.target.classList.contains('remove-item')) {
-              event.preventDefault();
-  
-              const cartItem = event.target.closest('.cart-item');
-              let lineItemId = event.target.getAttribute('data-line-item');
-  
-              console.log("Raw lineItemId:", lineItemId);
-              
-              if (!lineItemId) {
-                  alert('Error: No valid line item ID found.');
-                  return;
-              }
-  
-              lineItemId = lineItemId.trim(); // Remove spaces
-              lineItemId = isNaN(lineItemId) ? null : Number(lineItemId);
-              console.log("Converted lineItemId:", lineItemId, typeof lineItemId);
-  
-              if (!lineItemId) {
-                  alert('Error: Could not determine item ID.');
-                  return;
-              }
-  
-              const isBundle = cartItem?.getAttribute('data-bundle') === 'true';
-              if (isBundle) {
-                  alert('This item is part of a bundle. Please remove the entire bundle.');
-                  return;
-              }
-  
-              try {
-                  console.log(`Removing line item ID: ${lineItemId}`);
-                  await removeItemFromCart(lineItemId);
-                  alert('Item removed successfully!');
-                  window.location.reload();
-              } catch (error) {
-                  console.error('Error removing item from cart:', error);
-                  alert(`There was an error removing the item: ${error.message}`);
-              }
-          }
-      });
-  
-      async function removeItemFromCart(lineItemId) {
-          try {
-              const response = await fetch('/cart/change.js', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'Accept': 'application/json',
-                  },
-                  body: JSON.stringify({
-                      id: lineItemId,
-                      quantity: 0,
-                  }),
-              });
-  
-              const responseData = await response.json();
-              console.log('API Response:', responseData);
-  
-              if (!response.ok) {
-                  throw new Error(responseData.description || `Failed to remove item ID: ${lineItemId}`);
-              }
-  
-              return responseData;
-          } catch (error) {
-              console.error('Error in removeItemFromCart:', error);
-              throw error;
-          }
-      }
-  });
     </script>
   </body>
 </html>
