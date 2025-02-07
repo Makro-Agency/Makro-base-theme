@@ -315,6 +315,60 @@
         "padding_top": 0,
         "padding_bottom": 100
       }
+    },
+    "custom_multicolumn_f9gbQG": {
+      "type": "custom-multicolumn",
+      "blocks": {
+        "grid_item_mT9LYx": {
+          "type": "grid_item",
+          "settings": {
+            "image": "shopify://shop_images/product2-img.png",
+            "image_alt": "Craftsmanship Detail",
+            "grid_title": "Craftsmanship Detail #1",
+            "grid_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        },
+        "grid_item_E7pikm": {
+          "type": "grid_item",
+          "settings": {
+            "image": "shopify://shop_images/product-images_1.png",
+            "image_alt": "Craftsmanship Detail",
+            "grid_title": "Craftsmanship Detail #1",
+            "grid_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        },
+        "grid_item_hXrrm6": {
+          "type": "grid_item",
+          "settings": {
+            "image": "shopify://shop_images/product2-img_1.png",
+            "image_alt": "Craftsmanship Detail",
+            "grid_title": "Craftsmanship Detail #1",
+            "grid_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        },
+        "grid_item_3fFXcd": {
+          "type": "grid_item",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_23_655101d7-74c2-4925-9966-fe646b4b89f2.png",
+            "image_alt": "Craftsmanship Detail",
+            "grid_title": "Craftsmanship Detail #1",
+            "grid_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        }
+      },
+      "block_order": [
+        "grid_item_mT9LYx",
+        "grid_item_E7pikm",
+        "grid_item_hXrrm6",
+        "grid_item_3fFXcd"
+      ],
+      "settings": {
+        "section_title": "Craftsmanship Meets Sustainability",
+        "section_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+        "section_description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+        "button_text": "Experience American-Made Quality",
+        "button_link": ""
+      }
     }
   },
   "order": [
@@ -324,6 +378,7 @@
     "97199040-bf2b-41c3-a062-7ff04d324137",
     "039b79ec-24b4-4f50-b22e-06c26db54608",
     "9b21fb92-1f78-4a48-b72a-20933e293c16",
-    "f6be46da-e20e-4e12-834f-b38922f5a31c"
+    "f6be46da-e20e-4e12-834f-b38922f5a31c",
+    "custom_multicolumn_f9gbQG"
   ]
 }
