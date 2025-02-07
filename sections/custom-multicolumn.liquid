@@ -20,27 +20,20 @@
         <a href="{{ section.settings.button_link }}" class="button cta_button desktop-hide">{{ section.settings.button_text }}</a>
       {% endif %}
   </div>
- <div class="grid-container">
-  {% for block in section.blocks %}
+<div class="grid-container">
+  {% assign data = page.metafields.makro.data | parse_json %}
+  {% for item in data %}
     <div class="grid-item">
-      {% assign title = page.metafields.makro[block.id].title %}
-      {% assign description = page.metafields.makro[block.id].description %}
-      {% assign image = page.metafields.makro[block.id].image %}
-      
-      {% if image %}
-        {% assign image_json = image | first | replace: '=>', ':' %}
-        {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
-        <img src="{{ image_url }}" alt="{{ title }}" />
+      {% if item.image %}
+        <img src="{{ item.image }}" alt="{{ item.title }}" />
       {% endif %}
-      
       <div class="grid-content">
-        <h3 class="grid-title">{{ title }}</h3>
-        <p class="grid-text">{{ description }}</p>
+        <h3 class="grid-title">{{ item.title }}</h3>
+        <p class="grid-text">{{ item.description }}</p>
       </div>
     </div>
   {% endfor %}
 </div>
-
 </div>
 
 {% schema %}
