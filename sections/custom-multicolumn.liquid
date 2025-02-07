@@ -31,7 +31,12 @@
     {% assign title = page.metafields.features_details[title_key] %}
     {% assign description = page.metafields.features_details[description_key] %}
     {% assign page_image = page.metafields.features_details[image_key] %}
-    
+    <div class="debug-info">
+  <p>Title: {{ page.metafields.features_details["title_0"] }}</p>
+  <p>Description: {{ page.metafields.features_details["description_0"] }}</p>
+  <p>Image: {{ page.metafields.features_details["image_0"] | inspect }}</p>
+</div>
+
     {%- if title and description and page_image -%}
       {% assign image_json = page_image | first | replace: '=>', ':' %}
       {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
