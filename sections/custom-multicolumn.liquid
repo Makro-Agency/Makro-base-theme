@@ -21,41 +21,32 @@
       {% endif %}
   </div>
 <div class="grid-container">
-  {% assign grid_capture = blank %}
-  
-  {%- for i in (0..shop.metafields.features_details.product_tags.size) -%}
-    {% assign title_key = "title_" | append: i %}
-    {% assign description_key = "description_" | append: i %}
-    {% assign image_key = "image_" | append: i %}
-    
-    {% assign title = page.metafields.features_details[title_key] %}
-    {% assign description = page.metafields.features_details[description_key] %}
-    {% assign page_image = page.metafields.features_details[image_key] %}
+  <div class="grid-container">
+  {% for block in section.blocks %}
     <div class="debug-info">
-  <p>Title: {{ page.metafields.features_details["title_0"] }}</p>
-  <p>Description: {{ page.metafields.features_details["description_0"] }}</p>
-  <p>Image: {{ page.metafields.features_details["image_0"] | inspect }}</p>
-</div>
+      <p>Title: {{ block.settings.title }}</p>
+      <p>Description: {{ block.settings.description }}</p>
+      <p>Image: {{ block.settings.image | inspect }}</p>
+    </div>
 
-    {%- if title and description and page_image -%}
+    {% assign title = block.settings.title %}
+    {% assign description = block.settings.description %}
+    {% assign page_image = block.settings.image %}
+    
+    {% if page_image %}
       {% assign image_json = page_image | first | replace: '=>', ':' %}
       {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
       
-      {% capture grid_capture %}
-        <div class="grid-item">
-          <img src="{{ image_url }}" alt="{{ title }}" />
-          <div class="grid-content">
-            <h3 class="grid-title">{{ title }}</h3>
-            <p class="grid-text">{{ description }}</p>
-          </div>
+      <div class="grid-item">
+        <img src="{{ image_url }}" alt="{{ title }}" />
+        <div class="grid-content">
+          <h3 class="grid-title">{{ title }}</h3>
+          <p class="grid-text">{{ description }}</p>
         </div>
-      {% endcapture %}
-      
-      {{ grid_capture }}
-    {%- endif -%}
+      </div>
+    {% endif %}
   {% endfor %}
-</div>
-
+</div
 
 
 </div>
