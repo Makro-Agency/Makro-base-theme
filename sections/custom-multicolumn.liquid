@@ -24,8 +24,8 @@
      
     {% for block in section.blocks %}
       <div class="grid-item">
-        {% assign title = product.metafields.makro.title %}
-        {% assign descrition = product.metafields.makro.description %}
+        {% assign title = page.metafields.makro.title %}
+        {% assign descrition = page.metafields.makro.description %}
         {% assign page_image = page.metafields.makro.image %}
  {% if page_image %}
   {% assign image_json = page_image | first | replace: '=>', ':' %}
