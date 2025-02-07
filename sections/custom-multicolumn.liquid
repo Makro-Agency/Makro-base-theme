@@ -21,9 +21,13 @@
       {% endif %}
   </div>
  <div class="grid-container">
-  {% assign grid_capture = blank %}
   {% for block in section.blocks %}
-    {% assign main_index0 = forloop.index0 %}
+    <div class="debug-info">
+      <p>Title: {{ block.settings.title }}</p>
+      <p>Description: {{ block.settings.description }}</p>
+      <p>Image: {{ block.settings.image | inspect }}</p>
+    </div>
+
     {% assign title = block.settings.title %}
     {% assign description = block.settings.description %}
     {% assign page_image = block.settings.image %}
@@ -32,18 +36,14 @@
       {% assign image_json = page_image | first | replace: '=>', ':' %}
       {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
       
-      {% capture grid_capture %}
-        <div class="grid-item">
-          <img src="{{ image_url }}" alt="{{ title }}" />
-          <div class="grid-content">
-            <h3 class="grid-title">{{ title }}</h3>
-            <p class="grid-text">{{ description }}</p>
-          </div>
+      <div class="grid-item">
+        <img src="{{ image_url }}" alt="{{ title }}" />
+        <div class="grid-content">
+          <h3 class="grid-title">{{ title }}</h3>
+          <p class="grid-text">{{ description }}</p>
         </div>
-      {% endcapture %}
+      </div>
     {% endif %}
-    
-    {{ grid_capture }}
   {% endfor %}
 </div>
 
