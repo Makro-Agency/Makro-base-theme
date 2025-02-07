@@ -79,7 +79,7 @@
         </div>
 </div>
   <div class="seperate-section">
-    {% assign metaobject = accentuate.metaobjects['custom_object'] %}
+     {%- assign metaobject =  page.metafields.custom.custom_object.value | json_parse -%}
     {% if metaobject %}
   <div class="metaobject-details">
     <h1>{{ metaobject.title }}</h1> <!-- Title field -->
