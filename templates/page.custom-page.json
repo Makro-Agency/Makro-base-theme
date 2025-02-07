@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "hide_title": true,
         "padding_top": 0,
@@ -44,8 +45,9 @@
         "card_nwrexK",
         "card_VtxAp8"
       ],
+      "disabled": true,
       "settings": {
-        "bg_color": "#212D3D",
+        "bg_color": "#212d3d",
         "form_title": "TA Inquiry Form",
         "form_subtitle": "Fill the form below to get access to your personal TA Account",
         "form_instruction": "Start With Selecting your Inquiry Type",
