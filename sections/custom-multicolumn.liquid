@@ -32,6 +32,7 @@
       {% assign image_json = page_image | first | replace: '=>', ':' %}
       {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
       
+      
       {% capture grid_capture %}
         <div class="grid-item">
           <img src="{{ image_url }}" alt="{{ title }}" />
