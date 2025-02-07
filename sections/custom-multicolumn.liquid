@@ -20,32 +20,33 @@
         <a href="{{ section.settings.button_link }}" class="button cta_button desktop-hide">{{ section.settings.button_text }}</a>
       {% endif %}
   </div>
- <div class="grid-container">
-  {% for block in section.blocks %}
-    <div class="debug-info">
-      <p>Title: {{ block.settings.title }}</p>
-      <p>Description: {{ block.settings.description }}</p>
-      <p>Image: {{ block.settings.image | inspect }}</p>
-    </div>
-
-    {% assign title = block.settings.title %}
-    {% assign description = block.settings.description %}
-    {% assign page_image = block.settings.image %}
+<div class="grid-container">
+  {% assign grid_capture = blank %}
+  
+  {%- for i in (0..shop.metafields.features_details.product_tags.size) -%}
+    {% assign title = page.metafields.features_details["title_" | append: i] %}
+    {% assign description = page.metafields.features_details["description_" | append: i] %}
+    {% assign page_image = page.metafields.features_details["image_" | append: i] %}
     
-    {% if page_image %}
+    {%- if title and description and page_image -%}
       {% assign image_json = page_image | first | replace: '=>', ':' %}
       {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
       
-      <div class="grid-item">
-        <img src="{{ image_url }}" alt="{{ title }}" />
-        <div class="grid-content">
-          <h3 class="grid-title">{{ title }}</h3>
-          <p class="grid-text">{{ description }}</p>
+      {% capture grid_capture %}
+        <div class="grid-item">
+          <img src="{{ image_url }}" alt="{{ title }}" />
+          <div class="grid-content">
+            <h3 class="grid-title">{{ title }}</h3>
+            <p class="grid-text">{{ description }}</p>
+          </div>
         </div>
-      </div>
-    {% endif %}
+      {% endcapture %}
+      
+      {{ grid_capture }}
+    {%- endif -%}
   {% endfor %}
 </div>
+
 
 </div>
 
