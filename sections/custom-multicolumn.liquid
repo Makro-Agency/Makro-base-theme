@@ -21,11 +21,20 @@
       {% endif %}
   </div>
 <div class="grid-container">
-    {% for block in section.blocks %}
-      <div class="grid-item">
-        {% assign title = page.metafields.makro.title %}
+
+       {% assign title = page.metafields.makro.title %}
         {% assign descrition = page.metafields.makro.description %}
         {% assign page_image = page.metafields.makro.image %}
+           {% assign title1 = page.metafields.makro.title1 %}
+        {% assign descrition1 = page.metafields.makro.description1 %}
+        {% assign page_image1 = page.metafields.makro.image1 %}
+           {% assign title2 = page.metafields.makro.title2 %}
+        {% assign descrition2 = page.metafields.makro.description2 %}
+        {% assign page_image2 = page.metafields.makro.image2 %}
+           {% assign title3 = page.metafields.makro.title3 %}
+        {% assign descrition3 = page.metafields.makro.description3 %}
+        {% assign page_image3 = page.metafields.makro.image3 %}
+<div class="grid-item">   
  {% if page_image %}
   {% assign image_json = page_image | first | replace: '=>', ':' %}
   {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
@@ -35,12 +44,40 @@
           <h3 class="grid-title">{{ title }}</h3>
           <p class="grid-text">{{ descrition }}</p>
         </div>
-      </div>
-    {% endfor %}
-
-
 </div>
-
+<div class="grid-item">   
+ {% if page_image1 %}
+  {% assign image_json = page_image1 | first | replace: '=>', ':' %}
+  {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
+  <img src="{{ image_url }}" alt="{{ page.title1 }}" />
+{% endif %}
+        <div class="grid-content">
+          <h3 class="grid-title">{{ title1 }}</h3>
+          <p class="grid-text">{{ descrition1 }}</p>
+        </div>
+</div>
+  <div class="grid-item">   
+ {% if page_image2 %}
+  {% assign image_json = page_image2 | first | replace: '=>', ':' %}
+  {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
+  <img src="{{ image_url }}" alt="{{ page.title2 }}" />
+{% endif %}
+        <div class="grid-content">
+          <h3 class="grid-title">{{ title2 }}</h3>
+          <p class="grid-text">{{ descrition2 }}</p>
+        </div>
+</div>
+   <div class="grid-item">   
+ {% if page_image3 %}
+  {% assign image_json = page_image3 | first | replace: '=>', ':' %}
+  {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
+  <img src="{{ image_url }}" alt="{{ page.title3 }}" />
+{% endif %}
+        <div class="grid-content">
+          <h3 class="grid-title">{{ title3 }}</h3>
+          <p class="grid-text">{{ descrition3 }}</p>
+        </div>
+</div> 
 {% schema %}
 {
   "name": "Custom Multicolumn",
