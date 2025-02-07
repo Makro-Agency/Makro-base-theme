@@ -890,6 +890,78 @@
         "marque_direct": "right-to-left",
         "marqee_duration": 30
       }
+    },
+    "custom_section_hTnUwD": {
+      "type": "custom-section",
+      "blocks": {
+        "group_8LDJ9M": {
+          "type": "group",
+          "settings": {
+            "color_scheme": "scheme-3"
+          },
+          "blocks": {
+            "text_KJNUjb": {
+              "type": "text",
+              "settings": {
+                "text": "<h3>Hello, world!</h3>",
+                "alignment": "left"
+              }
+            },
+            "text_Gpt7jF": {
+              "type": "text",
+              "settings": {
+                "text": "<p>How's it going?</p>",
+                "alignment": "left"
+              }
+            },
+            "text_MHVUY6": {
+              "type": "text",
+              "settings": {
+                "text": "",
+                "alignment": "left"
+              }
+            },
+            "group_UT6V7d": {
+              "type": "group",
+              "settings": {
+                "color_scheme": "scheme-3"
+              },
+              "blocks": {
+                "text_RhityG": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h3>Hello, world!</h3>",
+                    "alignment": "left"
+                  }
+                },
+                "text_FYpxcb": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>How's it going?</p>",
+                    "alignment": "left"
+                  }
+                }
+              },
+              "block_order": [
+                "text_RhityG",
+                "text_FYpxcb"
+              ]
+            }
+          },
+          "block_order": [
+            "text_KJNUjb",
+            "text_Gpt7jF",
+            "text_MHVUY6",
+            "group_UT6V7d"
+          ]
+        }
+      },
+      "block_order": [
+        "group_8LDJ9M"
+      ],
+      "settings": {
+        "color_scheme": ""
+      }
     }
   },
   "order": [
@@ -911,6 +983,7 @@
     "custom_blog_section_bio_k_h8rmaL",
     "custom_collection_section_eFEpzx",
     "custom_product_grid_7FNeaR",
-    "custom_marque_section_D96Bch"
+    "custom_marque_section_D96Bch",
+    "custom_section_hTnUwD"
   ]
 }
