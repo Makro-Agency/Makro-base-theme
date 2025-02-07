@@ -24,14 +24,17 @@
   {% assign grid_capture = blank %}
   
   {%- for i in (0..shop.metafields.features_details.product_tags.size) -%}
-    {% assign title = page.metafields.features_details["title_" | append: i] %}
-    {% assign description = page.metafields.features_details["description_" | append: i] %}
-    {% assign page_image = page.metafields.features_details["image_" | append: i] %}
+    {% assign title_key = "title_" | append: i %}
+    {% assign description_key = "description_" | append: i %}
+    {% assign image_key = "image_" | append: i %}
+    
+    {% assign title = page.metafields.features_details[title_key] %}
+    {% assign description = page.metafields.features_details[description_key] %}
+    {% assign page_image = page.metafields.features_details[image_key] %}
     
     {%- if title and description and page_image -%}
       {% assign image_json = page_image | first | replace: '=>', ':' %}
       {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
-      
       
       {% capture grid_capture %}
         <div class="grid-item">
@@ -47,6 +50,7 @@
     {%- endif -%}
   {% endfor %}
 </div>
+
 
 
 </div>
