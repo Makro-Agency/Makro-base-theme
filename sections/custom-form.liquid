@@ -1,0 +1,94 @@
+{% style %}
+.multi-form-section{ 
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width:600px;
+    margin:0 auto; 
+ }
+  .form-group{ margin-bottom:10px; }
+  .multi-form-section .form-group input{ min-height:30px; }
+   .multi-form-section .form-group  select{ min-height:30px; }
+ .multi-form-section{ padding:50px 0; }
+  .form-group label{ font-weight:bold; padding-bottom:5px; font-size:14px; }
+  .multi-form-section .form-group input { width:100%; }
+ .multi-form-section form{ width:100%; }
+ .form-group{ display:flex; flex-direction:column; }
+{% endstyle %}
+<div class="multi-form-section">
+  <form id="myForm">
+    <div class="form-group">
+      <label for="firstname"> First name </label>
+      <input type="text" placeholder=" Enter your first name" id="fname">
+    </div>
+    <div class="form-group">
+      <label for="lastname"> Last name </label>
+      <input type="text" placeholder=" Enter your last name" id="lname">
+    </div>
+    <div class="form-group">
+      <label for="mail"> Mail </label>
+      <input type="email" placeholder=" Enter your email" id="mail">
+    </div>
+    <div class="form-group">
+      <select id="options">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="comments"> Comments: </label>
+      <input type="text" placeholder=" Enter your Comments" id="comments">
+    </div>
+    <button type="submit" id="addform"> Submit </button>
+  </form>
+</div>
+
+<script>
+  // Get form elements
+  let fname = document.getElementById('fname');
+  let lname = document.getElementById('lname');
+  let mail = document.getElementById('mail');
+  let options = document.getElementById('options');
+  let comments = document.getElementById('comments');
+
+  // Get the form itself
+  let form = document.getElementById('myForm');
+
+  // Add event listener to the form submission
+  form.addEventListener('submit', function (event) {
+    // Prevent default form submission (page reload)
+    event.preventDefault();
+
+    // Get current values when the form is submitted
+    let fnamevalue = fname.value;
+    let lnamevalue = lname.value;
+    let mailvalue = mail.value;
+    let optionsvalue = options.value;
+    let commentsvalue = comments.value;
+
+    // Log the values in the console
+    console.log('First Name:', fnamevalue);
+    console.log('Last Name:', lnamevalue);
+    console.log('Email:', mailvalue);
+    console.log('Option Selected:', optionsvalue);
+    console.log('Comments:', commentsvalue);
+  });
+</script>
+
+{% schema %}
+{
+   "name": "custom-form",
+   "class": "custom-index-form",
+    "settings": [
+      
+    ],
+    "presets": [
+    {
+     "name": "custom forms"
+    }
+      
+    ]
+}
+
+{% endschema %}
