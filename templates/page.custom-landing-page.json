@@ -962,6 +962,10 @@
       "settings": {
         "color_scheme": ""
       }
+    },
+    "calculator_section_8mFKMH": {
+      "type": "calculator-section",
+      "settings": {}
     }
   },
   "order": [
@@ -984,6 +988,7 @@
     "custom_collection_section_eFEpzx",
     "custom_product_grid_7FNeaR",
     "custom_marque_section_D96Bch",
-    "custom_section_hTnUwD"
+    "custom_section_hTnUwD",
+    "calculator_section_8mFKMH"
   ]
 }
