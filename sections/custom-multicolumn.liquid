@@ -21,31 +21,22 @@
       {% endif %}
   </div>
 <div class="grid-container">
-  <div class="grid-container">
-  {% for block in section.blocks %}
-    <div class="debug-info">
-      <p>Title: {{ block.settings.title }}</p>
-      <p>Description: {{ block.settings.description }}</p>
-      <p>Image: {{ block.settings.image | inspect }}</p>
-    </div>
+{% for item in page.metafields.makro.value %}
+  {% assign title = item.title %}
+  {% assign description = item.description %}
+  {% assign page_image = item.image %}
 
-    {% assign title = block.settings.title %}
-    {% assign description = block.settings.description %}
-    {% assign page_image = block.settings.image %}
-    
-    {% if page_image %}
-      {% assign image_json = page_image | first | replace: '=>', ':' %}
-      {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
-      
-      <div class="grid-item">
-        <img src="{{ image_url }}" alt="{{ title }}" />
-        <div class="grid-content">
-          <h3 class="grid-title">{{ title }}</h3>
-          <p class="grid-text">{{ description }}</p>
-        </div>
+  {% if page_image %}
+    <div class="grid-item">
+      <img src="{{ page_image | img_url: 'master' }}" alt="{{ title }}" />
+      <div class="grid-content">
+        <h3 class="grid-title">{{ title }}</h3>
+        <p class="grid-text">{{ description }}</p>
       </div>
-    {% endif %}
-  {% endfor %}
+    </div>
+  {% endif %}
+{% endfor %}
+
 </div
 
 
