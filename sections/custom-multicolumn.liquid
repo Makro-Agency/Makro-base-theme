@@ -21,36 +21,74 @@
       {% endif %}
   </div>
 <div class="grid-container">
-  {% assign grid_capture = blank %}
-  
-  {%- for i in (0..shop.metafields.features_details.product_tags.size) -%}
-    {% assign title = page.metafields.features_details["title_" | append: i] %}
-    {% assign description = page.metafields.features_details["description_" | append: i] %}
-    {% assign page_image = page.metafields.features_details["image_" | append: i] %}
-    
-    {%- if title and description and page_image -%}
-      {% assign image_json = page_image | first | replace: '=>', ':' %}
-      {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
-      
-      
-      {% capture grid_capture %}
-        <div class="grid-item">
-          <img src="{{ image_url }}" alt="{{ title }}" />
-          <div class="grid-content">
-            <h3 class="grid-title">{{ title }}</h3>
-            <p class="grid-text">{{ description }}</p>
-          </div>
+
+       {% assign title = page.metafields.makro.title %}
+        {% assign descrition = page.metafields.makro.description %}
+        {% assign page_image = page.metafields.makro.image %}
+        {% assign title1 = page.metafields.makro.title1 %}
+        {% assign descrition1 = page.metafields.makro.description1 %}
+        {% assign page_image1 = page.metafields.accentuate.image1 %}
+        {% assign title2 = page.metafields.makro.title2 %}
+        {% assign descrition2 = page.metafields.makro.description2 %}
+        {% assign page_image2 = page.metafields.makro.image2 %}
+        {% assign title3 = page.metafields.accentuate.title3 %}
+        {% assign descrition3 = page.metafields.makro.description3 %}
+        {% assign page_image3 = page.metafields.makro.image3 %}
+<div class="grid-item">   
+ {% if page_image %}
+  {% assign image_json = page_image | first | replace: '=>', ':' %}
+  {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
+  <img src="{{ image_url }}" alt="{{ page.title }}" />
+{% endif %}
+        <div class="grid-content">
+          <h3 class="grid-title">{{ title }}</h3>
+          <p class="grid-text">{{ descrition }}</p>
         </div>
-      {% endcapture %}
-      
-      {{ grid_capture }}
-    {%- endif -%}
-  {% endfor %}
 </div>
-
-
+<div class="grid-item">   
+ {% if page_image1 %}
+  {% assign image_json = page_image1 | first | replace: '=>', ':' %}
+  {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
+  <img src="{{ image_url }}" alt="{{ page.title1 }}" />
+{% endif %}
+        <div class="grid-content">
+          <h3 class="grid-title">{{ title1 }}</h3>
+          <p class="grid-text">{{ descrition1 }}</p>
+        </div>
 </div>
-
+  <div class="grid-item">   
+ {% if page_image2 %}
+  {% assign image_json = page_image2 | first | replace: '=>', ':' %}
+  {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
+  <img src="{{ image_url }}" alt="{{ page.title2 }}" />
+{% endif %}
+        <div class="grid-content">
+          <h3 class="grid-title">{{ title2 }}</h3>
+          <p class="grid-text">{{ descrition2 }}</p>
+        </div>
+</div>
+   <div class="grid-item">   
+ {% if page_image3 %}
+  {% assign image_json = page_image3 | first | replace: '=>', ':' %}
+  {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
+  <img src="{{ image_url }}" alt="{{ page.title3 }}" />
+{% endif %}
+        <div class="grid-content">
+          <h3 class="grid-title">{{ title3 }}</h3>
+          <p class="grid-text">{{ descrition3 }}</p>
+        </div>
+</div>
+  <div class="seperate-section">
+     {%- assign metaobject =  page.metafields.custom.custom_object.value | json_parse -%}
+    {% if metaobject %}
+  <div class="metaobject-details">
+    <h1>{{ metaobject.title }}</h1> <!-- Title field -->
+    <p>{{ metaobject.description }}</p> <!-- Description field -->
+  </div>
+{% else %}
+  <p>No metaobject data available.</p>
+{% endif %}
+  </div>
 {% schema %}
 {
   "name": "Custom Multicolumn",
