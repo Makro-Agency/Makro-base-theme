@@ -20,31 +20,32 @@
         <a href="{{ section.settings.button_link }}" class="button cta_button desktop-hide">{{ section.settings.button_text }}</a>
       {% endif %}
   </div>
-<div class="grid-container">
-  {% assign block_index = 0 %}
-  
-  {% for  i in (0..3) %}
-    <div class="grid-item">
-      {% assign title = page.metafields.makro["title_" | append: block_index] %}
-      {% assign description = page.metafields.makro["description_" | append: block_index] %}
-      {% assign page_image = page.metafields.makro["image_" | append: block_index] %}
-      
-      {% if page_image %}
-        {% assign image_json = page_image | first | replace: '=>', ':' %}
-        {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
-        <img src="{{ image_url }}" alt="{{ title }}" />
-      {% endif %}
-      
-      <div class="grid-content">
-        <h3 class="grid-title">{{ title }}</h3>
-        <p class="grid-text">{{ description }}</p>
-      </div>
-    </div>
+ <div class="grid-container">
+  {% assign grid_capture = blank %}
+  {% for block in section.blocks %}
+    {% assign main_index0 = forloop.index0 %}
+    {% assign title = block.settings.title %}
+    {% assign description = block.settings.description %}
+    {% assign page_image = block.settings.image %}
     
-    {% assign block_index = block_index | plus: 1 %}
+    {% if page_image %}
+      {% assign image_json = page_image | first | replace: '=>', ':' %}
+      {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
+      
+      {% capture grid_capture %}
+        <div class="grid-item">
+          <img src="{{ image_url }}" alt="{{ title }}" />
+          <div class="grid-content">
+            <h3 class="grid-title">{{ title }}</h3>
+            <p class="grid-text">{{ description }}</p>
+          </div>
+        </div>
+      {% endcapture %}
+    {% endif %}
+    
+    {{ grid_capture }}
   {% endfor %}
 </div>
-
 
 </div>
 
