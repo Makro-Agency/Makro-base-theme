@@ -21,18 +21,21 @@
       {% endif %}
   </div>
   <div class="grid-container">
+        {% assign title = product.metafields.makro.title %}
+        {% assign descrition = product.metafields.makro.description %}
     {% for block in section.blocks %}
       <div class="grid-item">
-        {% if block.settings.image != blank %}
-        <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.image_alt }}">
-        {% endif %}
+        {% assign title = product.metafields.makro.title %}
+        {% assign descrition = product.metafields.makro.description %}
+        {% assign page_image = page.metafields.makro.image %}
+ {% if page_image %}
+  {% assign image_json = page_image | first | replace: '=>', ':' %}
+  {% assign image_url = image_json | split: '"src":"' | last | split: '"' | first %}
+  <img src="{{ image_url }}" alt="{{ page.title }}" />
+{% endif %}
         <div class="grid-content">
-        {% if block.settings.grid_title != blank %}
-          <h3 class="grid-title">{{ block.settings.grid_title }}</h3>
-        {% endif %}
-         {% if block.settings.grid_text != blank %}
-          <p class="grid-text">{{ block.settings.grid_text }}</p>
-          {% endif %}
+          <h3 class="grid-title">{{ title }}</h3>
+          <p class="grid-text">{{ descrition }}</p>
         </div>
       </div>
     {% endfor %}
