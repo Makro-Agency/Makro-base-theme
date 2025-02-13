@@ -125,18 +125,21 @@
       <div class="sidebar">
        <div class="blog-tags">
        <h4>Blog Tags: </h4>
-       <div class="dropdown">
-  <button class="dropbtn">Select Tags</button>
-  <div class="dropdown-content">
-    {% for tag in blog.tags %}
-      <label class="checkbox-container">
-        <input type="checkbox" name="tags[]" value="{{ blog.url }}/tagged/{{ tag | handle }}" 
-        {% if current_tags contains tag %}checked{% endif %}>
-        {{ tag }}
-      </label>
-    {% endfor %}
+      <form method="get" action="{{ blog.url }}" id="tagFilterForm">
+  <div class="dropdown">
+    <button class="dropbtn">Select Tags</button>
+    <div class="dropdown-content">
+      {% for tag in blog.tags %}
+        <label class="checkbox-container">
+          <input type="checkbox" name="tags[]" value="{{ blog.url }}/tagged/{{ tag | handle }}"
+          {% if current_tags contains tag %}checked{% endif %}>
+          {{ tag }}
+        </label>
+      {% endfor %}
+    </div>
   </div>
-</div>
+  <button type="submit" style="display: none;" id="submitButton"></button> <!-- Invisible submit button -->
+</form>
        </div>
       </div>
 
