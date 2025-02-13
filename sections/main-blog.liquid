@@ -217,7 +217,12 @@
 </div>
 
 <script>
-
+// Optional: Use JavaScript to capture selected checkboxes and do something when the form is submitted
+document.querySelector('.dropbtn').addEventListener('click', function() {
+  const dropdownContent = document.querySelector('.dropdown-content');
+  dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+});
+ 
 var popupoverlay = document.querySelector(".popupoverlay")
 var popupcontent = document.querySelector(".popupcontent")
 var deletebtn = document.querySelector(".closebtn")
