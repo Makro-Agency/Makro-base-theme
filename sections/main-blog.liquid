@@ -21,6 +21,46 @@
   .custom-popup{ position:relative; }
   .custom-popup{ min-height:50rem; position:relative; }
   .popupcontent{ background-color:#fff; padding:20px; position:absolute; left:0; right:0; width:50%;  top:50%; color:#000; z-index:2; margin:0 auto; display:none;  }
+
+  .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Checkbox label style */
+.checkbox-container {
+  display: block;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 10px;
+}
 {%- endstyle -%}
 
 {%- paginate blog.articles by 6 -%}
@@ -85,18 +125,18 @@
       <div class="sidebar">
        <div class="blog-tags">
        <h4>Blog Tags: </h4>
-       <form method="get" action="{{ blog.url }}">
-  <select name="tag" onchange="if(this.value) window.location.href=this.value">
-    <option value="">Select a tag</option>
+       <div class="dropdown">
+  <button class="dropbtn">Select Tags</button>
+  <div class="dropdown-content">
     {% for tag in blog.tags %}
-      <option value="{{ blog.url }}/tagged/{{ tag | handle }}" 
-        {% if current_tags contains tag %}selected{% endif %}>
+      <label class="checkbox-container">
+        <input type="checkbox" name="tags[]" value="{{ blog.url }}/tagged/{{ tag | handle }}" 
+        {% if current_tags contains tag %}checked{% endif %}>
         {{ tag }}
-      </option>
+      </label>
     {% endfor %}
-  </select>
-</form>
-
+  </div>
+</div>
        </div>
       </div>
 
