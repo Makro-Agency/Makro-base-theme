@@ -89,29 +89,22 @@
   <p>No metaobject data available.</p>
 {% endif %}
   </div>
- <div class="separate-section-new">
+<div class="separate-section-new">
     {%- assign custommultielement = page.metafields.custom.custom_multi_element.value | json_parse -%}
     {% if custommultielement %}
         <div class="metaobject-details">
-            <h1>{{ custommultielement.elementtitle }}</h1> <!-- Title field -->
-            <p>{{ custommultielement.elementdescription }}</p> <!-- Description field -->
-            <p>{{ custommultielement.elementtag }}</p> <!-- Tag field -->
-            
-            <!-- Loop through the entries if they exist -->
-            {% if custommultielement.entries %}
-                <ul>
-                    {% for entry in custommultielement.entries %}
-                        <li>{{ entry }}</li> <!-- Display each entry -->
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No entries available.</p>
-            {% endif %}
+            {% for element in custommultielement %}
+                <h1>{{ element.elementtitle }}</h1> <!-- Title field -->
+                <p>{{ element.elementdescription }}</p> <!-- Description field -->
+                <p>{{ element.elementtag }}</p> <!-- Tag field -->
+            {% endfor %}
         </div>
     {% else %}
         <p>No metaobject data available.</p>
     {% endif %}
 </div>
+
+
 <div class="debug">
   <p>{{ page.metafields.custom.custom_multi_element.value | json }}</p> <!-- Debug output -->
 </div>
