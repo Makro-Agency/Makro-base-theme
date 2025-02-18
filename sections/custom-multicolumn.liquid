@@ -89,6 +89,17 @@
   <p>No metaobject data available.</p>
 {% endif %}
   </div>
+  <div class="seperate-section-new">
+     {%- assign custommetaobject =  page.metafields.custom.custom_metaobjects.value | json_parse -%}
+    {% if custommetaobject %}
+  <div class="metaobject-details">
+    <h1>{{ custommetaobject.title }}</h1> <!-- Title field -->
+    <p>{{ custommetaobject.description }}</p> <!-- Description field -->
+  </div>
+{% else %}
+  <p>No metaobject data available.</p>
+{% endif %}
+  </div>
 {% schema %}
 {
   "name": "Custom Multicolumn",
