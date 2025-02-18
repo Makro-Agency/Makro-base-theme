@@ -93,8 +93,8 @@
      {%- assign custommetaobject =  page.metafields.custom.custom_metaobjects.value | json_parse -%}
     {% if custommetaobject %}
   <div class="metaobject-details">
+        <h1>{{ custommetaobject.titlee }}</h1> <!-- Title field -->
     <p>{{ custommetaobject.descriptionn }}</p> <!-- Description field -->
-    <h1>{{ custommetaobject.titlee }}</h1> <!-- Title field -->
   </div>
 {% else %}
   <p>No metaobject data available.</p>
