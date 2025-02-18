@@ -112,6 +112,9 @@
         <p>No metaobject data available.</p>
     {% endif %}
 </div>
+<div class="debug">
+  <p>{{ page.metafields.custom.custom_multi_element.value | json }}</p> <!-- Debug output -->
+</div>
 
 {% schema %}
 {
